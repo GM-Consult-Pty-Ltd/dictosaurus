@@ -4,12 +4,12 @@
 
 # TODO: Edit pubspec.yaml
 
-name: dart_package_template
-description: TODO - A short description of your package.
+name: dictosaurus
+description: Extensions on String that provide dictionary and thesaurus functions.
 version: 0.0.1-beta.1
-repository: https://github.com/GM-Consult-Pty-Ltd/dart_package_template
+repository: https://github.com/GM-Consult-Pty-Ltd/dictosaurus
 homepage: https://github.com/GM-Consult-Pty-Ltd
-issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dart_package_template/issues
+issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues
 
 environment:
   sdk: '>=2.17.6 <3.0.0'

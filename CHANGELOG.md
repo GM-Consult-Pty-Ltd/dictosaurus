@@ -6,5 +6,5 @@ All rights reserved.
 
 ### 0.0.1-beta.1
 
-- **PRE-RELEASE**
+**PRE-RELEASE**
 - Initial version.

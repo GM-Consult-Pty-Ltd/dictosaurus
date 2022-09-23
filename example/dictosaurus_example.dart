@@ -3,7 +3,7 @@
 // All rights reserved
 
 // ignore: unused_import
-import 'package:dart_package_template/dart_package_template.dart';
+import 'package:dictosaurus/dictosaurus.dart';
 
 void main() {
   //TODO: example

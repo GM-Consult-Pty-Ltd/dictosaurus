@@ -4,9 +4,9 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
-# dart_package_template
+# dictosaurus
 
-TODO: A short description of your package.
+TODO: Extensions on String that provide dictionary and thesaurus functions.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
@@ -30,26 +30,26 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 
 ```yaml
 dependencies:
-  dart_package_template: <latest_version>
+  dictosaurus: <latest_version>
 ```
 
 In your code file add the following import:
 
 ```dart
-import 'package:dart_package_template/dart_package_template.dart';
+import 'package:dictosaurus/dictosaurus.dart';
 ```
 
 TODO: describe usage.
 
 ## API
 
-The [API](https://pub.dev/documentation/dart_package_template/latest/) exposes
+The [API](https://pub.dev/documentation/dictosaurus/latest/) exposes
 
 TODO: describe the API
 
 ## Definitions
 
-The following definitions are used throughout the [documentation](https://pub.dev/documentation/dart_package_template/latest/):
+The following definitions are used throughout the [documentation](https://pub.dev/documentation/dictosaurus/latest/):
 * TODO: add definitions
 
 ## References
@@ -58,7 +58,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 
 ## Issues
 
-If you find a bug please fill an [issue](https://github.com/GM-Consult-Pty-Ltd/dart_package_template/issues).  
+If you find a bug please fill an [issue](https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues).  
 
 This project is a supporting package for a revenue project that has priority call on resources, so please be patient if we don't respond immediately to issues or pull requests.
 
