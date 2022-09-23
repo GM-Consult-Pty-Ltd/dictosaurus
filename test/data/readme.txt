@@ -1,0 +1,1 @@
+This folder is excluded in analysis_options.yaml, so is a good place for large datasets.

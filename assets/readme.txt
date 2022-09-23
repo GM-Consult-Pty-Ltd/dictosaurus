@@ -1,0 +1,1 @@
+This folder is a container for assets used in the package.

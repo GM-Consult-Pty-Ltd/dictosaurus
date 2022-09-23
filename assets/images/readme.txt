@@ -1,0 +1,1 @@
+This folder is for image assets used in the package.
