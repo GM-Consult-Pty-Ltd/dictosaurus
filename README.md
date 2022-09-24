@@ -4,26 +4,26 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
-<p align="center">
+<p align="left">
   <a href="https://github.com/GM-Consult-Pty-Ltd">
-    <img src="https://avatars.githubusercontent.com/u/68113902?s=200&v=4" height="128">
+    <img src="static-assets/favicon.png?v1" height="30">
   </a>
-  <span style="">DictoSaurus</span>
+  <span style="font-size: 36px; color:#0079cc; font-weight: bold">&nbsp;DictoSaurus</span>
 </p>
 
 
 <!-- <p align="center">
-  <a href="https://pub.dev/packages/isar">
-    <img src="https://img.shields.io/pub/v/isar?label=pub.dev&labelColor=333940&logo=dart">
+  <a href="https://pub.dev/packages/dictosaurus">
+    <img src="https://img.shields.io/pub/v/dictosaurus?label=pub.dev&labelColor=333940&logo=dart">
   </a>
-  <a href="https://github.com/isar/isar/actions/workflows/test.yml">
-    <img src="https://img.shields.io/github/workflow/status/isar/isar/Dart%20CI/main?label=tests&labelColor=333940&logo=github">
+  <a href="https://github.com/dictosaurus/dictosaurus/actions/workflows/test.yml">
+    <img src="https://img.shields.io/github/workflow/status/dictosaurus/dictosaurus/Dart%20CI/main?label=tests&labelColor=333940&logo=github">
   </a>
-  <a href="https://app.codecov.io/gh/isar/isar">
-    <img src="https://img.shields.io/codecov/c/github/isar/isar?logo=codecov&logoColor=fff&labelColor=333940">
+  <a href="https://app.codecov.io/gh/dictosaurus/dictosaurus">
+    <img src="https://img.shields.io/codecov/c/github/dictosaurus/dictosaurus?logo=codecov&logoColor=fff&labelColor=333940">
   </a>
-  <a href="https://t.me/isardb">
-    <img src="https://img.shields.io/static/v1?label=join&message=isardb&labelColor=333940&logo=telegram&logoColor=white&color=229ED9">
+  <a href="https://t.me/dictosaurusdb">
+    <img src="https://img.shields.io/static/v1?label=join&message=dictosaurusdb&labelColor=333940&logo=telegram&logoColor=white&color=229ED9">
   </a>
   <a href="https://twitter.com/simonleier">
     <img src="https://img.shields.io/twitter/follow/simonleier?style=flat&label=Follow&color=1DA1F2&labelColor=333940&logo=twitter&logoColor=fff">
@@ -31,11 +31,11 @@ All rights reserved.
 </p> -->
 
 <!-- <p align="center">
-  <a href="https://isar.dev">Quickstart</a> •
-  <a href="https://isar.dev/schema">Documentation</a> •
-  <a href="https://github.com/isar/samples">Sample Apps</a> •
-  <a href="https://github.com/isar/isar/discussions">Support & Ideas</a> •
-  <a href="https://pub.dev/packages/isar">Pub.dev</a>
+  <a href="https://dictosaurus.dev">Quickstart</a> •
+  <a href="https://dictosaurus.dev/schema">Documentation</a> •
+  <a href="https://github.com/dictosaurus/samples">Sample Apps</a> •
+  <a href="https://github.com/dictosaurus/dictosaurus/discussions">Support & Ideas</a> •
+  <a href="https://pub.dev/packages/dictosaurus">Pub.dev</a>
 </p> -->
 
 <!-- # dictosaurus -->
