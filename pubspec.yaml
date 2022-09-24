@@ -6,7 +6,7 @@
 
 name: dictosaurus
 description: Extensions on String that provide dictionary and thesaurus functions.
-version: 0.0.1-beta.1
+version: 0.0.1-beta.2
 repository: https://github.com/GM-Consult-Pty-Ltd/dictosaurus
 homepage: https://github.com/GM-Consult-Pty-Ltd
 issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues

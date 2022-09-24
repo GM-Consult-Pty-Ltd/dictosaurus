@@ -41,8 +41,6 @@ All rights reserved.
 <!-- # dictosaurus -->
 
 [![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/assets/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
-
-# DictoSaurus
 **Extensions on String that provide dictionary and thesaurus functions.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
