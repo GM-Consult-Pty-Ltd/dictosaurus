@@ -16,6 +16,8 @@ environment:
 
 dependencies:
   # -----PubDev Packages (in alphabetic order) -----
+  text_indexing: ^0.14.0+1
+
 
 dev_dependencies:
   lints: ^2.0.0

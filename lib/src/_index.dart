@@ -2,9 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// Barrel file for src/ folder.
-/// List all exports below in alphabetical order.
-/// Prefer exporting barrel files from sub-folders rather than code files.
-// export 'src/_index.dart';
-
-//TODO: edit src/_index.dart
+export 'auto_correct/_index.dart';
+export 'thesaurus/_index.dart';
+export 'vocabulary/_index.dart';
+export 'dictosaurus.dart';

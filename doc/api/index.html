@@ -48,34 +48,7 @@
 BSD 3-Clause License
 Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
---><!-- <p align="left">
-  <a href="https://github.com/GM-Consult-Pty-Ltd">
-    <img src="static-assets/favicon.png?v1" height="30">
-  </a>
-  <span style="font-size: 36px; color:#0079cc; font-weight: bold">&nbsp;DictoSaurus</span>
-</p> --><!-- <p align="center">
-  <a href="https://pub.dev/packages/dictosaurus">
-    <img src="https://img.shields.io/pub/v/dictosaurus?label=pub.dev&labelColor=333940&logo=dart">
-  </a>
-  <a href="https://github.com/dictosaurus/dictosaurus/actions/workflows/test.yml">
-    <img src="https://img.shields.io/github/workflow/status/dictosaurus/dictosaurus/Dart%20CI/main?label=tests&labelColor=333940&logo=github">
-  </a>
-  <a href="https://app.codecov.io/gh/dictosaurus/dictosaurus">
-    <img src="https://img.shields.io/codecov/c/github/dictosaurus/dictosaurus?logo=codecov&logoColor=fff&labelColor=333940">
-  </a>
-  <a href="https://t.me/dictosaurusdb">
-    <img src="https://img.shields.io/static/v1?label=join&message=dictosaurusdb&labelColor=333940&logo=telegram&logoColor=white&color=229ED9">
-  </a>
-  <a href="https://twitter.com/simonleier">
-    <img src="https://img.shields.io/twitter/follow/simonleier?style=flat&label=Follow&color=1DA1F2&labelColor=333940&logo=twitter&logoColor=fff">
-  </a>
-</p> --><!-- <p align="center">
-  <a href="https://dictosaurus.dev">Quickstart</a> •
-  <a href="https://dictosaurus.dev/schema">Documentation</a> •
-  <a href="https://github.com/dictosaurus/samples">Sample Apps</a> •
-  <a href="https://github.com/dictosaurus/dictosaurus/discussions">Support & Ideas</a> •
-  <a href="https://pub.dev/packages/dictosaurus">Pub.dev</a>
-</p> --><!-- # dictosaurus -->
+-->
 <p><a href="https://github.com/GM-Consult-Pty-Ltd"><img src="https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/assets/images/dictosaurus.png?raw=true" alt="GM Consult Pty Ltd" title="GM Consult Pty Ltd"></a></p>
 <h2 id="extensions-on-string-that-provide-dictionary-and-thesaurus-functions"><strong>Extensions on String that provide dictionary and thesaurus functions.</strong></h2>
 <p><em>THIS PACKAGE IS <strong>PRE-RELEASE</strong>, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.</em></p>
@@ -89,7 +62,23 @@ All rights reserved.
 <li><a href="#issues">Issues</a></li>
 </ul>
 <h2 id="overview">Overview</h2>
-<p>TODO: Overview</p>
+<p>The <code>dictosaurus</code> package provides language reference utilities used in information retrieval systems. It relies on three key indexes:</p>
+<ul>
+<li>a <code>vocabulary</code> that maps the words in a language (vocabulary) to their definitions (meanings);</li>
+<li>a <code>synonyms index</code> that maps the <code>vocabulary</code> to a collection of synonyms, which may be empty; and</li>
+<li>a <code>k-gram index</code> that maps k-grams to the <code>vocabulary</code>.</li>
+</ul>
+<p><img src="https://github.com/GM-Consult-Pty-Ltd/dictosaurus/raw/main/assets/images/dictosaurus_artifacts.png?raw=true?raw=true" alt="DictoSaurus Artifacts" title="DictoSaurus Artifacts"></p>
+<p>Three utility classes provide dictionary and thesaurus functions:</p>
+<ul>
+<li>the <a href="">Vocabulary</a> class exposes the <a href="">Future<string> definitionOf(String term)</string></a> function, looking up the meaning of the <code>term</code> in a <code>vocabulary</code>;</li>
+<li>the <a href="">Thesaurus</a> class exposes the <a href="">Future&lt;Set<string>&gt; synonymsOf(String term)</string></a> function, looking up the synonyms of the <code>term</code> in a <code>synonyms index</code>; and</li>
+<li>the <a href="">AutoCorrect</a> class exposes the <a href="">Future&lt;List<string>&gt; suggestionsFor(String term)</string></a> function that returns a set of unique alternative spellings for <code>term</code> by converting the <code>term</code> to <code>k-grams</code> and then finding the best matches for the (misspelt) <code>term</code> from the <code>k-gram index</code>, ordered in descending order of relevance (i.e. best match first).</li>
+</ul>
+<p>The <code>DictoSaurus</code> composition class leverages a <a href="">Vocabulary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> which it uses to expose the <a href="">Future<string> definitionOf(String term)</string></a>,  <a href="">Future&lt;Set<string>&gt; synonymsOf(String term)</string></a> and <a href="">Future&lt;List<string>&gt; suggestionsFor(String term)</string></a> functions.</p>
+<p>The <a href="">DictoSaurus</a> also exposes the <a href="">Future&lt;List<string>&gt; expandTerm(String term)</string></a> function that looks up the <code>term</code> in the <a href="">Vocabulary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> classes to return a term-expansion in descending order of relevance (best match first). If the <code>term</code> is found in the <code>Vocabulary</code> it will appear as the first element of the returned list. If it is not found in the <code>Vocabulary</code> it will not be in the returned list as it is likely to be misspelt.</p>
+<p>The <a href="">DictoSaurus.english</a> static const instance uses the included <code>vocabulary</code>, <code>synonymsIndex</code> and <code>kGramIndex</code> hashmaps. For other languages or a custom implementation, initialize the <code>DictoSaurus</code> using the <code>DictoSaurus.async</code> factory constructor whichuses asynchronous callbacks to <code>vocabulary</code>, <code>synonymsIndex</code> and <code>kGramIndex</code> APIs. The <code>DictoSaurus.async</code> factory constructor has a named, required parameter <a href="">TextAnalyzerConfiguration configuration</a>. The optional named parametr <code>k-gram</code> length <code>k</code> defaults to 3.</p>
+<p>If the <code>DictoSaurus</code> is used as a <code>term expander</code> in an information retrieval system, the <code>DictoSaurus.configuration</code> must use the same tokenizing algorithm as the index.</p>
 <p>Refer to the <a href="#references">references</a> to learn more about the theory behind this library.</p>
 <h2 id="usage">Usage</h2>
 <p>In the <code>pubspec.yaml</code> of your flutter project, add the following dependency:</p>
@@ -104,13 +93,38 @@ All rights reserved.
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/">API</a> exposes</p>
 <p>TODO: describe the API</p>
 <h2 id="definitions">Definitions</h2>
-<p>The following definitions are used throughout the <a href="https://pub.dev/documentation/dictosaurus/latest/">documentation</a>:</p>
+<p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
 <ul>
-<li>TODO: add definitions</li>
+<li><code>corpus</code>- the collection of <code>documents</code> for which an <code>index</code> is maintained.</li>
+<li><code>character filter</code> - filters characters from text in preparation of tokenization.</li>
+<li><code>dictionary</code> - is a hash of <code>terms</code> (<code>vocabulary</code>) to the frequency of occurence in the <code>corpus</code> documents.</li>
+<li><code>document</code> - a record in the <code>corpus</code>, that has a unique identifier (<code>docId</code>) in the <code>corpus</code>'s primary key and that contains one or more text zones/fields  that are indexed.</li>
+<li><code>index</code> - an <a href="https://en.wikipedia.org/wiki/Inverted_index">inverted index</a> used to look up <code>document</code> references from the <code>corpus</code> against a <code>vocabulary</code> of <code>terms</code>. 
+<code>k-gram</code> - a sequence of (any) k consecutive characters from a <code>term</code>. A k-gram can start with "$", dentoting the start of the <code>Term</code>, and end with "$", denoting the end of the <code>Term</code>. The 3-grams for "castle" are { $ca, cas, ast, stl, tle, le$ }.</li>
+<li><code>lemmatizer</code> - lemmatisation (or lemmatization) in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form (from <a href="https://en.wikipedia.org/wiki/Lemmatisation">Wikipedia (2)</a>).</li>
+<li><code>postings</code> - a separate index that records which <code>documents</code> the <code>vocabulary</code> occurs in. In this implementation we also record the positions of each <code>term</code> in the <code>text</code> to create a positional inverted <code>index</code>.</li>
+<li><code>postings list</code> - a record of the positions of a <code>term</code> in a <code>document</code>. A position of a <code>term</code> refers to the index of the <code>term</code> in an array that contains all the <code>terms</code> in the <code>text</code>.</li>
+<li><code>synonym</code> - a word, morpheme, or phrase that means exactly or nearly the same as another word, morpheme, or phrase in a given language (from <a href="https://en.wikipedia.org/wiki/Synonym">Wikipedia (4)</a>).</li>
+<li><code>stemmer</code> -  stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base or root form—generally a written word form (from <a href="https://en.wikipedia.org/wiki/Stemming">Wikipedia (3)</a>).</li>
+<li><code>stopwords</code> - common words in a language that are excluded from indexing.</li>
+<li><code>term</code> - a word or phrase that is indexed from the <code>corpus</code>. The <code>term</code> may differ from the actual word used in the corpus depending on the <code>tokenizer</code> used.</li>
+<li><code>term filter</code> - filters unwanted terms from a collection of terms (e.g. stopwords), breaks compound terms into separate terms and / or manipulates terms by invoking a <code>stemmer</code> and / or <code>lemmatizer</code>.</li>
+<li><code>term frequency (Ft)</code> is the frequency of a <code>term</code> in an index or indexed object.</li>
+<li><code>term position</code> is the zero-based index of a <code>term</code> in an ordered array of <code>terms</code> tokenized from the <code>corpus</code>.</li>
+<li><code>text</code> - the indexable content of a <code>document</code>.</li>
+<li><code>token</code> - representation of a <code>term</code> in a text source returned by a <code>tokenizer</code>. The token may include information about the <code>term</code> position in the source text.</li>
+<li><code>token filter</code> - returns a subset of <code>tokens</code> from the tokenizer output.</li>
+<li><code>tokenizer</code> - a function that returns a collection of <code>token</code>s from the terms in a text source after applying a <code>character filter</code> and <code>term filter</code>.</li>
+<li><code>vocabulary</code> - the collection of <code>terms</code> indexed from the <code>corpus</code> or the words in a language.</li>
 </ul>
 <h2 id="references">References</h2>
 <ul>
-<li>TODO: add references</li>
+<li><a href="https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf">Manning, Raghavan and Schütze, "<em>Introduction to Information Retrieval</em>", Cambridge University Press, 2008</a></li>
+<li><a href="https://www.cl.cam.ac.uk/teaching/1516/InfoRtrv/">University of Cambridge, 2016 "<em>Information Retrieval</em>", course notes, Dr Ronan Cummins, 2016</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Inverted_index">Wikipedia (1), "<em>Inverted Index</em>", from Wikipedia, the free encyclopedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lemmatisation">Wikipedia (2), "<em>Lemmatisation</em>", from Wikipedia, the free encyclopedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Stemming">Wikipedia (3), "<em>Stemming</em>", from Wikipedia, the free encyclopedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Synonym">Wikipedia (4), "<em>Synonym</em>", from Wikipedia, the free encyclopedia</a></li>
 </ul>
 <h2 id="issues">Issues</h2>
 <p>If you find a bug please fill an <a href="https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues">issue</a>.</p>
