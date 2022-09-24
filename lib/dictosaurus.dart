@@ -8,3 +8,4 @@ library dictosaurus;
 /// Export of barrel file in the /src folder.
 /// src/_index.dart exports the barrel files from
 export 'src/_index.dart';
+export 'package:text_indexing/text_indexing.dart';

@@ -20,7 +20,7 @@ Skip to section:
 ## Overview
 
 The `dictosaurus` package provides language reference utilities used in information retrieval systems. It relies on three key indexes:
-* a `vocabulary` (see [definitions](#definitions)) that maps the words in a language (vocabulary) to their definitions (meanings);
+* a `definitions index` (see [definitions](#definitions)) that maps the words in a language (vocabulary) to their definitions (meanings);
 * a `synonyms index` that maps the `vocabulary` to a collection of synonyms, which may be empty; and
 * a `k-gram index` that maps k-grams to the `vocabulary`.
 
