@@ -4,12 +4,12 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
-<p align="left">
+<!-- <p align="left">
   <a href="https://github.com/GM-Consult-Pty-Ltd">
     <img src="static-assets/favicon.png?v1" height="30">
   </a>
   <span style="font-size: 36px; color:#0079cc; font-weight: bold">&nbsp;DictoSaurus</span>
-</p>
+</p> -->
 
 
 <!-- <p align="center">
@@ -40,6 +40,9 @@ All rights reserved.
 
 <!-- # dictosaurus -->
 
+[![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/assets/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
+
+# DictoSaurus
 **Extensions on String that provide dictionary and thesaurus functions.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
