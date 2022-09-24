@@ -5,13 +5,14 @@ All rights reserved.
 -->
 
 <p align="center">
-  <a href="https://isar.dev">
-    <img src="https://raw.githubusercontent.com/isar/isar/main/.github/assets/isar.svg?sanitize=true" height="128">
+  <a href="https://github.com/GM-Consult-Pty-Ltd">
+    <img src="https://avatars.githubusercontent.com/u/68113902?s=200&v=4" height="128">
   </a>
-  <h1 align="center">Isar Database</h1>
+  <span style="">DictoSaurus</span>
 </p>
 
-<p align="center">
+
+<!-- <p align="center">
   <a href="https://pub.dev/packages/isar">
     <img src="https://img.shields.io/pub/v/isar?label=pub.dev&labelColor=333940&logo=dart">
   </a>
@@ -27,19 +28,19 @@ All rights reserved.
   <a href="https://twitter.com/simonleier">
     <img src="https://img.shields.io/twitter/follow/simonleier?style=flat&label=Follow&color=1DA1F2&labelColor=333940&logo=twitter&logoColor=fff">
   </a>
-</p>
+</p> -->
 
-<p align="center">
+<!-- <p align="center">
   <a href="https://isar.dev">Quickstart</a> •
   <a href="https://isar.dev/schema">Documentation</a> •
   <a href="https://github.com/isar/samples">Sample Apps</a> •
   <a href="https://github.com/isar/isar/discussions">Support & Ideas</a> •
   <a href="https://pub.dev/packages/isar">Pub.dev</a>
-</p>
+</p> -->
 
-# dictosaurus
+<!-- # dictosaurus -->
 
-TODO: Extensions on String that provide dictionary and thesaurus functions.
+**Extensions on String that provide dictionary and thesaurus functions.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
