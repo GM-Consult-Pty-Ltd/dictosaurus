@@ -4,6 +4,39 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+<p align="center">
+  <a href="https://isar.dev">
+    <img src="https://raw.githubusercontent.com/isar/isar/main/.github/assets/isar.svg?sanitize=true" height="128">
+  </a>
+  <h1 align="center">Isar Database</h1>
+</p>
+
+<p align="center">
+  <a href="https://pub.dev/packages/isar">
+    <img src="https://img.shields.io/pub/v/isar?label=pub.dev&labelColor=333940&logo=dart">
+  </a>
+  <a href="https://github.com/isar/isar/actions/workflows/test.yml">
+    <img src="https://img.shields.io/github/workflow/status/isar/isar/Dart%20CI/main?label=tests&labelColor=333940&logo=github">
+  </a>
+  <a href="https://app.codecov.io/gh/isar/isar">
+    <img src="https://img.shields.io/codecov/c/github/isar/isar?logo=codecov&logoColor=fff&labelColor=333940">
+  </a>
+  <a href="https://t.me/isardb">
+    <img src="https://img.shields.io/static/v1?label=join&message=isardb&labelColor=333940&logo=telegram&logoColor=white&color=229ED9">
+  </a>
+  <a href="https://twitter.com/simonleier">
+    <img src="https://img.shields.io/twitter/follow/simonleier?style=flat&label=Follow&color=1DA1F2&labelColor=333940&logo=twitter&logoColor=fff">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://isar.dev">Quickstart</a> •
+  <a href="https://isar.dev/schema">Documentation</a> •
+  <a href="https://github.com/isar/samples">Sample Apps</a> •
+  <a href="https://github.com/isar/isar/discussions">Support & Ideas</a> •
+  <a href="https://pub.dev/packages/isar">Pub.dev</a>
+</p>
+
 # dictosaurus
 
 TODO: Extensions on String that provide dictionary and thesaurus functions.
