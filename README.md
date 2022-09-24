@@ -20,7 +20,7 @@ Skip to section:
 ## Overview
 
 The `dictosaurus` package provides language reference utilities used in information retrieval systems. It relies on three key indexes:
-* a `vocabulary` that maps the words in a language (vocabulary) to their definitions (meanings);
+* a `vocabulary` (see [definitions](#definitions)) that maps the words in a language (vocabulary) to their definitions (meanings);
 * a `synonyms index` that maps the `vocabulary` to a collection of synonyms, which may be empty; and
 * a `k-gram index` that maps k-grams to the `vocabulary`.
 
@@ -31,15 +31,15 @@ Three utility classes provide dictionary and thesaurus functions:
 * the [Thesaurus]() class exposes the [Future<Set<String>> synonymsOf(String term)]() function, looking up the synonyms of the `term` in a `synonyms index`; and
 * the [AutoCorrect]() class exposes the [Future<List<String>> suggestionsFor(String term)]() function that returns a set of unique alternative spellings for `term` by converting the `term` to `k-grams` and then finding the best matches for the (misspelt) `term` from the `k-gram index`, ordered in descending order of relevance (i.e. best match first).
 
-The [DictoSaurus] composition class leverages a [Vocabulary](), [Thesaurus]() and [AutoCorrect]() which it uses to expose the [Future<String> definitionOf(String term)](),  [Future<Set<String>> synonymsOf(String term)]() and [Future<List<String>> suggestionsFor(String term)]() functions. 
+The [DictoSaurus]() composition class leverages a [Vocabulary](), [Thesaurus]() and [AutoCorrect]() which it uses to expose the [Future<String> definitionOf(String term)](),  [Future<Set<String>> synonymsOf(String term)]() and [Future<List<String>> suggestionsFor(String term)]() functions. 
 
-The [DictoSaurus]() also exposes the [Future<List<String>> expandTerm(String term)]() function that looks up the `term` in the [Vocabulary](), [Thesaurus]() and [AutoCorrect]() classes to return a term-expansion in descending order of relevance (best match first). If the `term` is found in the [Vocabulary] it will appear as the first element of the returned list. If it is not found in the [Vocabulary] it will not be in the returned list as it is likely to be misspelt.
+The [DictoSaurus]() also exposes the [Future<List<String>> expandTerm(String term)]() function that looks up the `term` in the [Vocabulary](), [Thesaurus]() and [AutoCorrect]() classes to return a term-expansion in descending order of relevance (best match first). If the `term` is found in the [Vocabulary]() it will appear as the first element of the returned list. If it is not found in the [Vocabulary]() it will not be in the returned list as it is likely to be misspelt.
 
-The [DictoSaurus.english]() static const instance uses the included `vocabulary`, `synonymsIndex` and `kGramIndex` hashmaps. For other languages or a custom implementation, initialize the [DictoSaurus] using the [DictoSaurus.async] factory constructor whichuses asynchronous callbacks to `vocabulary`, `synonymsIndex` and `kGramIndex` APIs. The [DictoSaurus.async] factory constructor has a named, required parameter [TextAnalyzerConfiguration configuration](). The optional named parametr `k-gram` length `k` defaults to 3.
+The [DictoSaurus.english]() static const instance uses the included `vocabulary`, `synonymsIndex` and `kGramIndex` hashmaps. For other languages or a custom implementation, initialize the [DictoSaurus]() using the [DictoSaurus.async]() factory constructor whichuses asynchronous callbacks to `vocabulary`, `synonymsIndex` and `kGramIndex` APIs. The [DictoSaurus.async]() factory constructor has a named, required parameter [TextAnalyzerConfiguration configuration](). The optional named parameter ` int k` (the k-gram length) defaults to 3 (tri-gram).
 
-If the [DictoSaurus] is used as a `term expander` in an information retrieval system, the [DictoSaurus.configuration] must use the same tokenizing algorithm as the index.
+If the [DictoSaurus]() is used as a `term expander` in an information retrieval system, the [DictoSaurus.configuration]() must use the same tokenizing algorithm as the index.
 
-Refer to the [references](#references) to learn more about the theory behind this library.
+Refer to the [references](#references) to learn more about information retrieval systems.
 
 ## Usage
 
@@ -73,7 +73,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `dictionary` - is a hash of `terms` (`vocabulary`) to the frequency of occurence in the `corpus` documents.
 * `document` - a record in the `corpus`, that has a unique identifier (`docId`) in the `corpus`'s primary key and that contains one or more text zones/fields  that are indexed.
 * `index` - an [inverted index](https://en.wikipedia.org/wiki/Inverted_index) used to look up `document` references from the `corpus` against a `vocabulary` of `terms`. 
-`k-gram` - a sequence of (any) k consecutive characters from a `term`. A k-gram can start with "$", dentoting the start of the [Term], and end with "$", denoting the end of the [Term]. The 3-grams for "castle" are { $ca, cas, ast, stl, tle, le$ }.
+`k-gram` - a sequence of (any) k consecutive characters from a `term`. A k-gram can start with "$", dentoting the start of the `term`, and end with "$", denoting the end of the `term`. The 3-grams for "castle" are { $ca, cas, ast, stl, tle, le$ }.
 * `lemmatizer` - lemmatisation (or lemmatization) in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form (from [Wikipedia (2)](https://en.wikipedia.org/wiki/Lemmatisation)).
 * `postings` - a separate index that records which `documents` the `vocabulary` occurs in. In this implementation we also record the positions of each `term` in the `text` to create a positional inverted `index`.
 * `postings list` - a record of the positions of a `term` in a `document`. A position of a `term` refers to the index of the `term` in an array that contains all the `terms` in the `text`.
