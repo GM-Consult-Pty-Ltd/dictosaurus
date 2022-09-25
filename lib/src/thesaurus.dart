@@ -18,27 +18,28 @@ abstract class Thesaurus {
   /// The [Thesaurus.inMemory] factory constructor initializes a [Thesaurus]
   /// with in-memory [SynonymsIndex] instance [synonymsIndex].
   factory Thesaurus.inMemory(SynonymsIndex synonymsIndex) =>
-      InMemoryThesaurus(synonymsIndex);
+      _InMemoryThesaurus(synonymsIndex);
 
-  /// The [Thesaurus.inMemory] factory constructor initializes a [Thesaurus]
-  /// with in-memory [SynonymsIndex] instance [synonymsIndex].
+  /// The [Thesaurus.async] factory constructor initializes a [Thesaurus]
+  /// with an asynchronous callback [synonymsCallback] to return the synonyms
+  /// for a term.
   factory Thesaurus.async(
           Future<Set<String>> Function(String term) synonymsCallback) =>
-      AsyncCallbackThesaurus(synonymsCallback);
+      _AsyncCallbackThesaurus(synonymsCallback);
 
   /// Asynchronously returns the synonyms of [term] from a [SynonymsIndex].
   Future<Set<String>> synonymsOf(String term);
 }
 
 /// Implementation of [Thesaurus] that uses a in-memory [SynonymsIndex].
-class InMemoryThesaurus implements Thesaurus {
+class _InMemoryThesaurus implements Thesaurus {
 //
 
   /// An in-memory [SynonymsIndex].
   final SynonymsIndex synonymsIndex;
 
-  /// Initializes a const [InMemoryThesaurus] with a in-memory [synonymsIndex].
-  const InMemoryThesaurus(this.synonymsIndex);
+  /// Initializes a const [_InMemoryThesaurus] with a in-memory [synonymsIndex].
+  const _InMemoryThesaurus(this.synonymsIndex);
 
   @override
   Future<Set<String>> synonymsOf(String term) async =>
@@ -47,15 +48,15 @@ class InMemoryThesaurus implements Thesaurus {
 
 /// Implementation of [Thesaurus] that uses an asynchronous callback
 /// [synonymsCallback] to  return a set of synonyms for a term.
-class AsyncCallbackThesaurus implements Thesaurus {
+class _AsyncCallbackThesaurus implements Thesaurus {
 //
 
   /// A asynchronous callback that returns a set of synonyms for a term.
   final Future<Set<String>> Function(String term) synonymsCallback;
 
-  /// Initializes a const [AsyncCallbackThesaurus] with an asynchronous callback
+  /// Initializes a const [_AsyncCallbackThesaurus] with an asynchronous callback
   /// [synonymsCallback] that  returns a set of synonyms for a term..\
-  const AsyncCallbackThesaurus(this.synonymsCallback);
+  const _AsyncCallbackThesaurus(this.synonymsCallback);
 
   @override
   Future<Set<String>> synonymsOf(String term) async => synonymsCallback(term);
