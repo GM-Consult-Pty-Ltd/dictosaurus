@@ -23,7 +23,9 @@ abstract class AutoCorrect {
   /// The [AutoCorrect.async] factory constructor initializes a [AutoCorrect]
   /// that uses an asynchronous callback [kGramIndexLoader] to return the
   /// k-grams for a term.
-  factory AutoCorrect.async(KGramIndexLoader kGramIndexLoader, [int k = 3]) =>
+  factory AutoCorrect.async(
+          Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader,
+          [int k = 3]) =>
       _AsyncCallbackAutoCorrect(kGramIndexLoader, k);
 
   /// Returns a set of unique alternative spellings for a [term] by converting
@@ -35,9 +37,7 @@ abstract class AutoCorrect {
   Future<List<String>> suggestionsFor(String term, [int limit]);
 
   /// Returns a set of unique terms from a KGramIndex that start with [chars].
-  ///
-  /// If [limit] is not null, only the best [limit] matches will be returned.
-  Future<List<String>> startsWith(String chars, [int limit]);
+  Future<List<String>> startsWith(String chars);
 }
 
 /// A mixin class that implements [AutoCorrect.suggestionsFor]. Classes that
@@ -53,24 +53,31 @@ abstract class AutoCorrectMixin implements AutoCorrect {
 
   /// A function or callback that asynchronously returns a subset of a
   /// [KGramIndex] for a collection of [KGram] strings.
-  KGramIndexLoader get kGramIndexLoader;
+  Future<KGramIndex> Function(Iterable<Term> terms) get kGramIndexLoader;
 
+//Future<Map<String, Set<String>>> Function(Iterable<String> kGrams)
   @override
   Future<List<String>> suggestionsFor(String term, [int limit = 10]) async {
+    if (term.isEmpty) {
+      return [];
+    }
     final termGrams = term.kGrams(k);
     final kGramTerms = (await kGramIndexLoader(termGrams)).terms;
     return term.matches(kGramTerms, k: 2, limit: limit);
   }
-  //   final entries = similarities.entries.toList();
-  //   entries.sort(((a, b) => b.value.compareTo(a.value)));
-  //   final retVal = entries.map((e) => e.key).toList();
-  //   return retVal.length > limit ? retVal.sublist(0, limit) : retVal;
-  // }
 
   @override
-  Future<List<String>> startsWith(String chars, [int limit = 10]) {
-    // TODO: implement startsWith
-    throw UnimplementedError();
+  Future<List<String>> startsWith(String chars) async {
+    if (chars.isEmpty) {
+      return [];
+    }
+    final termGrams = chars.kGrams(k);
+    final kGramIndex = (await kGramIndexLoader(termGrams));
+    final startsWithTerms = (kGramIndex[termGrams.first] ?? {})
+        .where((element) => element.startsWith(chars))
+        .toList();
+    startsWithTerms.sort(((a, b) => a.compareTo(b)));
+    return startsWithTerms;
   }
 }
 
@@ -107,7 +114,7 @@ class _AsyncCallbackAutoCorrect with AutoCorrectMixin {
 //
 
   @override
-  final KGramIndexLoader kGramIndexLoader;
+  final Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader;
 
   @override
   final int k;
