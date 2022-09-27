@@ -15,10 +15,10 @@ void main() {
 
     test('autocorrect', () async {
       final autoCorrect = AutoCorrect.inMemory(vocabularykGrams);
-      final term = 'apple';
+      final term = 'taiwansemicondutcor'.stemPorter2();
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
-      final suggestions = await autoCorrect.suggestionsFor(term, 50);
+      final suggestions = await autoCorrect.suggestionsFor(term, 10);
 
       // get the end time in milliseconds
       final end = DateTime.now().millisecondsSinceEpoch;

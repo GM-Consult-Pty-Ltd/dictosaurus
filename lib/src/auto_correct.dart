@@ -58,13 +58,19 @@ abstract class AutoCorrectMixin implements AutoCorrect {
   @override
   Future<List<String>> suggestionsFor(String term, [int limit = 10]) async {
     final termGrams = term.kGrams(k);
-    // TODO: also compare length of terms to get better results
     final kGramTerms = (await kGramIndexLoader(termGrams)).terms;
-    final suggestionsMap = term.jaccardSimilarityMap(kGramTerms, k);
-    final entries = suggestionsMap.entries.toList();
-    entries.sort(((a, b) => b.value.compareTo(a.value)));
-    final retVal = entries.map((e) => e.key).toList();
-    return retVal.length > limit ? retVal.sublist(0, limit) : retVal;
+    return term.matches(kGramTerms, k: 2, limit: limit);
+  }
+  //   final entries = similarities.entries.toList();
+  //   entries.sort(((a, b) => b.value.compareTo(a.value)));
+  //   final retVal = entries.map((e) => e.key).toList();
+  //   return retVal.length > limit ? retVal.sublist(0, limit) : retVal;
+  // }
+
+  @override
+  Future<List<String>> startsWith(String chars, [int limit = 10]) {
+    // TODO: implement startsWith
+    throw UnimplementedError();
   }
 }
 
