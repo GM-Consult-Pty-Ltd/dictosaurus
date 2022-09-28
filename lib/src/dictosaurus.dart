@@ -4,13 +4,15 @@
 
 import 'package:dictosaurus/dictosaurus.dart';
 
-/// The [DictoSaurus] composition class leverages a [Vocabulary],
+/// The [DictoSaurus] composition class combines a [Vocabulary],
 /// [Thesaurus] and [AutoCorrect] which it uses to expose the following
 /// methods:
-/// - [definitionOf];,
-/// - [synonymsOf];
-/// - [suggestionsFor] ; and
-/// - [expandTerm] .
+/// - [definitionOf] the meaning of a term from a [VocabularyIndex];
+/// - [synonymsOf] returns the synonyms of a term from a [SynonymsIndex];
+/// - [suggestionsFor] returns alternative spellings for a term;
+/// - [startsWith] returns terms from a [KGramIndex] that start with a sequence
+///   of characters; and
+/// - [expandTerm] expands a term using [synonymsOf] and [suggestionsFor].
 abstract class DictoSaurus {
   //
 
@@ -34,16 +36,16 @@ abstract class DictoSaurus {
   /// if the [VocabularyIndex] does not contain the key [term].
   Future<String?> definitionOf(String term);
 
-  /// Asynchronously returns the synonyms of [term] from a [SynonymsIndex].
+  /// Returns the synonyms of [term] from a [SynonymsIndex].
   Future<Set<String>> synonymsOf(String term);
 
-  /// Returns a set of unique alternative spellings for a [term] by converting
-  /// the [term] to k-grams and then finding the best matches for the [term]
-  /// from a k-gram index, ordered in descending order of relevance (i.e. best
-  /// match first).
+  /// Returns a set of unique alternative spellings for a [term].
   ///
   /// If [limit] is not null, only the best [limit] matches will be returned.
   Future<List<String>> suggestionsFor(String term, [int limit]);
+
+  /// Returns a set of unique terms from a KGramIndex that start with [chars].
+  Future<List<String>> startsWith(String chars);
 
   /// Expands [term] to an ordered list of terms.
   ///
@@ -94,6 +96,10 @@ abstract class DictoSaurusMixin implements DictoSaurus {
 
   @override
   Future<Set<String>> synonymsOf(String term) => thesaurus.synonymsOf(term);
+
+  @override
+  Future<List<String>> startsWith(String chars) =>
+      autoCorrect.startsWith(chars);
 
   @override
   Future<List<String>> suggestionsFor(String term, [int limit = 10]) =>

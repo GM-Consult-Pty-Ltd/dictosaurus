@@ -4,11 +4,8 @@
 
 import 'package:dictosaurus/dictosaurus.dart';
 
-/// The [AutoCorrect] class exposes [suggestionsFor] function that returns a
-/// set of unique alternative spellings for a term by converting the
-/// term to k-grams and then finding the best matches for the (misspelt)
-/// term from the k-gram index, ordered in descending order of relevance
-/// (i.e. best match first).
+/// The [AutoCorrect] class exposes the [suggestionsFor] function that returns
+/// a set of unique alternative spellings for a term.
 abstract class AutoCorrect {
   //
 
@@ -28,8 +25,9 @@ abstract class AutoCorrect {
           [int k = 3]) =>
       _AsyncCallbackAutoCorrect(kGramIndexLoader, k);
 
-  /// Returns a set of unique alternative spellings for a [term] by converting
-  /// the [term] to k-grams and then finding the best matches for the [term]
+  /// Returns a set of unique alternative spellings for a [term].
+  ///
+  /// Converts [term] to k-grams and then finding the best matches for [term]
   /// from a k-gram index, ordered in descending order of relevance (i.e. best
   /// match first).
   ///
@@ -40,8 +38,9 @@ abstract class AutoCorrect {
   Future<List<String>> startsWith(String chars);
 }
 
-/// A mixin class that implements [AutoCorrect.suggestionsFor]. Classes that
-/// mix in [AutoCorrectMixin] must override:
+/// A mixin class that implements [AutoCorrect.suggestionsFor].
+///
+/// Classes that mix in [AutoCorrectMixin] must override:
 /// - [k], the length of the k-grams in the [KGramIndex];
 /// - [kGramIndexLoader], a ansynchronous callback function that returns a [KGramIndex]
 ///   for a collection of k-grams.
@@ -108,8 +107,10 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
   final int k;
 }
 
-/// Implementation of [AutoCorrect] that uses an asynchronous callback
-/// [kGramIndexLoader] to  return a set of synonyms for a term.
+/// Implementation class for factory constructor [AutoCorrect.async].
+///
+/// Uses an asynchronous callback [kGramIndexLoader] to return alternative
+/// spellings for a term.
 class _AsyncCallbackAutoCorrect with AutoCorrectMixin {
 //
 
