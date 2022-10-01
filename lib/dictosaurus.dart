@@ -5,7 +5,7 @@
 /// Extensions on String that provide dictionary and thesaurus functions.
 library dictosaurus;
 
-/// Export of barrel file in the /src folder.
-/// src/_index.dart exports the barrel files from
-export 'src/_index.dart';
-export 'package:text_indexing/text_indexing.dart';
+export 'src/auto_correct.dart';
+export 'src/thesaurus.dart';
+export 'src/vocabulary.dart';
+export 'dictosaurus.dart';

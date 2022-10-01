@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/src/_index.dart';
 
 /// The [DictoSaurus] composition class combines a [Vocabulary],
 /// [Thesaurus] and [AutoCorrect] which it uses to expose the following

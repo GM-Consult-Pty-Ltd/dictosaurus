@@ -32,7 +32,7 @@
     <li><a href="../../index.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
-    <li class="self-crumb">DictoSaurus constructor</li>
+    <li class="self-crumb">DictoSaurus factory constructor</li>
   </ol>
   <div class="self-name">DictoSaurus</div>
   <form class="search navbar-right" role="search">
@@ -50,13 +50,28 @@
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">DictoSaurus</span>(<wbr>)
+      <span class="name ">DictoSaurus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-vocabulary">{<span>required</span> <span class="type-annotation"><a href="../../dictosaurus/Vocabulary-class.html">Vocabulary</a></span> <span class="parameter-name">vocabulary</span>, </span></li>
+<li><span class="parameter" id="-param-thesaurus"><span>required</span> <span class="type-annotation"><a href="../../dictosaurus/Thesaurus-class.html">Thesaurus</a></span> <span class="parameter-name">thesaurus</span>, </span></li>
+<li><span class="parameter" id="-param-autoCorrect"><span>required</span> <span class="type-annotation"><a href="../../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></span> <span class="parameter-name">autoCorrect</span>}</span></li>
+</ol>)
     </section>
 
     
+<section class="desc markdown">
+  <p>Initializes a <a href="../../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> with <code>autoCorrect</code>, <code>thesaurus</code> and
+<code>vocabulary</code> instances.</p>
+</section>
 
 
     
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">factory DictoSaurus(
+        {required Vocabulary vocabulary,
+        required Thesaurus thesaurus,
+        required AutoCorrect autoCorrect}) =&gt;
+    _DictoSaurusImpl(autoCorrect, thesaurus, vocabulary);</code></pre>
+</section>
 
 
   </div> <!-- /.main-content -->
@@ -72,7 +87,7 @@
   <li><a href="../../index.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
-  <li class="self-crumb">DictoSaurus constructor</li>
+  <li class="self-crumb">DictoSaurus factory constructor</li>
 </ol>
 
 
@@ -81,6 +96,7 @@
 
         <li class="section-title"><a href="../../dictosaurus/DictoSaurus-class.html#constructors">Constructors</a></li>
           <li><a href="../../dictosaurus/DictoSaurus/DictoSaurus.html">DictoSaurus</a></li>
+          <li><a href="../../dictosaurus/DictoSaurus/DictoSaurus.inMemory.html">inMemory</a></li>
 
 
     <li class="section-title inherited">
@@ -91,7 +107,9 @@
 
     <li class="section-title"><a href="../../dictosaurus/DictoSaurus-class.html#instance-methods">Methods</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/definitionOf.html">definitionOf</a></li>
+    <li><a href="../../dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../../dictosaurus/DictoSaurus/startsWith.html">startsWith</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/suggestionsFor.html">suggestionsFor</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>

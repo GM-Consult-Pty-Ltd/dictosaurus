@@ -2,28 +2,37 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/src/_index.dart';
 
 /// The [AutoCorrect] class exposes the [suggestionsFor] function that returns
 /// a set of unique alternative spellings for a term.
 abstract class AutoCorrect {
   //
 
+  /// The [TextAnalyzer] used by the [AutoCorrect] to filter terms.
+  TextAnalyzer get analyzer;
+
   /// The [AutoCorrect.inMemory] factory constructor initializes a [AutoCorrect]
-  /// with the in-memory [KGramIndex] instance [kGramIndex].
-  factory AutoCorrect.inMemory(KGramIndex kGramIndex) {
+  /// with the in-memory [KGramIndex] instance [kGramIndex] and [analyzer].
+  ///
+  /// Defaults to [English] if [analyzer] is not provided.
+  factory AutoCorrect.inMemory(KGramIndex kGramIndex,
+      {TextAnalyzer? analyzer}) {
     assert(kGramIndex.isNotEmpty);
     final k = kGramIndex.keys.first.length;
-    return _InMemoryAutoCorrect(kGramIndex, k);
+    return _InMemoryAutoCorrect(kGramIndex, k, analyzer ?? English());
   }
 
   /// The [AutoCorrect.async] factory constructor initializes a [AutoCorrect]
   /// that uses an asynchronous callback [kGramIndexLoader] to return the
   /// k-grams for a term.
+  ///
+  /// Defaults to [English] if [analyzer] is not provided.
   factory AutoCorrect.async(
           Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader,
-          [int k = 3]) =>
-      _AsyncCallbackAutoCorrect(kGramIndexLoader, k);
+          {int k = 3,
+          TextAnalyzer? analyzer}) =>
+      _AsyncCallbackAutoCorrect(kGramIndexLoader, k, analyzer ?? English());
 
   /// Returns a set of unique alternative spellings for a [term].
   ///
@@ -35,7 +44,9 @@ abstract class AutoCorrect {
   Future<List<String>> suggestionsFor(String term, [int limit]);
 
   /// Returns a set of unique terms from a KGramIndex that start with [chars].
-  Future<List<String>> startsWith(String chars);
+  ///
+  /// If [limit] is not null, only the best [limit] matches will be returned.
+  Future<List<String>> startsWith(String chars, [int limit = 10]);
 }
 
 /// A mixin class that implements [AutoCorrect.suggestionsFor].
@@ -46,6 +57,8 @@ abstract class AutoCorrect {
 ///   for a collection of k-grams.
 abstract class AutoCorrectMixin implements AutoCorrect {
   //
+
+// TODO: use analyzer
 
   /// The length of the k-grams in the [KGramIndex].
   int get k;
@@ -66,17 +79,23 @@ abstract class AutoCorrectMixin implements AutoCorrect {
   }
 
   @override
-  Future<List<String>> startsWith(String chars) async {
+  Future<List<String>> startsWith(String chars, [int limit = 10]) async {
     if (chars.isEmpty) {
       return [];
     }
     final termGrams = chars.kGrams(k);
-    final kGramIndex = (await kGramIndexLoader(termGrams));
-    final startsWithTerms = (kGramIndex[termGrams.first] ?? {})
-        .where((element) => element.startsWith(chars))
-        .toList();
-    startsWithTerms.sort(((a, b) => a.compareTo(b)));
-    return startsWithTerms;
+    final kGramIndex = (await kGramIndexLoader([termGrams.first]));
+    if (kGramIndex.isNotEmpty) {
+      final startsWithTerms = (kGramIndex[termGrams.first] ?? {})
+          .where((element) => element.startsWith(chars))
+          .toList();
+      startsWithTerms.sort(((a, b) => a.compareTo(b)));
+      startsWithTerms.sort(((a, b) => a.length.compareTo(b.length)));
+      return startsWithTerms.length > limit
+          ? startsWithTerms.sublist(0, limit)
+          : startsWithTerms;
+    }
+    return [];
   }
 }
 
@@ -84,11 +103,17 @@ abstract class AutoCorrectMixin implements AutoCorrect {
 class _InMemoryAutoCorrect with AutoCorrectMixin {
   //
 
+  /// Instantiate a const [_InMemoryAutoCorrect]
+  const _InMemoryAutoCorrect(this.kGramIndex, this.k, this.analyzer);
+
   /// A in-memory [KGramIndex] instance.
   final KGramIndex kGramIndex;
 
-  /// Instantiate a const [_InMemoryAutoCorrect]
-  const _InMemoryAutoCorrect(this.kGramIndex, this.k);
+  @override
+  final int k;
+
+  @override
+  final TextAnalyzer analyzer;
 
   @override
   KGramIndexLoader get kGramIndexLoader => ([terms]) async {
@@ -102,9 +127,6 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
         }
         return retVal;
       };
-
-  @override
-  final int k;
 }
 
 /// Implementation class for factory constructor [AutoCorrect.async].
@@ -120,7 +142,10 @@ class _AsyncCallbackAutoCorrect with AutoCorrectMixin {
   @override
   final int k;
 
+  @override
+  final TextAnalyzer analyzer;
+
   /// Initializes a const [_AsyncCallbackAutoCorrect] with an asynchronous callback
   /// [kGramIndexLoader] that  returns a set of synonyms for a term..\
-  const _AsyncCallbackAutoCorrect(this.kGramIndexLoader, this.k);
+  const _AsyncCallbackAutoCorrect(this.kGramIndexLoader, this.k, this.analyzer);
 }

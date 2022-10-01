@@ -52,7 +52,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
 <span class="name ">definitionOf</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="definitionOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span></li>
 </ol>)
 
@@ -60,12 +60,16 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Returns the meaning of <code>term</code> from a <a href="../../dictosaurus/VocabularyIndex.html">VocabularyIndex</a>. Returns null
+if the <a href="../../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does not contain the key <code>term</code>.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; definitionOf(String term);</code></pre>
+  <pre class="language-dart"><code class="language-dart">Future&lt;String?&gt; definitionOf(String term);</code></pre>
 </section>
 
 
@@ -91,6 +95,7 @@
 
         <li class="section-title"><a href="../../dictosaurus/DictoSaurus-class.html#constructors">Constructors</a></li>
           <li><a href="../../dictosaurus/DictoSaurus/DictoSaurus.html">DictoSaurus</a></li>
+          <li><a href="../../dictosaurus/DictoSaurus/DictoSaurus.inMemory.html">inMemory</a></li>
 
 
     <li class="section-title inherited">
@@ -101,7 +106,9 @@
 
     <li class="section-title"><a href="../../dictosaurus/DictoSaurus-class.html#instance-methods">Methods</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/definitionOf.html">definitionOf</a></li>
+    <li><a href="../../dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../../dictosaurus/DictoSaurus/startsWith.html">startsWith</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/suggestionsFor.html">suggestionsFor</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>

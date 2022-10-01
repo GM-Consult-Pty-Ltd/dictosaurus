@@ -3,7 +3,7 @@
 // All rights reserved
 
 // ignore: unused_import
-import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/src/_index.dart';
 import 'package:test/test.dart';
 import 'data/sample_news.dart';
 
@@ -36,7 +36,7 @@ void main() {
       final chars = 'app';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
-      final suggestions = await autoCorrect.startsWith(chars);
+      final suggestions = await autoCorrect.startsWith(chars, 5);
 
       // get the end time in milliseconds
       final end = DateTime.now().millisecondsSinceEpoch;

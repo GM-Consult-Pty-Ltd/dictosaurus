@@ -16,9 +16,11 @@ environment:
 
 dependencies:
   # -----PubDev Packages (in alphabetic order) -----
-  text_indexing: ^0.14.5
+  text_analysis: ^0.13.0
+  text_indexing: ^0.14.6
 
 
 dev_dependencies:
+  gmconsult_dev: ^0.0.3
   lints: ^2.0.0
   test: ^1.21.1

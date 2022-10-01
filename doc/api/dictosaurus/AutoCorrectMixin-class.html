@@ -51,11 +51,11 @@
 
     
 <section class="desc markdown">
-  <p>A mixin class that implements <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a>. Classes that
-mix in <a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a> must override:</p>
+  <p>A mixin class that implements <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a>.</p>
+<p>Classes that mix in <a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a> must override:</p>
 <ul>
-<li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a>, the length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndex.html">KGramIndex</a>;</li>
-<li><a href="../dictosaurus/AutoCorrectMixin/getKGrams.html">getKGrams</a>, a ansynchronous callback function that returns a <a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndex.html">KGramIndex</a>
+<li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a>, the length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.14.6/text_indexing_type_definitions/KGramIndex.html">KGramIndex</a>;</li>
+<li><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a>, a ansynchronous callback function that returns a <a href="https://pub.dev/documentation/text_indexing/0.14.6/text_indexing_type_definitions/KGramIndex.html">KGramIndex</a>
 for a collection of k-grams.</li>
 </ul>
 </section>
@@ -74,10 +74,6 @@ for a collection of k-grams.</li>
   </dd>
         
 
-        <dt>Implementers</dt>
-        <dd><ul class="comma-separated clazz-relationships">
-          <li><a href="../dictosaurus/InMemoryAutoCorrect-class.html">InMemoryAutoCorrect</a></li>
-        </ul></dd>
 
 
         
@@ -102,15 +98,14 @@ for a collection of k-grams.</li>
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="getKGrams" class="property">
-  <span class="name"><a href="../dictosaurus/AutoCorrectMixin/getKGrams.html">getKGrams</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndexLoader.html">KGramIndexLoader</a></span> 
+        <dt id="analyzer" class="property inherited">
+  <span class="name"><a href="../dictosaurus/AutoCorrect/analyzer.html">analyzer</a></span>
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_analysis/0.13.0/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></span> 
 
 </dt>
-<dd>
-  A function or callback that asynchronously returns a subset of a
-<a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndex.html">KGramIndex</a> for a collection of <a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/KGram.html">KGram</a> strings.
-  <div class="features">read-only</div>
+<dd class="inherited">
+  The <a href="https://pub.dev/documentation/text_analysis/0.13.0/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a> used by the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> to filter terms.
+  <div class="features">read-only, inherited</div>
 
 </dd>
 
@@ -131,7 +126,19 @@ for a collection of k-grams.</li>
 
 </dt>
 <dd>
-  The length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndex.html">KGramIndex</a>.
+  The length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.14.6/text_indexing_type_definitions/KGramIndex.html">KGramIndex</a>.
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="kGramIndexLoader" class="property">
+  <span class="name"><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_indexing/0.14.6/text_indexing_type_definitions/KGramIndex.html">KGramIndex</a></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_analysis/0.13.0/type_definitions/Term.html">Term</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>)</span></span> 
+
+</dt>
+<dd>
+  A function or callback that asynchronously returns a subset of a
+<a href="https://pub.dev/documentation/text_indexing/0.14.6/text_indexing_type_definitions/KGramIndex.html">KGramIndex</a> for a collection of <a href="https://pub.dev/documentation/text_analysis/0.13.0/type_definitions/KGram.html">KGram</a> strings.
   <div class="features">read-only</div>
 
 </dd>
@@ -169,6 +176,19 @@ for a collection of k-grams.</li>
 
 </dd>
 
+        <dt id="startsWith" class="callable">
+  <span class="name"><a href="../dictosaurus/AutoCorrectMixin/startsWith.html">startsWith</a></span><span class="signature">(<wbr><span class="parameter" id="startsWith-param-chars"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chars</span>, </span><span class="parameter" id="startsWith-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of unique terms from a KGramIndex that start with <code>chars</code>.
+  <div class="features">override</div>
+
+</dd>
+
         <dt id="suggestionsFor" class="callable">
   <span class="name"><a href="../dictosaurus/AutoCorrectMixin/suggestionsFor.html">suggestionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="suggestionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="suggestionsFor-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
@@ -177,10 +197,7 @@ for a collection of k-grams.</li>
 
 </dt>
 <dd>
-  Returns a set of unique alternative spellings for a <code>term</code> by converting
-the <code>term</code> to k-grams and then finding the best matches for the <code>term</code>
-from a k-gram index, ordered in descending order of relevance (i.e. best
-match first).
+  Returns a set of unique alternative spellings for a <code>term</code>.
   <div class="features">override</div>
 
 </dd>
@@ -245,93 +262,19 @@ match first).
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
-  <li><a href="../dictosaurus/AsyncCallbackThesaurus-class.html">AsyncCallbackThesaurus</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
-  <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="../dictosaurus/InMemoryAutoCorrect-class.html">InMemoryAutoCorrect</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="../dictosaurus/InMemoryThesaurus-class.html">InMemoryThesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/ITextAnalyzer-class.html">ITextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.0.0+5/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TextAnalyzerBase-class.html">TextAnalyzerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TextAnalyzerConfiguration-class.html">TextAnalyzerConfiguration</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/Token-class.html">Token</a></li>
   <li><a href="../dictosaurus/Vocabulary-class.html">Vocabulary</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#extensions">Extensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryEntryCollectionExtension.html">DictionaryEntryCollectionExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryEntryExtension.html">DictionaryEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryExtensions.html">DictionaryExtensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DocumentPostingsEntryExtension.html">DocumentPostingsEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/IDftDictionaryEntryExtension.html">IDftDictionaryEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/IdFtIndexExtensions.html">IdFtIndexExtensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndexExtension.html">KGramIndexExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/KGramParserExtension.html">KGramParserExtension</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.0.0+5/porter_2_stemmer/Porter2StemmerExtension.html">Porter2StemmerExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/PostingsEntryExtension.html">PostingsEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/PostingsExtension.html">PostingsExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TokenCollectionExtension.html">TokenCollectionExtension</a></li>
 
 
 
 
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#typedefs">Typedefs</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/CharacterFilter.html">CharacterFilter</a></li>
   <li><a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/Dictionary.html">Dictionary</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryEntry.html">DictionaryEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryLengthLoader.html">DictionaryLengthLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryLoader.html">DictionaryLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DictionaryUpdater.html">DictionaryUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DocId.html">DocId</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DocumentPostings.html">DocumentPostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/DocumentPostingsEntry.html">DocumentPostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/FieldPostingsEntry.html">FieldPostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/Ft.html">Ft</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/FtdPostings.html">FtdPostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/IdFt.html">IdFt</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/IdFtIndex.html">IdFtIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/JSON.html">JSON</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/JsonCollection.html">JsonCollection</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/JsonTokenizer.html">JsonTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/KGram.html">KGram</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndex.html">KGramIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndexLoader.html">KGramIndexLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/KGramIndexUpdater.html">KGramIndexUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/Postings.html">Postings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/PostingsEntry.html">PostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/PostingsLoader.html">PostingsLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/PostingsUpdater.html">PostingsUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/Pt.html">Pt</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/SentenceSplitter.html">SentenceSplitter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/SourceText.html">SourceText</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/Stemmer.html">Stemmer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/StopWords.html">StopWords</a></li>
-  <li><a href="../dictosaurus/SynonymsIndex.html">SynonymsIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/Term.html">Term</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TermFilter.html">TermFilter</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/TermPositions.html">TermPositions</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TermSplitter.html">TermSplitter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/TokenFilter.html">TokenFilter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/Tokenizer.html">Tokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.9.1/text_analysis/Zone.html">Zone</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/ZonePostings.html">ZonePostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.2/text_indexing/ZoneWeightMap.html">ZoneWeightMap</a></li>
 
 </ol>
 
@@ -347,13 +290,15 @@ match first).
     <li class="section-title">
       <a href="../dictosaurus/AutoCorrectMixin-class.html#instance-properties">Properties</a>
     </li>
-    <li><a href="../dictosaurus/AutoCorrectMixin/getKGrams.html">getKGrams</a></li>
+    <li class="inherited"><a href="../dictosaurus/AutoCorrect/analyzer.html">analyzer</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a></li>
+    <li><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
     <li class="section-title"><a href="../dictosaurus/AutoCorrectMixin-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../dictosaurus/AutoCorrectMixin/startsWith.html">startsWith</a></li>
     <li><a href="../dictosaurus/AutoCorrectMixin/suggestionsFor.html">suggestionsFor</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
