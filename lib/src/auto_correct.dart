@@ -9,30 +9,30 @@ import 'package:dictosaurus/src/_index.dart';
 abstract class AutoCorrect {
   //
 
-  /// The [TextAnalyzer] used by the [AutoCorrect] to filter terms.
-  TextAnalyzer get analyzer;
+  /// The [Tokenizer] used by the [AutoCorrect] to filter terms.
+  Tokenizer get tokenizer;
 
   /// The [AutoCorrect.inMemory] factory constructor initializes a [AutoCorrect]
-  /// with the in-memory [KGramIndex] instance [kGramIndex] and [analyzer].
+  /// with the in-memory [KGramIndex] instance [kGramIndex] and [tokenizer].
   ///
-  /// Defaults to [English] if [analyzer] is not provided.
+  /// Defaults to [English] if [tokenizer] is not provided.
   factory AutoCorrect.inMemory(KGramIndex kGramIndex,
-      {TextAnalyzer? analyzer}) {
+      {required Tokenizer tokenizer}) {
     assert(kGramIndex.isNotEmpty);
     final k = kGramIndex.keys.first.length;
-    return _InMemoryAutoCorrect(kGramIndex, k, analyzer ?? English());
+    return _InMemoryAutoCorrect(kGramIndex, k, tokenizer);
   }
 
   /// The [AutoCorrect.async] factory constructor initializes a [AutoCorrect]
   /// that uses an asynchronous callback [kGramIndexLoader] to return the
   /// k-grams for a term.
   ///
-  /// Defaults to [English] if [analyzer] is not provided.
+  /// Defaults to [English] if [tokenizer] is not provided.
   factory AutoCorrect.async(
           Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader,
-          {int k = 3,
-          TextAnalyzer? analyzer}) =>
-      _AsyncCallbackAutoCorrect(kGramIndexLoader, k, analyzer ?? English());
+          {required Tokenizer tokenizer,
+          int k = 3}) =>
+      _AsyncCallbackAutoCorrect(kGramIndexLoader, k, tokenizer);
 
   /// Returns a set of unique alternative spellings for a [term].
   ///
@@ -58,7 +58,7 @@ abstract class AutoCorrect {
 abstract class AutoCorrectMixin implements AutoCorrect {
   //
 
-// TODO: use analyzer
+// TODO: use tokenizer
 
   /// The length of the k-grams in the [KGramIndex].
   int get k;
@@ -104,7 +104,7 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
   //
 
   /// Instantiate a const [_InMemoryAutoCorrect]
-  const _InMemoryAutoCorrect(this.kGramIndex, this.k, this.analyzer);
+  const _InMemoryAutoCorrect(this.kGramIndex, this.k, this.tokenizer);
 
   /// A in-memory [KGramIndex] instance.
   final KGramIndex kGramIndex;
@@ -113,7 +113,7 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
   final int k;
 
   @override
-  final TextAnalyzer analyzer;
+  final Tokenizer tokenizer;
 
   @override
   KGramIndexLoader get kGramIndexLoader => ([terms]) async {
@@ -143,9 +143,10 @@ class _AsyncCallbackAutoCorrect with AutoCorrectMixin {
   final int k;
 
   @override
-  final TextAnalyzer analyzer;
+  final Tokenizer tokenizer;
 
   /// Initializes a const [_AsyncCallbackAutoCorrect] with an asynchronous callback
   /// [kGramIndexLoader] that  returns a set of synonyms for a term..\
-  const _AsyncCallbackAutoCorrect(this.kGramIndexLoader, this.k, this.analyzer);
+  const _AsyncCallbackAutoCorrect(
+      this.kGramIndexLoader, this.k, this.tokenizer);
 }

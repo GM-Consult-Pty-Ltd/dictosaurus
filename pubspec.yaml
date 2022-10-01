@@ -16,8 +16,7 @@ environment:
 
 dependencies:
   # -----PubDev Packages (in alphabetic order) -----
-  text_analysis: ^0.13.0
-  text_indexing: ^0.14.6
+  text_indexing: ^0.14.7
 
 
 dev_dependencies:
