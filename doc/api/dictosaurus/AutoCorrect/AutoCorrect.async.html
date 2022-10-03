@@ -72,7 +72,7 @@ k-grams for a term.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory AutoCorrect.async(
         Future&lt;KGramIndex&gt; Function(Iterable&lt;Term&gt; terms) kGramIndexLoader,
-        {int k = 3,
+        {int k = 2,
         TextAnalyzer? analyzer}) =&gt;
     _AsyncCallbackAutoCorrect(kGramIndexLoader, k, analyzer ?? English());</code></pre>
 </section>

@@ -13,14 +13,14 @@ abstract class AutoCorrect {
   Tokenizer get tokenizer;
 
   /// The [AutoCorrect.inMemory] factory constructor initializes a [AutoCorrect]
-  /// with the in-memory [KGramIndex] instance [kGramIndex] and [tokenizer].
+  /// with the in-memory [KGramsMap] instance [kGramIndex] and [tokenizer].
   ///
   /// Defaults to [English] if [tokenizer] is not provided.
-  factory AutoCorrect.inMemory(KGramIndex kGramIndex,
-      {required Tokenizer tokenizer}) {
+  factory AutoCorrect.inMemory(KGramsMap kGramIndex, {Tokenizer? tokenizer}) {
     assert(kGramIndex.isNotEmpty);
     final k = kGramIndex.keys.first.length;
-    return _InMemoryAutoCorrect(kGramIndex, k, tokenizer);
+    return _InMemoryAutoCorrect(
+        kGramIndex, k, tokenizer ?? TextTokenizer().tokenize);
   }
 
   /// The [AutoCorrect.async] factory constructor initializes a [AutoCorrect]
@@ -29,10 +29,11 @@ abstract class AutoCorrect {
   ///
   /// Defaults to [English] if [tokenizer] is not provided.
   factory AutoCorrect.async(
-          Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader,
-          {required Tokenizer tokenizer,
-          int k = 3}) =>
-      _AsyncCallbackAutoCorrect(kGramIndexLoader, k, tokenizer);
+          Future<KGramsMap> Function(Iterable<Term> terms) kGramIndexLoader,
+          {Tokenizer? tokenizer,
+          int k = 2}) =>
+      _AsyncCallbackAutoCorrect(
+          kGramIndexLoader, k, tokenizer ?? TextTokenizer().tokenize);
 
   /// Returns a set of unique alternative spellings for a [term].
   ///
@@ -43,29 +44,31 @@ abstract class AutoCorrect {
   /// If [limit] is not null, only the best [limit] matches will be returned.
   Future<List<String>> suggestionsFor(String term, [int limit]);
 
-  /// Returns a set of unique terms from a KGramIndex that start with [chars].
+  /// Returns a set of unique terms from a KGramsMap that start with [chars].
   ///
   /// If [limit] is not null, only the best [limit] matches will be returned.
   Future<List<String>> startsWith(String chars, [int limit = 10]);
 }
 
+//TODO autocorrect base class with tokenizer
+
 /// A mixin class that implements [AutoCorrect.suggestionsFor].
 ///
 /// Classes that mix in [AutoCorrectMixin] must override:
-/// - [k], the length of the k-grams in the [KGramIndex];
-/// - [kGramIndexLoader], a ansynchronous callback function that returns a [KGramIndex]
+/// - [k], the length of the k-grams in the [KGramsMap];
+/// - [kGramIndexLoader], a ansynchronous callback function that returns a [KGramsMap]
 ///   for a collection of k-grams.
 abstract class AutoCorrectMixin implements AutoCorrect {
   //
 
 // TODO: use tokenizer
 
-  /// The length of the k-grams in the [KGramIndex].
+  /// The length of the k-grams in the [KGramsMap].
   int get k;
 
   /// A function or callback that asynchronously returns a subset of a
-  /// [KGramIndex] for a collection of [KGram] strings.
-  Future<KGramIndex> Function(Iterable<Term> terms) get kGramIndexLoader;
+  /// [KGramsMap] for a collection of [KGram] strings.
+  Future<KGramsMap> Function(Iterable<Term> terms) get kGramIndexLoader;
 
 //Future<Map<String, Set<String>>> Function(Iterable<String> kGrams)
   @override
@@ -106,8 +109,8 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
   /// Instantiate a const [_InMemoryAutoCorrect]
   const _InMemoryAutoCorrect(this.kGramIndex, this.k, this.tokenizer);
 
-  /// A in-memory [KGramIndex] instance.
-  final KGramIndex kGramIndex;
+  /// A in-memory [KGramsMap] instance.
+  final KGramsMap kGramIndex;
 
   @override
   final int k;
@@ -116,9 +119,9 @@ class _InMemoryAutoCorrect with AutoCorrectMixin {
   final Tokenizer tokenizer;
 
   @override
-  KGramIndexLoader get kGramIndexLoader => ([terms]) async {
+  KGramsMapLoader get kGramIndexLoader => ([terms]) async {
         terms = terms ?? [];
-        final KGramIndex retVal = {};
+        final KGramsMap retVal = {};
         for (final kGram in terms) {
           final entry = kGramIndex[kGram];
           if (entry != null) {
@@ -137,7 +140,7 @@ class _AsyncCallbackAutoCorrect with AutoCorrectMixin {
 //
 
   @override
-  final Future<KGramIndex> Function(Iterable<Term> terms) kGramIndexLoader;
+  final Future<KGramsMap> Function(Iterable<Term> terms) kGramIndexLoader;
 
   @override
   final int k;

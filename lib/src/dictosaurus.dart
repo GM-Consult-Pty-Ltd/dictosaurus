@@ -10,7 +10,7 @@ import 'package:dictosaurus/src/_index.dart';
 /// - [definitionOf] the meaning of a term from a [VocabularyIndex];
 /// - [synonymsOf] returns the synonyms of a term from a [SynonymsIndex];
 /// - [suggestionsFor] returns alternative spellings for a term;
-/// - [startsWith] returns terms from a [KGramIndex] that start with a sequence
+/// - [startsWith] returns terms from a [KGramsMap] that start with a sequence
 ///   of characters; and
 /// - [expandTerm] expands a term using [synonymsOf] and [suggestionsFor].
 abstract class DictoSaurus {
@@ -27,16 +27,17 @@ abstract class DictoSaurus {
   /// The [DictoSaurus.inMemory] factory constructor initializes a [DictoSaurus]
   /// with in-memory [vocabulary], [synonymsIndex] and [kGramIndex] hashmaps.
   factory DictoSaurus.inMemory(
-          {required VocabularyIndex vocabulary,
+          {required VocabularyIndex vocabularyIndex,
           required SynonymsIndex synonymsIndex,
-          required KGramIndex kGramIndex}) =>
-      _InMemoryDictoSaurus(vocabulary, synonymsIndex, kGramIndex);
+          required KGramsMap kGramIndex,
+          Tokenizer? tokenizer}) =>
+      _InMemoryDictoSaurus(vocabularyIndex, synonymsIndex, kGramIndex,
+          tokenizer ?? TextTokenizer().tokenize);
 
-  /// Returns the meaning of [term] from a [VocabularyIndex]. Returns null
-  /// if the [VocabularyIndex] does not contain the key [term].
+  /// Returns the meaning of [term].
   Future<String?> definitionOf(String term);
 
-  /// Returns the synonyms of [term] from a [SynonymsIndex].
+  /// Returns the synonyms of [term].
   Future<Set<String>> synonymsOf(String term);
 
   /// Returns a set of unique alternative spellings for a [term].
@@ -44,7 +45,7 @@ abstract class DictoSaurus {
   /// If [limit] is not null, only the best [limit] matches will be returned.
   Future<List<String>> suggestionsFor(String term, [int limit]);
 
-  /// Returns a set of unique terms from a KGramIndex that start with [chars].
+  /// Returns a set of unique terms that start with [chars].
   Future<List<String>> startsWith(String chars);
 
   /// Expands [term] to an ordered list of terms.
@@ -58,6 +59,19 @@ abstract class DictoSaurus {
   ///
   /// If [limit] is not null, only the first [limit] terms will be returned.
   Future<List<String>> expandTerm(String term, [int limit]);
+}
+
+/// Implements [DictoSaurus] by mixing in [DictoSaurusMixin].
+///
+/// Sub-classes must override:
+/// - [autoCorrect] a [AutoCorrect] instance used by [suggestionsFor] and
+///   [startsWith];
+/// - [thesaurus] a [Thesaurus] instance used by [synonymsOf]; and
+/// - [vocabulary] a [Vocabulary] instance used by [definitionOf].
+///
+abstract class DictoSaurusBase with DictoSaurusMixin {
+  /// A const generative constructor for sub classes.
+  const DictoSaurusBase();
 }
 
 /// A mixin class that implements [DictoSaurus.definitionOf],
@@ -107,15 +121,15 @@ abstract class DictoSaurusMixin implements DictoSaurus {
 }
 
 /// Implementation of [DictoSaurus] with in-memory [VocabularyIndex],
-/// [SynonymsIndex] and [KGramIndex] hashmaps.
+/// [SynonymsIndex] and [KGramsMap] hashmaps.
 class _InMemoryDictoSaurus with DictoSaurusMixin {
   /// Instantiates a [_InMemoryDictoSaurus] with in-memory [vocabulary],
   /// [synonymsIndex] and [kGramIndex] hashmaps.
   _InMemoryDictoSaurus(VocabularyIndex vocabularyIndex,
-      SynonymsIndex synonymsIndex, KGramIndex kGramIndex)
-      : vocabulary = Vocabulary.inMemory(vocabularyIndex),
-        thesaurus = Thesaurus.inMemory(synonymsIndex),
-        autoCorrect = AutoCorrect.inMemory(kGramIndex);
+      SynonymsIndex synonymsIndex, KGramsMap kGramIndex, Tokenizer tokenizer)
+      : vocabulary = Vocabulary.inMemory(vocabularyIndex, tokenizer: tokenizer),
+        thesaurus = Thesaurus.inMemory(synonymsIndex, tokenizer: tokenizer),
+        autoCorrect = AutoCorrect.inMemory(kGramIndex, tokenizer: tokenizer);
 
   @override
   final AutoCorrect autoCorrect;
@@ -127,7 +141,11 @@ class _InMemoryDictoSaurus with DictoSaurusMixin {
   final Vocabulary vocabulary;
 }
 
-class _DictoSaurusImpl with DictoSaurusMixin {
+/// A [DictoSaurus] with final [autoCorrect], [thesaurus] and
+/// [vocabulary] fields and a generative constructor.
+class _DictoSaurusImpl extends DictoSaurusBase {
+  //
+
   @override
   final AutoCorrect autoCorrect;
 
