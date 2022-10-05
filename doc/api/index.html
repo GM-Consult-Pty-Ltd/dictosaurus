@@ -71,12 +71,12 @@ All rights reserved.
 <p><img src="https://github.com/GM-Consult-Pty-Ltd/dictosaurus/raw/main/assets/images/dictosaurus_artifacts.png?raw=true?raw=true" alt="DictoSaurus Artifacts" title="DictoSaurus Artifacts"></p>
 <p>Three utility classes provide dictionary and thesaurus functions:</p>
 <ul>
-<li>the <a href="">Vocabulary</a> class exposes the <a href="">Future<string> definitionOf(String term)</string></a> function, looking up the meaning of the <code>term</code> in a <code>vocabulary</code>;</li>
+<li>the <a href="">Dictionary</a> class exposes the <a href="">Future<string> definitionsOf(String term)</string></a> function, looking up the meaning of the <code>term</code> in a <code>vocabulary</code>;</li>
 <li>the <a href="">Thesaurus</a> class exposes the <a href="">Future&lt;Set<string>&gt; synonymsOf(String term)</string></a> function, looking up the synonyms of the <code>term</code> in a <code>synonyms index</code>; and</li>
-<li>the <a href="">AutoCorrect</a> class exposes the <a href="">Future&lt;List<string>&gt; suggestionsFor(String term)</string></a> function that returns a set of unique alternative spellings for <code>term</code> by converting the <code>term</code> to <code>k-grams</code> and then finding the best matches for the (misspelt) <code>term</code> from the <code>k-gram index</code>, ordered in descending order of relevance (i.e. best match first).</li>
+<li>the <a href="">AutoCorrect</a> class exposes the <a href="">Future&lt;Map&lt;String, List<string>&gt;&gt; suggestionsFor(String term)</string></a> function that returns a set of unique alternative spellings for <code>term</code> by converting the <code>term</code> to <code>k-grams</code> and then finding the best matches for the (misspelt) <code>term</code> from the <code>k-gram index</code>, ordered in descending order of relevance (i.e. best match first).</li>
 </ul>
-<p>The <a href="">DictoSaurus</a> composition class leverages a <a href="">Vocabulary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> which it uses to expose the <a href="">Future<string> definitionOf(String term)</string></a>,  <a href="">Future&lt;Set<string>&gt; synonymsOf(String term)</string></a> and <a href="">Future&lt;List<string>&gt; suggestionsFor(String term)</string></a> functions.</p>
-<p>The <a href="">DictoSaurus</a> also exposes the <a href="">Future&lt;List<string>&gt; expandTerm(String term)</string></a> function that looks up the <code>term</code> in the <a href="">Vocabulary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> classes to return a term-expansion in descending order of relevance (best match first). If the <code>term</code> is found in the <a href="">Vocabulary</a> it will appear as the first element of the returned list. If it is not found in the <a href="">Vocabulary</a> it will not be in the returned list as it is likely to be misspelt.</p>
+<p>The <a href="">DictoSaurus</a> composition class leverages a <a href="">Dictionary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> which it uses to expose the <a href="">Future<string> definitionsOf(String term)</string></a>,  <a href="">Future&lt;Set<string>&gt; synonymsOf(String term)</string></a> and <a href="">Future&lt;Map&lt;String, List<string>&gt;&gt; suggestionsFor(String term)</string></a> functions.</p>
+<p>The <a href="">DictoSaurus</a> also exposes the <a href="">Future&lt;List<string>&gt; expandTerm(String term)</string></a> function that looks up the <code>term</code> in the <a href="">Dictionary</a>, <a href="">Thesaurus</a> and <a href="">AutoCorrect</a> classes to return a term-expansion in descending order of relevance (best match first). If the <code>term</code> is found in the <a href="">Dictionary</a> it will appear as the first element of the returned list. If it is not found in the <a href="">Dictionary</a> it will not be in the returned list as it is likely to be misspelt.</p>
 <p>The <a href="">DictoSaurus.english</a> static const instance uses the included <code>vocabulary</code>, <code>synonymsIndex</code> and <code>kGramIndex</code> hashmaps. For other languages or a custom implementation, initialize the <a href="">DictoSaurus</a> using the <a href="">DictoSaurus.async</a> factory constructor whichuses asynchronous callbacks to <code>vocabulary</code>, <code>synonymsIndex</code> and <code>kGramIndex</code> APIs. The <a href="">DictoSaurus.async</a> factory constructor has a named, required parameter <a href="">TextAnalyzerConfiguration configuration</a>. The optional named parameter <code>int k</code> (the k-gram length) defaults to 3 (tri-gram).</p>
 <p>If the <a href="">DictoSaurus</a> is used as a <code>term expander</code> in an information retrieval system, the <a href="">DictoSaurus.configuration</a> must use the same tokenizing algorithm as the index.</p>
 <p>Refer to the <a href="#references">references</a> to learn more about information retrieval systems.</p>
@@ -91,7 +91,13 @@ All rights reserved.
 <p>TODO: describe usage.</p>
 <h2 id="api">API</h2>
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/">API</a> exposes</p>
-<p>TODO: describe the API</p>
+<p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
+<ul>
+<li>the <code>interface</code> is an abstract class that exposes fields and methods but contains no implementation code. The <code>interface</code> may expose a factory constructor that returns an <code>implementation class</code> instance;</li>
+<li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but not the input fields;</li>
+<li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor; and</li>
+<li>the class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</li>
+</ul>
 <h2 id="definitions">Definitions</h2>
 <p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
 <ul>

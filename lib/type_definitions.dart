@@ -8,3 +8,4 @@ library type_definitions;
 /// Export of barrel file in the /src folder.
 /// src/_index.dart exports the barrel files from
 export 'src/typedefs.dart';
+export 'package:text_indexing/type_definitions.dart';

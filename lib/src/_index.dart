@@ -4,7 +4,7 @@
 
 export 'auto_correct.dart';
 export 'thesaurus.dart';
-export 'vocabulary.dart';
+export 'dictionary.dart';
 export 'dictosaurus.dart';
 export 'package:text_indexing/text_indexing.dart';
 export 'package:text_indexing/type_definitions.dart';

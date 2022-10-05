@@ -8,4 +8,4 @@ import 'package:dictosaurus/src/_index.dart';
 /// synonyms. The synonyms collection can be empty.
 ///
 /// Alias for `Map<Term, Set<Term>>`.
-typedef SynonymsIndex = Map<Term, Set<Term>>;
+typedef SynonymsMap = Map<Term, Set<Term>>;

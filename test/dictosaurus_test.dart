@@ -2,21 +2,46 @@
 // BSD 3-Clause License
 // All rights reserved
 
-// ignore: unused_import
-import 'package:dictosaurus/src/_index.dart';
+@Timeout(Duration(minutes: 5))
+
+// import 'package:dictosaurus/src/_index.dart';
+import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/package_exports.dart';
+import 'package:dictosaurus/type_definitions.dart';
 import 'package:test/test.dart';
 import 'data/sample_news.dart';
+import 'data/synonyms_map.dart';
+import 'impl/hive_synonym_service.dart';
 
 void main() {
-  group('A group of tests', () {
-    setUp(() {
-      // Additional setup goes here.
+  group('Thesaurus', (() {
+    //
+
+    setUp(() async {
+      final service = await HiveSynonymService.fromSynonymsMap(synonymsMap,
+          path: 'test/data');
+      await service.close();
     });
+
+    test('Thesaurus()', (() async {
+      final synonymsService =
+          await HiveSynonymService.hydrate(path: 'test/data');
+      final thesaurus = Thesaurus(synonymsService.getSynonyms);
+      print(await thesaurus.synonymsOf('zero'));
+    }));
+
+    test('Thesaurus.inMemory()', (() async {
+      final thesaurus = Thesaurus.inMemory(synonymsMap, tokenizer: tokenizer);
+      print(await thesaurus.synonymsOf('zero'));
+    }));
+  }));
+  group('Dictosaurus', () {
+    setUp(() async {});
 
     test('autocorrect', () async {
       final index = await _getIndex(sampleNews);
-      final autoCorrect = AutoCorrect.async(index.getKGramIndex);
-      final term = 'taiwansemicondutcor'.stemPorter2();
+      final autoCorrect = AutoCorrect(index.getKGramIndex, k: 3);
+      final term = 'aple';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
       final suggestions = await autoCorrect.suggestionsFor(term, 10);
@@ -32,7 +57,7 @@ void main() {
 
     test('startsWith', () async {
       final index = await _getIndex(sampleNews);
-      final autoCorrect = AutoCorrect.async(index.getKGramIndex);
+      final autoCorrect = AutoCorrect(index.getKGramIndex, k: 3);
       final chars = 'app';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -54,8 +79,11 @@ Future<InvertedIndex> _getIndex(JsonCollection documents,
       'name': 1,
       'descriptions': 0.5
     }]) async {
-  final index = InMemoryIndex(tokenizer: TextTokenizer(), zones: zones);
+  final index = InMemoryIndex(tokenizer: TextTokenizer(), zones: zones, k: 3);
   final indexer = TextIndexer(index: index);
   await indexer.indexCollection(documents);
   return index;
 }
+
+Future<Iterable<Token>> tokenizer(String term, [String? zone]) async =>
+    [Token(term, 0)];

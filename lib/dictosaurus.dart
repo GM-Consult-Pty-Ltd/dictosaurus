@@ -7,5 +7,5 @@ library dictosaurus;
 
 export 'src/auto_correct.dart';
 export 'src/thesaurus.dart';
-export 'src/vocabulary.dart';
+export 'src/dictionary.dart';
 export 'dictosaurus.dart';

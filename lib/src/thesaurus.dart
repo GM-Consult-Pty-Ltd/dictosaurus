@@ -4,73 +4,138 @@
 
 import 'package:dictosaurus/src/_index.dart';
 
-/// The [Thesaurus] class exposes the [synonymsOf] function that asynchronously
-/// returns the synonyms of a term from a [SynonymsIndex].
+/// The [Thesaurus] interface:
+/// - exposes the [synonymsOf] method returns a set of synonyms for a term and
+///   its tokenized versions from a synonyms index; and
+/// - the [tokenizer] is used to get tokenized versions of a term and
+///   should be the same as that used to create the synonyms index queried by
+///   the [Thesaurus].
 abstract class Thesaurus {
   //
 
-  /// The [Tokenizer] used by the [AutoCorrect] to filter terms.
+  /// The [tokenizer] is used to get tokenized versions of a term.
+  ///
+  /// The [tokenizer] should be the same as that used to create the synonyms
+  /// index queried by the [Thesaurus].
   Tokenizer get tokenizer;
 
   /// The [Thesaurus.inMemory] factory constructor initializes a [Thesaurus]
-  /// with in-memory [SynonymsIndex] instance [synonymsIndex].
+  /// with in-memory [SynonymsMap] instance [synonymsMap].
   ///
-  /// Defaults to [English] if [tokenizer] is not provided.
-  factory Thesaurus.inMemory(SynonymsIndex synonymsIndex,
-          {Tokenizer? tokenizer}) =>
-      _InMemoryThesaurus(synonymsIndex, tokenizer ?? TextTokenizer().tokenize);
+  /// The [tokenizer] is used to get tokenized versions of a term and
+  /// should be the same as that used to create the synonyms index queried by
+  /// the [Thesaurus]. The default [tokenizer] is [English].
+  factory Thesaurus.inMemory(SynonymsMap synonymsMap, {Tokenizer? tokenizer}) =>
+      _ThesaurusImpl(synonymsMap, tokenizer ?? TextTokenizer().tokenize);
 
-  /// The [Thesaurus.async] factory constructor initializes a [Thesaurus]
+  /// The unnamed [Thesaurus] factory constructor initializes a [Thesaurus]
   /// with an asynchronous callback [synonymsCallback] to return the synonyms
-  /// for a term.
+  /// for a term and its tokenized versions.
   ///
-  /// Defaults to [English] if [tokenizer] is not provided.
-  factory Thesaurus.async(
-          Future<Set<String>> Function(String term) synonymsCallback,
+  /// The [tokenizer] is used to get tokenized versions of a term and
+  /// should be the same as that used to create the synonyms index queried by
+  /// the [Thesaurus]. The default [tokenizer] is [English].
+  factory Thesaurus(
+          Future<SynonymsMap> Function(Iterable<String> terms) synonymsCallback,
           {Tokenizer? tokenizer}) =>
       _AsyncCallbackThesaurus(
           synonymsCallback, tokenizer ?? TextTokenizer().tokenize);
 
-  /// Asynchronously returns the synonyms of [term] from a [SynonymsIndex].
-  Future<Set<String>> synonymsOf(String term);
+  /// Returns a set of synonyms for [term] and its tokenized versions.
+  ///
+  /// Returns an empty [SynonymsMap] if no synonyms were found for the
+  /// [term] or any of its tokenized versions.
+  Future<SynonymsMap> synonymsOf(String term);
+
+//
 }
 
-//TODO Thesaurus mixin and base class with tokenizer
+/// Mixin class that implements the [Thesaurus] interface:
+/// - the [tokenizer] is used to get tokenized versions of a term and
+///   should be the same as that used to create the synonyms index queried by
+///   the [Thesaurus];
+/// - the [synonymsOf] method uses the [tokenizer] to tokenize a term, then
+///   asynchronously gets the synonyms for the tokenized version of term using
+///   the [synonymsCallback]; and
+/// - [synonymsCallback] is an asynchronous callback that returns the
+///   synonyms of a collection of terms from a synonyms index.
+abstract class ThesaurusMixin implements Thesaurus {
+  //
 
-/// Implementation of [Thesaurus] that uses a in-memory [SynonymsIndex].
-class _InMemoryThesaurus implements Thesaurus {
+  /// A asynchronous callback that returns a set of synonyms for collection of
+  /// terms.
+  Future<SynonymsMap> Function(Iterable<String> terms) get synonymsCallback;
+
+  @override
+  Future<SynonymsMap> synonymsOf(String term) async {
+    final terms = [term];
+    final tokens = (await tokenizer(term));
+    terms.addAll(tokens.map((e) => e.term));
+    return await synonymsCallback(terms);
+  }
+
+  //
+}
+
+/// An abstract base class that that implements the [Thesaurus] interface:
+/// - the [tokenizer] is used to get tokenized versions of a term and
+///   should be the same as that used to create the synonyms index queried by
+///   the [Thesaurus];
+/// - the [synonymsOf] method uses the [tokenizer] to tokenize a term, then
+///   asynchronously gets the synonyms for the tokenized version of term using
+///   the [synonymsCallback]; and
+/// - [synonymsCallback] is an asynchronous callback that returns the
+///   synonyms of a collection of terms from a synonyms index.
+///
+/// Provides a default const unnamed generative constructor for sub classes.
+abstract class ThesaurusBase with ThesaurusMixin {
+  //
+
+  /// A default const unnamed generative constructor for sub classes.
+  const ThesaurusBase();
+}
+
+/// Implementation of [Thesaurus] that uses a in-memory [SynonymsMap].
+class _ThesaurusImpl extends ThesaurusBase {
 //
 
   @override
   final Tokenizer tokenizer;
 
-  /// An in-memory [SynonymsIndex].
-  final SynonymsIndex synonymsIndex;
+  /// An in-memory [SynonymsMap].
+  final SynonymsMap synonymsMap;
 
-  /// Initializes a const [_InMemoryThesaurus] with a in-memory [synonymsIndex].
-  const _InMemoryThesaurus(this.synonymsIndex, this.tokenizer);
-
+  /// Returns the values from [synonymsMap] for the terms (keys).
   @override
-  Future<Set<String>> synonymsOf(String term) async =>
-      synonymsIndex[term.toLowerCase()] ?? {};
+  Future<SynonymsMap> Function(Iterable<String> terms) get synonymsCallback =>
+      (terms) async {
+        final SynonymsMap retVal = {};
+        for (final term in terms) {
+          final meaning = synonymsMap[term];
+          if (meaning != null) {
+            retVal[term] = meaning;
+          }
+        }
+        return retVal;
+      };
+
+  /// Initializes a const [_ThesaurusImpl] with an in-memory
+  /// [synonymsMap] hashmap.
+  const _ThesaurusImpl(this.synonymsMap, this.tokenizer);
 }
 
 /// Implementation of [Thesaurus] that uses an asynchronous callback
 /// [synonymsCallback] to  return a set of synonyms for a term.
-class _AsyncCallbackThesaurus implements Thesaurus {
+class _AsyncCallbackThesaurus extends ThesaurusBase {
 //
 
   @override
   final Tokenizer tokenizer;
 
-  /// A asynchronous callback that returns a set of synonyms for a term.
-  final Future<Set<String>> Function(String term) synonymsCallback;
-
-  /// Initializes a const [_AsyncCallbackThesaurus] with an asynchronous callback
-  /// [synonymsCallback] that  returns a set of synonyms for a term..\
-  const _AsyncCallbackThesaurus(this.synonymsCallback, this.tokenizer);
-
   @override
-  Future<Set<String>> synonymsOf(String term) async =>
-      synonymsCallback(term.toLowerCase());
+  final Future<SynonymsMap> Function(Iterable<String> terms) synonymsCallback;
+
+  /// Initializes a const [_AsyncCallbackThesaurus] with an asynchronous
+  /// [synonymsCallback].
+  const _AsyncCallbackThesaurus(this.synonymsCallback, this.tokenizer);
 }
