@@ -2,7 +2,8 @@
 // BSD 3-Clause License
 // All rights reserved
 
-const _words = {
+/// Sample output from words endpoint.
+const words = {
   'metadata': {
     'operation': 'retrieve',
     'provider': 'Oxford University Press',
@@ -326,7 +327,8 @@ const _words = {
   ]
 };
 
-const _entry = {
+/// Sample output from entries endpoint.
+const entry = {
   'id': 'swim',
   'metadata': {
     'operation': 'retrieve',

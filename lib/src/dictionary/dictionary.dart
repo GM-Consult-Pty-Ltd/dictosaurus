@@ -3,7 +3,6 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
-import 'dictionary_entry.dart';
 
 ///  Maps the words in a language (dictionaryMap) to their definitions (meanings).
 ///
