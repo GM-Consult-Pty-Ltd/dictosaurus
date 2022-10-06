@@ -16,6 +16,8 @@ environment:
 
 dependencies:
   # -----PubDev Packages (in alphabetic order) -----
+  collection: ^1.16.0
+  meta: ^1.8.0
   text_indexing: ^0.16.0
 
 

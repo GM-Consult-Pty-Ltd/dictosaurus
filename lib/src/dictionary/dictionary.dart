@@ -3,6 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
+import 'dictionary_entry.dart';
 
 ///  Maps the words in a language (dictionaryMap) to their definitions (meanings).
 ///
@@ -17,6 +18,9 @@ typedef DictionaryMap = Map<String, String>;
 ///   [Dictionary].
 abstract class Dictionary {
 //
+
+  /// Returns a [DictionaryEntry] for [term] from the [Dictionary].
+  Future<DictionaryEntry?> getEntry(String term);
 
   /// Returns a set of definitions of [term] and its tokenized versions.
   ///
