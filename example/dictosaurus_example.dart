@@ -7,7 +7,7 @@ import 'package:dictosaurus/dictosaurus.dart';
 import 'package:dictosaurus/src/_index.dart';
 
 import 'data/kgram_index.dart';
-import 'data/synonyms_index.dart';
+// import 'data/synonyms_index.dart';
 
 void main() async {
   // run the README.md example(s)
@@ -34,11 +34,11 @@ Future<void> _readMeExample(Map<String, Set<String>> kGramIndex) async {
   // print the autocorrect suggestions
   print(suggestions);
 
-  // initialize a `Thesaurus` instance.
-  final thesaurus = Thesaurus.inMemory(synonymsIndex);
+  // // initialize a `Thesaurus` instance.
+  // final thesaurus = Thesaurus.inMemory(synonymsIndex);
 
-  // print synonyms for "Tesla"
-  print(await thesaurus.synonymsOf('tesla'));
+  // // print synonyms for "Tesla"
+  // print(await thesaurus.synonymsOf('tesla'));
 
   // define a starts-with sequence of characters
   final startsWith = 'te';

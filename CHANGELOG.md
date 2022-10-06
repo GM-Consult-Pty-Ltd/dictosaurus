@@ -4,6 +4,18 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+### 0.0.1-beta.5
+**PRE-RELEASE, BREAKING CHANGES**
+
+#### Breaking Changes:
+* Removed [Dictionary.inMemory] factory.
+* Removed [Thesaurus.inMemory] factory.
+* Removed [AutoCorrect.inMemory] factory.
+* Removed [Dictosaurus.inMemory] factory.
+* Removed [DictionaryMap] typedef.
+* Changed [Dictosaurus] interface.
+
+
 ### 0.0.1-beta.4
 **PRE-RELEASE**
 

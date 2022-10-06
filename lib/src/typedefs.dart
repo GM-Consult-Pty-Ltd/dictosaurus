@@ -4,8 +4,10 @@
 
 import 'package:dictosaurus/src/_index.dart';
 
-/// Maps the words in a language (synonymsIndex) to a collection of unique
-/// synonyms. The synonyms collection can be empty.
-///
-/// Alias for `Map<Term, Set<Term>>`.
-typedef SynonymsMap = Map<Term, Set<Term>>;
+/// Function definition of an asynchronous callback that returns the meaning of
+/// a [term] from a dictionary provider.
+typedef DictionaryCallback = Future<DictionaryEntry> Function(String term);
+
+/// Function definition of an asynchronous callback that returns the synonyms of
+/// a [term] from a thesaurus provider.
+typedef SynonymsCallback = Future<Set<String>> Function(String term);

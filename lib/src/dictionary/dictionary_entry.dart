@@ -3,6 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/src/dictionary/part_of_speech.dart';
 import 'term_variant.dart';
 
 /// Object model for an entry in a [Dictionary] with immutable properties:
@@ -10,9 +11,19 @@ import 'term_variant.dart';
 /// - [stem] is the stemmed version of [term];
 /// - [lemma] is the lemma of [term];
 /// - [languageCode] is the ISO language code for the language of the
-///   [term]; and
+///   [term];
 /// - [variants] is an un-ordered collection of unique [TermVariant]
-///   instances.
+///   instances;
+/// - [allAntonyms] maps all the antonyms from [variants] to a set;
+/// - [allDefinitions] maps all the definitions from [variants] to a set;
+/// - [allInflections] maps all the inflections from [variants] to a set;
+/// - [allPhrases] maps all the phrases from [variants] to a set;
+/// - [allSynonyms] maps all the synonyms from [variants] to a set;
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
+/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
+/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
 abstract class DictionaryEntry {
   //
 
@@ -57,15 +68,149 @@ abstract class DictionaryEntry {
 
   /// An un-ordered collection of unique [TermVariant] instances.
   Set<TermVariant> get variants;
+
+  /// A hashmap of [PartOfSpeech] to terms that are synonyms of [term].
+  Map<PartOfSpeech, Set<String>> get synonymsMap;
+
+  /// A hashmap of [PartOfSpeech] to terms that are antonyms of [term].
+  Map<PartOfSpeech, Set<String>> get antonymsMap;
+
+  /// A hashmap of [PartOfSpeech] to definitions that are synonyms of [term].
+  Map<PartOfSpeech, Set<String>> get definitionsMap;
+
+  /// A hashmap of [PartOfSpeech] to phrases using [term].
+  Map<PartOfSpeech, Set<String>> get phrasesMap;
+
+  /// A hashmap of [PartOfSpeech] to inflections that are inflections of [term].
+  Map<PartOfSpeech, Set<String>> get inflectionsMap;
+
+  /// An unordered collection of unique definitions for [term].
+  Set<String> get allDefinitions;
+
+  /// An unordered collection of unique terms that are synonyms of [term].
+  Set<String> get allSynonyms;
+
+  /// An unordered collection of unique terms that are antonyms of [term].
+  Set<String> get allAntonyms;
+
+  /// An unordered collection of unique terms that are inflections of [term].
+  Set<String> get allInflections;
+
+  /// An unordered collection of unique example phrases that include [term].
+  Set<String> get allPhrases;
 }
 
-/// Abstract implementation class of [DictionaryEntry] that implements the
-/// `==` operator and [hashCode].
-abstract class DictionaryEntryBase implements DictionaryEntry {
+/// Abstract mixin class of [DictionaryEntry] that implements:
+/// - the `==` operator by comparing type and the [term], [languageCode] and
+///   [variants] properties;
+/// - [hashCode] returns an Object.hash of the [term], [languageCode] and
+///   [variants] properties;
+/// - [allAntonyms] maps all the antonyms from [variants] to a set;
+/// - [allDefinitions] maps all the definitions from [variants] to a set;
+/// - [allInflections] maps all the inflections from [variants] to a set;
+/// - [allPhrases] maps all the phrases from [variants] to a set;
+/// - [allSynonyms] maps all the synonyms from [variants] to a set;
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
+/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
+/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
+abstract class DictionaryEntryMixin implements DictionaryEntry {
   //
 
-  /// Default const generative constructor for sub-classes.
-  const DictionaryEntryBase();
+  @override
+  Set<String> get allAntonyms {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.antonyms);
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> get allDefinitions => variants.map((e) => e.definition).toSet();
+
+  @override
+  Set<String> get allInflections {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.inflections);
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> get allPhrases {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.phrases);
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> get allSynonyms {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.synonyms);
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<String>> get antonymsMap {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.antonyms);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<String>> get definitionsMap {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.add(e.definition);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<String>> get inflectionsMap {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.inflections);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<String>> get phrasesMap {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.phrases);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<String>> get synonymsMap {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.synonyms);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -76,6 +221,30 @@ abstract class DictionaryEntryBase implements DictionaryEntry {
 
   @override
   int get hashCode => Object.hash(term, languageCode, variants);
+}
+
+/// Abstract implementation class of [DictionaryEntry] that implements:
+/// - the `==` operator by comparing type and the [term], [languageCode] and
+///   [variants] properties;
+/// - [hashCode] returns an Object.hash of the [term], [languageCode] and
+///   [variants] properties;
+/// - [allAntonyms] maps all the antonyms from [variants] to a set;
+/// - [allDefinitions] maps all the definitions from [variants] to a set;
+/// - [allInflections] maps all the inflections from [variants] to a set;
+/// - [allPhrases] maps all the phrases from [variants] to a set;
+/// - [allSynonyms] maps all the synonyms from [variants] to a set;
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
+/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
+/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
+abstract class DictionaryEntryBase with DictionaryEntryMixin {
+  //
+
+  /// Default const generative constructor for sub-classes.
+  const DictionaryEntryBase();
+
+  //
 }
 
 /// Implementation class for [DictionaryEntry], extends [DictionaryEntryBase].

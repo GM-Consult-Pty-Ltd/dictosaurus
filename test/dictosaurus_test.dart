@@ -10,30 +10,12 @@ import 'package:dictosaurus/package_exports.dart';
 import 'package:dictosaurus/type_definitions.dart';
 import 'package:test/test.dart';
 import 'data/sample_news.dart';
-import 'data/synonyms_map.dart';
-import 'impl/hive_synonym_service.dart';
 
 void main() {
   group('Thesaurus', (() {
     //
 
-    setUp(() async {
-      final service = await HiveSynonymService.fromSynonymsMap(synonymsMap,
-          path: 'test/data');
-      await service.close();
-    });
-
-    test('Thesaurus()', (() async {
-      final synonymsService =
-          await HiveSynonymService.hydrate(path: 'test/data');
-      final thesaurus = Thesaurus(synonymsService.getSynonyms);
-      print(await thesaurus.synonymsOf('zero'));
-    }));
-
-    test('Thesaurus.inMemory()', (() async {
-      final thesaurus = Thesaurus.inMemory(synonymsMap, tokenizer: tokenizer);
-      print(await thesaurus.synonymsOf('zero'));
-    }));
+    test('Thesaurus()', (() async {}));
   }));
   group('Dictosaurus', () {
     setUp(() async {});
