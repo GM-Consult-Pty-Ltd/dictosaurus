@@ -7,7 +7,7 @@ import 'package:dictosaurus/src/_index.dart';
 /// The [DictoSaurus] composition class combines a [Dictionary],
 /// [Thesaurus] and [AutoCorrect] which it uses to expose the following
 /// methods:
-/// - [definitionsOf] the meaning of a term from a [DictionaryMap];
+/// - [getEntry] returns the meaning of a term from a dictionary provider;
 /// - [synonymsOf] returns the synonyms of a term from a [Set<String>];
 /// - [suggestionsFor] returns alternative spellings for a term;
 /// - [startsWith] returns terms from a [KGramsMap] that start with a sequence
@@ -16,8 +16,7 @@ import 'package:dictosaurus/src/_index.dart';
 abstract class DictoSaurus {
   //
 
-  /// Initializes a [DictoSaurus] with [autoCorrect], [thesaurus] and
-  /// [dictionary] instances.
+  /// Initializes a [DictoSaurus] with [autoCorrect] and [dictionary] instances.
   factory DictoSaurus(
           {required Dictionary dictionary, required AutoCorrect autoCorrect}) =>
       _DictoSaurusImpl(autoCorrect, dictionary);
@@ -54,14 +53,14 @@ abstract class DictoSaurus {
 /// Sub-classes must override:
 /// - [autoCorrect] a [AutoCorrect] instance used by [suggestionsFor] and
 ///   [startsWith];
-/// - [dictionary] a [Dictionary] instance used by [definitionsOf].
+/// - [dictionary] a [Dictionary] instance used by [getEntry].
 ///
 abstract class DictoSaurusBase with DictoSaurusMixin {
   /// A const generative constructor for sub classes.
   const DictoSaurusBase();
 }
 
-/// A mixin class that implements [DictoSaurus.definitionsOf],
+/// A mixin class that implements [DictoSaurus.getEntry],
 /// [DictoSaurus.synonymsOf], [DictoSaurus.suggestionsFor] and
 /// [DictoSaurus.expandTerm].
 ///
@@ -70,7 +69,7 @@ abstract class DictoSaurusBase with DictoSaurusMixin {
 abstract class DictoSaurusMixin implements DictoSaurus {
   //
 
-  /// A [Dictionary] instance used by [definitionsOf].
+  /// A [Dictionary] instance used by [getEntry].
   Dictionary get dictionary;
 
   /// A [AutoCorrect] instance used by [suggestionsFor].
@@ -109,8 +108,8 @@ abstract class DictoSaurusMixin implements DictoSaurus {
       autoCorrect.suggestionsFor(term, limit);
 }
 
-/// A [DictoSaurus] with final [autoCorrect], [thesaurus] and
-/// [dictionary] fields and a generative constructor.
+/// A [DictoSaurus] with final [autoCorrect] and [dictionary] fields and
+/// a generative constructor.
 class _DictoSaurusImpl extends DictoSaurusBase {
   //
 

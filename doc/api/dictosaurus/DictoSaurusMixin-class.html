@@ -51,12 +51,12 @@
 
     
 <section class="desc markdown">
-  <p>A mixin class that implements <a href="../dictosaurus/DictoSaurus/definitionOf.html">DictoSaurus.definitionOf</a>,
+  <p>A mixin class that implements <a href="../dictosaurus/DictoSaurus/getEntry.html">DictoSaurus.getEntry</a>,
 <a href="../dictosaurus/DictoSaurus/synonymsOf.html">DictoSaurus.synonymsOf</a>, <a href="../dictosaurus/DictoSaurus/suggestionsFor.html">DictoSaurus.suggestionsFor</a> and
 <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a>.</p>
 <p>Implementations that mix in <a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a> must override:</p>
 <ul>
-<li><a href="../dictosaurus/DictoSaurusMixin/vocabulary.html">vocabulary</a> is ;</li>
+<li><a href="../dictosaurus/DictoSaurusMixin/dictionary.html">dictionary</a> is ;</li>
 </ul>
 </section>
 
@@ -74,6 +74,10 @@
   </dd>
         
 
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
+        </ul></dd>
 
 
         
@@ -109,6 +113,17 @@
 
 </dd>
 
+        <dt id="dictionary" class="property">
+  <span class="name"><a href="../dictosaurus/DictoSaurusMixin/dictionary.html">dictionary</a></span>
+  <span class="signature">&#8594; <a href="../dictosaurus/Dictionary-class.html">Dictionary</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> instance used by <a href="../dictosaurus/DictoSaurusMixin/getEntry.html">getEntry</a>.
+  <div class="features">read-only</div>
+
+</dd>
+
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
@@ -131,28 +146,6 @@
 
 </dd>
 
-        <dt id="thesaurus" class="property">
-  <span class="name"><a href="../dictosaurus/DictoSaurusMixin/thesaurus.html">thesaurus</a></span>
-  <span class="signature">&#8594; <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></span> 
-
-</dt>
-<dd>
-  A <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> instance used by <a href="../dictosaurus/DictoSaurusMixin/synonymsOf.html">synonymsOf</a>.
-  <div class="features">read-only</div>
-
-</dd>
-
-        <dt id="vocabulary" class="property">
-  <span class="name"><a href="../dictosaurus/DictoSaurusMixin/vocabulary.html">vocabulary</a></span>
-  <span class="signature">&#8594; <a href="../dictosaurus/Vocabulary-class.html">Vocabulary</a></span> 
-
-</dt>
-<dd>
-  A <a href="../dictosaurus/Vocabulary-class.html">Vocabulary</a> instance used by <a href="../dictosaurus/DictoSaurusMixin/definitionOf.html">definitionOf</a>.
-  <div class="features">read-only</div>
-
-</dd>
-
       </dl>
     </section>
 
@@ -162,20 +155,6 @@
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="definitionOf" class="callable">
-  <span class="name"><a href="../dictosaurus/DictoSaurusMixin/definitionOf.html">definitionOf</a></span><span class="signature">(<wbr><span class="parameter" id="definitionOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Returns the meaning of <code>term</code> from a <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a>. Returns null
-if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does not contain the key <code>term</code>.
-  <div class="features">override</div>
-
-</dd>
-
         <dt id="expandTerm" class="callable">
   <span class="name"><a href="../dictosaurus/DictoSaurusMixin/expandTerm.html">expandTerm</a></span><span class="signature">(<wbr><span class="parameter" id="expandTerm-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="expandTerm-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">5</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
@@ -185,6 +164,19 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
 </dt>
 <dd>
   Expands <code>term</code> to an ordered list of terms.
+  <div class="features">override</div>
+
+</dd>
+
+        <dt id="getEntry" class="callable">
+  <span class="name"><a href="../dictosaurus/DictoSaurusMixin/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Term.html">Term</a></span> <span class="parameter-name">term</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the meaning of <code>term</code>.
   <div class="features">override</div>
 
 </dd>
@@ -210,14 +202,14 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
 
 </dt>
 <dd>
-  Returns a set of unique terms from a KGramIndex that start with <code>chars</code>.
+  Returns a set of unique terms that start with <code>chars</code>.
   <div class="features">override</div>
 
 </dd>
 
         <dt id="suggestionsFor" class="callable">
   <span class="name"><a href="../dictosaurus/DictoSaurusMixin/suggestionsFor.html">suggestionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="suggestionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="suggestionsFor-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
@@ -236,7 +228,7 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
 
 </dt>
 <dd>
-  Returns the synonyms of <code>term</code> from a <a href="../dictosaurus/SynonymsIndex.html">SynonymsIndex</a>.
+  Returns the synonyms of <code>term</code> and its tokenized versions.
   <div class="features">override</div>
 
 </dd>
@@ -301,95 +293,24 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
-  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
+  <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+  <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.0.0+6/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextDocument-class.html">TextDocument</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
+  <li><a href="../dictosaurus/OxfordDictionaries-class.html">OxfordDictionaries</a></li>
+  <li><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/Token-class.html">Token</a></li>
-  <li><a href="../dictosaurus/Vocabulary-class.html">Vocabulary</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#extensions">Extensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryEntryCollectionExtension.html">DictionaryEntryCollectionExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryEntryExtension.html">DictionaryEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryExtensions.html">DictionaryExtensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DocumentPostingsEntryExtension.html">DocumentPostingsEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/IDftDictionaryEntryExtension.html">IDftDictionaryEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/IdFtIndexExtensions.html">IdFtIndexExtensions</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/KGramIndexExtension.html">KGramIndexExtension</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.0.0+6/porter_2_stemmer/Porter2StemmerExtension.html">Porter2StemmerExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/PostingsEntryExtension.html">PostingsEntryExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/PostingsExtension.html">PostingsExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TextAnalysisExtension.html">TextAnalysisExtension</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TokenCollectionExtension.html">TokenCollectionExtension</a></li>
 
 
 
 
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
+  <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#typedefs">Typedefs</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/CharacterFilter.html">CharacterFilter</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/Dictionary.html">Dictionary</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryEntry.html">DictionaryEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryLengthLoader.html">DictionaryLengthLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryLoader.html">DictionaryLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DictionaryUpdater.html">DictionaryUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DocId.html">DocId</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DocumentPostings.html">DocumentPostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/DocumentPostingsEntry.html">DocumentPostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/FieldPostingsEntry.html">FieldPostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/Ft.html">Ft</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/FtdPostings.html">FtdPostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/IdFt.html">IdFt</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/IdFtIndex.html">IdFtIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/JSON.html">JSON</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/JsonCollection.html">JsonCollection</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/JsonTokenizer.html">JsonTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/KGram.html">KGram</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/KGramIndex.html">KGramIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/KGramIndexLoader.html">KGramIndexLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/KGramIndexUpdater.html">KGramIndexUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/ParagraphSplitter.html">ParagraphSplitter</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/Postings.html">Postings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/PostingsEntry.html">PostingsEntry</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/PostingsLoader.html">PostingsLoader</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/PostingsUpdater.html">PostingsUpdater</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/Pt.html">Pt</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/SentenceSplitter.html">SentenceSplitter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/SourceText.html">SourceText</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/Stemmer.html">Stemmer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/StopWords.html">StopWords</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/SyllableCounter.html">SyllableCounter</a></li>
-  <li><a href="../dictosaurus/SynonymsIndex.html">SynonymsIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/Term.html">Term</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TermFilter.html">TermFilter</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/TermPositions.html">TermPositions</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TermSplitter.html">TermSplitter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/TokenFilter.html">TokenFilter</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/Tokenizer.html">Tokenizer</a></li>
-  <li><a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.11.2/text_analysis/Zone.html">Zone</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/ZonePostings.html">ZonePostings</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.14.5+1/text_indexing/ZoneWeightMap.html">ZoneWeightMap</a></li>
 
 </ol>
 
@@ -406,14 +327,13 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
       <a href="../dictosaurus/DictoSaurusMixin-class.html#instance-properties">Properties</a>
     </li>
     <li><a href="../dictosaurus/DictoSaurusMixin/autoCorrect.html">autoCorrect</a></li>
+    <li><a href="../dictosaurus/DictoSaurusMixin/dictionary.html">dictionary</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../dictosaurus/DictoSaurusMixin/thesaurus.html">thesaurus</a></li>
-    <li><a href="../dictosaurus/DictoSaurusMixin/vocabulary.html">vocabulary</a></li>
 
     <li class="section-title"><a href="../dictosaurus/DictoSaurusMixin-class.html#instance-methods">Methods</a></li>
-    <li><a href="../dictosaurus/DictoSaurusMixin/definitionOf.html">definitionOf</a></li>
     <li><a href="../dictosaurus/DictoSaurusMixin/expandTerm.html">expandTerm</a></li>
+    <li><a href="../dictosaurus/DictoSaurusMixin/getEntry.html">getEntry</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../dictosaurus/DictoSaurusMixin/startsWith.html">startsWith</a></li>
     <li><a href="../dictosaurus/DictoSaurusMixin/suggestionsFor.html">suggestionsFor</a></li>
@@ -435,7 +355,7 @@ if the <a href="../dictosaurus/VocabularyIndex.html">VocabularyIndex</a> does no
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.4
+      0.0.1-beta.5
   </span>
 
   

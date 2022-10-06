@@ -51,14 +51,11 @@
 
     
 <section class="desc markdown">
-  <p>The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface:</p>
-<ul>
-<li>exposes the <a href="../dictosaurus/Dictionary/definitionsOf.html">definitionsOf</a> method that returns a set of definitions of
-a term and its tokenized versions; and</li>
-<li>the <a href="../dictosaurus/Dictionary/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term and should be
-the same as that used to create the dictionary index queried by the
-<a href="../dictosaurus/Dictionary-class.html">Dictionary</a>.</li>
-</ul>
+  <p>The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes the <a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a> method that returns
+a <a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> for a term.</p>
+<p>The unnamed <code>Dictionary()</code> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
+with an asynchronous <a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a> to return the meaning of a term
+from a dictionary provider.</p>
 </section>
 
 
@@ -71,7 +68,7 @@ the same as that used to create the dictionary index queried by the
 
         <dt>Implementers</dt>
         <dd><ul class="comma-separated clazz-relationships">
-          <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
+          <li><a href="../dictosaurus/OxfordDictionaries-class.html">OxfordDictionaries</a></li>
         </ul></dd>
 
 
@@ -85,20 +82,12 @@ the same as that used to create the dictionary index queried by the
 
     <dl class="constructor-summary-list">
         <dt id="Dictionary" class="callable">
-          <span class="name"><a href="../dictosaurus/Dictionary/Dictionary.html">Dictionary</a></span><span class="signature">(<span class="parameter" id="-param-dictionaryCallback"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></span>&gt;</span></span> <span class="parameter-name">dictionaryCallback</span>(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>), </span><span class="parameter" id="-param-tokenizer">{<span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a>?</span> <span class="parameter-name">tokenizer</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/Dictionary/Dictionary.html">Dictionary</a></span><span class="signature">(<span class="parameter" id="-param-dictionaryCallback"><span class="type-annotation"><a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a></span> <span class="parameter-name">dictionaryCallback</span>, </span><span class="parameter" id="-param-languageCode">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">languageCode</span> = <span class="default-value">&#39;en_US&#39;</span>]</span>)</span>
         </dt>
         <dd>
           The unnamed <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
-with an asynchronous callback <code>dictionaryCallback</code> to return the meaning
-of a term.
-            <div class="constructor-modifier features">factory</div>
-        </dd>
-        <dt id="Dictionary.inMemory" class="callable">
-          <span class="name"><a href="../dictosaurus/Dictionary/Dictionary.inMemory.html">Dictionary.inMemory</a></span><span class="signature">(<span class="parameter" id="inMemory-param-dictionaryMap"><span class="type-annotation"><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></span> <span class="parameter-name">dictionaryMap</span>, </span><span class="parameter" id="inMemory-param-tokenizer">{<span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a>?</span> <span class="parameter-name">tokenizer</span>}</span>)</span>
-        </dt>
-        <dd>
-          The <a href="../dictosaurus/Dictionary/Dictionary.inMemory.html">Dictionary.inMemory</a> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
-with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> instance <code>dictionaryMap</code>.
+with the <code>dictionaryCallback</code> to return the meaning of a term
+from a dictionary provider.
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
@@ -119,6 +108,17 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
 
 </dd>
 
+        <dt id="languageCode" class="property">
+  <span class="name"><a href="../dictosaurus/Dictionary/languageCode.html">languageCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd>
+  The ISO language code for the language of the <code>term</code>.
+  <div class="features">read-only</div>
+
+</dd>
+
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
@@ -127,17 +127,6 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
 <dd class="inherited">
   A representation of the runtime type of the object.
   <div class="features">read-only, inherited</div>
-
-</dd>
-
-        <dt id="tokenizer" class="property">
-  <span class="name"><a href="../dictosaurus/Dictionary/tokenizer.html">tokenizer</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a></span> 
-
-</dt>
-<dd>
-  The <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a> used by the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> to filter terms.
-  <div class="features">read-only</div>
 
 </dd>
 
@@ -150,15 +139,15 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="definitionsOf" class="callable">
-  <span class="name"><a href="../dictosaurus/Dictionary/definitionsOf.html">definitionsOf</a></span><span class="signature">(<wbr><span class="parameter" id="definitionsOf-param-term"><span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Term.html">Term</a></span> <span class="parameter-name">term</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></span>&gt;</span></span>
+        <dt id="getEntry" class="callable">
+  <span class="name"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns a set of definitions of <code>term</code> and its tokenized versions.
+  Returns a <code>DictionaryEntry</code> for <code>term</code>.
   
 
 </dd>
@@ -237,23 +226,23 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
-  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
-  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
-  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
-  <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
+  <li><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a></li>
+  <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+  <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
+  <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
+  <li><a href="../dictosaurus/OxfordDictionaries-class.html">OxfordDictionaries</a></li>
+  <li><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
-  <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
 
 
 
 
+  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
+  <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#typedefs">Typedefs</a></li>
-  <li><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></li>
 
 </ol>
 
@@ -264,18 +253,17 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
 
         <li class="section-title"><a href="../dictosaurus/Dictionary-class.html#constructors">Constructors</a></li>
           <li><a href="../dictosaurus/Dictionary/Dictionary.html">Dictionary</a></li>
-          <li><a href="../dictosaurus/Dictionary/Dictionary.inMemory.html">inMemory</a></li>
 
 
     <li class="section-title">
       <a href="../dictosaurus/Dictionary-class.html#instance-properties">Properties</a>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li><a href="../dictosaurus/Dictionary/languageCode.html">languageCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../dictosaurus/Dictionary/tokenizer.html">tokenizer</a></li>
 
     <li class="section-title"><a href="../dictosaurus/Dictionary-class.html#instance-methods">Methods</a></li>
-    <li><a href="../dictosaurus/Dictionary/definitionsOf.html">definitionsOf</a></li>
+    <li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
@@ -294,7 +282,7 @@ with in-memory <a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a> ins
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.4
+      0.0.1-beta.5
   </span>
 
   

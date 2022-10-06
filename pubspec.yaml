@@ -2,8 +2,6 @@
 # Copyright (c) 2022, GM Consult Pty Ltd
 # All rights reserved.
 
-# TODO: Edit pubspec.yaml
-
 name: dictosaurus
 description: Extensions on String that provide dictionary and thesaurus functions (**PRE-RELEASE**).
 version: 0.0.1-beta.5
@@ -15,13 +13,15 @@ environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies:
-  # -----PubDev Packages (in alphabetic order) -----
+  # (in alphabetic order)
   collection: ^1.16.0
+  http: ^0.13.4
   meta: ^1.8.0
   text_indexing: ^0.16.0
 
 
 dev_dependencies:
+  # (in alphabetic order)
   gmconsult_dev: ^0.0.4
   hive: ^2.2.3
   lints: ^2.0.0

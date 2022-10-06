@@ -2,7 +2,6 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/dictosaurus.dart';
 import 'package:dictosaurus/src/dictionary/part_of_speech.dart';
 import 'term_variant.dart';
 

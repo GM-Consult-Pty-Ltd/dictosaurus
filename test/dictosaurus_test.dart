@@ -10,8 +10,22 @@ import 'package:dictosaurus/package_exports.dart';
 import 'package:dictosaurus/type_definitions.dart';
 import 'package:test/test.dart';
 import 'data/sample_news.dart';
+import 'keys.dart';
 
 void main() {
+  group('Dictionary', (() {
+    //
+
+    test('Dictionary', (() async {
+      final dictionary = OxfordDictionaries(
+          languageCode: 'en_US',
+          appId: Keys.oxfordDictionaries['appId'] as String,
+          appKey: Keys.oxfordDictionaries['appKey'] as String);
+      // final json = await dictionary.entriesEndPoint('lexicon');
+      final de = await dictionary.getEntry('swim');
+      print(de?.allDefinitions);
+    }));
+  }));
   group('Thesaurus', (() {
     //
 

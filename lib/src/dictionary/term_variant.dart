@@ -40,11 +40,11 @@ abstract class TermVariant {
           {required String term,
           required PartOfSpeech partOfSpeech,
           required String definition,
-          Set<String> synonyms = const <String>{},
-          Set<String> antonyms = const <String>{},
-          Set<String> phrases = const <String>{},
-          Set<String> inflections = const <String>{}}) =>
-      _TermVariant(definition, partOfSpeech, term, synonyms, antonyms,
+          required Set<String> synonyms,
+          required Set<String> antonyms,
+          required Set<String> phrases,
+          required Set<String> inflections}) =>
+      _TermVariant(term, partOfSpeech, definition, synonyms, antonyms,
           inflections, phrases);
 
   /// The term for this entry.

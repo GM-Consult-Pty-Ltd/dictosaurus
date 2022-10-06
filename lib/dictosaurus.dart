@@ -5,7 +5,14 @@
 /// Extensions on String that provide dictionary and thesaurus functions.
 library dictosaurus;
 
-export 'src/auto_correct/auto_correct.dart';
-export 'src/thesaurus/thesaurus.dart';
-export 'src/dictionary/dictionary.dart';
-export 'dictosaurus.dart';
+export 'src/auto_correct/auto_correct.dart' show AutoCorrect;
+export 'src/thesaurus/thesaurus.dart' show Thesaurus;
+export 'src/dictionary/_index.dart'
+    show
+        Dictionary,
+        DictionaryEntry,
+        TermVariant,
+        PartOfSpeech,
+        OxfordDictionaries;
+export 'src/dictosaurus.dart'
+    show DictoSaurus, DictoSaurusBase, DictoSaurusMixin;
