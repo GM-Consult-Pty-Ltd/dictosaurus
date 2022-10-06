@@ -19,8 +19,8 @@ typedef DictionaryMap = Map<String, String>;
 abstract class Dictionary {
 //
 
-  /// Returns a [DictionaryEntry] for [term] from the [Dictionary].
-  Future<DictionaryEntry?> getEntry(String term);
+  // /// Returns a [DictionaryEntry] for [term] from the [Dictionary].
+  // Future<DictionaryEntry?> getEntry(String term);
 
   /// Returns a set of definitions of [term] and its tokenized versions.
   ///
