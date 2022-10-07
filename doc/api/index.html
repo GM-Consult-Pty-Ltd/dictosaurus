@@ -86,9 +86,22 @@ All rights reserved.
   dictosaurus: &lt;latest_version&gt;
 </code></pre>
 <p>In your code file add the following import:</p>
-<pre class="language-dart"><code class="language-dart">import 'package:dictosaurus/dictosaurus.dart';
+<pre class="language-dart"><code class="language-dart">// import the core interfaces, classes and mixins
+import 'package:dictosaurus/dictosaurus.dart';
+
+// import the typedefs if needed
+import 'package:dictosaurus/type_definitions.dart';
+
 </code></pre>
-<p>TODO: describe usage.</p>
+<p>Use the <a href="#api">AutoCorrect</a> class to get spelling correction suggestions for a word:</p>
+<pre class="language-dart"><code class="language-dart">  // initialize an in-memory `AutoCorrect` instance with a k-grams 
+  //  hashmap `kGramIndex`
+  final autoCorrect = AutoCorrect.inMemory(kGramIndex);
+
+  // get autocorrect suggestions for the term
+  final suggestions = await autoCorrect.suggestionsFor('aple', 10);
+
+</code></pre>
 <h2 id="api">API</h2>
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/">API</a> exposes</p>
 <p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
@@ -149,13 +162,6 @@ All rights reserved.
 <dd>Extensions on String that provide dictionary and thesaurus functions.
 </dd>
 
-          <dt id="package_exports">
-  <span class="name"><a href="package_exports/package_exports-library.html">package_exports</a></span> 
-
-</dt>
-<dd>Extensions on String that provide dictionary and thesaurus functions.
-</dd>
-
           <dt id="type_definitions">
   <span class="name"><a href="type_definitions/type_definitions-library.html">type_definitions</a></span> 
 
@@ -184,7 +190,6 @@ All rights reserved.
     <ol>
       <li class="section-title">Libraries</li>
       <li><a href="dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
-      <li><a href="package_exports/package_exports-library.html">package_exports</a></li>
       <li><a href="type_definitions/type_definitions-library.html">type_definitions</a></li>
 </ol>
 

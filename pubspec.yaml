@@ -22,7 +22,7 @@ dependencies:
 
 dev_dependencies:
   # (in alphabetic order)
-  gmconsult_dev: ^0.0.4
+  gmconsult_dev: ^0.0.5
   hive: ^2.2.3
   lints: ^2.0.0
   test: ^1.21.1

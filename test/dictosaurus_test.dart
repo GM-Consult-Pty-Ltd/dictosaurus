@@ -4,13 +4,14 @@
 
 @Timeout(Duration(minutes: 5))
 
-// import 'package:dictosaurus/src/_index.dart';
+// import the core classes
 import 'package:dictosaurus/dictosaurus.dart';
-import 'package:dictosaurus/package_exports.dart';
+// import the typedefs
 import 'package:dictosaurus/type_definitions.dart';
 import 'package:test/test.dart';
 import 'data/sample_news.dart';
-import 'keys.dart';
+import 'keys/keys.dart';
+import 'impl/oxford_dictionary.dart';
 
 void main() {
   group('Dictionary', (() {

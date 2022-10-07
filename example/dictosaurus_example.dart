@@ -2,12 +2,11 @@
 // BSD 3-Clause License
 // All rights reserved
 
-// ignore: unused_import
+// imports the core classes
 import 'package:dictosaurus/dictosaurus.dart';
-import 'package:dictosaurus/src/_index.dart';
 
+// imports the data
 import 'data/kgram_index.dart';
-// import 'data/synonyms_index.dart';
 
 void main() async {
   // run the README.md example(s)

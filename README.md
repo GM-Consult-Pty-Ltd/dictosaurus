@@ -53,10 +53,25 @@ dependencies:
 In your code file add the following import:
 
 ```dart
+// import the core interfaces, classes and mixins
 import 'package:dictosaurus/dictosaurus.dart';
+
+// import the typedefs if needed
+import 'package:dictosaurus/type_definitions.dart';
+
 ```
 
-TODO: describe usage.
+Use the [AutoCorrect](#api) class to get spelling correction suggestions for a word:
+
+```dart
+  // initialize an in-memory `AutoCorrect` instance with a k-grams 
+  //  hashmap `kGramIndex`
+  final autoCorrect = AutoCorrect.inMemory(kGramIndex);
+
+  // get autocorrect suggestions for the term
+  final suggestions = await autoCorrect.suggestionsFor('aple', 10);
+
+```
 
 ## API
 

@@ -5,11 +5,9 @@
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:dictosaurus/type_definitions.dart';
 import 'dart:async';
-// import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:gmconsult_dev/gmconsult_dev.dart';
 
-part 'http_mixin.dart';
+// part 'http_mixin.dart';
 
 /// Implements [Dictionary] with the `Oxford Dictionaries` API as dictionary
 /// provider.  See: https://developer.oxforddictionaries.com/.
@@ -311,17 +309,16 @@ abstract class OxfordDictionariesApiMixin {
     if (languages.contains(sourceLanguage) && term.isNotEmpty) {
       final path = 'api/v2/entries/$sourceLanguage/${term.toLowerCase()}';
       final queryParameters = {'strictMatch': strictMatch.toString()};
-      final json = await _HttpTest.getJson(
+      final json = await API.get(
           host: host,
           path: path,
           headers: headers,
           queryParameters: queryParameters,
-          protocolIsHttps: true);
-      if (json != null) {
-        final id = json['id'];
-        if (id == term.toLowerCase()) {
-          return json;
-        }
+          isHttps: true);
+
+      final id = json['id'];
+      if (id == term.toLowerCase()) {
+        return json;
       }
     }
     return null;
