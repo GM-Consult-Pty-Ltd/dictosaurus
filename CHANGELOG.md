@@ -4,6 +4,12 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+## 0.0.1-beta.6
+
+### *Updated*
+* Documentation.
+* Dependencies.
+
 ## 0.0.1-beta.5
 **PRE-RELEASE, BREAKING CHANGES**
 
@@ -14,9 +20,9 @@ All rights reserved.
 * Removed [DictionaryMap] typedef.
 * Changed [Dictosaurus] interface.
 
-## *Updated*
-* Updated documentation.
-* Updated license.
+### *Updated*
+* Documentation.
+* License.
 
 ## 0.0.1-beta.4
 **PRE-RELEASE**
@@ -31,14 +37,14 @@ All rights reserved.
 ## 0.0.1-beta.3
 **PRE-RELEASE**
 
-## *Updated*
-* Updated documentation
+### *Updated*
+* Documentation.
 
 ## 0.0.1-beta.2
 **PRE-RELEASE**
 
-## *Updated*
-* Updated documentation
+### *Updated*
+* Documentation.
 
 ## 0.0.1-beta.1
 

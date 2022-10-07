@@ -4,8 +4,8 @@
 
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:dictosaurus/type_definitions.dart';
+import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
-import 'package:gmconsult_dev/gmconsult_dev.dart';
 
 // part 'http_mixin.dart';
 
@@ -309,7 +309,7 @@ abstract class OxfordDictionariesApiMixin {
     if (languages.contains(sourceLanguage) && term.isNotEmpty) {
       final path = 'api/v2/entries/$sourceLanguage/${term.toLowerCase()}';
       final queryParameters = {'strictMatch': strictMatch.toString()};
-      final json = await API.get(
+      final json = await JsonApi().get(
           host: host,
           path: path,
           headers: headers,
