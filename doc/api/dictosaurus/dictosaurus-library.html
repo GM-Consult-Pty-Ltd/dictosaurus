@@ -60,20 +60,20 @@
 
       <dl>
         <dt id="AsyncCallbackIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></span> 
 
 </dt>
 <dd>
-  The <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a> is a <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a> implementation class that
-mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a>.
+  The <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a> is a <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a> implementation class that
+mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a>.
 </dd>
 
         <dt id="AsyncCallbackIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></span> 
 
 </dt>
 <dd>
-  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes five
+  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes five
 callback function fields that must be overriden:
 </dd>
 
@@ -92,6 +92,15 @@ callback function fields that must be overriden:
 <dd>
   The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes the <a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a> method that returns
 a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term.
+</dd>
+
+        <dt id="DictionaryMixin">
+  <span class="name "><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></span> 
+
+</dt>
+<dd>
+  An abstract/mixin class that implements <a href="../dictosaurus/Dictionary/definitionsFor.html">Dictionary.definitionsFor</a>,
+<a href="../dictosaurus/Dictionary/phrasesWith.html">Dictionary.phrasesWith</a> and <a href="../dictosaurus/Dictionary/inflectionsOf.html">Dictionary.inflectionsOf</a>.
 </dd>
 
         <dt id="DictoSaurus">
@@ -130,27 +139,27 @@ methods:
 </dd>
 
         <dt id="InMemoryIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></span> 
 
 </dt>
 <dd>
-  The InMemoryIndex is an implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a> interface
-that mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a>.
+  The InMemoryIndex is an implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a> interface
+that mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a>.
 </dd>
 
         <dt id="InMemoryIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></span> 
 
 </dt>
 <dd>
-  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes in-memory
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin/postings.html">postings</a> fields that must be overriden. Provides
+  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes in-memory
+<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/postings.html">postings</a> fields that must be overriden. Provides
 implementation of the following methods for operations on the in-memory
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin/postings.html">postings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> maps:
+<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/postings.html">postings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> maps:
 </dd>
 
         <dt id="InvertedIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></span> 
 
 </dt>
 <dd>
@@ -159,12 +168,12 @@ zoned index on a collection of documents:
 </dd>
 
         <dt id="InvertedIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></span> 
 
 </dt>
 <dd>
-  A mixin that implements the <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex/getTfIndex.html">InvertedIndex.getTfIndex</a>,
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex/getFtdPostings.html">InvertedIndex.getFtdPostings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex/getIdFtIndex.html">InvertedIndex.getIdFtIndex</a> methods.
+  A mixin that implements the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getTfIndex.html">InvertedIndex.getTfIndex</a>,
+<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getFtdPostings.html">InvertedIndex.getFtdPostings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getIdFtIndex.html">InvertedIndex.getIdFtIndex</a> methods.
 </dd>
 
         <dt id="Porter2Stemmer">
@@ -249,21 +258,21 @@ document:
 </dd>
 
         <dt id="TextIndexer">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexer-class.html">TextIndexer</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a></span> 
 
 </dt>
 <dd>
   Interface for classes that construct and maintain an inverted, positional,
-zoned index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a>) and k-gram index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+1/type_definitions/KGramsMap.html">KGramsMap</a>) for a
+zoned index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>) and k-gram index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/KGramsMap.html">KGramsMap</a>) for a
 collection of documents (<code>corpus</code>).
 </dd>
 
         <dt id="TextIndexerBase">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></span> 
 
 </dt>
 <dd>
-  Base class implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexer-class.html">TextIndexer</a> interface.
+  Base class implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a> interface.
 </dd>
 
         <dt id="TextTokenizer">
@@ -332,11 +341,11 @@ have similar grammatical properties.
 </dd>
 
         <dt id="TermSortStrategy">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TermSortStrategy.html">TermSortStrategy</a></span> 
+  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></span> 
 
 </dt>
 <dd>
-  Enumerates the sorting strategy for <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/type_definitions/DftMap.html">DftMap</a>'s <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/type_definitions/DftMapEntry.html">DftMapEntry</a>s.
+  Enumerates the sorting strategy for <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/DftMap.html">DftMap</a>'s <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/DftMapEntry.html">DftMapEntry</a>s.
 </dd>
 
       </dl>
@@ -372,18 +381,19 @@ have similar grammatical properties.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
   <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
@@ -393,8 +403,8 @@ have similar grammatical properties.
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
@@ -408,7 +418,7 @@ have similar grammatical properties.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
 
 </ol>
@@ -420,7 +430,7 @@ have similar grammatical properties.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1+1
+      0.0.1+2
   </span>
 
   

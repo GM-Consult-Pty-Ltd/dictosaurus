@@ -3,7 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/dictosaurus.dart';
-import 'package:dictosaurus/src/dictionary/dictionary.dart';
+// import 'package:dictosaurus/src/dictionary/dictionary.dart';
 import 'package:dictosaurus/type_definitions.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';

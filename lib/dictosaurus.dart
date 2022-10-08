@@ -12,6 +12,7 @@ export 'src/thesaurus/thesaurus.dart' show Thesaurus;
 export 'src/dictionary/_index.dart'
     show
         Dictionary,
+        DictionaryMixin,
         TermProperties,
         TermPropertiesMixin,
         TermDefinition,

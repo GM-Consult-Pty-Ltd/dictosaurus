@@ -4,6 +4,15 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+## 0.0.1+2
+**Beta Stable Release**
+
+### *New*
+* Added `DictionaryMixin` to `dictosaurus` package exports.
+
+### *Updated*
+* Documentation.
+
 ## 0.0.1+1
 **Beta Stable Release**
 
