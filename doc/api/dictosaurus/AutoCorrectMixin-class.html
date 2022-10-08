@@ -54,11 +54,8 @@
   <p>A mixin class that implements <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a>.</p>
 <p>Classes that mix in <a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a> must override:</p>
 <ul>
-<li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a>, the length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a>;</li>
-<li>the <a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term and should be
-the same as that used to create the k-grams index queried by the
-<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>; and</li>
-<li><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a>, an asynchronous callback function that returns a <a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a>
+<li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a>, the length of the k-grams in the <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, Set&lt;String&gt;&gt;</a>; and</li>
+<li><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a>, an asynchronous callback function that returns a <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, Set&lt;String&gt;&gt;</a>
 for a collection of k-grams.</li>
 </ul>
 </section>
@@ -80,6 +77,7 @@ for a collection of k-grams.</li>
         <dt>Implementers</dt>
         <dd><ul class="comma-separated clazz-relationships">
           <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+          <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
         </ul></dd>
 
 
@@ -122,19 +120,19 @@ for a collection of k-grams.</li>
 
 </dt>
 <dd>
-  The length of the k-grams in the <a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a>.
+  The length of the k-grams in the <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, Set&lt;String&gt;&gt;</a>.
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="kGramIndexLoader" class="property">
   <span class="name"><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-kGrams"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/KGram.html">KGram</a></span>&gt;</span></span> <span class="parameter-name">kGrams</span></span>)</span></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-kGrams"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">kGrams</span></span>)</span></span> 
 
 </dt>
 <dd>
   A function or callback that asynchronously returns a subset of a
-<a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a> for a collection of <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/KGram.html">KGram</a> strings.
+<a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, Set&lt;String&gt;&gt;</a> for a collection of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> strings.
   <div class="features">read-only</div>
 
 </dd>
@@ -146,17 +144,6 @@ for a collection of k-grams.</li>
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features">read-only, inherited</div>
-
-</dd>
-
-        <dt id="tokenizer" class="property inherited">
-  <span class="name"><a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a></span> 
-
-</dt>
-<dd class="inherited">
-  The <a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term.
   <div class="features">read-only, inherited</div>
 
 </dd>
@@ -199,14 +186,13 @@ k-grams index.
 
         <dt id="suggestionsFor" class="callable">
   <span class="name"><a href="../dictosaurus/AutoCorrectMixin/suggestionsFor.html">suggestionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="suggestionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="suggestionsFor-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns a set of unique alternative spellings for a <code>term</code> and its
-tokenized versions.
+  Returns a set of unique alternative spellings for a <code>term</code>.
   <div class="features">override</div>
 
 </dd>
@@ -277,6 +263,15 @@ tokenized versions.
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
   <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
+  <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+  <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
+  <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
+  <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
+  <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
+  <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
   <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
@@ -286,9 +281,9 @@ tokenized versions.
 
 
 
+  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
+  <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#typedefs">Typedefs</a></li>
-  <li><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></li>
 
 </ol>
 
@@ -308,7 +303,6 @@ tokenized versions.
     <li><a href="../dictosaurus/AutoCorrectMixin/k.html">k</a></li>
     <li><a href="../dictosaurus/AutoCorrectMixin/kGramIndexLoader.html">kGramIndexLoader</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li class="inherited"><a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a></li>
 
     <li class="section-title"><a href="../dictosaurus/AutoCorrectMixin-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -331,7 +325,7 @@ tokenized versions.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.4
+      0.0.3
   </span>
 
   

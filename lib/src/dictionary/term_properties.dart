@@ -5,7 +5,7 @@
 import 'package:dictosaurus/src/dictionary/part_of_speech.dart';
 import 'term_variant.dart';
 
-/// Object model for an entry in a [Dictionary] with immutable properties:
+/// Object model for term or word with immutable properties:
 /// - [term] is the term or word for this entry;
 /// - [stem] is the stemmed version of [term];
 /// - [lemma] is the lemma of [term];
@@ -28,9 +28,8 @@ abstract class TermProperties {
 
   /// Factory constructor that instantiates an immutable [TermProperties]
   /// instance:
-  /// - [languageCode] is the ISO language code for the language of the
-  ///   [term];
-  /// - [term] is the term or word for this entry;
+  /// - [languageCode] is the ISO language code for the language of the [term];
+  /// - [term] is the term or word for this [TermProperties];
   /// - [stem] is the stemmed version of [term];
   /// - [lemma] is the lemma of [term];
   /// - [phonetic] is the phonetic representation of [term] when pronounced in
@@ -47,13 +46,13 @@ abstract class TermProperties {
           required String phonetic,
           required String languageCode,
           required Iterable<TermDefinition> variants}) =>
-      _TermProperties(
+      _TermPropertiesImpl(
           languageCode, term, stem, lemma, phonetic, variants.toSet());
 
   /// The ISO language code for the language of the [term].
   String get languageCode;
 
-  /// The term for this entry.
+  /// The term for this [TermProperties].
   String get term;
 
   /// The stemmed version of [term].
@@ -114,6 +113,15 @@ abstract class TermProperties {
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
 /// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
 /// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
+///
+/// Sub-classes must override:
+/// - [languageCode], the ISO language code for the language of the [term];
+/// - [variants], an un-ordered collection of unique [TermDefinition] instances;
+/// - [term], the term or word for this [TermProperties];
+/// - [lemma], the lemma of [term];
+/// - [stem], the stemmed version of [term]; and
+/// - [phonetic], the phonetic representation of [term] when pronounced in
+///   [languageCode].
 abstract class TermPropertiesMixin implements TermProperties {
   //
 
@@ -222,8 +230,27 @@ abstract class TermPropertiesMixin implements TermProperties {
   int get hashCode => Object.hash(term, languageCode, variants);
 }
 
+/// An abstract class that implements the [TermProperties] interface:
+///
+/// Sub-classes must override:
+/// - [languageCode], the ISO language code for the language of the [term];
+/// - [variants], an un-ordered collection of unique [TermDefinition] instances;
+/// - [term], the term or word for this [TermProperties];
+/// - [lemma], the lemma of [term];
+/// - [stem], the stemmed version of [term]; and
+/// - [phonetic], the phonetic representation of [term] when pronounced in
+///   [languageCode].
+abstract class TermPropertiesBase with TermPropertiesMixin {
+  //
+
+  /// A default const unnamed generative constructor for sub classes.
+  const TermPropertiesBase();
+
+  //
+}
+
 /// Implementation class for [TermProperties], extends [TermPropertiesBase].
-class _TermProperties with TermPropertiesMixin {
+class _TermPropertiesImpl extends TermPropertiesBase {
   //
 
   /// Private final field for [variants].
@@ -239,7 +266,7 @@ class _TermProperties with TermPropertiesMixin {
   @override
   final String term;
 
-  const _TermProperties(this.languageCode, this.term, this.stem, this.lemma,
+  const _TermPropertiesImpl(this.languageCode, this.term, this.stem, this.lemma,
       this.phonetic, this._variants);
 
   @override

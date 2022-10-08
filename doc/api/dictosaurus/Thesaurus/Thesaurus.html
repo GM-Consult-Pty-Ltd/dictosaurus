@@ -50,26 +50,23 @@
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">Thesaurus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span></li>
-<li><span class="parameter" id="-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>}</span></li>
+      <span class="name ">Thesaurus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-dictionaryCallbacky"><span class="type-annotation"><a href="../../type_definitions/DictionaryCallback.html">DictionaryCallback</a></span> <span class="parameter-name">dictionaryCallbacky</span></span></li>
 </ol>)
     </section>
 
     
 <section class="desc markdown">
-  <p>The unnamed <a href="../../dictosaurus/Thesaurus-class.html">Thesaurus</a> factory constructor initializes a <a href="../../dictosaurus/Thesaurus-class.html">Thesaurus</a>
-that uses a <a href="../../dictosaurus/Dictionary-class.html">Dictionary</a> to retrieve term's <a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or
-<a href="../../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.</p>
+  <p>Unnamed factory constructor initializes a <a href="../../dictosaurus/Thesaurus-class.html">Thesaurus</a>that returns the
+synonyms or antonyms for a term from a <a href="../../dictosaurus/TermProperties-class.html">TermProperties</a> object returned
+by <code>dictionaryCallbacky</code>.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">factory Thesaurus(
-        {required TermExpander synonymsCallback,
-        required TermExpander antonymsCallback}) =&gt;
-    _ThesaurusImpl(synonymsCallback, antonymsCallback);</code></pre>
+  <pre class="language-dart"><code class="language-dart">factory Thesaurus(DictionaryCallback dictionaryCallbacky) =&gt;
+    _ThesaurusImpl(dictionaryCallbacky);</code></pre>
 </section>
 
 
@@ -95,6 +92,7 @@ that uses a <a href="../../dictosaurus/Dictionary-class.html">Dictionary</a> to 
 
         <li class="section-title"><a href="../../dictosaurus/Thesaurus-class.html#constructors">Constructors</a></li>
           <li><a href="../../dictosaurus/Thesaurus/Thesaurus.html">Thesaurus</a></li>
+          <li><a href="../../dictosaurus/Thesaurus/Thesaurus.callBack.html">callBack</a></li>
           <li><a href="../../dictosaurus/Thesaurus/Thesaurus.dictionary.html">dictionary</a></li>
 
 
@@ -128,7 +126,7 @@ that uses a <a href="../../dictosaurus/Dictionary-class.html">Dictionary</a> to 
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   

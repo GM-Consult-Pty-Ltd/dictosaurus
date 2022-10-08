@@ -50,7 +50,7 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 <p><a href="https://github.com/GM-Consult-Pty-Ltd"><img src="https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/doc/images/dictosaurus.png?raw=true" alt="GM Consult Pty Ltd" title="GM Consult Pty Ltd"></a></p>
-<h2 id="dictionary-thesaurus-and-term-expansion-utilities"><strong>Dictionary, thesaurus and term expansion utilities.</strong></h2>
+<h2 id="dictionary-thesaurus-and-term-expansion-utilities-methods-used-in-natural-language-processing"><strong>Dictionary, thesaurus and term expansion utilities methods used in natural language processing.</strong></h2>
 <p><em>THIS PACKAGE IS <strong>PRE-RELEASE</strong>, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.</em></p>
 <p>Skip to section:</p>
 <ul>
@@ -63,14 +63,14 @@ All rights reserved.
 </ul>
 <h2 id="overview">Overview</h2>
 <p>The <code>dictosaurus</code> package provides language reference utilities used in <code>information retrieval systems</code>.</p>
-<p>Three utility classes provide dictionary and thesaurus functions:</p>
+<p>Three utility classes provide dictionary and thesaurus and term expansion functions:</p>
 <ul>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> class exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a <code>term</code>;</li>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> class exposes methods that return the synonyms or antonyms of a <code>term</code> ; and</li>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> class exposes methods that return alternative spellings for a <code>term</code> or terms that start with the same characters.</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a <code>term</code>;</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return the synonyms or antonyms of a <code>term</code> ; and</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes methods that return alternative spellings for a <code>term</code> or terms that start with the same characters.</li>
 </ul>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> class implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> also exposes the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a> method that performs <code>term-expansion</code>, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a> method that performs <code>term-expansion</code>, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
 <p>Refer to the <a href="#references">references</a> to learn more about information retrieval systems.</p>
 <h2 id="usage">Usage</h2>
 <p>In the <code>pubspec.yaml</code> of your flutter project, add the following dependency:</p>
@@ -136,9 +136,9 @@ import 'package:dictosaurus/type_definitions.dart';
 <p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
 <ul>
 <li>the <code>interface</code> is an abstract class that exposes fields and methods but contains no implementation code. The <code>interface</code> may expose a factory constructor that returns an <code>implementation class</code> instance;</li>
-<li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but not the input fields;</li>
-<li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor; and</li>
-<li>the class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</li>
+<li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but not the input fields; and</li>
+<li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor.
+The class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</li>
 </ul>
 <h2 id="definitions">Definitions</h2>
 <p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
@@ -207,7 +207,8 @@ import 'package:dictosaurus/type_definitions.dart';
   <span class="name"><a href="dictosaurus/dictosaurus-library.html">dictosaurus</a></span> 
 
 </dt>
-<dd>Dictionary, thesaurus and term expansion utilities.
+<dd>The <code>dictosaurus</code> package provides 'natural language processing (NLP)'
+utilities used in <code>information retrieval systems</code>.
 </dd>
 
           <dt id="type_definitions">
@@ -251,7 +252,7 @@ import 'package:dictosaurus/type_definitions.dart';
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   

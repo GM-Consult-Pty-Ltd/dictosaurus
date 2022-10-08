@@ -4,6 +4,23 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+## 0.0.3
+**Beta Stable Release**
+
+### *Breaking changes*
+* Changed signature of `Thesaurus` unnamed factory, use `Thesaurus.callBack` factory instead.
+
+### *New*
+* Added `Thesaurus.callBack` factory constructor.
+* Added `ThesaurusBase` abstract class.
+* Added `DictionaryBase` abstract class.
+* Added `AutoCorrectBase` abstract class.
+* Added `TermPropertiesBase` abstract class.
+* Added `TermDefinitionMixin` mixin class.
+
+### *Updated*
+* Documentation.
+
 ## 0.0.2+1
 **Beta Stable Release**
 

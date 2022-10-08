@@ -51,7 +51,7 @@
 
     
 <section class="desc markdown">
-  <p>Object model for an entry in a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> with immutable properties:</p>
+  <p>Object model for term or word with immutable properties:</p>
 <ul>
 <li><a href="../dictosaurus/TermProperties/term.html">term</a> is the term or word for this entry;</li>
 <li><a href="../dictosaurus/TermProperties/stem.html">stem</a> is the stemmed version of <a href="../dictosaurus/TermProperties/term.html">term</a>;</li>
@@ -293,7 +293,7 @@ instance:
 
 </dt>
 <dd>
-  The term for this entry.
+  The term for this <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>.
   <div class="features">read-only</div>
 
 </dd>
@@ -392,15 +392,22 @@ instance:
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
+  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
+  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
@@ -464,7 +471,7 @@ instance:
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   

@@ -111,7 +111,7 @@ abstract class DictionaryMixin implements Dictionary {
 ///   meaning of a collection of terms from a dictionary index; and
 /// - the [getEntry] method asynchronously gets the meaning of the term using
 ///   the [dictionaryCallback].
-class _DictionaryImpl with DictionaryMixin implements Dictionary {
+class _DictionaryImpl extends DictionaryBase {
 //
 
   @override
@@ -127,4 +127,18 @@ class _DictionaryImpl with DictionaryMixin implements Dictionary {
   /// Initializes a const [_DictionaryImpl] with an asynchronous callback
   /// [dictionaryCallback] that returns a [TermProperties] for a term.
   const _DictionaryImpl(this.dictionaryCallback, this.languageCode);
+}
+
+/// An abstract class that implements the [Dictionary] interface:
+///
+/// Sub-classes must override:
+/// - [languageCode], the ISO language code for the language of a term; and
+/// - [getEntry], a function that returns a [TermProperties] for a term.
+abstract class DictionaryBase with DictionaryMixin {
+  //
+
+  /// A default const unnamed generative constructor for sub classes.
+  const DictionaryBase();
+
+  //
 }

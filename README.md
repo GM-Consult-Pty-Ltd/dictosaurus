@@ -5,7 +5,7 @@ All rights reserved.
 -->
 
 [![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/doc/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
-## **Dictionary, thesaurus and term expansion utilities.**
+## **Dictionary, thesaurus and term expansion utilities methods used in natural language processing.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
@@ -21,14 +21,14 @@ Skip to section:
 
 The `dictosaurus` package provides language reference utilities used in `information retrieval systems`. 
 
-Three utility classes provide dictionary and thesaurus functions:
-* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) class exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a `term`;
-* the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) class exposes methods that return the synonyms or antonyms of a `term` ; and
-* the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) class exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
+Three utility classes provide dictionary and thesaurus and term expansion functions:
+* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a `term`;
+* the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) interface exposes methods that return the synonyms or antonyms of a `term` ; and
+* the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interface exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
 
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) class implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
 
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
 
 Refer to the [references](#references) to learn more about information retrieval systems.
 
@@ -107,9 +107,9 @@ Please refer to the [API documentation](https://pub.dev/documentation/dictosauru
 
 We use an `interface > implementation mixin > base-class > implementation class pattern`:
 * the `interface` is an abstract class that exposes fields and methods but contains no implementation code. The `interface` may expose a factory constructor that returns an `implementation class` instance;
-* the `implementation mixin` implements the `interface` class methods, but not the input fields;
-* the `base-class` is an abstract class with the `implementation mixin` and exposes a default, unnamed generative const constructor for sub-classes. The intention is that `implementation classes` extend the `base class`, overriding the `interface` input fields with final properties passed in via a const generative constructor; and
-* the class naming convention for this pattern is `"Interface" > "InterfaceMixin" > "InterfaceBase"`.
+* the `implementation mixin` implements the `interface` class methods, but not the input fields; and
+* the `base-class` is an abstract class with the `implementation mixin` and exposes a default, unnamed generative const constructor for sub-classes. The intention is that `implementation classes` extend the `base class`, overriding the `interface` input fields with final properties passed in via a const generative constructor.
+The class naming convention for this pattern is `"Interface" > "InterfaceMixin" > "InterfaceBase"`.
 
 ## Definitions
 

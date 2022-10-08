@@ -51,18 +51,9 @@
 
     
 <section class="desc markdown">
-  <p>An abstract base class that that implements the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface:</p>
-<ul>
-<li>the <a href="../dictosaurus/Thesaurus/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term and
-should be the same as that used to create the synonyms index queried by
-the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>;</li>
-<li>the <a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a> method uses the <a href="../dictosaurus/Thesaurus/tokenizer.html">tokenizer</a> to tokenize a term, then
-asynchronously gets the synonyms for the tokenized version of term using
-the <a href="../dictosaurus/ThesaurusMixin/synonymsCallback.html">synonymsCallback</a>; and</li>
-<li><a href="../dictosaurus/ThesaurusMixin/synonymsCallback.html">synonymsCallback</a> is an asynchronous callback that returns the
-synonyms of a collection of terms from a synonyms index.</li>
-</ul>
-<p>Provides a default const unnamed generative constructor for sub classes.</p>
+  <p>An abstract class that implements the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface:</p>
+<p>Sub-classes must override <a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a>, a function that returns
+<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term.</p>
 </section>
 
 
@@ -126,29 +117,6 @@ synonyms of a collection of terms from a synonyms index.</li>
 
 </dd>
 
-        <dt id="synonymsCallback" class="property inherited">
-  <span class="name"><a href="../dictosaurus/ThesaurusMixin/synonymsCallback.html">synonymsCallback</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../type_definitions/SynonymsMap.html">SynonymsMap</a></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>)</span></span> 
-
-</dt>
-<dd class="inherited">
-  A asynchronous callback that returns a set of synonyms for collection of
-terms.
-  <div class="features">read-only, inherited</div>
-
-</dd>
-
-        <dt id="tokenizer" class="property inherited">
-  <span class="name"><a href="../dictosaurus/Thesaurus/tokenizer.html">tokenizer</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a></span> 
-
-</dt>
-<dd class="inherited">
-  The <a href="../dictosaurus/Thesaurus/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term.
-  <div class="features">read-only, inherited</div>
-
-</dd>
-
       </dl>
     </section>
 
@@ -158,6 +126,32 @@ terms.
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="antonymsOf" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a></span><span class="signature">(<wbr><span class="parameter" id="antonymsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="antonymsOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a set of antonyms for <code>term</code> from a dictionary provider.
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="getEntry" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a <code>TermProperties</code> for <code>term</code>.
+  <div class="features">inherited</div>
+
+</dd>
+
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -172,14 +166,14 @@ terms.
 </dd>
 
         <dt id="synonymsOf" class="callable inherited">
-  <span class="name"><a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a></span><span class="signature">(<wbr><span class="parameter" id="synonymsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../type_definitions/SynonymsMap.html">SynonymsMap</a></span>&gt;</span></span>
+  <span class="name"><a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a></span><span class="signature">(<wbr><span class="parameter" id="synonymsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="synonymsOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd class="inherited">
-  Returns a set of synonyms for <code>term</code> and its tokenized versions.
+  Returns a set of synonyms for <code>term</code> from a dictionary provider.
   <div class="features">inherited</div>
 
 </dd>
@@ -250,6 +244,15 @@ terms.
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
   <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
+  <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+  <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
+  <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
+  <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
+  <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
+  <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
   <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
@@ -259,9 +262,9 @@ terms.
 
 
 
+  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
+  <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
 
-  <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#typedefs">Typedefs</a></li>
-  <li><a href="../dictosaurus/DictionaryMap.html">DictionaryMap</a></li>
 
 </ol>
 
@@ -279,10 +282,10 @@ terms.
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/synonymsCallback.html">synonymsCallback</a></li>
-    <li class="inherited"><a href="../dictosaurus/Thesaurus/tokenizer.html">tokenizer</a></li>
 
     <li class="section-title inherited"><a href="../dictosaurus/ThesaurusBase-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a></li>
+    <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -302,7 +305,7 @@ terms.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.4
+      0.0.3
   </span>
 
   

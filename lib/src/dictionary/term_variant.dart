@@ -78,12 +78,20 @@ abstract class TermDefinition {
 ///
 /// *NOTE: the `== operator` compares only the [term], [partOfSpeech] and
 /// [definition] properties.*
-abstract class TermDefinitionBase implements TermDefinition {
+abstract class TermDefinitionBase with TermDefinitionMixin {
 //
 
   /// Default const generative constructor for sub-classes.
   const TermDefinitionBase();
+}
 
+/// Abstract mixin class of [TermDefinition] that implements the
+/// `==` operator and [hashCode].
+///
+/// *NOTE: the `== operator` compares only the [term], [partOfSpeech] and
+/// [definition] properties.*
+abstract class TermDefinitionMixin implements TermDefinition {
+//
   /// Compares only the [term], [partOfSpeech] and [definition] properties.
   @override
   bool operator ==(Object other) =>

@@ -80,11 +80,20 @@
 
     <dl class="constructor-summary-list">
         <dt id="Thesaurus" class="callable">
-          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.html">Thesaurus</a></span><span class="signature">(<span class="parameter" id="-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span><span class="parameter" id="-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.html">Thesaurus</a></span><span class="signature">(<span class="parameter" id="-param-dictionaryCallbacky"><span class="type-annotation"><a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a></span> <span class="parameter-name">dictionaryCallbacky</span></span>)</span>
         </dt>
         <dd>
-          The unnamed <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> factory constructor initializes a <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>
-that uses a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> to retrieve term's <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or
+          Unnamed factory constructor initializes a <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>that returns the
+synonyms or antonyms for a term from a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object returned
+by <code>dictionaryCallbacky</code>.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Thesaurus.callBack" class="callable">
+          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a></span><span class="signature">(<span class="parameter" id="callBack-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span><span class="parameter" id="callBack-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>}</span>)</span>
+        </dt>
+        <dd>
+          The <a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a> factory constructor initializes a <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>
+that uses callbacks to retrieve term's <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or
 <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.
             <div class="constructor-modifier features">factory</div>
         </dd>
@@ -235,15 +244,22 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
+  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
+  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
@@ -264,6 +280,7 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 
         <li class="section-title"><a href="../dictosaurus/Thesaurus-class.html#constructors">Constructors</a></li>
           <li><a href="../dictosaurus/Thesaurus/Thesaurus.html">Thesaurus</a></li>
+          <li><a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">callBack</a></li>
           <li><a href="../dictosaurus/Thesaurus/Thesaurus.dictionary.html">dictionary</a></li>
 
 
@@ -294,7 +311,7 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   

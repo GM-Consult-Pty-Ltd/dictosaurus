@@ -9,13 +9,19 @@ import 'package:dictosaurus/src/_index.dart';
 abstract class Thesaurus {
   //
 
-  /// The unnamed [Thesaurus] factory constructor initializes a [Thesaurus]
-  /// that uses a [Dictionary] to retrieve term's [synonymsOf] and/or
+  /// The [Thesaurus.callBack] factory constructor initializes a [Thesaurus]
+  /// that uses callbacks to retrieve term's [synonymsOf] and/or
   /// [antonymsOf] from a dictionary provider.
-  factory Thesaurus(
+  factory Thesaurus.callBack(
           {required TermExpander synonymsCallback,
           required TermExpander antonymsCallback}) =>
-      _ThesaurusImpl(synonymsCallback, antonymsCallback);
+      _ThesaurusCallbackImpl(synonymsCallback, antonymsCallback);
+
+  /// Unnamed factory constructor initializes a [Thesaurus]that returns the
+  /// synonyms or antonyms for a term from a [TermProperties] object returned
+  /// by [dictionaryCallbacky].
+  factory Thesaurus(DictionaryCallback dictionaryCallbacky) =>
+      _ThesaurusImpl(dictionaryCallbacky);
 
   /// The [Thesaurus.dictionary] factory constructor initializes a [Thesaurus]
   /// with a [dictionary] to return the synonyms  or antonyms for a term from
@@ -86,7 +92,21 @@ abstract class ThesaurusMixin implements Thesaurus {
   }
 }
 
-class _ThesaurusWithDictionaryImpl with ThesaurusMixin {
+/// An abstract class that implements the [Thesaurus] interface:
+///
+/// Sub-classes must override [getEntry], a function that returns
+/// [TermProperties] for a term.
+abstract class ThesaurusBase with ThesaurusMixin {
+  //
+
+  /// A default const unnamed generative constructor for sub classes.
+  const ThesaurusBase();
+
+  //
+}
+
+/// Private implementation class used by [Thesaurus.dictionary] factory.
+class _ThesaurusWithDictionaryImpl extends ThesaurusBase {
   //
 
   const _ThesaurusWithDictionaryImpl(this.dictionary);
@@ -97,12 +117,26 @@ class _ThesaurusWithDictionaryImpl with ThesaurusMixin {
   final Dictionary dictionary;
 }
 
-/// Implementation of [Thesaurus] for the [Thesaurus] unnamed factory:
+/// Private implementation class used by [Thesaurus] unnamed factory.
+class _ThesaurusImpl extends ThesaurusBase {
+  //
+
+  /// Asynchronous callback that returns the properties of a term from a
+  /// dictionary provider.
+  final DictionaryCallback dictionaryCallback;
+
+  const _ThesaurusImpl(this.dictionaryCallback);
+
+  @override
+  Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
+}
+
+/// Implementation of [Thesaurus] for the [Thesaurus.callBack]factory:
 /// - [synonymsCallback] is an asynchronous callback that returns the synonyms
 ///   for a term from a dictionary provider; and
 /// - the [synonymsOf] method returns a set  of synonyms for a term by calling
 ///   [synonymsCallback].
-class _ThesaurusImpl implements Thesaurus {
+class _ThesaurusCallbackImpl implements Thesaurus {
 //
 
   /// An asynchronous callback that returns a set of synonyms for a term from
@@ -121,6 +155,6 @@ class _ThesaurusImpl implements Thesaurus {
   Future<Set<String>> antonymsOf(String term, [PartOfSpeech? partOfSpeech]) =>
       antonymsCallback(term, partOfSpeech);
 
-  /// Initializes a const [_ThesaurusImpl] with [synonymsCallback].
-  const _ThesaurusImpl(this.synonymsCallback, this.antonymsCallback);
+  /// Initializes a const [_ThesaurusCallbackImpl] with [synonymsCallback].
+  const _ThesaurusCallbackImpl(this.synonymsCallback, this.antonymsCallback);
 }

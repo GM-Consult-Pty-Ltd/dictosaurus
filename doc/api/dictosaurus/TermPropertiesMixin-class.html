@@ -68,6 +68,16 @@
 <li><a href="../dictosaurus/TermPropertiesMixin/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a>; and</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/synonymsMap.html">synonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
 </ul>
+<p>Sub-classes must override:</p>
+<ul>
+<li><a href="../dictosaurus/TermProperties/languageCode.html">languageCode</a>, the ISO language code for the language of the <a href="../dictosaurus/TermProperties/term.html">term</a>;</li>
+<li><a href="../dictosaurus/TermProperties/variants.html">variants</a>, an un-ordered collection of unique <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a> instances;</li>
+<li><a href="../dictosaurus/TermProperties/term.html">term</a>, the term or word for this <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>;</li>
+<li><a href="../dictosaurus/TermProperties/lemma.html">lemma</a>, the lemma of <a href="../dictosaurus/TermProperties/term.html">term</a>;</li>
+<li><a href="../dictosaurus/TermProperties/stem.html">stem</a>, the stemmed version of <a href="../dictosaurus/TermProperties/term.html">term</a>; and</li>
+<li><a href="../dictosaurus/TermProperties/phonetic.html">phonetic</a>, the phonetic representation of <a href="../dictosaurus/TermProperties/term.html">term</a> when pronounced in
+<a href="../dictosaurus/TermProperties/languageCode.html">languageCode</a>.</li>
+</ul>
 </section>
 
 
@@ -84,6 +94,10 @@
   </dd>
         
 
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
+        </ul></dd>
 
 
         
@@ -290,7 +304,7 @@
 
 </dt>
 <dd class="inherited">
-  The term for this entry.
+  The term for this <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>.
   <div class="features">read-only, inherited</div>
 
 </dd>
@@ -389,15 +403,22 @@
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
+  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
+  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
@@ -461,7 +482,7 @@
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   

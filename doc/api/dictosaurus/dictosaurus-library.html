@@ -50,7 +50,39 @@
 
     
 <section class="desc markdown">
-  <p>Dictionary, thesaurus and term expansion utilities.</p>
+  <p>The <code>dictosaurus</code> package provides 'natural language processing (NLP)'
+utilities used in <code>information retrieval systems</code>.</p>
+<p>Three utility classes provide dictionary and thesaurus and term expansion
+functions:</p>
+<ul>
+<li>the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties
+(definitions, inflections, part-of-speech, phrases, synonyms and
+antonyms) of a <code>term</code>;</li>
+<li>the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return the synonyms or
+antonyms of a <code>term</code> ; and</li>
+<li>the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes methods that return alternative
+spellings for a <code>term</code> or terms that start with the same characters.</li>
+</ul>
+<p>The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and
+<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
+<p>The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a> method that
+performs <code>term-expansion</code>, returning a list of terms in descending order
+of relevance (best match first). The (expanded) list of terms includes
+the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
+<p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
+<ul>
+<li>the <code>interface</code> is an abstract class that exposes fields and methods
+ but contains no implementation code. The <code>interface</code> may expose a factory
+ constructor that returns an <code>implementation class</code> instance;</li>
+<li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but
+ not the input fields; and</li>
+<li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and
+ exposes a default, unnamed generative const constructor for sub-classes.
+ The intention is that <code>implementation classes</code> extend the <code>base class</code>,
+ overriding the <code>interface</code> input fields with final properties passed in
+ via a const generative constructor.</li>
+</ul>
+<p>The class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</p>
 </section>
 
 
@@ -66,6 +98,22 @@
   The <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface:
 </dd>
 
+        <dt id="AutoCorrectBase">
+  <span class="name "><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></span> 
+
+</dt>
+<dd>
+  An abstract class that implements the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface:
+</dd>
+
+        <dt id="AutoCorrectMixin">
+  <span class="name "><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></span> 
+
+</dt>
+<dd>
+  A mixin class that implements <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a>.
+</dd>
+
         <dt id="Dictionary">
   <span class="name "><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></span> 
 
@@ -73,6 +121,14 @@
 <dd>
   The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes the <a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a> method that returns
 a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term.
+</dd>
+
+        <dt id="DictionaryBase">
+  <span class="name "><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></span> 
+
+</dt>
+<dd>
+  An abstract class that implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface:
 </dd>
 
         <dt id="DictionaryMixin">
@@ -119,12 +175,38 @@ methods:
 properties:
 </dd>
 
+        <dt id="TermDefinitionBase">
+  <span class="name "><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></span> 
+
+</dt>
+<dd>
+  Abstract implementation class of <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a> that implements the
+<code>==</code> operator and <a href="../dictosaurus/TermDefinitionMixin/hashCode.html">hashCode</a>.
+</dd>
+
+        <dt id="TermDefinitionMixin">
+  <span class="name "><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></span> 
+
+</dt>
+<dd>
+  Abstract mixin class of <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a> that implements the
+<code>==</code> operator and <a href="../dictosaurus/TermDefinitionMixin/hashCode.html">hashCode</a>.
+</dd>
+
         <dt id="TermProperties">
   <span class="name "><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></span> 
 
 </dt>
 <dd>
-  Object model for an entry in a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> with immutable properties:
+  Object model for term or word with immutable properties:
+</dd>
+
+        <dt id="TermPropertiesBase">
+  <span class="name "><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></span> 
+
+</dt>
+<dd>
+  An abstract class that implements the <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> interface:
 </dd>
 
         <dt id="TermPropertiesMixin">
@@ -142,6 +224,14 @@ properties:
 <dd>
   The <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return a term's
 <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.
+</dd>
+
+        <dt id="ThesaurusBase">
+  <span class="name "><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></span> 
+
+</dt>
+<dd>
+  An abstract class that implements the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface:
 </dd>
 
         <dt id="ThesaurusMixin">
@@ -209,15 +299,22 @@ have similar grammatical properties.
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
+  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
+  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermDefinitionBase-class.html">TermDefinitionBase</a></li>
+  <li><a href="../dictosaurus/TermDefinitionMixin-class.html">TermDefinitionMixin</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
+  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
   <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
@@ -238,7 +335,7 @@ have similar grammatical properties.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.2+1
+      0.0.3
   </span>
 
   
