@@ -76,8 +76,8 @@ abstract class DictoSaurusMixin implements DictoSaurus {
     final entry = await getEntry(term);
     if (entry != null) {
       retVal.add(term);
-      retVal
-          .addAll(entry.allSynonyms.where((element) => !element.contains(' ')));
+      retVal.addAll(
+          entry.allSynonyms().where((element) => !element.contains(' ')));
     }
     if (retVal.length < limit) {
       final suggestions = await suggestionsFor(term, limit);

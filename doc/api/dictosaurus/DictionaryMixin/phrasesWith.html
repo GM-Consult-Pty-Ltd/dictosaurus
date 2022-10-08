@@ -78,20 +78,8 @@
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;Set&lt;String&gt;&gt; phrasesWith(String term,
     [PartOfSpeech? partOfSpeech]) async {
-  final retVal = &lt;String&gt;{};
   final dictEntry = await getEntry(term);
-  if (dictEntry != null) {
-    if (partOfSpeech == null) {
-      retVal.addAll(dictEntry.allPhrases);
-    } else {
-      for (final e in dictEntry.phrasesMap.entries) {
-        if (e.key == partOfSpeech) {
-          retVal.addAll(e.value);
-        }
-      }
-    }
-  }
-  return retVal;
+  return dictEntry != null ? dictEntry.phrasesWith(partOfSpeech) : &lt;String&gt;{};
 }</code></pre>
 </section>
 
@@ -153,7 +141,7 @@ Future&lt;Set&lt;String&gt;&gt; phrasesWith(String term,
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.3
+      0.0.4
   </span>
 
   

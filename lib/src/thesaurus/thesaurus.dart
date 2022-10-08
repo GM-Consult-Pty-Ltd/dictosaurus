@@ -56,39 +56,15 @@ abstract class ThesaurusMixin implements Thesaurus {
   @override
   Future<Set<String>> synonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final retVal = <String>{};
     final dictEntry = await getEntry(term);
-    if (dictEntry != null) {
-      if (partOfSpeech == null) {
-        retVal.addAll(dictEntry.allSynonyms);
-      } else {
-        for (final e in dictEntry.synonymsMap.entries) {
-          if (e.key == partOfSpeech) {
-            retVal.addAll(e.value);
-          }
-        }
-      }
-    }
-    return retVal;
+    return dictEntry != null ? dictEntry.synonymsOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> antonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final retVal = <String>{};
     final dictEntry = await getEntry(term);
-    if (dictEntry != null) {
-      if (partOfSpeech == null) {
-        retVal.addAll(dictEntry.allAntonyms);
-      } else {
-        for (final e in dictEntry.antonymsMap.entries) {
-          if (e.key == partOfSpeech) {
-            retVal.addAll(e.value);
-          }
-        }
-      }
-    }
-    return retVal;
+    return dictEntry != null ? dictEntry.antonymsOf(partOfSpeech) : {};
   }
 }
 

@@ -4,8 +4,31 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+## 0.0.4
+**Beta**
+
+### *Breaking changes*
+* Changed field `TermProperties.synonymsMap` to a method.
+* Changed field `TermProperties.antonymsMap` to a method.
+* Changed field `TermProperties.definitionsMap` to a method.
+* Changed field `TermProperties.phrasesMap` to a method.
+* Changed field `TermProperties.inflectionsMap` to a method.
+
+### *New*
+* Added `TermProperties.phrasesWith` method.
+* Added `TermProperties.inflectionsOf` method.
+* Added `TermProperties.definitionsFor` method.
+* Added `TermProperties.synonymsOf` method.
+* Added `TermProperties.antonymsOf` method.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.3
-**Beta Stable Release**
+**Beta**
 
 ### *Breaking changes*
 * Changed signature of `Thesaurus` unnamed factory, use `Thesaurus.callBack` factory instead.
@@ -22,13 +45,13 @@ All rights reserved.
 * Documentation.
 
 ## 0.0.2+1
-**Beta Stable Release**
+**Beta**
 
 ### *Updated*
 * Documentation.
 
 ## 0.0.2
-**Beta Stable Release**
+**Beta**
 
 ### *Breaking changes*
 * Removed `text_indexing` package from library exports.
@@ -50,7 +73,7 @@ All rights reserved.
 * Dependencies.
 
 ## 0.0.1+2
-**Beta Stable Release**
+**Beta**
 
 ### *New*
 * Added `DictionaryMixin` to `dictosaurus` package exports.
@@ -59,13 +82,13 @@ All rights reserved.
 * Documentation.
 
 ## 0.0.1+1
-**Beta Stable Release**
+**Beta**
 
 ### *Updated*
 * Documentation.
 
 ## 0.0.1
-**Beta Stable Release**
+**Beta**
 
 ### *Updated*
 * Documentation.

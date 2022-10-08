@@ -142,11 +142,12 @@ void main() {
       final dT = ((end - start) / 1000).toStringAsFixed(3);
       print('Expanded $misspeltterm to $suggestions in $dT seconds.');
       final term = 'intelligent';
-      final synonyms = await dictoSaurus.synonymsOf(term);
-      final antonyms = await dictoSaurus.antonymsOf(term);
-      final definitions = await dictoSaurus.definitionsFor(term);
-      final inflections = await dictoSaurus.inflectionsOf(term);
-      final phrases = await dictoSaurus.phrasesWith(term);
+      final props = await dictoSaurus.getEntry(term);
+      final synonyms = props?.synonymsOf();
+      final antonyms = props?.antonymsOf();
+      final definitions = props?.definitionsFor();
+      final inflections = props?.inflectionsOf();
+      final phrases = props?.phrasesWith();
       print('Dictosaurus methods on "$term":');
       print('Definitions:   $definitions');
       print('Inflections:   $inflections');

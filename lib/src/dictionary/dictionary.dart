@@ -50,58 +50,22 @@ abstract class DictionaryMixin implements Dictionary {
   @override
   Future<Set<String>> phrasesWith(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final retVal = <String>{};
     final dictEntry = await getEntry(term);
-    if (dictEntry != null) {
-      if (partOfSpeech == null) {
-        retVal.addAll(dictEntry.allPhrases);
-      } else {
-        for (final e in dictEntry.phrasesMap.entries) {
-          if (e.key == partOfSpeech) {
-            retVal.addAll(e.value);
-          }
-        }
-      }
-    }
-    return retVal;
+    return dictEntry != null ? dictEntry.phrasesWith(partOfSpeech) : <String>{};
   }
 
   @override
   Future<Set<String>> definitionsFor(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final retVal = <String>{};
     final dictEntry = await getEntry(term);
-    if (dictEntry != null) {
-      if (partOfSpeech == null) {
-        retVal.addAll(dictEntry.allDefinitions);
-      } else {
-        for (final e in dictEntry.definitionsMap.entries) {
-          if (e.key == partOfSpeech) {
-            retVal.addAll(e.value);
-          }
-        }
-      }
-    }
-    return retVal;
+    return dictEntry != null ? dictEntry.definitionsFor(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> inflectionsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final retVal = <String>{};
     final dictEntry = await getEntry(term);
-    if (dictEntry != null) {
-      if (partOfSpeech == null) {
-        retVal.addAll(dictEntry.allInflections);
-      } else {
-        for (final e in dictEntry.inflectionsMap.entries) {
-          if (e.key == partOfSpeech) {
-            retVal.addAll(e.value);
-          }
-        }
-      }
-    }
-    return retVal;
+    return (dictEntry != null) ? dictEntry.inflectionsOf(partOfSpeech) : {};
   }
 }
 

@@ -86,8 +86,8 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
   final entry = await getEntry(term);
   if (entry != null) {
     retVal.add(term);
-    retVal
-        .addAll(entry.allSynonyms.where((element) =&gt; !element.contains(&#39; &#39;)));
+    retVal.addAll(
+        entry.allSynonyms().where((element) =&gt; !element.contains(&#39; &#39;)));
   }
   if (retVal.length &lt; limit) {
     final suggestions = await suggestionsFor(term, limit);
@@ -161,7 +161,7 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.3
+      0.0.4
   </span>
 
   

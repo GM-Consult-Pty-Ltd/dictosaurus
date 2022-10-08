@@ -12,7 +12,19 @@ import 'term_variant.dart';
 /// - [languageCode] is the ISO language code for the language of the
 ///   [term];
 /// - [variants] is an un-ordered collection of unique [TermDefinition]
-///   instances;
+///   instances.
+///
+/// The following methods map the [variants] to useful return values:
+/// - [phrasesWith] returns a set of phrases containing [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [inflectionsOf] returns a set of inflections of [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [definitionsFor] returns a set of definitions for [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [synonymsOf] returns a set of synonyms of [term], optionally limiting
+///   the results to the [PartOfSpeech];
+/// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
+///   the results to the [PartOfSpeech];
 /// - [allAntonyms] maps all the antonyms from [variants] to a set;
 /// - [allDefinitions] maps all the definitions from [variants] to a set;
 /// - [allInflections] maps all the inflections from [variants] to a set;
@@ -68,34 +80,62 @@ abstract class TermProperties {
   Set<TermDefinition> get variants;
 
   /// A hashmap of [PartOfSpeech] to terms that are synonyms of [term].
-  Map<PartOfSpeech, Set<String>> get synonymsMap;
+  Map<PartOfSpeech, Set<String>> synonymsMap();
 
   /// A hashmap of [PartOfSpeech] to terms that are antonyms of [term].
-  Map<PartOfSpeech, Set<String>> get antonymsMap;
+  Map<PartOfSpeech, Set<String>> antonymsMap();
 
   /// A hashmap of [PartOfSpeech] to definitions that are synonyms of [term].
-  Map<PartOfSpeech, Set<String>> get definitionsMap;
+  Map<PartOfSpeech, Set<String>> definitionsMap();
 
   /// A hashmap of [PartOfSpeech] to phrases using [term].
-  Map<PartOfSpeech, Set<String>> get phrasesMap;
+  Map<PartOfSpeech, Set<String>> phrasesMap();
 
   /// A hashmap of [PartOfSpeech] to inflections that are inflections of [term].
-  Map<PartOfSpeech, Set<String>> get inflectionsMap;
+  Map<PartOfSpeech, Set<String>> inflectionsMap();
 
-  /// An unordered collection of unique definitions for [term].
-  Set<String> get allDefinitions;
+  /// Returns an unordered collection of unique definitions for [term].
+  Set<String> allDefinitions();
 
-  /// An unordered collection of unique terms that are synonyms of [term].
-  Set<String> get allSynonyms;
+  /// Returns an unordered collection of unique terms that are synonyms of
+  /// [term].
+  Set<String> allSynonyms();
 
-  /// An unordered collection of unique terms that are antonyms of [term].
-  Set<String> get allAntonyms;
+  /// Returns an unordered collection of unique terms that are antonyms of
+  /// [term].
+  Set<String> allAntonyms();
 
-  /// An unordered collection of unique terms that are inflections of [term].
-  Set<String> get allInflections;
+  /// Returns an unordered collection of unique terms that are inflections of
+  /// [term].
+  Set<String> allInflections();
 
   /// An unordered collection of unique example phrases that include [term].
-  Set<String> get allPhrases;
+  Set<String> allPhrases();
+
+  /// Returns a set of phrases for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> phrasesWith([PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of inflections for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> inflectionsOf([PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of definitions for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> definitionsFor([PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of synonyms for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> synonymsOf([PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of antonyms for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> antonymsOf([PartOfSpeech? partOfSpeech]);
 }
 
 /// Abstract mixin class of [TermProperties] that implements:
@@ -103,6 +143,16 @@ abstract class TermProperties {
 ///   [variants] properties;
 /// - [hashCode] returns an Object.hash of the [term], [languageCode] and
 ///   [variants] properties;
+/// - [phrasesWith] maps [variants] to a set of phrases, optionally
+///   limiting the maps [variants] to to the [PartOfSpeech];
+/// - [inflectionsOf] maps [variants] to a set of inflections of [term],
+///   optionally limiting the results to the [PartOfSpeech];
+/// - [definitionsFor] maps [variants] to a set of definitions for [term],
+///   optionally limiting the results to the [PartOfSpeech];
+/// - [synonymsOf] maps [variants] to a set of synonyms of [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [antonymsOf] maps [variants] to a set of antonyms of [term], optionally
+///   limiting the results to the [PartOfSpeech];
 /// - [allAntonyms] maps all the antonyms from [variants] to a set;
 /// - [allDefinitions] maps all the definitions from [variants] to a set;
 /// - [allInflections] maps all the inflections from [variants] to a set;
@@ -126,7 +176,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   //
 
   @override
-  Set<String> get allAntonyms {
+  Set<String> allAntonyms() {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.antonyms);
@@ -135,10 +185,10 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Set<String> get allDefinitions => variants.map((e) => e.definition).toSet();
+  Set<String> allDefinitions() => variants.map((e) => e.definition).toSet();
 
   @override
-  Set<String> get allInflections {
+  Set<String> allInflections() {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.inflections);
@@ -147,7 +197,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Set<String> get allPhrases {
+  Set<String> allPhrases() {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.phrases);
@@ -156,7 +206,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Set<String> get allSynonyms {
+  Set<String> allSynonyms() {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.synonyms);
@@ -165,7 +215,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Map<PartOfSpeech, Set<String>> get antonymsMap {
+  Map<PartOfSpeech, Set<String>> antonymsMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
@@ -176,7 +226,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Map<PartOfSpeech, Set<String>> get definitionsMap {
+  Map<PartOfSpeech, Set<String>> definitionsMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
@@ -187,7 +237,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Map<PartOfSpeech, Set<String>> get inflectionsMap {
+  Map<PartOfSpeech, Set<String>> inflectionsMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
@@ -198,7 +248,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Map<PartOfSpeech, Set<String>> get phrasesMap {
+  Map<PartOfSpeech, Set<String>> phrasesMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
@@ -209,12 +259,88 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
-  Map<PartOfSpeech, Set<String>> get synonymsMap {
+  Map<PartOfSpeech, Set<String>> synonymsMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
       value.addAll(e.synonyms);
       retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> phrasesWith([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allPhrases());
+    } else {
+      for (final e in phrasesMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> definitionsFor([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allDefinitions());
+    } else {
+      for (final e in definitionsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> inflectionsOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allInflections());
+    } else {
+      for (final e in inflectionsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+
+    return retVal;
+  }
+
+  @override
+  Set<String> synonymsOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allSynonyms());
+    } else {
+      for (final e in synonymsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> antonymsOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allAntonyms());
+    } else {
+      for (final e in antonymsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
     }
     return retVal;
   }
