@@ -1,0 +1,6 @@
+# Secret keys.
+test/keys/
+lib/keys/
+
+# Folder with implementation code for testing and examples.
+impl/
