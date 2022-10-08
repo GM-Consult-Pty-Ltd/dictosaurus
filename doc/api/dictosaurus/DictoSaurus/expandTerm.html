@@ -63,12 +63,12 @@
     
 <section class="desc markdown">
   <p>Expands <code>term</code> to an ordered list of terms.</p>
-<p>If <code>term</code> exists in the dictionary, the returned list will include
-the <code>term</code> and then its synonyms.</p>
-<p>If <code>term</code> is not found in the dictionary, terms with similar spellings
-will be returned, ordered in descending order of relevance (i.e. best
-match first).</p>
-<p>If <code>limit</code> is not null, only the first <code>limit</code> terms will be returned.</p>
+<p>The returned list always has <code>term</code> as its first element.</p>
+<p>Any synonyms returned by the dictionary provider are added to the list.</p>
+<p>If the length of the list is less than <code>limit</code>, terms with similar
+spellings will be added, ordered in descending order of relevance (i.e.
+best match first).</p>
+<p>Only the first <code>limit</code> terms will be returned.</p>
 </section>
 
 
@@ -107,15 +107,20 @@ match first).</p>
       <a href="../../dictosaurus/DictoSaurus-class.html#instance-properties">Properties</a>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/languageCode.html">languageCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
     <li class="section-title"><a href="../../dictosaurus/DictoSaurus-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a></li>
-    <li><a href="../../dictosaurus/DictoSaurus/getEntry.html">getEntry</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li><a href="../../dictosaurus/DictoSaurus/startsWith.html">startsWith</a></li>
-    <li><a href="../../dictosaurus/DictoSaurus/suggestionsFor.html">suggestionsFor</a></li>
-    <li><a href="../../dictosaurus/DictoSaurus/synonymsOf.html">synonymsOf</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a></li>
+    <li class="inherited"><a href="../../dictosaurus/AutoCorrect/startsWith.html">startsWith</a></li>
+    <li class="inherited"><a href="../../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../../dictosaurus/DictoSaurus-class.html#operators">Operators</a></li>
@@ -136,7 +141,7 @@ match first).</p>
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.5
+      0.0.1-beta.7
   </span>
 
   

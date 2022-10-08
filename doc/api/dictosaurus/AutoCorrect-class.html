@@ -58,12 +58,25 @@ alternative spellings for a term and its tokenized versions;</li>
 <li>exposes the <a href="../dictosaurus/AutoCorrect/startsWith.html">startsWith</a> method that returns an ordered list of unique
 terms that start with a sequence of characters from a k-grams index.</li>
 </ul>
-<p>The <a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term and should be
-the same as that used to create the k-grams index queried by the
-<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>.</p>
 </section>
 
 
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+        
+
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+        </ul></dd>
+
+
+        
+      </dl>
+    </section>
 
     
   <section class="summary offset-anchor" id="constructors">
@@ -71,7 +84,7 @@ the same as that used to create the k-grams index queried by the
 
     <dl class="constructor-summary-list">
         <dt id="AutoCorrect" class="callable">
-          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.html">AutoCorrect</a></span><span class="signature">(<span class="parameter" id="-param-kGramIndexLoader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a></span>&gt;</span></span> <span class="parameter-name">kGramIndexLoader</span>(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Term.html">Term</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>), </span><span class="parameter" id="-param-tokenizer">{<span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a>?</span> <span class="parameter-name">tokenizer</span>, </span><span class="parameter" id="-param-k"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">k</span> = <span class="default-value">3</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.html">AutoCorrect</a></span><span class="signature">(<span class="parameter" id="-param-kGramIndexLoader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/type_definitions/KGramsMap.html">KGramsMap</a></span>&gt;</span></span> <span class="parameter-name">kGramIndexLoader</span>(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Term.html">Term</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>), </span><span class="parameter" id="-param-k">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">k</span> = <span class="default-value">3</span>}</span>)</span>
         </dt>
         <dd>
           The unnamed factory constructor initializes a <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> that uses an
@@ -79,17 +92,18 @@ asynchronous callback <code>kGramIndexLoader</code> to return the k-grams for a 
             <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="AutoCorrect.inMemory" class="callable">
-          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">AutoCorrect.inMemory</a></span><span class="signature">(<span class="parameter" id="inMemory-param-kGramIndex"><span class="type-annotation"><a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a></span> <span class="parameter-name">kGramIndex</span>, </span><span class="parameter" id="inMemory-param-tokenizer">{<span class="type-annotation"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a>?</span> <span class="parameter-name">tokenizer</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">AutoCorrect.inMemory</a></span><span class="signature">(<span class="parameter" id="inMemory-param-kGramIndex"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">kGramIndex</span></span>)</span>
         </dt>
         <dd>
           The <a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">AutoCorrect.inMemory</a> factory constructor initializes a <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>
-with the in-memory <a href="https://pub.dev/documentation/text_indexing/0.16.0/type_definitions/KGramsMap.html">KGramsMap</a> instance <code>kGramIndex</code> and <code>tokenizer</code>.
+with the in-memory <a href="https://pub.dev/documentation/text_indexing/0.16.0+1/type_definitions/KGramsMap.html">KGramsMap</a> instance <code>kGramIndex</code>.
+<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>.
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
   </section>
 
-    <section class="summary offset-anchor" id="instance-properties">
+    <section class="summary offset-anchor inherited" id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
@@ -112,17 +126,6 @@ with the in-memory <a href="https://pub.dev/documentation/text_indexing/0.16.0/t
 <dd class="inherited">
   A representation of the runtime type of the object.
   <div class="features">read-only, inherited</div>
-
-</dd>
-
-        <dt id="tokenizer" class="property">
-  <span class="name"><a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Tokenizer.html">Tokenizer</a></span> 
-
-</dt>
-<dd>
-  The <a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a> is used to get tokenized versions of a term.
-  <div class="features">read-only</div>
 
 </dd>
 
@@ -164,14 +167,13 @@ k-grams index.
 
         <dt id="suggestionsFor" class="callable">
   <span class="name"><a href="../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="suggestionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="suggestionsFor-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns a set of unique alternative spellings for a <code>term</code> and its
-tokenized versions.
+  Returns a set of unique alternative spellings for a <code>term</code>.
   
 
 </dd>
@@ -236,28 +238,29 @@ tokenized versions.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
-  <li><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
   <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
+  <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></li>
-  <li><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
@@ -271,7 +274,7 @@ tokenized versions.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
 
 </ol>
@@ -286,12 +289,11 @@ tokenized versions.
           <li><a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">inMemory</a></li>
 
 
-    <li class="section-title">
+    <li class="section-title inherited">
       <a href="../dictosaurus/AutoCorrect-class.html#instance-properties">Properties</a>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../dictosaurus/AutoCorrect/tokenizer.html">tokenizer</a></li>
 
     <li class="section-title"><a href="../dictosaurus/AutoCorrect-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -314,7 +316,7 @@ tokenized versions.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.5
+      0.0.1-beta.7
   </span>
 
   

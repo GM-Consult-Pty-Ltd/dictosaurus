@@ -52,13 +52,29 @@
     
 <section class="desc markdown">
   <p>The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes the <a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a> method that returns
-a <a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> for a term.</p>
+a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term.</p>
 <p>The unnamed <code>Dictionary()</code> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
 with an asynchronous <a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a> to return the meaning of a term
 from a dictionary provider.</p>
 </section>
 
 
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+        
+
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+        </ul></dd>
+
+
+        
+      </dl>
+    </section>
 
     
   <section class="summary offset-anchor" id="constructors">
@@ -123,15 +139,41 @@ from a dictionary provider.
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="getEntry" class="callable">
-  <span class="name"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span></span>
+        <dt id="definitionsFor" class="callable">
+  <span class="name"><a href="../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="definitionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="definitionsFor-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns a <code>DictionaryEntry</code> for <code>term</code>.
+  Returns a set of definitions for <code>term</code> from a dictionary provider.
+  
+
+</dd>
+
+        <dt id="getEntry" class="callable">
+  <span class="name"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a <code>TermProperties</code> for <code>term</code>.
+  
+
+</dd>
+
+        <dt id="inflectionsOf" class="callable">
+  <span class="name"><a href="../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></span><span class="signature">(<wbr><span class="parameter" id="inflectionsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="inflectionsOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of inflections for <code>term</code> from a dictionary provider.
   
 
 </dd>
@@ -146,6 +188,19 @@ from a dictionary provider.
 <dd class="inherited">
   Invoked when a non-existent method or property is accessed.
   <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="phrasesWith" class="callable">
+  <span class="name"><a href="../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a></span><span class="signature">(<wbr><span class="parameter" id="phrasesWith-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="phrasesWith-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of phrases for <code>term</code> from a dictionary provider.
+  
 
 </dd>
 
@@ -209,28 +264,29 @@ from a dictionary provider.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
-  <li><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
   <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
+  <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
+  <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></li>
-  <li><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
   <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
@@ -244,7 +300,7 @@ from a dictionary provider.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
+  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+1/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
 
 </ol>
@@ -266,8 +322,11 @@ from a dictionary provider.
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
     <li class="section-title"><a href="../dictosaurus/Dictionary-class.html#instance-methods">Methods</a></li>
+    <li><a href="../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
+    <li><a href="../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../dictosaurus/Dictionary-class.html#operators">Operators</a></li>
@@ -285,7 +344,7 @@ from a dictionary provider.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.5
+      0.0.1-beta.7
   </span>
 
   

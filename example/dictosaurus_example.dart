@@ -2,51 +2,71 @@
 // BSD 3-Clause License
 // All rights reserved
 
-// imports the core classes
+// ignore_for_file: unused_import
+
+// import the core interfaces, classes and mixins
 import 'package:dictosaurus/dictosaurus.dart';
 
-// imports the data
-import 'data/kgram_index.dart';
+// import the typedefs if needed
+import 'package:dictosaurus/type_definitions.dart';
+import 'package:gmconsult_dev/gmconsult_dev.dart';
+
+//
+import '../impl/global.dart';
 
 void main() async {
   // run the README.md example(s)
-  await _readMeExample(kGramIndex);
+  await _readMeExample();
 
   // _seperator();
 }
 
 // Simple example(s) for the README.md file.
-Future<void> _readMeExample(Map<String, Set<String>> kGramIndex) async {
+Future<void> _readMeExample() async {
   //
-  // print a heading
-  print('README.md EXAMPLE');
 
-  // define a misspelt term
-  final term = 'aple';
+  final results = <JSON>[];
 
-  // initialize a `AutoCorrect` instance
-  final autoCorrect = AutoCorrect.inMemory(kGramIndex);
+  // define a term with incorrect spelling.
+  final misspeltterm = 'inteligent';
 
-  // get autocorrect suggestions for the term
-  final suggestions = await autoCorrect.suggestionsFor(term, 10);
+  // define a correctly spelled term.
+  final term = 'intelligent';
 
-  // print the autocorrect suggestions
-  print(suggestions);
+  // get a Dictosaurus instance from an implementation class (not shown here)
+  final dictoSaurus = await getDictoSaurus();
 
-  // // initialize a `Thesaurus` instance.
-  // final thesaurus = Thesaurus.inMemory(synonymsIndex);
+  // get spelling correction suggestions
+  final corrections = await dictoSaurus.suggestionsFor(misspeltterm, 5);
 
-  // // print synonyms for "Tesla"
-  // print(await thesaurus.synonymsOf('tesla'));
+  // expand the term
+  final expansions = await dictoSaurus.expandTerm(term, 5);
 
-  // define a starts-with sequence of characters
-  final startsWith = 'te';
+  // get the defintions
+  final definitions = await dictoSaurus.synonymsOf(term);
 
-  // get the terms in the kgram-index that start with "aap"
-  final startsWithTerms = await autoCorrect.startsWith(startsWith);
+  // get the synonyms
+  final synonyms = await dictoSaurus.synonymsOf(term);
 
-// print the terms in the kgram-index that start with "aap"
-  print(startsWithTerms);
+  // get the antonyms
+  final antonyms = await dictoSaurus.antonymsOf(term);
+
+  // get the inflections
+  final inflections = await dictoSaurus.inflectionsOf(term);
+
+  // get the phrases
+  final phrases = await dictoSaurus.phrasesWith(term);
+
+  results.add(
+      {'Method': 'suggestionsFor("$misspeltterm")', 'TestResult': corrections});
+  results.add({'Method': 'expandTerm("$term")', 'TestResult': expansions});
+  results.add({'Method': 'definitionsFor("$term")', 'TestResult': definitions});
+  results.add({'Method': 'synonymsOf("$term")', 'TestResult': synonyms});
+  results.add({'Method': 'antonymsOf("$term")', 'TestResult': antonyms});
+  results.add({'Method': 'inflectionsOf("$term")', 'TestResult': inflections});
+  results.add({'Method': 'phrasesWith("$term")', 'TestResult': phrases});
+
+  Console.out(title: '[DictoSaurus] METHODS EXAMPLE', results: results);
 }
 
 // Print separator

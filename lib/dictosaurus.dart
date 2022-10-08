@@ -8,7 +8,12 @@ library dictosaurus;
 export 'src/auto_correct/auto_correct.dart' show AutoCorrect;
 export 'src/thesaurus/thesaurus.dart' show Thesaurus;
 export 'src/dictionary/_index.dart'
-    show Dictionary, DictionaryEntry, TermVariant, PartOfSpeech;
+    show
+        Dictionary,
+        TermProperties,
+        TermPropertiesMixin,
+        TermDefinition,
+        PartOfSpeech;
 export 'src/dictosaurus.dart'
     show DictoSaurus, DictoSaurusBase, DictoSaurusMixin;
 export 'package:text_indexing/text_indexing.dart';

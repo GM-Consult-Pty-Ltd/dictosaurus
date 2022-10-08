@@ -11,7 +11,7 @@ import 'term_variant.dart';
 /// - [lemma] is the lemma of [term];
 /// - [languageCode] is the ISO language code for the language of the
 ///   [term];
-/// - [variants] is an un-ordered collection of unique [TermVariant]
+/// - [variants] is an un-ordered collection of unique [TermDefinition]
 ///   instances;
 /// - [allAntonyms] maps all the antonyms from [variants] to a set;
 /// - [allDefinitions] maps all the definitions from [variants] to a set;
@@ -23,10 +23,10 @@ import 'term_variant.dart';
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
 /// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
 /// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
-abstract class DictionaryEntry {
+abstract class TermProperties {
   //
 
-  /// Factory constructor that instantiates an immutable [DictionaryEntry]
+  /// Factory constructor that instantiates an immutable [TermProperties]
   /// instance:
   /// - [languageCode] is the ISO language code for the language of the
   ///   [term];
@@ -35,19 +35,19 @@ abstract class DictionaryEntry {
   /// - [lemma] is the lemma of [term];
   /// - [phonetic] is the phonetic representation of [term] when pronounced in
   ///   [languageCode]; and
-  /// - [variants] is an un-ordered collection of unique [TermVariant]
+  /// - [variants] is an un-ordered collection of unique [TermDefinition]
   ///   instances.
   ///
   /// The [variants] field of the implementation class is immutable as it
   /// returns a copy of a private variable.
-  factory DictionaryEntry(
+  factory TermProperties(
           {required String term,
           required String stem,
           required String lemma,
           required String phonetic,
           required String languageCode,
-          required Iterable<TermVariant> variants}) =>
-      _DictionaryEntry(
+          required Iterable<TermDefinition> variants}) =>
+      _TermProperties(
           languageCode, term, stem, lemma, phonetic, variants.toSet());
 
   /// The ISO language code for the language of the [term].
@@ -65,8 +65,8 @@ abstract class DictionaryEntry {
   /// The phonetic representation of [term] when pronounced in [languageCode].
   String get phonetic;
 
-  /// An un-ordered collection of unique [TermVariant] instances.
-  Set<TermVariant> get variants;
+  /// An un-ordered collection of unique [TermDefinition] instances.
+  Set<TermDefinition> get variants;
 
   /// A hashmap of [PartOfSpeech] to terms that are synonyms of [term].
   Map<PartOfSpeech, Set<String>> get synonymsMap;
@@ -99,7 +99,7 @@ abstract class DictionaryEntry {
   Set<String> get allPhrases;
 }
 
-/// Abstract mixin class of [DictionaryEntry] that implements:
+/// Abstract mixin class of [TermProperties] that implements:
 /// - the `==` operator by comparing type and the [term], [languageCode] and
 ///   [variants] properties;
 /// - [hashCode] returns an Object.hash of the [term], [languageCode] and
@@ -114,7 +114,7 @@ abstract class DictionaryEntry {
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
 /// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
 /// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
-abstract class DictionaryEntryMixin implements DictionaryEntry {
+abstract class TermPropertiesMixin implements TermProperties {
   //
 
   @override
@@ -213,7 +213,7 @@ abstract class DictionaryEntryMixin implements DictionaryEntry {
 
   @override
   bool operator ==(Object other) =>
-      other is DictionaryEntry &&
+      other is TermProperties &&
       term == other.term &&
       languageCode == other.languageCode &&
       variants.intersection(other.variants).length == variants.length;
@@ -222,40 +222,16 @@ abstract class DictionaryEntryMixin implements DictionaryEntry {
   int get hashCode => Object.hash(term, languageCode, variants);
 }
 
-/// Abstract implementation class of [DictionaryEntry] that implements:
-/// - the `==` operator by comparing type and the [term], [languageCode] and
-///   [variants] properties;
-/// - [hashCode] returns an Object.hash of the [term], [languageCode] and
-///   [variants] properties;
-/// - [allAntonyms] maps all the antonyms from [variants] to a set;
-/// - [allDefinitions] maps all the definitions from [variants] to a set;
-/// - [allInflections] maps all the inflections from [variants] to a set;
-/// - [allPhrases] maps all the phrases from [variants] to a set;
-/// - [allSynonyms] maps all the synonyms from [variants] to a set;
-/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
-/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
-/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
-/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
-abstract class DictionaryEntryBase with DictionaryEntryMixin {
-  //
-
-  /// Default const generative constructor for sub-classes.
-  const DictionaryEntryBase();
-
-  //
-}
-
-/// Implementation class for [DictionaryEntry], extends [DictionaryEntryBase].
-class _DictionaryEntry extends DictionaryEntryBase {
+/// Implementation class for [TermProperties], extends [TermPropertiesBase].
+class _TermProperties with TermPropertiesMixin {
   //
 
   /// Private final field for [variants].
-  final Set<TermVariant> _variants;
+  final Set<TermDefinition> _variants;
 
-  /// An un-ordered collection of unique [TermVariant] instances.
+  /// An un-ordered collection of unique [TermDefinition] instances.
   @override
-  Set<TermVariant> get variants => Set<TermVariant>.from(_variants);
+  Set<TermDefinition> get variants => Set<TermDefinition>.from(_variants);
 
   @override
   final String languageCode;
@@ -263,7 +239,7 @@ class _DictionaryEntry extends DictionaryEntryBase {
   @override
   final String term;
 
-  const _DictionaryEntry(this.languageCode, this.term, this.stem, this.lemma,
+  const _TermProperties(this.languageCode, this.term, this.stem, this.lemma,
       this.phonetic, this._variants);
 
   @override

@@ -4,7 +4,7 @@
 
 import 'part_of_speech.dart';
 
-/// A definition for a term, used in a [DictionaryEntry] object with immutable
+/// A definition for a term, used in a [TermProperties] object with immutable
 /// properties:
 /// - [term] is a term or word;
 /// - [partOfSpeech] is the [PartOfSpeech] category of the [term];
@@ -17,10 +17,10 @@ import 'part_of_speech.dart';
 ///   inflections of [term] when used as [partOfSpeech]; and
 /// - [phrases] is an unordered collection of unique example phrases that
 ///   include [term] when used as [partOfSpeech].
-abstract class TermVariant {
+abstract class TermDefinition {
   //
 
-  /// Factory constructor instantiates an immutable [TermVariant] object
+  /// Factory constructor instantiates an immutable [TermDefinition] object
   /// with the following parameters:
   /// - [term] is a term or word;
   /// - [partOfSpeech] is the [PartOfSpeech] category of the [term];
@@ -36,7 +36,7 @@ abstract class TermVariant {
   ///
   /// *NOTE: the `== operator` compares only the [term], [partOfSpeech] and
   /// [definition] properties.*
-  factory TermVariant(
+  factory TermDefinition(
           {required String term,
           required PartOfSpeech partOfSpeech,
           required String definition,
@@ -44,7 +44,7 @@ abstract class TermVariant {
           required Set<String> antonyms,
           required Set<String> phrases,
           required Set<String> inflections}) =>
-      _TermVariant(term, partOfSpeech, definition, synonyms, antonyms,
+      _TermDefinition(term, partOfSpeech, definition, synonyms, antonyms,
           inflections, phrases);
 
   /// The term for this entry.
@@ -73,21 +73,21 @@ abstract class TermVariant {
   Set<String> get phrases;
 }
 
-/// Abstract implementation class of [TermVariant] that implements the
+/// Abstract implementation class of [TermDefinition] that implements the
 /// `==` operator and [hashCode].
 ///
 /// *NOTE: the `== operator` compares only the [term], [partOfSpeech] and
 /// [definition] properties.*
-abstract class TermVariantBase implements TermVariant {
+abstract class TermDefinitionBase implements TermDefinition {
 //
 
   /// Default const generative constructor for sub-classes.
-  const TermVariantBase();
+  const TermDefinitionBase();
 
   /// Compares only the [term], [partOfSpeech] and [definition] properties.
   @override
   bool operator ==(Object other) =>
-      other is TermVariant &&
+      other is TermDefinition &&
       term == other.term &&
       partOfSpeech == other.partOfSpeech &&
       definition == other.definition;
@@ -96,7 +96,7 @@ abstract class TermVariantBase implements TermVariant {
   int get hashCode => Object.hash(term, partOfSpeech, definition);
 }
 
-class _TermVariant extends TermVariantBase {
+class _TermDefinition extends TermDefinitionBase {
   //
 
   @override
@@ -108,7 +108,7 @@ class _TermVariant extends TermVariantBase {
   @override
   final String term;
 
-  const _TermVariant(this.term, this.partOfSpeech, this.definition,
+  const _TermDefinition(this.term, this.partOfSpeech, this.definition,
       this.synonyms, this.antonyms, this.inflections, this.phrases);
 
   @override
