@@ -20,6 +20,12 @@ All rights reserved.
 * Added `ThesaurusMixin` to `dictosaurus` package exports.
 * Added `[AutoCorrect.kGram]` static factory method.
 
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.1+2
 **Beta Stable Release**
 
