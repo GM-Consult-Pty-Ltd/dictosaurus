@@ -87,17 +87,17 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
   //prints:
   // [DictoSaurus] METHODS EXAMPLE                                             
-  // ╔═══════════════════════════╤════════════════════════════════════════════╗
-  // ║  Method                   │                 TestResult                 ║
-  // ╟───────────────────────────┼────────────────────────────────────────────╢
-  // ║  suggestionsFor("appel")  │  [apple, appear, april, aapl, sp...        ║
-  // ║  expandTerm("swim")       │  [swim, bathe, dip, whirl, spin]           ║
-  // ║  definitionsFor("swim")   │  {bathe, go swimming, take a dip, dip,...  ║
-  // ║  synonymsOf("swim")       │  {bathe, go swimming, take a dip, dip,...  ║
-  // ║  antonymsOf("swim")       │  {drown, sink}                             ║
-  // ║  inflectionsOf("swim")    │  {swims, swimming, swam, swum}             ║
-  // ║  phrasesWith("swim")      │  {they swam ashore, Adrian taught her ...  ║
-  // ╚═══════════════════════════╧════════════════════════════════════════════╝
+  // ════════════════════════════════════════════════════════════════════════════
+  //   Method                   │                 TestResult                 
+  // ════════════════════════════════════════════════════════════════════════════
+  //   suggestionsFor("appel")  │  [apple, appear, april, aapl, sp...        
+  //   expandTerm("swim")       │  [swim, bathe, dip, whirl, spin]           
+  //   definitionsFor("swim")   │  {bathe, go swimming, take a dip, dip,...  
+  //   synonymsOf("swim")       │  {bathe, go swimming, take a dip, dip,...  
+  //   antonymsOf("swim")       │  {drown, sink}                             
+  //   inflectionsOf("swim")    │  {swims, swimming, swam, swum}             
+  //   phrasesWith("swim")      │  {they swam ashore, Adrian taught her ...  
+  // ════════════════════════════════════════════════════════════════════════════
 
 ```
 
