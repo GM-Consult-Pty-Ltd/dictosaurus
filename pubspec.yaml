@@ -3,8 +3,8 @@
 # All rights reserved.
 
 name: dictosaurus
-description: Dictionary, thesaurus and term expansion utilities.
-version: 0.0.2
+description: Dictionary, thesaurus and term expansion utilities methods used in natural language processing.
+version: 0.0.2+1
 repository: https://github.com/GM-Consult-Pty-Ltd/dictosaurus
 homepage: https://github.com/GM-Consult-Pty-Ltd
 issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues
@@ -17,7 +17,7 @@ dependencies:
   gmconsult_dart_core: ^0.0.1
   meta: ^1.8.0
   text_analysis: ^0.15.1+1
-  
+
 dev_dependencies:
   gmconsult_dev: ^0.0.7
   gmconsult_proprietary: 
