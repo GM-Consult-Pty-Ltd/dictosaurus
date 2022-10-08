@@ -1,6 +1,12 @@
-# Secret keys.
+<!-- # Secret keys. -->
 test/keys/
 lib/keys/
 
-# Folder with implementation code for testing and examples.
+<!-- Folder with images used in documentation. -->
+doc/images/
+
+<!-- # Folder with implementation code for testing and examples. -->
 impl/
+
+<!-- data used for testing -->
+test/data/
