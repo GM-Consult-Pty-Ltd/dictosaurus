@@ -2,7 +2,9 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// Extensions on String that provide dictionary and thesaurus functions.
+/// Dictionary, thesaurus and term expansion utilities.
+///
+/// Also exports the core classes from the `text_indexing` package.
 library dictosaurus;
 
 export 'src/auto_correct/auto_correct.dart' show AutoCorrect;

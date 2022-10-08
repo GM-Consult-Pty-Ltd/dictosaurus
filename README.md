@@ -5,7 +5,7 @@ All rights reserved.
 -->
 
 [![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/assets/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
-## **Extensions on String that provide dictionary and thesaurus functions.**
+## **Dictionary, thesaurus and term expansion utilities.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
@@ -22,13 +22,13 @@ Skip to section:
 The `dictosaurus` package provides language reference utilities used in `information retrieval systems`. 
 
 Three utility classes provide dictionary and thesaurus functions:
-* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) class exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a `term` in a `vocabulary`;
+* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) class exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a `term`;
 * the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) class exposes methods that return the synonyms or antonyms of a `term` ; and
 * the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) class exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
 
 The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) class implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
 
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) also exposes the [Future<List<String>> expandTerm(String term)](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) function that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
 
 Refer to the [references](#references) to learn more about information retrieval systems.
 
@@ -55,11 +55,11 @@ import 'package:dictosaurus/type_definitions.dart';
 Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) is demonstrated below.
 
 ```dart
-  // define a term with incorrect spelling
-  final misspeltterm = 'inteligent';
+  // define a term with incorrect spelling.
+  final misspeltterm = 'appel';
 
-  // define a correctly spelled term
-  final term = 'intelligent';
+  // define a correctly spelled term.
+  final term = 'swim';
 
   // get a Dictosaurus instance from an implementation class (not shown here)
   final dictoSaurus = await getDictoSaurus();
@@ -84,6 +84,20 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
   // get the phrases
   final phrases = await dictoSaurus.phrasesWith(term);
+
+  //prints:
+  // [DictoSaurus] METHODS EXAMPLE                                             
+  // ╔═══════════════════════════╤════════════════════════════════════════════╗
+  // ║  Method                   │                 TestResult                 ║
+  // ╟───────────────────────────┼────────────────────────────────────────────╢
+  // ║  suggestionsFor("appel")  │  [apple, appear, april, aapl, sp...        ║
+  // ║  expandTerm("swim")       │  [swim, bathe, dip, whirl, spin]           ║
+  // ║  definitionsFor("swim")   │  {bathe, go swimming, take a dip, dip,...  ║
+  // ║  synonymsOf("swim")       │  {bathe, go swimming, take a dip, dip,...  ║
+  // ║  antonymsOf("swim")       │  {drown, sink}                             ║
+  // ║  inflectionsOf("swim")    │  {swims, swimming, swam, swum}             ║
+  // ║  phrasesWith("swim")      │  {they swam ashore, Adrian taught her ...  ║
+  // ╚═══════════════════════════╧════════════════════════════════════════════╝
 
 ```
 

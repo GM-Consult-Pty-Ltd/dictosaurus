@@ -73,7 +73,7 @@ abstract class DictoSaurusMixin implements DictoSaurus {
 
   @override
   Future<Set<String>> antonymsOf(String term, [PartOfSpeech? partOfSpeech]) =>
-      thesaurus.synonymsOf(term, partOfSpeech);
+      thesaurus.antonymsOf(term, partOfSpeech);
 
   @override
   Future<Set<String>> inflectionsOf(String term,

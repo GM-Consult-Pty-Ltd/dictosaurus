@@ -2,7 +2,9 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// Extensions on String that provide dictionary and thesaurus functions.
+/// Typedefs used by the `dictosaurus` package.
+///
+/// Also includes the typedefs from the `text_indexing` package.
 library type_definitions;
 
 /// Export of barrel file in the /src folder.

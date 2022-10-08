@@ -3,8 +3,8 @@
 # All rights reserved.
 
 name: dictosaurus
-description: Extensions on String that provide dictionary and thesaurus functions (**PRE-RELEASE**).
-version: 0.0.1-beta.7
+description: Dictionary, thesaurus and term expansion utilities.
+version: 0.0.1
 repository: https://github.com/GM-Consult-Pty-Ltd/dictosaurus
 homepage: https://github.com/GM-Consult-Pty-Ltd
 issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues
@@ -13,15 +13,12 @@ environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies:
-  # (in alphabetic order)
   collection: ^1.16.0
-  gmconsult_dart_core: ^0.0.1-1
+  gmconsult_dart_core: ^0.0.1
   meta: ^1.8.0
   text_indexing: ^0.16.0
 
-
 dev_dependencies:
-  # (in alphabetic order)
   gmconsult_dev: ^0.0.7
   gmconsult_proprietary: 
     version: ^0.0.1-5

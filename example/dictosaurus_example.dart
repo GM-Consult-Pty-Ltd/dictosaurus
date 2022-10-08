@@ -28,10 +28,10 @@ Future<void> _readMeExample() async {
   final results = <JSON>[];
 
   // define a term with incorrect spelling.
-  final misspeltterm = 'inteligent';
+  final misspeltterm = 'appel';
 
   // define a correctly spelled term.
-  final term = 'intelligent';
+  final term = 'swim';
 
   // get a Dictosaurus instance from an implementation class (not shown here)
   final dictoSaurus = await getDictoSaurus();
@@ -67,6 +67,20 @@ Future<void> _readMeExample() async {
   results.add({'Method': 'phrasesWith("$term")', 'TestResult': phrases});
 
   Console.out(title: '[DictoSaurus] METHODS EXAMPLE', results: results);
+
+  //prints:
+  // [DictoSaurus] METHODS EXAMPLE
+  // ╔═══════════════════════════╤════════════════════════════════════════════╗
+  // ║  Method                   │                 TestResult                 ║
+  // ╟───────────────────────────┼────────────────────────────────────────────╢
+  // ║  suggestionsFor("appel")  │  [apple, appear, april, aapl, sp...        ║
+  // ║  expandTerm("swim")       │  [swim, bathe, dip, whirl, spin]           ║
+  // ║  definitionsFor("swim")   │  {bathe, go swimming, take a dip, dip,...  ║
+  // ║  synonymsOf("swim")       │  {bathe, go swimming, take a dip, dip,...  ║
+  // ║  antonymsOf("swim")       │  {drown, sink}                             ║
+  // ║  inflectionsOf("swim")    │  {swims, swimming, swam, swum}             ║
+  // ║  phrasesWith("swim")      │  {they swam ashore, Adrian taught her ...  ║
+  // ╚═══════════════════════════╧════════════════════════════════════════════╝
 }
 
 // Print separator
