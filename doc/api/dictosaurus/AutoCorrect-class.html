@@ -71,6 +71,7 @@ terms that start with a sequence of characters from a k-grams index.</li>
         <dt>Implementers</dt>
         <dd><ul class="comma-separated clazz-relationships">
           <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
+          <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
         </ul></dd>
 
 
@@ -84,21 +85,10 @@ terms that start with a sequence of characters from a k-grams index.</li>
 
     <dl class="constructor-summary-list">
         <dt id="AutoCorrect" class="callable">
-          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.html">AutoCorrect</a></span><span class="signature">(<span class="parameter" id="-param-kGramIndexLoader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/KGramsMap.html">KGramsMap</a></span>&gt;</span></span> <span class="parameter-name">kGramIndexLoader</span>(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/text_analysis/0.15.1/type_definitions/Term.html">Term</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>), </span><span class="parameter" id="-param-k">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">k</span> = <span class="default-value">3</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.html">AutoCorrect</a></span><span class="signature">()</span>
         </dt>
         <dd>
-          The unnamed factory constructor initializes a <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> that uses an
-asynchronous callback <code>kGramIndexLoader</code> to return the k-grams for a term.
-            <div class="constructor-modifier features">factory</div>
-        </dd>
-        <dt id="AutoCorrect.inMemory" class="callable">
-          <span class="name"><a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">AutoCorrect.inMemory</a></span><span class="signature">(<span class="parameter" id="inMemory-param-kGramIndex"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">kGramIndex</span></span>)</span>
-        </dt>
-        <dd>
-          The <a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">AutoCorrect.inMemory</a> factory constructor initializes a <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>
-with the in-memory <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/KGramsMap.html">KGramsMap</a> instance <code>kGramIndex</code>.
-<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a>.
-            <div class="constructor-modifier features">factory</div>
+          
         </dd>
     </dl>
   </section>
@@ -216,6 +206,26 @@ k-grams index.
   </section>
     
     
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="kGram" class="callable">
+  <span class="name"><a href="../dictosaurus/AutoCorrect/kGram.html">kGram</a></span><span class="signature">(<wbr><span class="parameter" id="kGram-param-kGramIndexLoader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">kGramIndexLoader</span>(<span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span>), </span><span class="parameter" id="kGram-param-k">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">k</span> = <span class="default-value">2</span>}</span>)
+    <span class="returntype parameter">&#8594; AutoCorrectBase</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Static factory <a href="../dictosaurus/AutoCorrect/kGram.html">AutoCorrect.kGram</a> initializes a <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> with an
+asynchronous callback <code>kGramIndexLoader</code>, used by <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a> and
+<a href="../dictosaurus/AutoCorrect/startsWith.html">startsWith</a> to analyze text.
+  
+
+</dd>
+
+    </dl>
+  </section>
     
 
 
@@ -238,35 +248,17 @@ k-grams index.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token-class.html">Token</a></li>
+  <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
 
@@ -275,7 +267,6 @@ k-grams index.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
 
 </ol>
@@ -287,7 +278,6 @@ k-grams index.
 
         <li class="section-title"><a href="../dictosaurus/AutoCorrect-class.html#constructors">Constructors</a></li>
           <li><a href="../dictosaurus/AutoCorrect/AutoCorrect.html">AutoCorrect</a></li>
-          <li><a href="../dictosaurus/AutoCorrect/AutoCorrect.inMemory.html">inMemory</a></li>
 
 
     <li class="section-title inherited">
@@ -307,6 +297,8 @@ k-grams index.
 
 
 
+        <li class="section-title"><a href="../dictosaurus/AutoCorrect-class.html#static-methods">Static methods</a></li>
+          <li><a href="../dictosaurus/AutoCorrect/kGram.html">kGram</a></li>
 
 </ol>
 
@@ -317,7 +309,7 @@ k-grams index.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1+2
+      0.0.2
   </span>
 
   

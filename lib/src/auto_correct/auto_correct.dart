@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/src/_index.dart';
+import 'package:text_analysis/extensions.dart';
 
 /// The [AutoCorrect] interface:
 /// - exposes the [suggestionsFor] method that returns a linked set of unique
@@ -27,29 +27,22 @@ abstract class AutoCorrect {
   /// If [limit] is not null, only the best [limit] matches will be returned.
   Future<List<String>> startsWith(String chars, [int limit = 10]);
 
-  /// The [AutoCorrect.inMemory] factory constructor initializes a [AutoCorrect]
-  /// with the in-memory [KGramsMap] instance [kGramIndex].
-  /// [AutoCorrect].
-  factory AutoCorrect.inMemory(Map<String, Set<String>> kGramIndex) {
-    assert(kGramIndex.isNotEmpty);
-    final k = kGramIndex.keys.first.length;
-    return _InMemoryAutoCorrect(kGramIndex, k);
-  }
-
-  /// The unnamed factory constructor initializes a [AutoCorrect] that uses an
-  /// asynchronous callback [kGramIndexLoader] to return the k-grams for a term.
-  factory AutoCorrect(
-          Future<KGramsMap> Function(Iterable<Term> terms) kGramIndexLoader,
-          {int k = 3}) =>
+  /// Static factory [AutoCorrect.kGram] initializes a [AutoCorrect] with an
+  /// asynchronous callback [kGramIndexLoader], used by [suggestionsFor] and
+  /// [startsWith] to analyze text.
+  static AutoCorrectBase kGram(
+          Future<Map<String, Set<String>>> Function(Iterable<String> terms)
+              kGramIndexLoader,
+          {int k = 2}) =>
       _AutoCorrectImpl(kGramIndexLoader, k);
 }
 
 /// An abstract class that implements the [AutoCorrect] interface:
 ///
 /// Classes that mix in [AutoCorrectMixin] must override:
-/// - [k], the length of the k-grams in the [KGramsMap]; and
+/// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
 /// - [kGramIndexLoader], an asynchronous callback function that returns a
-///   [KGramsMap] for a collection of k-grams.
+///   [Map<String, Set<String>>] for a collection of k-grams.
 abstract class AutoCorrectBase with AutoCorrectMixin {
   //
 
@@ -62,18 +55,19 @@ abstract class AutoCorrectBase with AutoCorrectMixin {
 /// A mixin class that implements [AutoCorrect.suggestionsFor].
 ///
 /// Classes that mix in [AutoCorrectMixin] must override:
-/// - [k], the length of the k-grams in the [KGramsMap]; and
-/// - [kGramIndexLoader], an asynchronous callback function that returns a [KGramsMap]
+/// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
+/// - [kGramIndexLoader], an asynchronous callback function that returns a [Map<String, Set<String>>]
 ///   for a collection of k-grams.
 abstract class AutoCorrectMixin implements AutoCorrect {
   //
 
-  /// The length of the k-grams in the [KGramsMap].
+  /// The length of the k-grams in the [Map<String, Set<String>>].
   int get k;
 
   /// A function or callback that asynchronously returns a subset of a
-  /// [KGramsMap] for a collection of [KGram] strings.
-  Future<KGramsMap> Function(Iterable<KGram> kGrams) get kGramIndexLoader;
+  /// [Map<String, Set<String>>] for a collection of [String] strings.
+  Future<Map<String, Set<String>>> Function(Iterable<String> kGrams)
+      get kGramIndexLoader;
 
   @override
   Future<List<String>> suggestionsFor(String term, [int limit = 10]) async {
@@ -106,42 +100,16 @@ abstract class AutoCorrectMixin implements AutoCorrect {
   }
 }
 
-/// Implementation class for factory constructor [AutoCorrect.inMemory].
-class _InMemoryAutoCorrect with AutoCorrectMixin {
-  //
-
-  /// Instantiate a const [_InMemoryAutoCorrect]
-  const _InMemoryAutoCorrect(this.kGramIndex, this.k);
-
-  /// A in-memory [KGramsMap] instance.
-  final KGramsMap kGramIndex;
-
-  @override
-  final int k;
-
-  @override
-  KGramsMapLoader get kGramIndexLoader => ([terms]) async {
-        terms = terms ?? [];
-        final KGramsMap retVal = {};
-        for (final kGram in terms) {
-          final entry = kGramIndex[kGram];
-          if (entry != null) {
-            retVal[kGram] = entry;
-          }
-        }
-        return retVal;
-      };
-}
-
-/// Implementation class for uunamed factory constructor [AutoCorrect].
+/// Implementation class for unnamed factory constructor [AutoCorrect].
 ///
 /// Uses an asynchronous callback [kGramIndexLoader] to return alternative
 /// spellings for a term.
-class _AutoCorrectImpl with AutoCorrectMixin {
+class _AutoCorrectImpl extends AutoCorrectBase {
 //
 
   @override
-  final Future<KGramsMap> Function(Iterable<Term> terms) kGramIndexLoader;
+  final Future<Map<String, Set<String>>> Function(Iterable<String> terms)
+      kGramIndexLoader;
 
   @override
   final int k;
@@ -149,4 +117,19 @@ class _AutoCorrectImpl with AutoCorrectMixin {
   /// Initializes a const [_AutoCorrectImpl] with an asynchronous callback
   /// [kGramIndexLoader] that  returns a set of synonyms for a term..\
   const _AutoCorrectImpl(this.kGramIndexLoader, this.k);
+}
+
+/// Extension methods on [KGramsMap].
+extension _KGramIndexExtension on Map<String, Set<String>> {
+  //
+
+  /// Returns a set of unique terms by iterating over all the [values] in the
+  /// collection and adding the terms to a [Set].
+  Set<String> get terms {
+    final kGramTerms = <String>{};
+    for (final terms in values) {
+      kGramTerms.addAll(terms);
+    }
+    return kGramTerms;
+  }
 }

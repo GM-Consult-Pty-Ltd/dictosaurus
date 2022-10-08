@@ -4,8 +4,8 @@
 
 import 'package:dictosaurus/src/_index.dart';
 
-/// Function definition of an asynchronous callback that returns the meaning of
-/// a [term] from a dictionary provider.
+/// Function definition of an asynchronous callback that returns the properties
+/// of a [term] from a dictionary provider.
 typedef DictionaryCallback = Future<TermProperties?> Function(String term);
 
 /// Function definition of an asynchronous callback that returns the synonyms of

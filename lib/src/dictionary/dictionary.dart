@@ -15,7 +15,7 @@ import '../typedefs.dart';
 abstract class Dictionary {
 //
 
-  /// The ISO language code for the language of the [term].
+  /// The ISO language code for the language of a term.
   String get languageCode;
 
   /// Returns a [TermProperties] for [term].

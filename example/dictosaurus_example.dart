@@ -25,7 +25,7 @@ void main() async {
 Future<void> _readMeExample() async {
   //
 
-  final results = <JSON>[];
+  final results = <Map<String, dynamic>>[];
 
   // define a term with incorrect spelling.
   final misspeltterm = 'appel';

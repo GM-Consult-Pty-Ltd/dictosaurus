@@ -51,7 +51,6 @@
     
 <section class="desc markdown">
   <p>Dictionary, thesaurus and term expansion utilities.</p>
-<p>Also exports the core classes from the <code>text_indexing</code> package.</p>
 </section>
 
 
@@ -59,24 +58,6 @@
       <h2>Classes</h2>
 
       <dl>
-        <dt id="AsyncCallbackIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></span> 
-
-</dt>
-<dd>
-  The <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a> is a <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a> implementation class that
-mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a>.
-</dd>
-
-        <dt id="AsyncCallbackIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></span> 
-
-</dt>
-<dd>
-  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes five
-callback function fields that must be overriden:
-</dd>
-
         <dt id="AutoCorrect">
   <span class="name "><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></span> 
 
@@ -126,64 +107,7 @@ methods:
 
 </dt>
 <dd>
-  A mixin class that implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and
-<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface methods as well as <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a>.
-</dd>
-
-        <dt id="English">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></span> 
-
-</dt>
-<dd>
-  A <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a> implementation for <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a> language analysis.
-</dd>
-
-        <dt id="InMemoryIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></span> 
-
-</dt>
-<dd>
-  The InMemoryIndex is an implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a> interface
-that mixes in <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a>.
-</dd>
-
-        <dt id="InMemoryIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></span> 
-
-</dt>
-<dd>
-  A mixin class that implements <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>. The mixin exposes in-memory
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/postings.html">postings</a> fields that must be overriden. Provides
-implementation of the following methods for operations on the in-memory
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/postings.html">postings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin/dictionary.html">dictionary</a> maps:
-</dd>
-
-        <dt id="InvertedIndex">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></span> 
-
-</dt>
-<dd>
-  An interface that exposes methods for working with an inverted, positional
-zoned index on a collection of documents:
-</dd>
-
-        <dt id="InvertedIndexMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></span> 
-
-</dt>
-<dd>
-  A mixin that implements the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getTfIndex.html">InvertedIndex.getTfIndex</a>,
-<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getFtdPostings.html">InvertedIndex.getFtdPostings</a> and <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex/getIdFtIndex.html">InvertedIndex.getIdFtIndex</a> methods.
-</dd>
-
-        <dt id="Porter2Stemmer">
-  <span class="name "><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></span> 
-
-</dt>
-<dd>
-  DART implementation of the Porter Stemming Algorithm
-(see <a href="https://snowballstem.org/algorithms/)">https://snowballstem.org/algorithms/)</a>, used for reducing a word to
-its word stem, base or root form.
+  A mixin class that implements <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a>.
 </dd>
 
         <dt id="TermDefinition">
@@ -211,97 +135,6 @@ properties:
   Abstract mixin class of <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> that implements:
 </dd>
 
-        <dt id="TermSimilarity">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></span> 
-
-</dt>
-<dd>
-  A static/abstract class that exposes methods for computing similarity of
-terms.
-</dd>
-
-        <dt id="TextAnalyzer">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></span> 
-
-</dt>
-<dd>
-  An interface exposes language-specific properties and methods used in
-text analysis:
-</dd>
-
-        <dt id="TextDocument">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></span> 
-
-</dt>
-<dd>
-  The <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a> object model enumerates properties for analysing a text
-document:
-</dd>
-
-        <dt id="TextDocumentBase">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></span> 
-
-</dt>
-<dd>
-  An abstract implementation of <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a> that uses <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a>.
-</dd>
-
-        <dt id="TextDocumentMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></span> 
-
-</dt>
-<dd>
-  The <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a> provides implementations of the
-<a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument/averageSentenceLength.html">TextDocument.averageSentenceLength</a>, <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument/averageSyllableCount.html">TextDocument.averageSyllableCount</a>,
-<a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument/wordCount.html">TextDocument.wordCount</a>, <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument/fleschReadingEaseScore.html">TextDocument.fleschReadingEaseScore</a> and
-<a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument/fleschKincaidGradeLevel.html">TextDocument.fleschKincaidGradeLevel</a> methods.
-</dd>
-
-        <dt id="TextIndexer">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a></span> 
-
-</dt>
-<dd>
-  Interface for classes that construct and maintain an inverted, positional,
-zoned index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a>) and k-gram index (<a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/KGramsMap.html">KGramsMap</a>) for a
-collection of documents (<code>corpus</code>).
-</dd>
-
-        <dt id="TextIndexerBase">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></span> 
-
-</dt>
-<dd>
-  Base class implementation of the <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a> interface.
-</dd>
-
-        <dt id="TextTokenizer">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></span> 
-
-</dt>
-<dd>
-  Interface for a text analyser class that extracts tokens from text for use
-in full-text search queries and indexes:
-</dd>
-
-        <dt id="TextTokenizerBase">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></span> 
-
-</dt>
-<dd>
-  A <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a> implementation that mixes in <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a>, which
-implements <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer/tokenize.html">TextTokenizer.tokenize</a> and <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer/tokenizeJson.html">TextTokenizer.tokenizeJson</a>.
-</dd>
-
-        <dt id="TextTokenizerMixin">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></span> 
-
-</dt>
-<dd>
-  A mixin class that implements <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer/tokenize.html">TextTokenizer.tokenize</a> and
- <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer/tokenizeJson.html">TextTokenizer.tokenizeJson</a>.
-</dd>
-
         <dt id="Thesaurus">
   <span class="name "><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></span> 
 
@@ -311,12 +144,14 @@ implements <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_anal
 <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.
 </dd>
 
-        <dt id="Token">
-  <span class="name "><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token-class.html">Token</a></span> 
+        <dt id="ThesaurusMixin">
+  <span class="name "><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></span> 
 
 </dt>
 <dd>
-  A <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token-class.html">Token</a> represents a <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token/term.html">term</a> (word) present in a text source:
+  A mixin class that implements <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and uses <a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a> to retrieve
+<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> from which it extracts <a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a> and <a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a> a
+term.
 </dd>
 
       </dl>
@@ -338,14 +173,6 @@ implements <a href="https://pub.dev/documentation/text_analysis/0.15.1/text_anal
 <dd>
   In grammar, a part of speech or part-of-speech is a category of words that
 have similar grammatical properties.
-</dd>
-
-        <dt id="TermSortStrategy">
-  <span class="name "><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></span> 
-
-</dt>
-<dd>
-  Enumerates the sorting strategy for <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/DftMap.html">DftMap</a>'s <a href="https://pub.dev/documentation/text_indexing/0.16.0+2/type_definitions/DftMapEntry.html">DftMapEntry</a>s.
 </dd>
 
       </dl>
@@ -381,35 +208,17 @@ have similar grammatical properties.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
   <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
   <li><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></li>
   <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
   <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token-class.html">Token</a></li>
+  <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
 
@@ -418,7 +227,6 @@ have similar grammatical properties.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0+2/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
 
 
 </ol>
@@ -430,7 +238,7 @@ have similar grammatical properties.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1+2
+      0.0.2
   </span>
 
   

@@ -36,19 +36,22 @@ abstract class Thesaurus {
 //
 }
 
-/// A mixin class that implements [Thesaurus] and uses [dictionary] to retrieve
-/// [synonymsOf] and [antonymsOf] a term.
-abstract class ThesaurusWithDictionaryMixin implements Thesaurus {
+/// A mixin class that implements [Thesaurus] and uses [getEntry] to retrieve
+/// [TermProperties] from which it extracts [synonymsOf] and [antonymsOf] a
+/// term.
+///
+/// Mix this class intoa [Dictionary] to add [Thesaurus] methods.
+abstract class ThesaurusMixin implements Thesaurus {
   //
 
-  /// A [Dictionary] instance used to retrieve [TermProperties].
-  Dictionary get dictionary;
+  /// Returns a [TermProperties] for [term].
+  Future<TermProperties?> getEntry(String term);
 
   @override
   Future<Set<String>> synonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
     final retVal = <String>{};
-    final dictEntry = await dictionary.getEntry(term);
+    final dictEntry = await getEntry(term);
     if (dictEntry != null) {
       if (partOfSpeech == null) {
         retVal.addAll(dictEntry.allSynonyms);
@@ -67,7 +70,7 @@ abstract class ThesaurusWithDictionaryMixin implements Thesaurus {
   Future<Set<String>> antonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
     final retVal = <String>{};
-    final dictEntry = await dictionary.getEntry(term);
+    final dictEntry = await getEntry(term);
     if (dictEntry != null) {
       if (partOfSpeech == null) {
         retVal.addAll(dictEntry.allAntonyms);
@@ -83,12 +86,14 @@ abstract class ThesaurusWithDictionaryMixin implements Thesaurus {
   }
 }
 
-class _ThesaurusWithDictionaryImpl with ThesaurusWithDictionaryMixin {
+class _ThesaurusWithDictionaryImpl with ThesaurusMixin {
   //
 
   const _ThesaurusWithDictionaryImpl(this.dictionary);
 
   @override
+  Future<TermProperties?> getEntry(String term) => dictionary.getEntry(term);
+
   final Dictionary dictionary;
 }
 

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the AutoCorrect constructor from Class AutoCorrect from the dictosaurus library, for the Dart programming language.">
-  <title>AutoCorrect constructor - AutoCorrect - dictosaurus library - Dart API</title>
+  <meta name="description" content="API docs for the kGram method from the AutoCorrect class, for the Dart programming language.">
+  <title>kGram method - AutoCorrect class - dictosaurus library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
-    <li class="self-crumb">AutoCorrect constructor</li>
+    <li class="self-crumb">kGram method</li>
   </ol>
-  <div class="self-name">AutoCorrect</div>
+  <div class="self-name">kGram</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,18 +45,40 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-constructor">AutoCorrect</span> constructor 
+<h1><span class="kind-method">kGram</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">AutoCorrect</span>(<wbr>)
+      
+
+<span class="returntype">AutoCorrectBase</span>
+<span class="name ">kGram</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="kGram-param-kGramIndexLoader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">kGramIndexLoader</span>(<ol class="parameter-list"><li><span class="parameter" id="param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">terms</span></span></li>
+</ol>
+), </span></li>
+<li><span class="parameter" id="kGram-param-k">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">k</span> = <span class="default-value">2</span>}</span></li>
+</ol>)
+
+      
+
     </section>
+    
+<section class="desc markdown">
+  <p>Static factory <a href="../../dictosaurus/AutoCorrect/kGram.html">AutoCorrect.kGram</a> initializes a <a href="../../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> with an
+asynchronous callback <code>kGramIndexLoader</code>, used by <a href="../../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a> and
+<a href="../../dictosaurus/AutoCorrect/startsWith.html">startsWith</a> to analyze text.</p>
+</section>
+
 
     
-
-
-    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static AutoCorrectBase kGram(
+        Future&lt;Map&lt;String, Set&lt;String&gt;&gt;&gt; Function(Iterable&lt;String&gt; terms)
+            kGramIndexLoader,
+        {int k = 2}) =&gt;
+    _AutoCorrectImpl(kGramIndexLoader, k);</code></pre>
+</section>
 
 
   </div> <!-- /.main-content -->
@@ -72,7 +94,7 @@
   <li><a href="../../index.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
-  <li class="self-crumb">AutoCorrect constructor</li>
+  <li class="self-crumb">kGram method</li>
 </ol>
 
 
@@ -105,7 +127,7 @@
 
 </ol>
 
-  </div><!--/.sidebar-offcanvas-left-->
+  </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->

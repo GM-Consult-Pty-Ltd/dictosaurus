@@ -83,14 +83,14 @@ best match first).</p>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async {
   final retVal = &lt;String&gt;{term};
-  final entry = await dictionary.getEntry(term);
+  final entry = await getEntry(term);
   if (entry != null) {
     retVal.add(term);
     retVal
         .addAll(entry.allSynonyms.where((element) =&gt; !element.contains(&#39; &#39;)));
   }
   if (retVal.length &lt; limit) {
-    final suggestions = await autoCorrect.suggestionsFor(term, limit);
+    final suggestions = await suggestionsFor(term, limit);
     retVal.addAll(suggestions);
   }
   final list = retVal.toList();
@@ -123,27 +123,24 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
           <li><a href="../../dictosaurus/DictoSaurusMixin/DictoSaurusMixin.html">DictoSaurusMixin</a></li>
 
 
-    <li class="section-title">
+    <li class="section-title inherited">
       <a href="../../dictosaurus/DictoSaurusMixin-class.html#instance-properties">Properties</a>
     </li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/autoCorrect.html">autoCorrect</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/dictionary.html">dictionary</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/languageCode.html">languageCode</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/languageCode.html">languageCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/thesaurus.html">thesaurus</a></li>
 
     <li class="section-title"><a href="../../dictosaurus/DictoSaurusMixin-class.html#instance-methods">Methods</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/antonymsOf.html">antonymsOf</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/definitionsFor.html">definitionsFor</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../../dictosaurus/DictoSaurusMixin/expandTerm.html">expandTerm</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/getEntry.html">getEntry</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/inflectionsOf.html">inflectionsOf</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/phrasesWith.html">phrasesWith</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/startsWith.html">startsWith</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/suggestionsFor.html">suggestionsFor</a></li>
-    <li><a href="../../dictosaurus/DictoSaurusMixin/synonymsOf.html">synonymsOf</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a></li>
+    <li class="inherited"><a href="../../dictosaurus/AutoCorrect/startsWith.html">startsWith</a></li>
+    <li class="inherited"><a href="../../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a></li>
+    <li class="inherited"><a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../../dictosaurus/DictoSaurusMixin-class.html#operators">Operators</a></li>
@@ -164,7 +161,7 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1+2
+      0.0.2
   </span>
 
   

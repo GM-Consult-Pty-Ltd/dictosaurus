@@ -4,6 +4,22 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
+## 0.0.2
+**Beta Stable Release**
+
+### *Breaking changes*
+* Removed `text_indexing` package from library exports.
+* Removed `AutoCorrect` unnamed factory constructor.
+* Removed `AutoCorrect.inMemory` factory constructor.
+* Changed signature of `DictoSaurus` unnamed factory.
+* Removed [Dictionary], [Thesaurus] and [AutoCorrect] implementations from [DictoSaurusMixin].
+
+### *New*
+* Added [DictoSaurus.fromComponents] factory constructor.
+* Added [DictionaryMixin], [ThesaurusMixin] and [AutoCorrectMixin] implementations to [DictoSaurusBase].
+* Added `ThesaurusMixin` to `dictosaurus` package exports.
+* Added `[AutoCorrect.kGram]` static factory method.
+
 ## 0.0.1+2
 **Beta Stable Release**
 

@@ -47,7 +47,7 @@ void main() {
 
     test('autocorrect', () async {
       final index = await getIndex();
-      final autoCorrect = AutoCorrect(index.getKGramIndex, k: k);
+      final autoCorrect = AutoCorrect.kGram(index.getKGramIndex, k: k);
       final term = 'aple';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -64,7 +64,7 @@ void main() {
 
     test('startsWith', () async {
       final index = await getIndex();
-      final autoCorrect = AutoCorrect(index.getKGramIndex, k: k);
+      final autoCorrect = AutoCorrect.kGram(index.getKGramIndex, k: k);
       final chars = 'app';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;

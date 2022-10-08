@@ -10,16 +10,32 @@ import 'package:dictosaurus/src/_index.dart';
 /// - [getEntry] returns the meaning of a term from a dictionary provider;
 /// - [synonymsOf] returns the synonyms of a term from a [Set<String>];
 /// - [suggestionsFor] returns alternative spellings for a term;
-/// - [startsWith] returns terms from a [KGramsMap] that start with a sequence
+/// - [startsWith] returns terms from a [Map<String, Set<String>>] that start with a sequence
 ///   of characters; and
 /// - [expandTerm] expands a term using [synonymsOf] and [suggestionsFor].
 abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
   //
 
   /// Initializes a [DictoSaurus] with [autoCorrect] and [dictionary] instances.
+  factory DictoSaurus.fromComponents(
+          {required Dictionary dictionary,
+          required AutoCorrectBase autoCorrect}) =>
+      _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);
+
+  /// Initializes a [DictoSaurus] with:
+  /// - [languageCode], the ISO language code for the language of a term;
+  /// - [getEntry], a function that returns a [TermProperties] for a term;
+  /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
+  /// - [kGramIndexLoader], an asynchronous callback function that returns a
+  ///   [Map<String, Set<String>>] for a collection of k-grams.
   factory DictoSaurus(
-          {required Dictionary dictionary, required AutoCorrect autoCorrect}) =>
-      _DictoSaurusImpl(dictionary, autoCorrect);
+          {required DictionaryCallback dictionaryCallback,
+          required Future<Map<String, Set<String>>> Function(
+                  Iterable<String> terms)
+              kGramIndexLoader,
+          String languageCode = 'en_us',
+          int k = 2}) =>
+      _DictoSaurusImpl(kGramIndexLoader, dictionaryCallback, k, languageCode);
 
   /// Expands [term] to an ordered list of terms.
   ///
@@ -38,101 +54,90 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
 /// Implements [DictoSaurus] by mixing in [DictoSaurusMixin].
 ///
 /// Sub-classes must override:
-/// - [autoCorrect] a [AutoCorrect] instance used by [suggestionsFor] and
-///   [startsWith];
-/// - [dictionary] a [Dictionary] instance used by [getEntry].
-///
-abstract class DictoSaurusBase with DictoSaurusMixin {
+/// - [languageCode], the ISO language code for the language of a term;
+/// - [getEntry], a function that returns a [TermProperties] for a term;
+/// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
+/// - [kGramIndexLoader], an asynchronous callback function that returns a
+///   [Map<String, Set<String>>] for a collection of k-grams.
+abstract class DictoSaurusBase
+    with DictionaryMixin, ThesaurusMixin, AutoCorrectMixin, DictoSaurusMixin {
+  //
   /// A const generative constructor for sub classes.
   const DictoSaurusBase();
 }
 
-/// A mixin class that implements the [Dictionary], [Thesaurus] and
-/// [AutoCorrect] interface methods as well as [DictoSaurus.expandTerm].
-///
-/// Implementations that mix in [DictoSaurusMixin] must override [dictionary],
-/// [autoCorrect] and [Thesaurus].
+/// A mixin class that implements [DictoSaurus.expandTerm].
 abstract class DictoSaurusMixin implements DictoSaurus {
   //
-
-  /// A [Thesaurus] instance used by [getEntry].
-  Thesaurus get thesaurus;
-
-  /// A [AutoCorrect] instance used by [suggestionsFor].
-  AutoCorrect get autoCorrect;
-
-  /// A [Dictionary] instance used by [getEntry].
-  Dictionary get dictionary;
-
-  @override
-  String get languageCode => dictionary.languageCode;
-
-  @override
-  Future<Set<String>> synonymsOf(String term, [PartOfSpeech? partOfSpeech]) =>
-      thesaurus.synonymsOf(term, partOfSpeech);
-
-  @override
-  Future<Set<String>> antonymsOf(String term, [PartOfSpeech? partOfSpeech]) =>
-      thesaurus.antonymsOf(term, partOfSpeech);
-
-  @override
-  Future<Set<String>> inflectionsOf(String term,
-          [PartOfSpeech? partOfSpeech]) =>
-      dictionary.inflectionsOf(term, partOfSpeech);
-
-  @override
-  Future<Set<String>> phrasesWith(String term, [PartOfSpeech? partOfSpeech]) =>
-      dictionary.phrasesWith(term, partOfSpeech);
-
-  @override
-  Future<Set<String>> definitionsFor(String term,
-          [PartOfSpeech? partOfSpeech]) =>
-      dictionary.definitionsFor(term, partOfSpeech);
 
   @override
   Future<List<String>> expandTerm(String term, [int limit = 5]) async {
     final retVal = <String>{term};
-    final entry = await dictionary.getEntry(term);
+    final entry = await getEntry(term);
     if (entry != null) {
       retVal.add(term);
       retVal
           .addAll(entry.allSynonyms.where((element) => !element.contains(' ')));
     }
     if (retVal.length < limit) {
-      final suggestions = await autoCorrect.suggestionsFor(term, limit);
+      final suggestions = await suggestionsFor(term, limit);
       retVal.addAll(suggestions);
     }
     final list = retVal.toList();
     return (list.length > limit) ? list.sublist(0, limit) : list;
   }
+}
+
+/// A [DictoSaurus] implementation used by the unnamed [DictoSaurus] factory
+/// constructor.
+class _DictoSaurusImpl extends DictoSaurusBase {
+  //
+
+  /// Initializes a const [_DictoSaurusImpl].
+  const _DictoSaurusImpl(this.kGramIndexLoader, this.dictionaryCallback, this.k,
+      this.languageCode);
+
+  /// Asynchronous callback that returns the properties of a term from a
+  /// dictionary provider.
+  final DictionaryCallback dictionaryCallback;
 
   @override
-  Future<TermProperties?> getEntry(Term term) => dictionary.getEntry(term);
+  final int k;
 
   @override
-  Future<List<String>> startsWith(String chars, [int limit = 10]) =>
-      autoCorrect.startsWith(chars, limit);
+  final Future<Map<String, Set<String>>> Function(Iterable<String> terms)
+      kGramIndexLoader;
 
   @override
-  Future<List<String>> suggestionsFor(String term, [int limit = 10]) =>
-      autoCorrect.suggestionsFor(term, limit);
+  final String languageCode;
+
+  @override
+  Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
 }
 
 /// A [DictoSaurus] with final [autoCorrect] and [dictionary] fields and
 /// a generative constructor.
-class _DictoSaurusImpl extends DictoSaurusBase {
+class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   //
 
-  @override
-  final AutoCorrect autoCorrect;
+  final AutoCorrectBase autoCorrect;
 
-  @override
-  Thesaurus get thesaurus => Thesaurus.dictionary(dictionary);
-
-  @override
   final Dictionary dictionary;
 
   /// Initializes a [DictoSaurus] with [autoCorrect], [thesaurus] and
   /// [dictionary] instances.
-  const _DictoSaurusImpl(this.dictionary, this.autoCorrect);
+  const _DictoSaurusFromComponentsImpl(this.dictionary, this.autoCorrect);
+
+  @override
+  Future<TermProperties?> getEntry(String term) => dictionary.getEntry(term);
+
+  @override
+  int get k => autoCorrect.k;
+
+  @override
+  Future<Map<String, Set<String>>> Function(Iterable<String> kGrams)
+      get kGramIndexLoader => autoCorrect.kGramIndexLoader;
+
+  @override
+  String get languageCode => dictionary.languageCode;
 }

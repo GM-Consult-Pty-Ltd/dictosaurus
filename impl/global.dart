@@ -4,6 +4,7 @@
 
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:gmconsult_dev/test_data.dart';
+import 'package:text_indexing/text_indexing.dart';
 import 'oxford_dictionary.dart';
 
 const k = 2;
@@ -20,9 +21,9 @@ Future<InvertedIndex> getIndex() async {
 
 Future<DictoSaurus> getDictoSaurus() async {
   final index = await getIndex();
-  return DictoSaurus(
+  return DictoSaurus.fromComponents(
       dictionary: OxfordDictionaries(),
-      autoCorrect: AutoCorrect(index.getKGramIndex, k: k));
+      autoCorrect: AutoCorrect.kGram(index.getKGramIndex, k: k));
 }
 
 Future<Iterable<Token>> tokenizer(String term, [String? zone]) async =>
