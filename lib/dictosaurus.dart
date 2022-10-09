@@ -2,8 +2,10 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// The `dictosaurus` library provides 'natural language processing (NLP)'
-/// utilities used in `information retrieval systems`.
+/// The `dictosaurus` package provides `natural language processing (NLP)`
+/// utilities used in `information retrieval systems`. It includes *dictionary*,
+///  *thesaurus* and *term expansion* utilities and is intended for
+/// `information retrieval system` applications.
 ///
 /// Three utility classes provide dictionary and thesaurus and term expansion
 /// functions:

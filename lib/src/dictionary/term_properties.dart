@@ -140,7 +140,7 @@ abstract class TermProperties {
   Set<String> antonymsOf([PartOfSpeech? partOfSpeech]);
 }
 
-/// Abstract mixin class that implements the `==` operator and methods of the 
+/// Abstract mixin class that implements the `==` operator and methods of the
 /// [TermProperties] interface.
 /// - the `==` operator by comparing type and the [term], [languageCode] and
 ///   [variants] properties.
@@ -359,7 +359,7 @@ abstract class TermPropertiesMixin implements TermProperties {
   int get hashCode => Object.hash(term, languageCode, variants);
 }
 
-/// An abstract `base class` with [TermPropertiesMixin] that implements the 
+/// An abstract `base class` with [TermPropertiesMixin] that implements the
 /// [TermProperties] interface.
 ///
 /// Sub-classes of [TermPropertiesBase] must override:

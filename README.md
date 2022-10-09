@@ -5,11 +5,11 @@ All rights reserved.
 -->
 
 [![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/doc/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
-## **Dictionary, thesaurus and term expansion utilities methods used in natural language processing.**
+## ***Dictionary*, *thesaurus* and *term expansion* utilities used in *natural language processing (NLP)*.**
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
-Skip to section:
+#### Skip to section
 - [Overview](#overview)
 - [Usage](#usage)
 - [API](#api)
@@ -17,22 +17,13 @@ Skip to section:
 - [References](#references)
 - [Issues](#issues)
 
-## Overview
+## Overview (*[top](#skip-to-section)*)
 
-The `dictosaurus` package provides language reference utilities used in `information retrieval systems`. 
+The `dictosaurus` package provides `natural language processing (NLP)` utilities used in `information retrieval systems`. It includes *dictionary*, *thesaurus* and *term expansion* utilities and is intended for `information retrieval system` applications. 
 
-Three utility classes provide dictionary and thesaurus and term expansion functions:
-* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a `term`;
-* the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) interface exposes methods that return the synonyms or antonyms of a `term` ; and
-* the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interface exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
+Refer to the [references](#references) to learn more about `information retrieval systems`.
 
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
-
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
-
-Refer to the [references](#references) to learn more about information retrieval systems.
-
-## Usage
+## Usage (*[top](#skip-to-section)*)
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
 
@@ -44,10 +35,10 @@ dependencies:
 In your code file add the following import:
 
 ```dart
-// import the core interfaces, classes and mixins
+// import the core interfaces, classes and mixins of the `dictosaurus` library 
 import 'package:dictosaurus/dictosaurus.dart';
 
-// import the typedefs if needed
+// import the typedefs library to use types defined in the `dictosaurus` package.
 import 'package:dictosaurus/type_definitions.dart';
 
 ```
@@ -101,9 +92,20 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
 ```
 
-## API
+## API (*[top](#skip-to-section)*)
 
 Please refer to the [API documentation](https://pub.dev/documentation/dictosaurus/latest/).
+
+The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface is an object model for a term or word with immutable properties (`term`, `stem`, `lemma`, `language`). The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface also enumerates [variants](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermDefinition-class.html) of the term with different values for `part-of-speech`, `definition`, `synonyms`, `antonyms` and `inflections`, each with one or more example `phrases`.
+
+Three interfaces provide *dictionary*, *thesaurus* and *term expansion* functions:
+* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a `term`;
+* the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) interface exposes methods that return the synonyms or antonyms of a `term` ; and
+* the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interface exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
+
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
+
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
 
 We use an *interface > implementation mixin > base-class > implementation class pattern*:
 * the `interface` is an abstract class that exposes fields and methods but contains no implementation code. The `interface` may expose a factory constructor that returns an `implementation class` instance;
@@ -111,7 +113,7 @@ We use an *interface > implementation mixin > base-class > implementation class 
 * the `base-class` is an abstract class with the `implementation mixin` and exposes a default, unnamed generative const constructor for sub-classes. The intention is that `implementation classes` extend the `base class`, overriding the `interface` input fields with final properties passed in via a const generative constructor.
 The class naming convention for this pattern is *"Interface" > "InterfaceMixin" > "InterfaceBase"*.
 
-## Definitions
+## Definitions (*[top](#skip-to-section)*)
 
 The following definitions are used throughout the [documentation](https://pub.dev/documentation/text_analysis/latest/):
 
@@ -148,7 +150,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `vocabulary` - the collection of `terms` indexed from the `corpus`.
 * `zone` - the field or zone of a document that a term occurs in, used for parametric indexes or where scoring and ranking of search results attribute a higher score to documents that contain a term in a specific zone (e.g. the title rather that the body of a document).
 
-## References
+## References (*[top](#skip-to-section)*)
 
 * [Manning, Raghavan and Schütze, "*Introduction to Information Retrieval*", Cambridge University Press, 2008](https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf)
 * [University of Cambridge, 2016 "*Information Retrieval*", course notes, Dr Ronan Cummins, 2016](https://www.cl.cam.ac.uk/teaching/1516/InfoRtrv/)
@@ -162,7 +164,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * [Wikipedia (8), "*Damerau–Levenshtein distance*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
 * [Wikipedia (9), "*Natural language processing*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Natural_language_processing)
 
-## Issues
+## Issues (*[top](#skip-to-section)*)
 
 If you find a bug please fill an [issue](https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues).  
 

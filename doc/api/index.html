@@ -50,9 +50,9 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 <p><a href="https://github.com/GM-Consult-Pty-Ltd"><img src="https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/doc/images/dictosaurus.png?raw=true" alt="GM Consult Pty Ltd" title="GM Consult Pty Ltd"></a></p>
-<h2 id="dictionary-thesaurus-and-term-expansion-utilities-methods-used-in-natural-language-processing"><strong>Dictionary, thesaurus and term expansion utilities methods used in natural language processing.</strong></h2>
+<h2 id="dictionary-thesaurus-and-term-expansion-utilities-used-in-natural-language-processing-nlp"><strong><em>Dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> utilities used in <em>natural language processing (NLP)</em>.</strong></h2>
 <p><em>THIS PACKAGE IS <strong>PRE-RELEASE</strong>, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.</em></p>
-<p>Skip to section:</p>
+<h4 id="skip-to-section">Skip to section</h4>
 <ul>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#usage">Usage</a></li>
@@ -61,27 +61,19 @@ All rights reserved.
 <li><a href="#references">References</a></li>
 <li><a href="#issues">Issues</a></li>
 </ul>
-<h2 id="overview">Overview</h2>
-<p>The <code>dictosaurus</code> package provides language reference utilities used in <code>information retrieval systems</code>.</p>
-<p>Three utility classes provide dictionary and thesaurus and term expansion functions:</p>
-<ul>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (definitions, inflections, part-of-speech, phrases, synonyms and antonyms) of a <code>term</code>;</li>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return the synonyms or antonyms of a <code>term</code> ; and</li>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes methods that return alternative spellings for a <code>term</code> or terms that start with the same characters.</li>
-</ul>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a> method that performs <code>term-expansion</code>, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
-<p>Refer to the <a href="#references">references</a> to learn more about information retrieval systems.</p>
-<h2 id="usage">Usage</h2>
+<h2 id="overview-topskip-to-section">Overview (<em><a href="#skip-to-section">top</a></em>)</h2>
+<p>The <code>dictosaurus</code> package provides <code>natural language processing (NLP)</code> utilities used in <code>information retrieval systems</code>. It includes <em>dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> utilities and is intended for <code>information retrieval system</code> applications.</p>
+<p>Refer to the <a href="#references">references</a> to learn more about <code>information retrieval systems</code>.</p>
+<h2 id="usage-topskip-to-section">Usage (<em><a href="#skip-to-section">top</a></em>)</h2>
 <p>In the <code>pubspec.yaml</code> of your flutter project, add the following dependency:</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
   dictosaurus: &lt;latest_version&gt;
 </code></pre>
 <p>In your code file add the following import:</p>
-<pre class="language-dart"><code class="language-dart">// import the core interfaces, classes and mixins
+<pre class="language-dart"><code class="language-dart">// import the core interfaces, classes and mixins of the `dictosaurus` library 
 import 'package:dictosaurus/dictosaurus.dart';
 
-// import the typedefs if needed
+// import the typedefs library to use types defined in the `dictosaurus` package.
 import 'package:dictosaurus/type_definitions.dart';
 
 </code></pre>
@@ -131,8 +123,17 @@ import 'package:dictosaurus/type_definitions.dart';
   // ════════════════════════════════════════════════════════════════════════════
 
 </code></pre>
-<h2 id="api">API</h2>
+<h2 id="api-topskip-to-section">API (<em><a href="#skip-to-section">top</a></em>)</h2>
 <p>Please refer to the <a href="https://pub.dev/documentation/dictosaurus/latest/">API documentation</a>.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface is an object model for a term or word with immutable properties (<code>term</code>, <code>stem</code>, <code>lemma</code>, <code>language</code>). The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface also enumerates <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermDefinition-class.html">variants</a> of the term with different values for <code>part-of-speech</code>, <code>definition</code>, <code>synonyms</code>, <code>antonyms</code> and <code>inflections</code>, each with one or more example <code>phrases</code>.</p>
+<p>Three interfaces provide <em>dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> functions:</p>
+<ul>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a <code>term</code>;</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return the synonyms or antonyms of a <code>term</code> ; and</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes methods that return alternative spellings for a <code>term</code> or terms that start with the same characters.</li>
+</ul>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a> method that performs <code>term-expansion</code>, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
 <p>We use an <em>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</em>:</p>
 <ul>
 <li>the <code>interface</code> is an abstract class that exposes fields and methods but contains no implementation code. The <code>interface</code> may expose a factory constructor that returns an <code>implementation class</code> instance;</li>
@@ -140,7 +141,7 @@ import 'package:dictosaurus/type_definitions.dart';
 <li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor.
 The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</em>.</li>
 </ul>
-<h2 id="definitions">Definitions</h2>
+<h2 id="definitions-topskip-to-section">Definitions (<em><a href="#skip-to-section">top</a></em>)</h2>
 <p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
 <ul>
 <li><code>corpus</code>- the collection of <code>documents</code> for which an <code>index</code> is maintained.</li>
@@ -180,7 +181,7 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><code>vocabulary</code> - the collection of <code>terms</code> indexed from the <code>corpus</code>.</li>
 <li><code>zone</code> - the field or zone of a document that a term occurs in, used for parametric indexes or where scoring and ranking of search results attribute a higher score to documents that contain a term in a specific zone (e.g. the title rather that the body of a document).</li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references-topskip-to-section">References (<em><a href="#skip-to-section">top</a></em>)</h2>
 <ul>
 <li><a href="https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf">Manning, Raghavan and Schütze, "<em>Introduction to Information Retrieval</em>", Cambridge University Press, 2008</a></li>
 <li><a href="https://www.cl.cam.ac.uk/teaching/1516/InfoRtrv/">University of Cambridge, 2016 "<em>Information Retrieval</em>", course notes, Dr Ronan Cummins, 2016</a></li>
@@ -194,7 +195,7 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><a href="https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Wikipedia (8), "<em>Damerau–Levenshtein distance</em>", from Wikipedia, the free encyclopedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Natural_language_processing">Wikipedia (9), "<em>Natural language processing</em>", from Wikipedia, the free encyclopedia</a></li>
 </ul>
-<h2 id="issues">Issues</h2>
+<h2 id="issues-topskip-to-section">Issues (<em><a href="#skip-to-section">top</a></em>)</h2>
 <p>If you find a bug please fill an <a href="https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues">issue</a>.</p>
 <p>This project is a supporting package for a revenue project that has priority call on resources, so please be patient if we don't respond immediately to issues or pull requests.</p>
 </section>
@@ -207,15 +208,18 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
   <span class="name"><a href="dictosaurus/dictosaurus-library.html">dictosaurus</a></span> 
 
 </dt>
-<dd>The <code>dictosaurus</code> library provides 'natural language processing (NLP)'
-utilities used in <code>information retrieval systems</code>.
+<dd>The <code>dictosaurus</code> package provides <code>natural language processing (NLP)</code>
+utilities used in <code>information retrieval systems</code>. It includes <em>dictionary</em>,
+ <em>thesaurus</em> and <em>term expansion</em> utilities and is intended for
+<code>information retrieval system</code> applications.
 </dd>
 
           <dt id="type_definitions">
   <span class="name"><a href="type_definitions/type_definitions-library.html">type_definitions</a></span> 
 
 </dt>
-<dd>Typedefs used by the <code>dictosaurus</code> package.
+<dd>Import the <code>type_definitions</code> library  to use types defined in the
+<code>dictosaurus</code> package.
 </dd>
 
         </dl>
@@ -252,7 +256,7 @@ utilities used in <code>information retrieval systems</code>.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4+1
+      0.0.4+2
   </span>
 
   
