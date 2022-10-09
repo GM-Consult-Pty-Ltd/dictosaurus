@@ -64,7 +64,7 @@ All rights reserved.
 <h2 id="overview">Overview</h2>
 <p>The <code>dictosaurus</code> package provides <code>natural language processing (NLP)</code> utilities used in <code>information retrieval systems</code>. It includes <em>dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> utilities and is intended for <code>information retrieval system</code> applications.</p>
 <p>Refer to the <a href="#references">references</a> to learn more about <code>information retrieval systems</code>.</p>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="usage">Usage</h2>
 <p>In the <code>pubspec.yaml</code> of your flutter project, add the following dependency:</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
@@ -124,7 +124,7 @@ import 'package:dictosaurus/type_definitions.dart';
   // ════════════════════════════════════════════════════════════════════════════
 
 </code></pre>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="api">API</h2>
 <p>Please refer to the <a href="https://pub.dev/documentation/dictosaurus/latest/">API documentation</a>.</p>
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface is an object model for a term or word with immutable properties (<code>term</code>, <code>stem</code>, <code>lemma</code>, <code>language</code>). The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface also enumerates <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermDefinition-class.html">variants</a> of the term with different values for <code>part-of-speech</code>, <code>definition</code>, <code>synonyms</code>, <code>antonyms</code> and <code>inflections</code>, each with one or more example <code>phrases</code>.</p>
@@ -143,7 +143,7 @@ import 'package:dictosaurus/type_definitions.dart';
 <li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor.
 The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</em>.</li>
 </ul>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="definitions">Definitions</h2>
 <p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
 <ul>
@@ -153,11 +153,11 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><code>dictionary</code> - a hash of <code>terms</code> (<code>vocabulary</code>) to the frequency of occurence in the <code>corpus</code> documents.</li>
 <li><code>document</code> - a record in the <code>corpus</code>, that has a unique identifier (<code>docId</code>) in the <code>corpus</code>'s primary key and that contains one or more text fields that are indexed.</li>
 <li><code>document frequency (dFt)</code> - the number of documents in the <code>corpus</code> that contain a term.</li>
-<li><code>edit distance</code> - a measure of how dissimilar two terms are by counting the minimum number of operations required to transform one string into the other (<a href="https://en.wikipedia.org/wiki/Edit_distance">Wikipedia (7)</a>).</li>
+<li><code>edit distance</code> - a measure of how dissimilar two terms are by counting the minimum number of operations required to transform one string into the other (from <a href="https://en.wikipedia.org/wiki/Edit_distance">Wikipedia</a>).</li>
 </ul>
 <ul>
-<li><code>Flesch reading ease score</code> - a readibility measure calculated from  sentence length and word length on a 100-point scale. The higher the score, the easier it is to understand the document (<a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Wikipedia(6)</a>).</li>
-<li><code>Flesch-Kincaid grade level</code> - a readibility measure relative to U.S. school grade level.  It is also calculated from sentence length and word length (<a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Wikipedia(6)</a>).</li>
+<li><code>Flesch reading ease score</code> - a readibility measure calculated from  sentence length and word length on a 100-point scale. The higher the score, the easier it is to understand the document (from <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Wikipedia</a>).</li>
+<li><code>Flesch-Kincaid grade level</code> - a readibility measure relative to U.S. school grade level.  It is also calculated from sentence length and word length (from <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Wikipedia</a>).</li>
 </ul>
 <ul>
 <li><code>index</code> - an <a href="https://en.wikipedia.org/wiki/Inverted_index">inverted index</a> used to look up <code>document</code> references from the <code>corpus</code> against a <code>vocabulary</code> of <code>terms</code>.</li>
@@ -166,14 +166,14 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><code>Jaccard index</code> measures similarity between finite sample sets, and is defined as the size of the intersection divided by the size of the union of the sample sets (from <a href="https://en.wikipedia.org/wiki/Jaccard_index">Wikipedia</a>).</li>
 <li><code>Map&lt;String, dynamic&gt;</code> is an acronym for <code>"Java Script Object Notation"</code>, a common format for persisting data.</li>
 <li><code>k-gram</code> - a sequence of (any) k consecutive characters from a <code>term</code>. A <code>k-gram</code> can start with "$", denoting the start of the term, and end with "$", denoting the end of the term. The 3-grams for "castle" are { $ca, cas, ast, stl, tle, le$ }.</li>
-<li><code>lemmatizer</code> - lemmatisation (or lemmatization) in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form (from <a href="https://en.wikipedia.org/wiki/Lemmatisation">Wikipedia</a>).</li>
+<li><code>lemma  or lemmatizer</code> - lemmatisation (or lemmatization) in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form (from <a href="https://en.wikipedia.org/wiki/Lemmatisation">Wikipedia</a>).</li>
 <li><code>Natural language processing (NLP)</code> is a subfield of linguistics, computer science, and artificial intelligence concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of natural language data (from <a href="https://en.wikipedia.org/wiki/Natural_language_processing">Wikipedia</a>).</li>
 <li><code>postings</code> - a separate index that records which <code>documents</code> the <code>vocabulary</code> occurs in.  In a positional <code>index</code>, the postings also records the positions of each <code>term</code> in the <code>text</code> to create a positional inverted <code>index</code>.</li>
 <li><code>postings list</code> - a record of the positions of a <code>term</code> in a <code>document</code>. A position of a <code>term</code> refers to the index of the <code>term</code> in an array that contains all the <code>terms</code> in the <code>text</code>. In a zoned <code>index</code>, the <code>postings lists</code> records the positions of each <code>term</code> in the <code>text</code> a <code>zone</code>.</li>
+<li><code>stem or stemmer</code> -  stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base or root form (generally a written word form) (from <a href="https://en.wikipedia.org/wiki/Stemming">Wikipedia</a>).</li>
+<li><code>stopwords</code> - common words in a language that are excluded from indexing.</li>
 <li><code>term</code> - a word or phrase that is indexed from the <code>corpus</code>. The <code>term</code> may differ from the actual word used in the corpus depending on the <code>tokenizer</code> used.</li>
 <li><code>term filter</code> - filters unwanted terms from a collection of terms (e.g. stopwords), breaks compound terms into separate terms and / or manipulates terms by invoking a <code>stemmer</code> and / or <code>lemmatizer</code>.</li>
-<li><code>stemmer</code> -  stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base or root form—generally a written word form (from <a href="https://en.wikipedia.org/wiki/Stemming">Wikipedia</a>).</li>
-<li><code>stopwords</code> - common words in a language that are excluded from indexing.</li>
 <li><code>term expansion</code> - finding terms with similar spelling (e.g. spelling correction) or synonyms for a term.</li>
 <li><code>term frequency (Ft)</code> - the frequency of a <code>term</code> in an index or indexed object.</li>
 <li><code>term position</code> - the zero-based index of a <code>term</code> in an ordered array of <code>terms</code> tokenized from the <code>corpus</code>.</li>
@@ -184,7 +184,7 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><code>vocabulary</code> - the collection of <code>terms</code> indexed from the <code>corpus</code>.</li>
 <li><code>zone</code> - the field or zone of a document that a term occurs in, used for parametric indexes or where scoring and ranking of search results attribute a higher score to documents that contain a term in a specific zone (e.g. the title rather that the body of a document).</li>
 </ul>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf">Manning, Raghavan and Schütze, "<em>Introduction to Information Retrieval</em>", Cambridge University Press, 2008</a></li>
@@ -199,11 +199,11 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><a href="https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Wikipedia (8), "<em>Damerau–Levenshtein distance</em>", from Wikipedia, the free encyclopedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Natural_language_processing">Wikipedia (9), "<em>Natural language processing</em>", from Wikipedia, the free encyclopedia</a></li>
 </ul>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="issues">Issues</h2>
 <p>If you find a bug please fill an <a href="https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues">issue</a>.</p>
 <p>This project is a supporting package for a revenue project that has priority call on resources, so please be patient if we don't respond immediately to issues or pull requests.</p>
-<p>(<a href="#">back to top</a>*)</p>
+<p>(<em><a href="#">back to top</a></em>)</p>
 </section>
 
 
@@ -262,7 +262,7 @@ utilities used in <code>information retrieval systems</code>. It includes <em>di
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4+4
+      0.0.4+5
   </span>
 
   
