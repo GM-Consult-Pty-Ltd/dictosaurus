@@ -4,15 +4,14 @@
 
 import 'package:dictosaurus/src/_index.dart';
 
-/// The [DictoSaurus] composition class combines a [Dictionary],
-/// [Thesaurus] and [AutoCorrect] which it uses to expose the following
-/// methods:
-/// - [getEntry] returns the meaning of a term from a dictionary provider;
-/// - [synonymsOf] returns the synonyms of a term from a [Set<String>];
-/// - [suggestionsFor] returns alternative spellings for a term;
-/// - [startsWith] returns terms from a [Map<String, Set<String>>] that start with a sequence
-///   of characters; and
-/// - [expandTerm] expands a term using [synonymsOf] and [suggestionsFor].
+/// The [DictoSaurus] interface implements the [Dictionary], [Thesaurus] and
+/// [AutoCorrect] interfaces.
+///
+/// The [DictoSaurus] interface also exposes the [DictoSaurus.expandTerm]
+/// method that performs `term-expansion`, returning a list of terms in
+/// descending order of relevance (best match first). The (expanded) list of
+/// terms includes the `term`, its `synonyms` (if any) and spelling correction
+/// suggestions.
 abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
   //
 
@@ -22,12 +21,8 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
           required AutoCorrectBase autoCorrect}) =>
       _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);
 
-  /// Initializes a [DictoSaurus] with:
-  /// - [languageCode], the ISO language code for the language of a term;
-  /// - [getEntry], a function that returns a [TermProperties] for a term;
-  /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
-  /// - [kGramIndexLoader], an asynchronous callback function that returns a
-  ///   [Map<String, Set<String>>] for a collection of k-grams.
+  /// Initializes a [DictoSaurus] with [languageCode], [k]-gram length and
+  /// [kGramIndexLoader].
   factory DictoSaurus(
           {required DictionaryCallback dictionaryCallback,
           required Future<Map<String, Set<String>>> Function(

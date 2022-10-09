@@ -8,7 +8,6 @@ import '../typedefs.dart';
 /// The [Dictionary] interface exposes the [getEntry] method that returns
 /// a [TermProperties] for a term.
 ///
-///
 /// The unnamed `Dictionary()` factory constructor initializes a [Dictionary]
 /// with an asynchronous [DictionaryCallback] to return the meaning of a term
 /// from a dictionary provider.
@@ -44,8 +43,8 @@ abstract class Dictionary {
       _DictionaryImpl(dictionaryCallback, languageCode);
 }
 
-/// An abstract/mixin class that implements [Dictionary.definitionsFor],
-/// [Dictionary.phrasesWith] and [Dictionary.inflectionsOf].
+/// An abstract/mixin class that implements the [definitionsFor],
+/// [phrasesWith] and [inflectionsOf] methods of [Dictionary].
 abstract class DictionaryMixin implements Dictionary {
   @override
   Future<Set<String>> phrasesWith(String term,
@@ -69,11 +68,26 @@ abstract class DictionaryMixin implements Dictionary {
   }
 }
 
+/// An abstract class with [DictionaryMixin] that implements the [Dictionary]
+/// interface.
+///
+/// Sub-classes must override:
+/// - [languageCode], the ISO language code for the language of a term; and
+/// - [getEntry], a function that returns a [TermProperties] for a term.
+abstract class DictionaryBase with DictionaryMixin {
+  //
+
+  /// A default const unnamed generative constructor for sub classes.
+  const DictionaryBase();
+
+  //
+}
+
 /// Implementation of [Dictionary] used by the unnamed `Dictionary()` factory
-/// constructor:
+/// constructor.
 /// - [dictionaryCallback] is an asynchronous callback that returns the
-///   meaning of a collection of terms from a dictionary index; and
-/// - the [getEntry] method asynchronously gets the meaning of the term using
+///   meaning of a collection of terms from a dictionary index.
+/// - [getEntry] asynchronously gets the meaning of the term using
 ///   the [dictionaryCallback].
 class _DictionaryImpl extends DictionaryBase {
 //
@@ -91,18 +105,4 @@ class _DictionaryImpl extends DictionaryBase {
   /// Initializes a const [_DictionaryImpl] with an asynchronous callback
   /// [dictionaryCallback] that returns a [TermProperties] for a term.
   const _DictionaryImpl(this.dictionaryCallback, this.languageCode);
-}
-
-/// An abstract class that implements the [Dictionary] interface:
-///
-/// Sub-classes must override:
-/// - [languageCode], the ISO language code for the language of a term; and
-/// - [getEntry], a function that returns a [TermProperties] for a term.
-abstract class DictionaryBase with DictionaryMixin {
-  //
-
-  /// A default const unnamed generative constructor for sub classes.
-  const DictionaryBase();
-
-  //
 }

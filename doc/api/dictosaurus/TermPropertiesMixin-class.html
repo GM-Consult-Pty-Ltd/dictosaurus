@@ -51,31 +51,32 @@
 
     
 <section class="desc markdown">
-  <p>Abstract mixin class of <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> that implements:</p>
+  <p>Abstract mixin class that implements the <code>==</code> operator and methods of the 
+<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> interface.</p>
 <ul>
 <li>the <code>==</code> operator by comparing type and the <a href="../dictosaurus/TermProperties/term.html">term</a>, <a href="../dictosaurus/TermProperties/languageCode.html">languageCode</a> and
-<a href="../dictosaurus/TermProperties/variants.html">variants</a> properties;</li>
+<a href="../dictosaurus/TermProperties/variants.html">variants</a> properties.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/hashCode.html">hashCode</a> returns an Object.hash of the <a href="../dictosaurus/TermProperties/term.html">term</a>, <a href="../dictosaurus/TermProperties/languageCode.html">languageCode</a> and
-<a href="../dictosaurus/TermProperties/variants.html">variants</a> properties;</li>
+<a href="../dictosaurus/TermProperties/variants.html">variants</a> properties.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/phrasesWith.html">phrasesWith</a> maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set of phrases, optionally
-limiting the maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+limiting the maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/inflectionsOf.html">inflectionsOf</a> maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set of inflections of <a href="../dictosaurus/TermProperties/term.html">term</a>,
-optionally limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+optionally limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/definitionsFor.html">definitionsFor</a> maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set of definitions for <a href="../dictosaurus/TermProperties/term.html">term</a>,
-optionally limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+optionally limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/synonymsOf.html">synonymsOf</a> maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set of synonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
-limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/antonymsOf.html">antonymsOf</a> maps <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set of antonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
-limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/allAntonyms.html">allAntonyms</a> maps all the antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/allDefinitions.html">allDefinitions</a> maps all the definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a> maps all the inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a> maps all the phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/allSynonyms.html">allSynonyms</a> maps all the synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/antonymsMap.html">antonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/definitionsMap.html">definitionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/inflectionsMap.html">inflectionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a>; and</li>
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allAntonyms.html">allAntonyms</a> maps all the antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allDefinitions.html">allDefinitions</a> maps all the definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a> maps all the inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a> maps all the phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allSynonyms.html">allSynonyms</a> maps all the synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/antonymsMap.html">antonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/definitionsMap.html">definitionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/inflectionsMap.html">inflectionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/synonymsMap.html">synonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
 </ul>
 <p>Sub-classes must override:</p>
@@ -585,7 +586,7 @@ limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpe
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4
+      0.0.4+1
   </span>
 
   

@@ -51,18 +51,18 @@
 
     
 <section class="desc markdown">
-  <p>A definition for a term, used in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object with immutable
-properties:</p>
+  <p>A definition for a defintion and/or part-of-speech variant of a term, used
+in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object.</p>
 <ul>
-<li><a href="../dictosaurus/TermDefinition/term.html">term</a> is a term or word;</li>
-<li><a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a> is the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> category of the <a href="../dictosaurus/TermDefinition/term.html">term</a>;</li>
-<li><a href="../dictosaurus/TermDefinition/definition.html">definition</a> is the definition for <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>;</li>
+<li><a href="../dictosaurus/TermDefinition/term.html">term</a> is a term or word.</li>
+<li><a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a> is the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> category of the <a href="../dictosaurus/TermDefinition/term.html">term</a>.</li>
+<li><a href="../dictosaurus/TermDefinition/definition.html">definition</a> is the definition for <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermDefinition/synonyms.html">synonyms</a> is an unordered collection of unique terms that are synonyms
-of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>;</li>
+of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermDefinition/antonyms.html">antonyms</a> is an unordered collection of unique terms that are antonyms
-of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>;</li>
+of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermDefinition/inflections.html">inflections</a> is an unordered collection of unique terms that are
-inflections of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>; and</li>
+inflections of <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermDefinition/phrases.html">phrases</a> is an unordered collection of unique example phrases that
 include <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</a>.</li>
 </ul>
@@ -95,8 +95,8 @@ include <a href="../dictosaurus/TermDefinition/term.html">term</a> when used as 
           <span class="name"><a href="../dictosaurus/TermDefinition/TermDefinition.html">TermDefinition</a></span><span class="signature">(<span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="-param-partOfSpeech"><span>required</span> <span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span> <span class="parameter-name">partOfSpeech</span>, </span><span class="parameter" id="-param-definition"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">definition</span>, </span><span class="parameter" id="-param-synonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">synonyms</span>, </span><span class="parameter" id="-param-antonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">antonyms</span>, </span><span class="parameter" id="-param-phrases"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">phrases</span>, </span><span class="parameter" id="-param-inflections"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">inflections</span>}</span>)</span>
         </dt>
         <dd>
-          Factory constructor instantiates an immutable <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a> object
-with the following parameters:
+          A factory constructor that instantiates an immutable <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a>
+object.
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
@@ -362,7 +362,7 @@ used as <a href="../dictosaurus/TermDefinition/partOfSpeech.html">partOfSpeech</
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4
+      0.0.4+1
   </span>
 
   

@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// The `dictosaurus` package provides 'natural language processing (NLP)'
+/// The `dictosaurus` library provides 'natural language processing (NLP)'
 /// utilities used in `information retrieval systems`.
 ///
 /// Three utility classes provide dictionary and thesaurus and term expansion
@@ -18,13 +18,14 @@
 /// The [DictoSaurus] interface implements the [Dictionary], [Thesaurus] and
 /// [AutoCorrect] interfaces.
 ///
-/// The [DictoSaurus] interface also exposes the [DictoSaurus.expandTerm] method that
-/// performs `term-expansion`, returning a list of terms in descending order
-/// of relevance (best match first). The (expanded) list of terms includes
-/// the `term`, its `synonyms` (if any) and spelling correction suggestions.
+/// The [DictoSaurus] interface also exposes the [DictoSaurus.expandTerm]
+/// method that performs `term-expansion`, returning a list of terms in
+/// descending order of relevance (best match first). The (expanded) list of
+/// terms includes the `term`, its `synonyms` (if any) and spelling correction
+/// suggestions.
 ///
-/// We use an `interface > implementation mixin > base-class > implementation
-/// class pattern`:
+/// We use an *interface > implementation mixin > base-class > implementation
+/// class pattern*:
 /// - the `interface` is an abstract class that exposes fields and methods
 ///  but contains no implementation code. The `interface` may expose a factory
 ///  constructor that returns an `implementation class` instance;
@@ -36,8 +37,8 @@
 ///  overriding the `interface` input fields with final properties passed in
 ///  via a const generative constructor.
 ///
-/// The class naming convention for this pattern is `"Interface" >
-/// "InterfaceMixin" > "InterfaceBase"`.
+/// The class naming convention for this pattern is *"Interface" >
+/// "InterfaceMixin" > "InterfaceBase"*.
 library dictosaurus;
 
 export 'src/auto_correct/auto_correct.dart'

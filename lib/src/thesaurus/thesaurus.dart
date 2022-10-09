@@ -17,11 +17,11 @@ abstract class Thesaurus {
           required TermExpander antonymsCallback}) =>
       _ThesaurusCallbackImpl(synonymsCallback, antonymsCallback);
 
-  /// Unnamed factory constructor initializes a [Thesaurus]that returns the
+  /// Unnamed factory constructor initializes a [Thesaurus] that returns the
   /// synonyms or antonyms for a term from a [TermProperties] object returned
-  /// by [dictionaryCallbacky].
-  factory Thesaurus(DictionaryCallback dictionaryCallbacky) =>
-      _ThesaurusImpl(dictionaryCallbacky);
+  /// by [dictionaryCallback].
+  factory Thesaurus(DictionaryCallback dictionaryCallback) =>
+      _ThesaurusImpl(dictionaryCallback);
 
   /// The [Thesaurus.dictionary] factory constructor initializes a [Thesaurus]
   /// with a [dictionary] to return the synonyms  or antonyms for a term from
@@ -46,7 +46,7 @@ abstract class Thesaurus {
 /// [TermProperties] from which it extracts [synonymsOf] and [antonymsOf] a
 /// term.
 ///
-/// Mix this class intoa [Dictionary] to add [Thesaurus] methods.
+/// Mix this class into a [Dictionary] to add [Thesaurus] methods.
 abstract class ThesaurusMixin implements Thesaurus {
   //
 
@@ -68,7 +68,7 @@ abstract class ThesaurusMixin implements Thesaurus {
   }
 }
 
-/// An abstract class that implements the [Thesaurus] interface:
+/// An abstract class that implements the [Thesaurus] interface.
 ///
 /// Sub-classes must override [getEntry], a function that returns
 /// [TermProperties] for a term.
@@ -107,7 +107,7 @@ class _ThesaurusImpl extends ThesaurusBase {
   Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
 }
 
-/// Implementation of [Thesaurus] for the [Thesaurus.callBack]factory:
+/// Implementation of [Thesaurus] for the [Thesaurus.callBack] factory.
 /// - [synonymsCallback] is an asynchronous callback that returns the synonyms
 ///   for a term from a dictionary provider; and
 /// - the [synonymsOf] method returns a set  of synonyms for a term by calling

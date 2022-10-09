@@ -50,7 +50,7 @@
 
     
 <section class="desc markdown">
-  <p>The <code>dictosaurus</code> package provides 'natural language processing (NLP)'
+  <p>The <code>dictosaurus</code> library provides 'natural language processing (NLP)'
 utilities used in <code>information retrieval systems</code>.</p>
 <p>Three utility classes provide dictionary and thesaurus and term expansion
 functions:</p>
@@ -65,11 +65,13 @@ spellings for a <code>term</code> or terms that start with the same characters.<
 </ul>
 <p>The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and
 <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
-<p>The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a> method that
-performs <code>term-expansion</code>, returning a list of terms in descending order
-of relevance (best match first). The (expanded) list of terms includes
-the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
-<p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
+<p>The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="../dictosaurus/DictoSaurus/expandTerm.html">DictoSaurus.expandTerm</a>
+method that performs <code>term-expansion</code>, returning a list of terms in
+descending order of relevance (best match first). The (expanded) list of
+terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction
+suggestions.</p>
+<p>We use an <em>interface &gt; implementation mixin &gt; base-class &gt; implementation
+class pattern</em>:</p>
 <ul>
 <li>the <code>interface</code> is an abstract class that exposes fields and methods
  but contains no implementation code. The <code>interface</code> may expose a factory
@@ -82,7 +84,8 @@ the <code>term</code>, its <code>synonyms</code> (if any) and spelling correctio
  overriding the <code>interface</code> input fields with final properties passed in
  via a const generative constructor.</li>
 </ul>
-<p>The class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</p>
+<p>The class naming convention for this pattern is <em>"Interface" &gt;
+"InterfaceMixin" &gt; "InterfaceBase"</em>.</p>
 </section>
 
 
@@ -95,7 +98,8 @@ the <code>term</code>, its <code>synonyms</code> (if any) and spelling correctio
 
 </dt>
 <dd>
-  The <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface:
+  The <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes the <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">suggestionsFor</a> and <a href="../dictosaurus/AutoCorrect/startsWith.html">startsWith</a>
+methods.
 </dd>
 
         <dt id="AutoCorrectBase">
@@ -103,7 +107,7 @@ the <code>term</code>, its <code>synonyms</code> (if any) and spelling correctio
 
 </dt>
 <dd>
-  An abstract class that implements the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface:
+  An abstract class that implements the <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface.
 </dd>
 
         <dt id="AutoCorrectMixin">
@@ -111,7 +115,8 @@ the <code>term</code>, its <code>synonyms</code> (if any) and spelling correctio
 
 </dt>
 <dd>
-  A mixin class that implements <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a>.
+  A mixin class that implements the <a href="../dictosaurus/AutoCorrect/suggestionsFor.html">AutoCorrect.suggestionsFor</a> and
+<a href="../dictosaurus/AutoCorrect/startsWith.html">AutoCorrect.startsWith</a> methods.
 </dd>
 
         <dt id="Dictionary">
@@ -128,7 +133,8 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a te
 
 </dt>
 <dd>
-  An abstract class that implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface:
+  An abstract class with <a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a> that implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
+interface.
 </dd>
 
         <dt id="DictionaryMixin">
@@ -136,8 +142,8 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a te
 
 </dt>
 <dd>
-  An abstract/mixin class that implements <a href="../dictosaurus/Dictionary/definitionsFor.html">Dictionary.definitionsFor</a>,
-<a href="../dictosaurus/Dictionary/phrasesWith.html">Dictionary.phrasesWith</a> and <a href="../dictosaurus/Dictionary/inflectionsOf.html">Dictionary.inflectionsOf</a>.
+  An abstract/mixin class that implements the <a href="../dictosaurus/DictionaryMixin/definitionsFor.html">definitionsFor</a>,
+<a href="../dictosaurus/DictionaryMixin/phrasesWith.html">phrasesWith</a> and <a href="../dictosaurus/DictionaryMixin/inflectionsOf.html">inflectionsOf</a> methods of <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>.
 </dd>
 
         <dt id="DictoSaurus">
@@ -145,9 +151,8 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a te
 
 </dt>
 <dd>
-  The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> composition class combines a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>,
-<a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> which it uses to expose the following
-methods:
+  The <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and
+<a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.
 </dd>
 
         <dt id="DictoSaurusBase">
@@ -171,8 +176,8 @@ methods:
 
 </dt>
 <dd>
-  A definition for a term, used in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object with immutable
-properties:
+  A definition for a defintion and/or part-of-speech variant of a term, used
+in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object.
 </dd>
 
         <dt id="TermDefinitionBase">
@@ -198,7 +203,7 @@ properties:
 
 </dt>
 <dd>
-  Object model for term or word with immutable properties:
+  An <code>object model</code> for a <code>term</code> or <code>word</code> with immutable properties.
 </dd>
 
         <dt id="TermPropertiesBase">
@@ -206,7 +211,8 @@ properties:
 
 </dt>
 <dd>
-  An abstract class that implements the <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> interface:
+  An abstract <code>base class</code> with <a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a> that implements the 
+<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> interface.
 </dd>
 
         <dt id="TermPropertiesMixin">
@@ -214,7 +220,8 @@ properties:
 
 </dt>
 <dd>
-  Abstract mixin class of <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> that implements:
+  Abstract mixin class that implements the <code>==</code> operator and methods of the 
+<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> interface.
 </dd>
 
         <dt id="Thesaurus">
@@ -231,7 +238,7 @@ properties:
 
 </dt>
 <dd>
-  An abstract class that implements the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface:
+  An abstract class that implements the <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface.
 </dd>
 
         <dt id="ThesaurusMixin">
@@ -261,8 +268,8 @@ term.
 
 </dt>
 <dd>
-  In grammar, a part of speech or part-of-speech is a category of words that
-have similar grammatical properties.
+  In grammar, a <code>part-of-speech</code> is a category of words that have similar
+grammatical properties.
 </dd>
 
       </dl>
@@ -335,7 +342,7 @@ have similar grammatical properties.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4
+      0.0.4+1
   </span>
 
   

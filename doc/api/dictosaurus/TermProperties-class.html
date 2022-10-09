@@ -51,7 +51,8 @@
 
     
 <section class="desc markdown">
-  <p>Object model for term or word with immutable properties:</p>
+  <p>An <code>object model</code> for a <code>term</code> or <code>word</code> with immutable properties.</p>
+<p>The folling fields enumerate the object properties:</p>
 <ul>
 <li><a href="../dictosaurus/TermProperties/term.html">term</a> is the term or word for this entry;</li>
 <li><a href="../dictosaurus/TermProperties/stem.html">stem</a> is the stemmed version of <a href="../dictosaurus/TermProperties/term.html">term</a>;</li>
@@ -61,7 +62,7 @@
 <li><a href="../dictosaurus/TermProperties/variants.html">variants</a> is an un-ordered collection of unique <a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a>
 instances.</li>
 </ul>
-<p>The following methods map the <a href="../dictosaurus/TermProperties/variants.html">variants</a> to useful return values:</p>
+<p>The following methods map <a href="../dictosaurus/TermProperties/variants.html">variants</a> of the <a href="../dictosaurus/TermProperties/term.html">term</a> to useful return values:</p>
 <ul>
 <li><a href="../dictosaurus/TermProperties/phrasesWith.html">phrasesWith</a> returns a set of phrases containing <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
 limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
@@ -73,16 +74,16 @@ limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpe
 the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
 <li><a href="../dictosaurus/TermProperties/antonymsOf.html">antonymsOf</a> returns a set of antonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally limiting
 the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
-<li><a href="../dictosaurus/TermProperties/allAntonyms.html">allAntonyms</a> maps all the antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermProperties/allDefinitions.html">allDefinitions</a> maps all the definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermProperties/allInflections.html">allInflections</a> maps all the inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermProperties/allPhrases.html">allPhrases</a> maps all the phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermProperties/allSynonyms.html">allSynonyms</a> maps all the synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a> to a set;</li>
-<li><a href="../dictosaurus/TermProperties/antonymsMap.html">antonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to antonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermProperties/definitionsMap.html">definitionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to definitions from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermProperties/inflectionsMap.html">inflectionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to inflections from <a href="../dictosaurus/TermProperties/variants.html">variants</a>;</li>
-<li><a href="../dictosaurus/TermProperties/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases from <a href="../dictosaurus/TermProperties/variants.html">variants</a>; and</li>
-<li><a href="../dictosaurus/TermProperties/synonymsMap.html">synonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to synonyms from <a href="../dictosaurus/TermProperties/variants.html">variants</a>.</li>
+<li><a href="../dictosaurus/TermProperties/allAntonyms.html">allAntonyms</a> maps all the antonyms to a set;</li>
+<li><a href="../dictosaurus/TermProperties/allDefinitions.html">allDefinitions</a> maps all the definitions to a set;</li>
+<li><a href="../dictosaurus/TermProperties/allInflections.html">allInflections</a> maps all the inflections to a set;</li>
+<li><a href="../dictosaurus/TermProperties/allPhrases.html">allPhrases</a> maps all the phrases to a set;</li>
+<li><a href="../dictosaurus/TermProperties/allSynonyms.html">allSynonyms</a> maps all the synonyms to a set;</li>
+<li><a href="../dictosaurus/TermProperties/antonymsMap.html">antonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to antonyms;</li>
+<li><a href="../dictosaurus/TermProperties/definitionsMap.html">definitionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to definitions;</li>
+<li><a href="../dictosaurus/TermProperties/inflectionsMap.html">inflectionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to inflections;</li>
+<li><a href="../dictosaurus/TermProperties/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases; and</li>
+<li><a href="../dictosaurus/TermProperties/synonymsMap.html">synonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to synonyms].</li>
 </ul>
 </section>
 
@@ -113,8 +114,8 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
           <span class="name"><a href="../dictosaurus/TermProperties/TermProperties.html">TermProperties</a></span><span class="signature">(<span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="-param-stem"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">stem</span>, </span><span class="parameter" id="-param-lemma"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">lemma</span>, </span><span class="parameter" id="-param-phonetic"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">phonetic</span>, </span><span class="parameter" id="-param-languageCode"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">languageCode</span>, </span><span class="parameter" id="-param-variants"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermDefinition-class.html">TermDefinition</a></span>&gt;</span></span> <span class="parameter-name">variants</span>}</span>)</span>
         </dt>
         <dd>
-          Factory constructor that instantiates an immutable <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>
-instance:
+          A factory constructor that instantiates an immutable <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>
+instance.
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
@@ -577,7 +578,7 @@ instance:
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4
+      0.0.4+1
   </span>
 
   

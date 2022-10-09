@@ -5,7 +5,9 @@
 import 'package:dictosaurus/src/dictionary/part_of_speech.dart';
 import 'term_variant.dart';
 
-/// Object model for term or word with immutable properties:
+/// An `object model` for a `term` or `word` with immutable properties.
+///
+/// The folling fields enumerate the object properties:
 /// - [term] is the term or word for this entry;
 /// - [stem] is the stemmed version of [term];
 /// - [lemma] is the lemma of [term];
@@ -14,7 +16,7 @@ import 'term_variant.dart';
 /// - [variants] is an un-ordered collection of unique [TermDefinition]
 ///   instances.
 ///
-/// The following methods map the [variants] to useful return values:
+/// The following methods map [variants] of the [term] to useful return values:
 /// - [phrasesWith] returns a set of phrases containing [term], optionally
 ///   limiting the results to the [PartOfSpeech];
 /// - [inflectionsOf] returns a set of inflections of [term], optionally
@@ -25,27 +27,27 @@ import 'term_variant.dart';
 ///   the results to the [PartOfSpeech];
 /// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
-/// - [allAntonyms] maps all the antonyms from [variants] to a set;
-/// - [allDefinitions] maps all the definitions from [variants] to a set;
-/// - [allInflections] maps all the inflections from [variants] to a set;
-/// - [allPhrases] maps all the phrases from [variants] to a set;
-/// - [allSynonyms] maps all the synonyms from [variants] to a set;
-/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
-/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
-/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
-/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
+/// - [allAntonyms] maps all the antonyms to a set;
+/// - [allDefinitions] maps all the definitions to a set;
+/// - [allInflections] maps all the inflections to a set;
+/// - [allPhrases] maps all the phrases to a set;
+/// - [allSynonyms] maps all the synonyms to a set;
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms;
+/// - [definitionsMap] maps [PartOfSpeech] to definitions;
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections;
+/// - [phrasesMap] maps [PartOfSpeech] to phrases; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms].
 abstract class TermProperties {
   //
 
-  /// Factory constructor that instantiates an immutable [TermProperties]
-  /// instance:
-  /// - [languageCode] is the ISO language code for the language of the [term];
-  /// - [term] is the term or word for this [TermProperties];
-  /// - [stem] is the stemmed version of [term];
-  /// - [lemma] is the lemma of [term];
+  /// A factory constructor that instantiates an immutable [TermProperties]
+  /// instance.
+  /// - [languageCode] is the ISO language code for the language of the [term].
+  /// - [term] is the term or word for this [TermProperties].
+  /// - [stem] is the stemmed version of [term].
+  /// - [lemma] is the lemma of [term].
   /// - [phonetic] is the phonetic representation of [term] when pronounced in
-  ///   [languageCode]; and
+  ///   [languageCode].
   /// - [variants] is an un-ordered collection of unique [TermDefinition]
   ///   instances.
   ///
@@ -138,30 +140,31 @@ abstract class TermProperties {
   Set<String> antonymsOf([PartOfSpeech? partOfSpeech]);
 }
 
-/// Abstract mixin class of [TermProperties] that implements:
+/// Abstract mixin class that implements the `==` operator and methods of the 
+/// [TermProperties] interface.
 /// - the `==` operator by comparing type and the [term], [languageCode] and
-///   [variants] properties;
+///   [variants] properties.
 /// - [hashCode] returns an Object.hash of the [term], [languageCode] and
-///   [variants] properties;
+///   [variants] properties.
 /// - [phrasesWith] maps [variants] to a set of phrases, optionally
-///   limiting the maps [variants] to to the [PartOfSpeech];
+///   limiting the maps [variants] to to the [PartOfSpeech].
 /// - [inflectionsOf] maps [variants] to a set of inflections of [term],
-///   optionally limiting the results to the [PartOfSpeech];
+///   optionally limiting the results to the [PartOfSpeech].
 /// - [definitionsFor] maps [variants] to a set of definitions for [term],
-///   optionally limiting the results to the [PartOfSpeech];
+///   optionally limiting the results to the [PartOfSpeech].
 /// - [synonymsOf] maps [variants] to a set of synonyms of [term], optionally
-///   limiting the results to the [PartOfSpeech];
+///   limiting the results to the [PartOfSpeech].
 /// - [antonymsOf] maps [variants] to a set of antonyms of [term], optionally
-///   limiting the results to the [PartOfSpeech];
-/// - [allAntonyms] maps all the antonyms from [variants] to a set;
-/// - [allDefinitions] maps all the definitions from [variants] to a set;
-/// - [allInflections] maps all the inflections from [variants] to a set;
-/// - [allPhrases] maps all the phrases from [variants] to a set;
-/// - [allSynonyms] maps all the synonyms from [variants] to a set;
-/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants];
-/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants];
-/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants];
-/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants]; and
+///   limiting the results to the [PartOfSpeech].
+/// - [allAntonyms] maps all the antonyms from [variants] to a set.
+/// - [allDefinitions] maps all the definitions from [variants] to a set.
+/// - [allInflections] maps all the inflections from [variants] to a set.
+/// - [allPhrases] maps all the phrases from [variants] to a set.
+/// - [allSynonyms] maps all the synonyms from [variants] to a set.
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants].
+/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants].
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants].
+/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants].
 /// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
 ///
 /// Sub-classes must override:
@@ -356,9 +359,10 @@ abstract class TermPropertiesMixin implements TermProperties {
   int get hashCode => Object.hash(term, languageCode, variants);
 }
 
-/// An abstract class that implements the [TermProperties] interface:
+/// An abstract `base class` with [TermPropertiesMixin] that implements the 
+/// [TermProperties] interface.
 ///
-/// Sub-classes must override:
+/// Sub-classes of [TermPropertiesBase] must override:
 /// - [languageCode], the ISO language code for the language of the [term];
 /// - [variants], an un-ordered collection of unique [TermDefinition] instances;
 /// - [term], the term or word for this [TermProperties];

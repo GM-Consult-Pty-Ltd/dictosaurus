@@ -133,12 +133,12 @@ import 'package:dictosaurus/type_definitions.dart';
 </code></pre>
 <h2 id="api">API</h2>
 <p>Please refer to the <a href="https://pub.dev/documentation/dictosaurus/latest/">API documentation</a>.</p>
-<p>We use an <code>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</code>:</p>
+<p>We use an <em>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</em>:</p>
 <ul>
 <li>the <code>interface</code> is an abstract class that exposes fields and methods but contains no implementation code. The <code>interface</code> may expose a factory constructor that returns an <code>implementation class</code> instance;</li>
 <li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but not the input fields; and</li>
 <li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and exposes a default, unnamed generative const constructor for sub-classes. The intention is that <code>implementation classes</code> extend the <code>base class</code>, overriding the <code>interface</code> input fields with final properties passed in via a const generative constructor.
-The class naming convention for this pattern is <code>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</code>.</li>
+The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceMixin" &gt; "InterfaceBase"</em>.</li>
 </ul>
 <h2 id="definitions">Definitions</h2>
 <p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
@@ -207,7 +207,7 @@ The class naming convention for this pattern is <code>"Interface" &gt; "Interfac
   <span class="name"><a href="dictosaurus/dictosaurus-library.html">dictosaurus</a></span> 
 
 </dt>
-<dd>The <code>dictosaurus</code> package provides 'natural language processing (NLP)'
+<dd>The <code>dictosaurus</code> library provides 'natural language processing (NLP)'
 utilities used in <code>information retrieval systems</code>.
 </dd>
 
@@ -252,7 +252,7 @@ utilities used in <code>information retrieval systems</code>.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4
+      0.0.4+1
   </span>
 
   

@@ -8,7 +8,7 @@ import 'package:dictosaurus/src/_index.dart';
 /// of a [term] from a dictionary provider.
 typedef DictionaryCallback = Future<TermProperties?> Function(String term);
 
-/// Function definition of an asynchronous callback that returns the synonyms of
-/// a [term] from a thesaurus provider.
+/// Function definition of an asynchronous callback that returns an expansion of
+/// a [term] from an asynchronous provider.
 typedef TermExpander = Future<Set<String>> Function(String term,
     [PartOfSpeech? partOfSpeech]);

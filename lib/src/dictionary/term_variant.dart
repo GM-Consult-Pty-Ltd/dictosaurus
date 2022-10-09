@@ -4,33 +4,33 @@
 
 import 'part_of_speech.dart';
 
-/// A definition for a term, used in a [TermProperties] object with immutable
-/// properties:
-/// - [term] is a term or word;
-/// - [partOfSpeech] is the [PartOfSpeech] category of the [term];
-/// - [definition] is the definition for [term] when used as [partOfSpeech];
+/// A definition for a defintion and/or part-of-speech variant of a term, used
+/// in a [TermProperties] object.
+/// - [term] is a term or word.
+/// - [partOfSpeech] is the [PartOfSpeech] category of the [term].
+/// - [definition] is the definition for [term] when used as [partOfSpeech].
 /// - [synonyms] is an unordered collection of unique terms that are synonyms
-///   of [term] when used as [partOfSpeech];
+///   of [term] when used as [partOfSpeech].
 /// - [antonyms] is an unordered collection of unique terms that are antonyms
-///   of [term] when used as [partOfSpeech];
+///   of [term] when used as [partOfSpeech].
 /// - [inflections] is an unordered collection of unique terms that are
-///   inflections of [term] when used as [partOfSpeech]; and
+///   inflections of [term] when used as [partOfSpeech].
 /// - [phrases] is an unordered collection of unique example phrases that
 ///   include [term] when used as [partOfSpeech].
 abstract class TermDefinition {
   //
 
-  /// Factory constructor instantiates an immutable [TermDefinition] object
-  /// with the following parameters:
-  /// - [term] is a term or word;
-  /// - [partOfSpeech] is the [PartOfSpeech] category of the [term];
-  /// - [definition] is the definition for [term] when used as [partOfSpeech];
+  /// A factory constructor that instantiates an immutable [TermDefinition]
+  /// object.
+  /// - [term] is a term or word.
+  /// - [partOfSpeech] is the [PartOfSpeech] category of the [term].
+  /// - [definition] is the definition for [term] when used as [partOfSpeech].
   /// - [synonyms] is an unordered collection of unique terms that are synonyms
-  ///   of [term] when used as [partOfSpeech];
+  ///   of [term] when used as [partOfSpeech].
   /// - [antonyms] is an unordered collection of unique terms that are antonyms
-  ///   of [term] when used as [partOfSpeech]; and
+  ///   of [term] when used as [partOfSpeech].
   /// - [inflections] is an unordered collection of unique terms that are
-  ///   inflections of [term] when used as [partOfSpeech]; and
+  ///   inflections of [term] when used as [partOfSpeech].
   /// - [phrases] is an unordered collection of unique example phrases that
   ///   include [term] when used as [partOfSpeech].
   ///

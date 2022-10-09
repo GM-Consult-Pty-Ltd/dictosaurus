@@ -4,11 +4,12 @@
 
 import 'package:text_analysis/extensions.dart';
 
-/// The [AutoCorrect] interface:
-/// - exposes the [suggestionsFor] method that returns a linked set of unique
-///   alternative spellings for a term and its tokenized versions;
-/// - exposes the [startsWith] method that returns an ordered list of unique
-///   terms that start with a sequence of characters from a k-grams index.
+/// The [AutoCorrect] interface exposes the [suggestionsFor] and [startsWith]
+/// methods.
+/// - [suggestionsFor] returns a linked set of unique alternative spellings for
+///   a term and its tokenized versions.
+/// - [startsWith] returns an ordered list of unique terms that start with a
+///   sequence of characters from a k-grams index.
 abstract class AutoCorrect {
   //
 
@@ -37,7 +38,7 @@ abstract class AutoCorrect {
       _AutoCorrectImpl(kGramIndexLoader, k);
 }
 
-/// An abstract class that implements the [AutoCorrect] interface:
+/// An abstract class that implements the [AutoCorrect] interface.
 ///
 /// Classes that mix in [AutoCorrectMixin] must override:
 /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
@@ -52,7 +53,8 @@ abstract class AutoCorrectBase with AutoCorrectMixin {
   //
 }
 
-/// A mixin class that implements [AutoCorrect.suggestionsFor].
+/// A mixin class that implements the [AutoCorrect.suggestionsFor] and
+/// [AutoCorrect.startsWith] methods.
 ///
 /// Classes that mix in [AutoCorrectMixin] must override:
 /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
@@ -115,11 +117,11 @@ class _AutoCorrectImpl extends AutoCorrectBase {
   final int k;
 
   /// Initializes a const [_AutoCorrectImpl] with an asynchronous callback
-  /// [kGramIndexLoader] that  returns a set of synonyms for a term..\
+  /// [kGramIndexLoader] that  returns a set of synonyms for a term.
   const _AutoCorrectImpl(this.kGramIndexLoader, this.k);
 }
 
-/// Extension methods on [KGramsMap].
+/// Extension methods on `Map<String, Set<String>>`.
 extension _KGramIndexExtension on Map<String, Set<String>> {
   //
 

@@ -105,11 +105,11 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
 Please refer to the [API documentation](https://pub.dev/documentation/dictosaurus/latest/).
 
-We use an `interface > implementation mixin > base-class > implementation class pattern`:
+We use an *interface > implementation mixin > base-class > implementation class pattern*:
 * the `interface` is an abstract class that exposes fields and methods but contains no implementation code. The `interface` may expose a factory constructor that returns an `implementation class` instance;
 * the `implementation mixin` implements the `interface` class methods, but not the input fields; and
 * the `base-class` is an abstract class with the `implementation mixin` and exposes a default, unnamed generative const constructor for sub-classes. The intention is that `implementation classes` extend the `base class`, overriding the `interface` input fields with final properties passed in via a const generative constructor.
-The class naming convention for this pattern is `"Interface" > "InterfaceMixin" > "InterfaceBase"`.
+The class naming convention for this pattern is *"Interface" > "InterfaceMixin" > "InterfaceBase"*.
 
 ## Definitions
 
