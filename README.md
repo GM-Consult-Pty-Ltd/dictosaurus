@@ -17,13 +17,15 @@ All rights reserved.
 - [References](#references)
 - [Issues](#issues)
 
-## Overview (*[top](#skip-to-section)*)
+## Overview
 
 The `dictosaurus` package provides `natural language processing (NLP)` utilities used in `information retrieval systems`. It includes *dictionary*, *thesaurus* and *term expansion* utilities and is intended for `information retrieval system` applications. 
 
 Refer to the [references](#references) to learn more about `information retrieval systems`.
 
-## Usage (*[top](#skip-to-section)*)
+(*[back to top](#skip-to-section)*)
+
+## Usage 
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
 
@@ -92,7 +94,9 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
 ```
 
-## API (*[top](#skip-to-section)*)
+(*[back to top](#skip-to-section)*)
+
+## API
 
 Please refer to the [API documentation](https://pub.dev/documentation/dictosaurus/latest/).
 
@@ -113,7 +117,9 @@ We use an *interface > implementation mixin > base-class > implementation class 
 * the `base-class` is an abstract class with the `implementation mixin` and exposes a default, unnamed generative const constructor for sub-classes. The intention is that `implementation classes` extend the `base class`, overriding the `interface` input fields with final properties passed in via a const generative constructor.
 The class naming convention for this pattern is *"Interface" > "InterfaceMixin" > "InterfaceBase"*.
 
-## Definitions (*[top](#skip-to-section)*)
+(*[back to top](#skip-to-section)*)
+
+## Definitions
 
 The following definitions are used throughout the [documentation](https://pub.dev/documentation/text_analysis/latest/):
 
@@ -150,7 +156,9 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `vocabulary` - the collection of `terms` indexed from the `corpus`.
 * `zone` - the field or zone of a document that a term occurs in, used for parametric indexes or where scoring and ranking of search results attribute a higher score to documents that contain a term in a specific zone (e.g. the title rather that the body of a document).
 
-## References (*[top](#skip-to-section)*)
+(*[back to top](#skip-to-section)*)
+
+## References
 
 * [Manning, Raghavan and Schütze, "*Introduction to Information Retrieval*", Cambridge University Press, 2008](https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf)
 * [University of Cambridge, 2016 "*Information Retrieval*", course notes, Dr Ronan Cummins, 2016](https://www.cl.cam.ac.uk/teaching/1516/InfoRtrv/)
@@ -164,10 +172,14 @@ The following definitions are used throughout the [documentation](https://pub.de
 * [Wikipedia (8), "*Damerau–Levenshtein distance*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
 * [Wikipedia (9), "*Natural language processing*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Natural_language_processing)
 
-## Issues (*[top](#skip-to-section)*)
+(*[back to top](#skip-to-section)*)
+
+## Issues
 
 If you find a bug please fill an [issue](https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues).  
 
 This project is a supporting package for a revenue project that has priority call on resources, so please be patient if we don't respond immediately to issues or pull requests.
+
+(*[back to top](#skip-to-section)*)
 
 
