@@ -9,7 +9,7 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
-#### Skip to section
+## Contents
 - [Overview](#overview)
 - [Usage](#usage)
 - [API](#api)
@@ -126,7 +126,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `corpus`- the collection of `documents` for which an `index` is maintained.
 * `character filter` - filters characters from text in preparation of tokenization.  
 * `Damerau–Levenshtein distance` - a metric for measuring the `edit distance` between two `terms` by counting the minimum number of operations (insertions, deletions or substitutions of a single character, or transposition of two adjacent characters) required to change one `term` into the other.
-* `dictionary` - a hash of `terms` (`vocabulary`) to the frequency of occurence in the `corpus` documents.
+* `dictionary (in an index)` - a hash of `terms` (`vocabulary`) to the frequency of occurence in the `corpus` documents.
 * `document` - a record in the `corpus`, that has a unique identifier (`docId`) in the `corpus`'s primary key and that contains one or more text fields that are indexed.
 * `document frequency (dFt)` - the number of documents in the `corpus` that contain a term.
 * `edit distance` - a measure of how dissimilar two terms are by counting the minimum number of operations required to transform one string into the other (from [Wikipedia](https://en.wikipedia.org/wiki/Edit_distance)).
