@@ -36,7 +36,7 @@ class OxfordDictionaries
 
   @override
   Future<TermProperties?> getEntry(String term,
-      [bool strictMatch = false]) async {
+      [Iterable<TermProperty>? fields, bool strictMatch = false]) async {
     final sourceLanguage = languageCode.replaceAll('_', '-').toLowerCase();
     final json = await entriesEndPoint(term,
         sourceLanguage: sourceLanguage, strictMatch: strictMatch);

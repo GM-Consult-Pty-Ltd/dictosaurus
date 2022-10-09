@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'part_of_speech.dart';
+import '../part_of_speech.dart';
 
 /// A definition for a defintion and/or part-of-speech variant of a term, used
 /// in a [TermProperties] object.

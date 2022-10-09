@@ -51,19 +51,20 @@ abstract class ThesaurusMixin implements Thesaurus {
   //
 
   /// Returns a [TermProperties] for [term].
-  Future<TermProperties?> getEntry(String term);
+  Future<TermProperties?> getEntry(String term,
+      [Iterable<TermProperty>? fields]);
 
   @override
   Future<Set<String>> synonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term);
+    final dictEntry = await getEntry(term, {TermProperty.synonyms});
     return dictEntry != null ? dictEntry.synonymsOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> antonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term);
+    final dictEntry = await getEntry(term, {TermProperty.antonyms});
     return dictEntry != null ? dictEntry.antonymsOf(partOfSpeech) : {};
   }
 }
@@ -88,7 +89,9 @@ class _ThesaurusWithDictionaryImpl extends ThesaurusBase {
   const _ThesaurusWithDictionaryImpl(this.dictionary);
 
   @override
-  Future<TermProperties?> getEntry(String term) => dictionary.getEntry(term);
+  Future<TermProperties?> getEntry(String term,
+          [Iterable<TermProperty>? fields]) =>
+      dictionary.getEntry(term);
 
   final Dictionary dictionary;
 }
@@ -104,7 +107,9 @@ class _ThesaurusImpl extends ThesaurusBase {
   const _ThesaurusImpl(this.dictionaryCallback);
 
   @override
-  Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
+  Future<TermProperties?> getEntry(String term,
+          [Iterable<TermProperty>? fields]) =>
+      dictionaryCallback(term, fields);
 }
 
 /// Implementation of [Thesaurus] for the [Thesaurus.callBack] factory.

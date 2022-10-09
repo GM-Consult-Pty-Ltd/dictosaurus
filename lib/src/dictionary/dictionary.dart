@@ -18,7 +18,12 @@ abstract class Dictionary {
   String get languageCode;
 
   /// Returns a [TermProperties] for [term].
-  Future<TermProperties?> getEntry(String term);
+  ///
+  /// Optionally specify the [fields] to include in the returned
+  /// [TermProperties] instance, useful where different API endpoints are
+  /// queried for specific properties.
+  Future<TermProperties?> getEntry(String term,
+      [Iterable<TermProperty>? fields]);
 
   /// Returns a set of phrases for [term] from a dictionary provider.
   ///
@@ -49,21 +54,21 @@ abstract class DictionaryMixin implements Dictionary {
   @override
   Future<Set<String>> phrasesWith(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term);
+    final dictEntry = await getEntry(term, {TermProperty.phrases});
     return dictEntry != null ? dictEntry.phrasesWith(partOfSpeech) : <String>{};
   }
 
   @override
   Future<Set<String>> definitionsFor(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term);
+    final dictEntry = await getEntry(term, {TermProperty.definitions});
     return dictEntry != null ? dictEntry.definitionsFor(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> inflectionsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term);
+    final dictEntry = await getEntry(term, {TermProperty.inflections});
     return (dictEntry != null) ? dictEntry.inflectionsOf(partOfSpeech) : {};
   }
 }
@@ -96,7 +101,9 @@ class _DictionaryImpl extends DictionaryBase {
   final String languageCode;
 
   @override
-  Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
+  Future<TermProperties?> getEntry(String term,
+          [Iterable<TermProperty>? fields]) =>
+      dictionaryCallback(term, fields);
 
   /// An asynchronous callback that returns the meaning of a term from a
   /// dictionary provider.

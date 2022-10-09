@@ -52,6 +52,7 @@ export 'src/dictionary/_index.dart'
         Dictionary,
         DictionaryMixin,
         DictionaryBase,
+        TermProperty,
         TermProperties,
         TermPropertiesMixin,
         TermPropertiesBase,

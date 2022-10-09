@@ -83,7 +83,7 @@ best match first).</p>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async {
   final retVal = &lt;String&gt;{term};
-  final entry = await getEntry(term);
+  final entry = await getEntry(term, {TermProperty.synonyms});
   if (entry != null) {
     retVal.add(term);
     retVal.addAll(
@@ -161,7 +161,7 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.4+5
+      0.0.5
   </span>
 
   

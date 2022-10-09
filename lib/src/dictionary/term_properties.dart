@@ -2,8 +2,34 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/src/dictionary/part_of_speech.dart';
-import 'term_variant.dart';
+import 'package:dictosaurus/src/part_of_speech.dart';
+import 'term_definition.dart';
+
+/// The names of fields that enumerate the properties of a term.
+enum TermProperty {
+  //
+
+  /// The stemmed version of the term.
+  stem,
+
+  /// The lemma of the term.
+  lemma,
+
+  /// Definitions of the term.
+  definitions,
+
+  /// Inflections of the term.
+  inflections,
+
+  /// A set of phrases containing the term.
+  phrases,
+
+  /// Synonyms of the term.
+  synonyms,
+
+  /// Antonyms of the term.
+  antonyms
+}
 
 /// An `object model` for a `term` or `word` with immutable properties.
 ///

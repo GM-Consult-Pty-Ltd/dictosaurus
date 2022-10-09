@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the DictionaryBase class from the dictosaurus library, for the Dart programming language.">
-  <title>DictionaryBase class - dictosaurus library - Dart API</title>
+  <meta name="description" content="API docs for the TermProperty enum from the dictosaurus library, for the Dart programming language.">
+  <title>TermProperty enum - dictosaurus library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">dictosaurus</a></li>
     <li><a href="../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
-    <li class="self-crumb">DictionaryBase abstract class</li>
+    <li class="self-crumb">TermProperty enum</li>
   </ol>
-  <div class="self-name">DictionaryBase</div>
+  <div class="self-name">TermProperty</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,38 +44,36 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-class">DictionaryBase</span> class 
+
+        <h1>
+          <span class="kind-enum">TermProperty</span>
+          enum 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
-</h1></div>
+
+        </h1>
+      </div>
 
     
 <section class="desc markdown">
-  <p>An abstract class with <a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a> that implements the <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
-interface.</p>
-<p>Sub-classes must override:</p>
-<ul>
-<li><a href="../dictosaurus/Dictionary/languageCode.html">languageCode</a>, the ISO language code for the language of a term; and</li>
-<li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a>, a function that returns a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term.</li>
-</ul>
+  <p>The names of fields that enumerate the properties of a term.</p>
 </section>
 
 
     <section>
       <dl class="dl-horizontal">
         
-
-        
-        
-  <dt>Mixed in types</dt>
+  <dt>Inheritance</dt>
   <dd>
-    <ul class="comma-separated clazz-relationships">
-        <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
+    <ul class="gt-separated dark eNum-relationships">
+      <li><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></li>
+        <li><a href="https://api.flutter.dev/flutter/dart-core/Enum-class.html">Enum</a></li>
+      <li>TermProperty</li>
     </ul>
   </dd>
 
-
-
+        
+        
         
       </dl>
     </section>
@@ -85,17 +83,133 @@ interface.</p>
     <h2>Constructors</h2>
 
     <dl class="constructor-summary-list">
-        <dt id="DictionaryBase" class="callable">
-          <span class="name"><a href="../dictosaurus/DictionaryBase/DictionaryBase.html">DictionaryBase</a></span><span class="signature">()</span>
+        <dt id="TermProperty" class="callable">
+          <span class="name"><a href="../dictosaurus/TermProperty/TermProperty.html">TermProperty</a></span><span class="signature">()</span>
         </dt>
         <dd>
-          A default const unnamed generative constructor for sub classes.
+          
             <div class="constructor-modifier features">const</div>
         </dd>
     </dl>
   </section>
 
-    <section class="summary offset-anchor inherited" id="instance-properties">
+    <section class="summary offset-anchor" id="values">
+      <h2>Values</h2>
+
+      <dl class="properties">
+          <dt id="stem" class="constant">
+    <span class="name ">stem</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>The stemmed version of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="lemma" class="constant">
+    <span class="name ">lemma</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>The lemma of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="definitions" class="constant">
+    <span class="name ">definitions</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>Definitions of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="inflections" class="constant">
+    <span class="name ">inflections</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>Inflections of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="phrases" class="constant">
+    <span class="name ">phrases</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>A set of phrases containing the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="synonyms" class="constant">
+    <span class="name ">synonyms</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>Synonyms of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+          <dt id="antonyms" class="constant">
+    <span class="name ">antonyms</span>
+  <span class="signature">&#8594; const <a href="../dictosaurus/TermProperty.html">TermProperty</a></span>
+  
+
+</dt>
+<dd>
+  <p>Antonyms of the term.</p>
+  
+
+  <div>
+    <span class="signature"><code>TermProperty()</code></span>
+  </div>
+</dd>
+
+      </dl>
+    </section>
+
+    <section
+        class="
+          summary
+          offset-anchorinherited"
+        id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
@@ -110,13 +224,13 @@ interface.</p>
 
 </dd>
 
-        <dt id="languageCode" class="property inherited">
-  <span class="name"><a href="../dictosaurus/Dictionary/languageCode.html">languageCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+        <dt id="index" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Enum/index.html">index</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
 
 </dt>
 <dd class="inherited">
-  The ISO language code for the language of a term.
+  A numeric identifier for the enumerated value.
   <div class="features">read-only, inherited</div>
 
 </dd>
@@ -141,45 +255,6 @@ interface.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="definitionsFor" class="callable inherited">
-  <span class="name"><a href="../dictosaurus/DictionaryMixin/definitionsFor.html">definitionsFor</a></span><span class="signature">(<wbr><span class="parameter" id="definitionsFor-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="definitionsFor-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Returns a set of definitions for <code>term</code> from a dictionary provider.
-  <div class="features">inherited</div>
-
-</dd>
-
-        <dt id="getEntry" class="callable inherited">
-  <span class="name"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="getEntry-param-fields">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperty.html">TermProperty</a></span>&gt;</span>?</span> <span class="parameter-name">fields</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Returns a <code>TermProperties</code> for <code>term</code>.
-  <div class="features">inherited</div>
-
-</dd>
-
-        <dt id="inflectionsOf" class="callable inherited">
-  <span class="name"><a href="../dictosaurus/DictionaryMixin/inflectionsOf.html">inflectionsOf</a></span><span class="signature">(<wbr><span class="parameter" id="inflectionsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="inflectionsOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Returns a set of inflections for <code>term</code> from a dictionary provider.
-  <div class="features">inherited</div>
-
-</dd>
-
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -189,19 +264,6 @@ interface.</p>
 </dt>
 <dd class="inherited">
   Invoked when a non-existent method or property is accessed.
-  <div class="features">inherited</div>
-
-</dd>
-
-        <dt id="phrasesWith" class="callable inherited">
-  <span class="name"><a href="../dictosaurus/DictionaryMixin/phrasesWith.html">phrasesWith</a></span><span class="signature">(<wbr><span class="parameter" id="phrasesWith-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="phrasesWith-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Returns a set of phrases for <code>term</code> from a dictionary provider.
   <div class="features">inherited</div>
 
 </dd>
@@ -246,8 +308,28 @@ interface.</p>
     
     
 
+  <section class="summary offset-anchor" id="constants">
+    <h2>Constants</h2>
 
-  </div> <!-- /.main-content -->
+    <dl class="properties">
+        <dt id="values" class="constant">
+    <span class="name "><a href="../dictosaurus/TermProperty/values-constant.html">values</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperty.html">TermProperty</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  A constant List of the values in this enum, in order of their declaration.
+  
+
+  <div>
+    <span class="signature"><code>[stem, lemma, definitions, inflections, phrases, synonyms, antonyms]</code></span>
+  </div>
+</dd>
+
+    </dl>
+  </section>
+  </div><!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
     <header id="header-search-sidebar" class="hidden-l">
@@ -259,7 +341,7 @@ interface.</p>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../index.html">dictosaurus</a></li>
   <li><a href="../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
-  <li class="self-crumb">DictionaryBase abstract class</li>
+  <li class="self-crumb">TermProperty enum</li>
 </ol>
 
 
@@ -302,34 +384,40 @@ interface.</p>
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
     <ol>
 
-        <li class="section-title"><a href="../dictosaurus/DictionaryBase-class.html#constructors">Constructors</a></li>
-          <li><a href="../dictosaurus/DictionaryBase/DictionaryBase.html">DictionaryBase</a></li>
+        <li class="section-title"><a href="../dictosaurus/TermProperty.html#constructors">Constructors</a></li>
+          <li><a href="../dictosaurus/TermProperty/TermProperty.html">TermProperty</a></li>
 
+    <li class="section-title"><a href="../dictosaurus/TermProperty.html#values">Values</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#stem">stem</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#lemma">lemma</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#definitions">definitions</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#inflections">inflections</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#phrases">phrases</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#synonyms">synonyms</a></li>
+    <li><a href="../dictosaurus/TermProperty.html#antonyms">antonyms</a></li>
 
     <li class="section-title inherited">
-      <a href="../dictosaurus/DictionaryBase-class.html#instance-properties">Properties</a>
+      <a href="../dictosaurus/TermProperty.html#instance-properties">Properties</a>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li class="inherited"><a href="../dictosaurus/Dictionary/languageCode.html">languageCode</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Enum/index.html">index</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
-    <li class="section-title inherited"><a href="../dictosaurus/DictionaryBase-class.html#instance-methods">Methods</a></li>
-    <li class="inherited"><a href="../dictosaurus/DictionaryMixin/definitionsFor.html">definitionsFor</a></li>
-    <li class="inherited"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
-    <li class="inherited"><a href="../dictosaurus/DictionaryMixin/inflectionsOf.html">inflectionsOf</a></li>
+    <li class="section-title inherited"><a href="../dictosaurus/TermProperty.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li class="inherited"><a href="../dictosaurus/DictionaryMixin/phrasesWith.html">phrasesWith</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
-    <li class="section-title inherited"><a href="../dictosaurus/DictionaryBase-class.html#operators">Operators</a></li>
+    <li class="section-title inherited"><a href="../dictosaurus/TermProperty.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
 
 
+        <li class="section-title"><a href="../dictosaurus/TermProperty.html#constants">Constants</a></li>
+          <li><a href="../dictosaurus/TermProperty/values-constant.html">values</a></li>
 </ol>
 
-  </div><!--/.sidebar-offcanvas-->
+  </div><!-- /.sidebar-offcanvas -->
 
 </main>
 

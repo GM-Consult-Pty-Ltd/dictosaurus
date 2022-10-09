@@ -68,7 +68,7 @@ abstract class DictoSaurusMixin implements DictoSaurus {
   @override
   Future<List<String>> expandTerm(String term, [int limit = 5]) async {
     final retVal = <String>{term};
-    final entry = await getEntry(term);
+    final entry = await getEntry(term, {TermProperty.synonyms});
     if (entry != null) {
       retVal.add(term);
       retVal.addAll(
@@ -107,7 +107,9 @@ class _DictoSaurusImpl extends DictoSaurusBase {
   final String languageCode;
 
   @override
-  Future<TermProperties?> getEntry(String term) => dictionaryCallback(term);
+  Future<TermProperties?> getEntry(String term,
+          [Iterable<TermProperty>? fields]) =>
+      dictionaryCallback(term, fields);
 }
 
 /// A [DictoSaurus] with final [autoCorrect] and [dictionary] fields and
@@ -124,7 +126,9 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   const _DictoSaurusFromComponentsImpl(this.dictionary, this.autoCorrect);
 
   @override
-  Future<TermProperties?> getEntry(String term) => dictionary.getEntry(term);
+  Future<TermProperties?> getEntry(String term,
+          [Iterable<TermProperty>? fields]) =>
+      dictionary.getEntry(term);
 
   @override
   int get k => autoCorrect.k;

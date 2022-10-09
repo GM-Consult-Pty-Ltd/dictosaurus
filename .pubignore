@@ -1,12 +1,18 @@
-<!-- # Secret keys. -->
-test/keys/
-lib/keys/
+<!-- 
+BSD 3-Clause License
+Copyright (c) 2022, GM Consult Pty Ltd
+All rights reserved.  
+-->
+
+<!-- data used for testing -->
+test/data/
 
 <!-- Folder with images used in documentation. -->
 doc/images/
 
+<!-- # Secret keys. -->
+test/keys/
+lib/keys/
+
 <!-- # Folder with implementation code for testing and examples. -->
 impl/
-
-<!-- data used for testing -->
-test/data/
