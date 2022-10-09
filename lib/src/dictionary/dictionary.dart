@@ -2,8 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import '_index.dart';
-import '../typedefs.dart';
+import 'package:dictosaurus/src/_index.dart';
 
 /// The [Dictionary] interface exposes the [getEntry] method that returns
 /// a [TermProperties] for a term.

@@ -10,4 +10,6 @@
 ///   a term from an asynchronous provider or API.
 library type_definitions;
 
-export 'src/typedefs.dart';
+import 'src/_common/typedefs.dart';
+
+export 'src/_common/typedefs.dart';

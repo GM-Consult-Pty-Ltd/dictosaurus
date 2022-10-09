@@ -4,7 +4,7 @@
 
 /// The `dictosaurus` package provides `natural language processing (NLP)`
 /// utilities used in `information retrieval systems`. It includes *dictionary*,
-///  *thesaurus* and *term expansion* utilities and is intended for
+/// *thesaurus* and *term expansion* utilities and is intended for
 /// `information retrieval system` applications.
 ///
 /// Three utility classes provide dictionary and thesaurus and term expansion
@@ -26,39 +26,38 @@
 /// terms includes the `term`, its `synonyms` (if any) and spelling correction
 /// suggestions.
 ///
-/// We use an *interface > implementation mixin > base-class > implementation
-/// class pattern*:
+/// We use an *interface* > *implementation mixin* > *base-class* >
+/// *implementation class* pattern:
 /// - the `interface` is an abstract class that exposes fields and methods
-///  but contains no implementation code. The `interface` may expose a factory
-///  constructor that returns an `implementation class` instance;
+///   but contains no implementation code. The `interface` may expose a factory
+///   constructor that returns an `implementation class` instance;
 /// - the `implementation mixin` implements the `interface` class methods, but
-///  not the input fields; and
+///   not the input fields; and
 /// - the `base-class` is an abstract class with the `implementation mixin` and
-///  exposes a default, unnamed generative const constructor for sub-classes.
-///  The intention is that `implementation classes` extend the `base class`,
-///  overriding the `interface` input fields with final properties passed in
-///  via a const generative constructor.
+///   exposes a default, unnamed generative const constructor for sub-classes.
+///   The intention is that `implementation classes` extend the `base class`,
+///   overriding the `interface` input fields with final properties passed in
+///   via a const generative constructor.
 ///
-/// The class naming convention for this pattern is *"Interface" >
-/// "InterfaceMixin" > "InterfaceBase"*.
+/// The class naming convention for this pattern is *"Interface"* >
+/// *"InterfaceMixin"* > *"InterfaceBase"*.
 library dictosaurus;
 
-export 'src/auto_correct/auto_correct.dart'
+export 'src/auto_correct/_index.dart'
     show AutoCorrect, AutoCorrectMixin, AutoCorrectBase;
-export 'src/thesaurus/thesaurus.dart'
+export 'src/thesaurus/_index.dart'
     show Thesaurus, ThesaurusMixin, ThesaurusBase;
 export 'src/dictionary/_index.dart'
     show
         Dictionary,
         DictionaryMixin,
         DictionaryBase,
-        TermProperty,
         TermProperties,
         TermPropertiesMixin,
         TermPropertiesBase,
         TermDefinition,
         TermDefinitionMixin,
-        TermDefinitionBase,
-        PartOfSpeech;
-export 'src/dictosaurus.dart'
+        TermDefinitionBase;
+export 'src/dictosaurus/_index.dart'
     show DictoSaurus, DictoSaurusMixin, DictoSaurusBase;
+export 'src/_common/_index.dart' show TermProperty, PartOfSpeech;

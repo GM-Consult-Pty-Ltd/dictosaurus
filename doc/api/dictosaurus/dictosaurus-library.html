@@ -52,7 +52,7 @@
 <section class="desc markdown">
   <p>The <code>dictosaurus</code> package provides <code>natural language processing (NLP)</code>
 utilities used in <code>information retrieval systems</code>. It includes <em>dictionary</em>,
- <em>thesaurus</em> and <em>term expansion</em> utilities and is intended for
+<em>thesaurus</em> and <em>term expansion</em> utilities and is intended for
 <code>information retrieval system</code> applications.</p>
 <p>Three utility classes provide dictionary and thesaurus and term expansion
 functions:</p>
@@ -72,22 +72,22 @@ method that performs <code>term-expansion</code>, returning a list of terms in
 descending order of relevance (best match first). The (expanded) list of
 terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction
 suggestions.</p>
-<p>We use an <em>interface &gt; implementation mixin &gt; base-class &gt; implementation
-class pattern</em>:</p>
+<p>We use an <em>interface</em> &gt; <em>implementation mixin</em> &gt; <em>base-class</em> &gt;
+<em>implementation class</em> pattern:</p>
 <ul>
 <li>the <code>interface</code> is an abstract class that exposes fields and methods
- but contains no implementation code. The <code>interface</code> may expose a factory
- constructor that returns an <code>implementation class</code> instance;</li>
+but contains no implementation code. The <code>interface</code> may expose a factory
+constructor that returns an <code>implementation class</code> instance;</li>
 <li>the <code>implementation mixin</code> implements the <code>interface</code> class methods, but
- not the input fields; and</li>
+not the input fields; and</li>
 <li>the <code>base-class</code> is an abstract class with the <code>implementation mixin</code> and
- exposes a default, unnamed generative const constructor for sub-classes.
- The intention is that <code>implementation classes</code> extend the <code>base class</code>,
- overriding the <code>interface</code> input fields with final properties passed in
- via a const generative constructor.</li>
+exposes a default, unnamed generative const constructor for sub-classes.
+The intention is that <code>implementation classes</code> extend the <code>base class</code>,
+overriding the <code>interface</code> input fields with final properties passed in
+via a const generative constructor.</li>
 </ul>
-<p>The class naming convention for this pattern is <em>"Interface" &gt;
-"InterfaceMixin" &gt; "InterfaceBase"</em>.</p>
+<p>The class naming convention for this pattern is <em>"Interface"</em> &gt;
+<em>"InterfaceMixin"</em> &gt; <em>"InterfaceBase"</em>.</p>
 </section>
 
 

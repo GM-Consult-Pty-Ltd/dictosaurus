@@ -19,9 +19,6 @@ All rights reserved.
 
 ### *Updated*
 * Documentation.
-* Tests.
-* Examples.
-* Dependencies.
 
 ## 0.0.4+5
 **Beta**

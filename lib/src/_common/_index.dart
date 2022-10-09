@@ -2,6 +2,6 @@
 // BSD 3-Clause Licensedictosaurus
 // All rights reserved
 
-export 'dictionary.dart';
-export 'term_properties.dart';
-export 'term_definition.dart';
+export 'typedefs.dart';
+export 'term_property.dart';
+export 'part_of_speech.dart';

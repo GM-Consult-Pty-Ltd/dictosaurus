@@ -3,6 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/dictosaurus.dart';
+import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
 
