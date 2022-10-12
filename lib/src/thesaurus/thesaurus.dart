@@ -5,17 +5,19 @@
 import 'package:dictosaurus/src/_index.dart';
 
 /// The [Thesaurus] interface exposes methods that return a term's
-/// [synonymsOf] and/or [antonymsOf] from a dictionary provider.
+/// [synonymsOf], [lemmasOf] and/or [antonymsOf] from a dictionary provider.
 abstract class Thesaurus {
   //
 
   /// The [Thesaurus.callBack] factory constructor initializes a [Thesaurus]
-  /// that uses callbacks to retrieve term's [synonymsOf] and/or
+  /// that uses callbacks to retrieve term's [synonymsOf], [lemmasOf] and/or
   /// [antonymsOf] from a dictionary provider.
   factory Thesaurus.callBack(
           {required TermExpander synonymsCallback,
-          required TermExpander antonymsCallback}) =>
-      _ThesaurusCallbackImpl(synonymsCallback, antonymsCallback);
+          required TermExpander antonymsCallback,
+          required TermExpander lemmasCallback}) =>
+      _ThesaurusCallbackImpl(
+          synonymsCallback, antonymsCallback, lemmasCallback);
 
   /// Unnamed factory constructor initializes a [Thesaurus] that returns the
   /// synonyms or antonyms for a term from a [TermProperties] object returned
@@ -34,6 +36,11 @@ abstract class Thesaurus {
   /// Limit results by providing the [partOfSpeech].
   Future<Set<String>> synonymsOf(String term, [PartOfSpeech? partOfSpeech]);
 
+  /// Returns a set of lemmas for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Future<Set<String>> lemmasOf(String term, [PartOfSpeech? partOfSpeech]);
+
   /// Returns a set of antonyms for [term] from a dictionary provider.
   ///
   /// Limit results by providing the [partOfSpeech].
@@ -43,8 +50,8 @@ abstract class Thesaurus {
 }
 
 /// A mixin class that implements [Thesaurus] and uses [getEntry] to retrieve
-/// [TermProperties] from which it extracts [synonymsOf] and [antonymsOf] a
-/// term.
+/// [TermProperties] from which it extracts [synonymsOf], [lemmasOf] and/or
+/// [antonymsOf] a term.
 ///
 /// Mix this class into a [Dictionary] to add [Thesaurus] methods.
 abstract class ThesaurusMixin implements Thesaurus {
@@ -59,6 +66,13 @@ abstract class ThesaurusMixin implements Thesaurus {
       [PartOfSpeech? partOfSpeech]) async {
     final dictEntry = await getEntry(term, {TermProperty.synonyms});
     return dictEntry != null ? dictEntry.synonymsOf(partOfSpeech) : {};
+  }
+
+  @override
+  Future<Set<String>> lemmasOf(String term,
+      [PartOfSpeech? partOfSpeech]) async {
+    final dictEntry = await getEntry(term, {TermProperty.lemmas});
+    return dictEntry != null ? dictEntry.lemmasOf(partOfSpeech) : {};
   }
 
   @override
@@ -113,16 +127,16 @@ class _ThesaurusImpl extends ThesaurusBase {
 }
 
 /// Implementation of [Thesaurus] for the [Thesaurus.callBack] factory.
-/// - [synonymsCallback] is an asynchronous callback that returns the synonyms
-///   for a term from a dictionary provider; and
-/// - the [synonymsOf] method returns a set  of synonyms for a term by calling
-///   [synonymsCallback].
 class _ThesaurusCallbackImpl implements Thesaurus {
 //
 
   /// An asynchronous callback that returns a set of synonyms for a term from
   /// a dictionary provider.
   final TermExpander synonymsCallback;
+
+  /// An asynchronous callback that returns a set of lemmas for a term from
+  /// a dictionary provider.
+  final TermExpander lemmasCallback;
 
   /// An asynchronous callback that returns a set of antonyms for a term from
   /// a dictionary provider.
@@ -133,9 +147,14 @@ class _ThesaurusCallbackImpl implements Thesaurus {
       synonymsCallback(term, partOfSpeech);
 
   @override
+  Future<Set<String>> lemmasOf(String term, [PartOfSpeech? partOfSpeech]) =>
+      lemmasCallback(term, partOfSpeech);
+
+  @override
   Future<Set<String>> antonymsOf(String term, [PartOfSpeech? partOfSpeech]) =>
       antonymsCallback(term, partOfSpeech);
 
   /// Initializes a const [_ThesaurusCallbackImpl] with [synonymsCallback].
-  const _ThesaurusCallbackImpl(this.synonymsCallback, this.antonymsCallback);
+  const _ThesaurusCallbackImpl(
+      this.synonymsCallback, this.antonymsCallback, this.lemmasCallback);
 }

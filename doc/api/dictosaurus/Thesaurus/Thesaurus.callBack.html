@@ -51,14 +51,15 @@
 
     <section class="multi-line-signature">
       <span class="name ">Thesaurus.callBack</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="callBack-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span></li>
-<li><span class="parameter" id="callBack-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>}</span></li>
+<li><span class="parameter" id="callBack-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>, </span></li>
+<li><span class="parameter" id="callBack-param-lemmasCallback"><span>required</span> <span class="type-annotation"><a href="../../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">lemmasCallback</span>}</span></li>
 </ol>)
     </section>
 
     
 <section class="desc markdown">
   <p>The <a href="../../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a> factory constructor initializes a <a href="../../dictosaurus/Thesaurus-class.html">Thesaurus</a>
-that uses callbacks to retrieve term's <a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or
+that uses callbacks to retrieve term's <a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a>, <a href="../../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a> and/or
 <a href="../../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.</p>
 </section>
 
@@ -68,8 +69,10 @@ that uses callbacks to retrieve term's <a href="../../dictosaurus/Thesaurus/syno
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory Thesaurus.callBack(
         {required TermExpander synonymsCallback,
-        required TermExpander antonymsCallback}) =&gt;
-    _ThesaurusCallbackImpl(synonymsCallback, antonymsCallback);</code></pre>
+        required TermExpander antonymsCallback,
+        required TermExpander lemmasCallback}) =&gt;
+    _ThesaurusCallbackImpl(
+        synonymsCallback, antonymsCallback, lemmasCallback);</code></pre>
 </section>
 
 
@@ -107,6 +110,7 @@ that uses callbacks to retrieve term's <a href="../../dictosaurus/Thesaurus/syno
 
     <li class="section-title"><a href="../../dictosaurus/Thesaurus-class.html#instance-methods">Methods</a></li>
     <li><a href="../../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a></li>
+    <li><a href="../../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -129,7 +133,7 @@ that uses callbacks to retrieve term's <a href="../../dictosaurus/Thesaurus/syno
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.6
+      0.0.7
   </span>
 
   

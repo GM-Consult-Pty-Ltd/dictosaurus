@@ -230,6 +230,20 @@
 
 </dd>
 
+        <dt id="allLemmas" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/allLemmas.html">allLemmas</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns an unordered collection of unique terms that are lemmas of
+<a href="../dictosaurus/TermProperties/term.html">term</a>.
+  <div class="features">inherited</div>
+
+</dd>
+
         <dt id="allPhrases" class="callable inherited">
   <span class="name"><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
@@ -331,6 +345,32 @@
 </dt>
 <dd class="inherited">
   Returns a set of inflections for <a href="../dictosaurus/TermProperties/term.html">term</a> from a dictionary provider.
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="lemmasMap" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/lemmasMap.html">lemmasMap</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A hashmap of <code>PartOfSpeech</code> to terms that are lemmas of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="lemmasOf" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/lemmasOf.html">lemmasOf</a></span><span class="signature">(<wbr><span class="parameter" id="lemmasOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a set of lemmas for <a href="../dictosaurus/TermProperties/term.html">term</a> from a dictionary provider.
   <div class="features">inherited</div>
 
 </dd>
@@ -515,6 +555,7 @@
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allAntonyms.html">allAntonyms</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allDefinitions.html">allDefinitions</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a></li>
+    <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allLemmas.html">allLemmas</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/allSynonyms.html">allSynonyms</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/antonymsMap.html">antonymsMap</a></li>
@@ -523,6 +564,8 @@
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/definitionsMap.html">definitionsMap</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/inflectionsMap.html">inflectionsMap</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/inflectionsOf.html">inflectionsOf</a></li>
+    <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/lemmasMap.html">lemmasMap</a></li>
+    <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/lemmasOf.html">lemmasOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/phrasesMap.html">phrasesMap</a></li>
     <li class="inherited"><a href="../dictosaurus/TermPropertiesMixin/phrasesWith.html">phrasesWith</a></li>
@@ -545,7 +588,7 @@
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.6
+      0.0.7
   </span>
 
   

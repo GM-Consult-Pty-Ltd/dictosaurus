@@ -52,7 +52,7 @@
     
 <section class="desc markdown">
   <p>The <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return a term's
-<a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.</p>
+<a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a>, <a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a> and/or <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.</p>
 </section>
 
 
@@ -89,11 +89,11 @@ by <code>dictionaryCallback</code>.
             <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Thesaurus.callBack" class="callable">
-          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a></span><span class="signature">(<span class="parameter" id="callBack-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span><span class="parameter" id="callBack-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a></span><span class="signature">(<span class="parameter" id="callBack-param-synonymsCallback">{<span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">synonymsCallback</span>, </span><span class="parameter" id="callBack-param-antonymsCallback"><span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">antonymsCallback</span>, </span><span class="parameter" id="callBack-param-lemmasCallback"><span>required</span> <span class="type-annotation"><a href="../type_definitions/TermExpander.html">TermExpander</a></span> <span class="parameter-name">lemmasCallback</span>}</span>)</span>
         </dt>
         <dd>
           The <a href="../dictosaurus/Thesaurus/Thesaurus.callBack.html">Thesaurus.callBack</a> factory constructor initializes a <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>
-that uses callbacks to retrieve term's <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> and/or
+that uses callbacks to retrieve term's <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a>, <a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a> and/or
 <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.
             <div class="constructor-modifier features">factory</div>
         </dd>
@@ -153,6 +153,19 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 </dt>
 <dd>
   Returns a set of antonyms for <code>term</code> from a dictionary provider.
+  
+
+</dd>
+
+        <dt id="lemmasOf" class="callable">
+  <span class="name"><a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a></span><span class="signature">(<wbr><span class="parameter" id="lemmasOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="lemmasOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of lemmas for <code>term</code> from a dictionary provider.
   
 
 </dd>
@@ -293,6 +306,7 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 
     <li class="section-title"><a href="../dictosaurus/Thesaurus-class.html#instance-methods">Methods</a></li>
     <li><a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a></li>
+    <li><a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -312,7 +326,7 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.6
+      0.0.7
   </span>
 
   

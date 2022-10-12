@@ -24,6 +24,8 @@ import 'term_definition.dart';
 ///   limiting the results to the [PartOfSpeech];
 /// - [synonymsOf] returns a set of synonyms of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
+/// - [lemmasOf] returns a set of lemmas of [term], optionally limiting
+///   the results to the [PartOfSpeech];
 /// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
 /// - [allAntonyms] maps all the antonyms to a set;
@@ -31,11 +33,13 @@ import 'term_definition.dart';
 /// - [allInflections] maps all the inflections to a set;
 /// - [allPhrases] maps all the phrases to a set;
 /// - [allSynonyms] maps all the synonyms to a set;
+/// - [allLemmas] maps all the lemmas to a set;
 /// - [antonymsMap] maps [PartOfSpeech] to antonyms;
 /// - [definitionsMap] maps [PartOfSpeech] to definitions;
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections;
-/// - [phrasesMap] maps [PartOfSpeech] to phrases; and
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms].
+/// - [phrasesMap] maps [PartOfSpeech] to phrases;
+/// - [lemmasMap] maps [PartOfSpeech] to lemmas; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms.
 abstract class TermProperties {
   //
 
@@ -77,6 +81,9 @@ abstract class TermProperties {
   /// A hashmap of [PartOfSpeech] to terms that are synonyms of [term].
   Map<PartOfSpeech, Set<String>> synonymsMap();
 
+  /// A hashmap of [PartOfSpeech] to terms that are lemmas of [term].
+  Map<PartOfSpeech, Set<String>> lemmasMap();
+
   /// A hashmap of [PartOfSpeech] to terms that are antonyms of [term].
   Map<PartOfSpeech, Set<String>> antonymsMap();
 
@@ -95,6 +102,10 @@ abstract class TermProperties {
   /// Returns an unordered collection of unique terms that are synonyms of
   /// [term].
   Set<String> allSynonyms();
+
+  /// Returns an unordered collection of unique terms that are lemmas of
+  /// [term].
+  Set<String> allLemmas();
 
   /// Returns an unordered collection of unique terms that are antonyms of
   /// [term].
@@ -127,6 +138,11 @@ abstract class TermProperties {
   /// Limit results by providing the [partOfSpeech].
   Set<String> synonymsOf([PartOfSpeech? partOfSpeech]);
 
+  /// Returns a set of lemmas for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> lemmasOf([PartOfSpeech? partOfSpeech]);
+
   /// Returns a set of antonyms for [term] from a dictionary provider.
   ///
   /// Limit results by providing the [partOfSpeech].
@@ -139,26 +155,30 @@ abstract class TermProperties {
 ///   [variants] properties.
 /// - [hashCode] returns an Object.hash of the [term], [languageCode] and
 ///   [variants] properties.
-/// - [phrasesWith] maps [variants] to a set of phrases, optionally
-///   limiting the maps [variants] to to the [PartOfSpeech].
-/// - [inflectionsOf] maps [variants] to a set of inflections of [term],
-///   optionally limiting the results to the [PartOfSpeech].
-/// - [definitionsFor] maps [variants] to a set of definitions for [term],
-///   optionally limiting the results to the [PartOfSpeech].
-/// - [synonymsOf] maps [variants] to a set of synonyms of [term], optionally
-///   limiting the results to the [PartOfSpeech].
-/// - [antonymsOf] maps [variants] to a set of antonyms of [term], optionally
-///   limiting the results to the [PartOfSpeech].
-/// - [allAntonyms] maps all the antonyms from [variants] to a set.
-/// - [allDefinitions] maps all the definitions from [variants] to a set.
-/// - [allInflections] maps all the inflections from [variants] to a set.
-/// - [allPhrases] maps all the phrases from [variants] to a set.
-/// - [allSynonyms] maps all the synonyms from [variants] to a set.
-/// - [antonymsMap] maps [PartOfSpeech] to antonyms from [variants].
-/// - [definitionsMap] maps [PartOfSpeech] to definitions from [variants].
-/// - [inflectionsMap] maps [PartOfSpeech] to inflections from [variants].
-/// - [phrasesMap] maps [PartOfSpeech] to phrases from [variants].
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms from [variants].
+/// - [phrasesWith] returns a set of phrases containing [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [inflectionsOf] returns a set of inflections of [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [definitionsFor] returns a set of definitions for [term], optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [synonymsOf] returns a set of synonyms of [term], optionally limiting
+///   the results to the [PartOfSpeech];
+/// - [lemmasOf] returns a set of lemmas of [term], optionally limiting
+///   the results to the [PartOfSpeech];
+/// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
+///   the results to the [PartOfSpeech];
+/// - [allAntonyms] maps all the antonyms to a set;
+/// - [allDefinitions] maps all the definitions to a set;
+/// - [allInflections] maps all the inflections to a set;
+/// - [allPhrases] maps all the phrases to a set;
+/// - [allSynonyms] maps all the synonyms to a set;
+/// - [allLemmas] maps all the lemmas to a set;
+/// - [antonymsMap] maps [PartOfSpeech] to antonyms;
+/// - [definitionsMap] maps [PartOfSpeech] to definitions;
+/// - [inflectionsMap] maps [PartOfSpeech] to inflections;
+/// - [phrasesMap] maps [PartOfSpeech] to phrases;
+/// - [lemmasMap] maps [PartOfSpeech] to lemmas; and
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms.
 ///
 /// Sub-classes must override:
 /// - [languageCode], the ISO language code for the language of the [term];
@@ -205,6 +225,15 @@ abstract class TermPropertiesMixin implements TermProperties {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.synonyms);
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> allLemmas() {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.lemmas);
     }
     return retVal;
   }
@@ -265,6 +294,17 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
+  Map<PartOfSpeech, Set<String>> lemmasMap() {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.lemmas);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
   Set<String> phrasesWith([PartOfSpeech? partOfSpeech]) {
     final retVal = <String>{};
     if (partOfSpeech == null) {
@@ -317,6 +357,21 @@ abstract class TermPropertiesMixin implements TermProperties {
       retVal.addAll(allSynonyms());
     } else {
       for (final e in synonymsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
+  Set<String> lemmasOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allLemmas());
+    } else {
+      for (final e in lemmasMap().entries) {
         if (e.key == partOfSpeech) {
           retVal.addAll(e.value);
         }
