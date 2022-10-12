@@ -10,7 +10,7 @@ enum TermProperty {
   stem,
 
   /// The lemma of the term.
-  lemma,
+  lemmas,
 
   /// Definitions of the term.
   definitions,

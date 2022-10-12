@@ -6,6 +6,23 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.6
+**Beta**
+
+### *Breaking changes*
+* Removed field [TermProperties.lemma].
+* Changed Signature of [TermDefinition] unnamed factory.
+* Changed Signature of [TermProperties] unnamed factory.
+
+### *New*
+* Added [TermDefinition.lemmas] field.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.5
 **Beta**
 

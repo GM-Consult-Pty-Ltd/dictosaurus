@@ -13,6 +13,7 @@ import 'package:dictosaurus/src/_index.dart';
 ///   of [term] when used as [partOfSpeech].
 /// - [antonyms] is an unordered collection of unique terms that are antonyms
 ///   of [term] when used as [partOfSpeech].
+/// - [lemmas], the lemmas of [term].
 /// - [inflections] is an unordered collection of unique terms that are
 ///   inflections of [term] when used as [partOfSpeech].
 /// - [phrases] is an unordered collection of unique example phrases that
@@ -31,6 +32,7 @@ abstract class TermDefinition {
   ///   of [term] when used as [partOfSpeech].
   /// - [inflections] is an unordered collection of unique terms that are
   ///   inflections of [term] when used as [partOfSpeech].
+  /// - [lemmas], the lemmas of [term].
   /// - [phrases] is an unordered collection of unique example phrases that
   ///   include [term] when used as [partOfSpeech].
   ///
@@ -43,9 +45,10 @@ abstract class TermDefinition {
           required Set<String> synonyms,
           required Set<String> antonyms,
           required Set<String> phrases,
-          required Set<String> inflections}) =>
+          required Set<String> inflections,
+          required Set<String> lemmas}) =>
       _TermDefinition(term, partOfSpeech, definition, synonyms, antonyms,
-          inflections, phrases);
+          inflections, phrases, lemmas);
 
   /// The term for this entry.
   String get term;
@@ -67,6 +70,10 @@ abstract class TermDefinition {
   /// An unordered collection of unique terms that are inflections of [term]
   /// when used as [partOfSpeech].
   Set<String> get inflections;
+
+  /// An unordered collection of unique terms that are inflections of [term]
+  /// when used as [partOfSpeech].
+  Set<String> get lemmas;
 
   /// An unordered collection of unique example phrases that include [term]
   /// when used as [partOfSpeech].
@@ -116,11 +123,21 @@ class _TermDefinition extends TermDefinitionBase {
   @override
   final String term;
 
-  const _TermDefinition(this.term, this.partOfSpeech, this.definition,
-      this.synonyms, this.antonyms, this.inflections, this.phrases);
+  const _TermDefinition(
+      this.term,
+      this.partOfSpeech,
+      this.definition,
+      this.synonyms,
+      this.antonyms,
+      this.inflections,
+      this.phrases,
+      this.lemmas);
 
   @override
   final Set<String> phrases;
+
+  @override
+  final Set<String> lemmas;
 
   @override
   final Set<String> antonyms;

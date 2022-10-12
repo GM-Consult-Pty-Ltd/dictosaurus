@@ -157,7 +157,6 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
           languageCode.isEmpty ? results.first.language ?? '' : languageCode;
       final variants = <TermDefinition>{};
       String? stem;
-      String? lemma;
       String? phonetic;
       for (final r in results) {
         final lexicalEntries = r.getJsonList('lexicalEntries');
@@ -179,6 +178,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
                       term: term,
                       partOfSpeech: partOfSpeech,
                       definition: definition,
+                      lemmas: {},
                       phrases: phrases,
                       antonyms: {},
                       inflections: inflections,
@@ -197,7 +197,8 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
                         phrases: phrases,
                         antonyms: {},
                         inflections: inflections,
-                        synonyms: synonyms);
+                        synonyms: synonyms,
+                        lemmas: {});
                     variants.add(variant);
                   }
                 }
@@ -209,7 +210,6 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
       return TermProperties(
           term: term,
           stem: stem ?? term,
-          lemma: lemma ?? term,
           phonetic: phonetic ?? term,
           languageCode: languageCode,
           variants: variants);

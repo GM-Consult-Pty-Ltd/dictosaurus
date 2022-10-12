@@ -10,7 +10,6 @@ import 'term_definition.dart';
 /// The folling fields enumerate the object properties:
 /// - [term] is the term or word for this entry;
 /// - [stem] is the stemmed version of [term];
-/// - [lemma] is the lemma of [term];
 /// - [languageCode] is the ISO language code for the language of the
 ///   [term];
 /// - [variants] is an un-ordered collection of unique [TermDefinition]
@@ -45,7 +44,6 @@ abstract class TermProperties {
   /// - [languageCode] is the ISO language code for the language of the [term].
   /// - [term] is the term or word for this [TermProperties].
   /// - [stem] is the stemmed version of [term].
-  /// - [lemma] is the lemma of [term].
   /// - [phonetic] is the phonetic representation of [term] when pronounced in
   ///   [languageCode].
   /// - [variants] is an un-ordered collection of unique [TermDefinition]
@@ -56,12 +54,10 @@ abstract class TermProperties {
   factory TermProperties(
           {required String term,
           required String stem,
-          required String lemma,
           required String phonetic,
           required String languageCode,
           required Iterable<TermDefinition> variants}) =>
-      _TermPropertiesImpl(
-          languageCode, term, stem, lemma, phonetic, variants.toSet());
+      _TermPropertiesImpl(languageCode, term, stem, phonetic, variants.toSet());
 
   /// The ISO language code for the language of the [term].
   String get languageCode;
@@ -71,9 +67,6 @@ abstract class TermProperties {
 
   /// The stemmed version of [term].
   String get stem;
-
-  /// The lemma of [term].
-  String get lemma;
 
   /// The phonetic representation of [term] when pronounced in [languageCode].
   String get phonetic;
@@ -171,7 +164,6 @@ abstract class TermProperties {
 /// - [languageCode], the ISO language code for the language of the [term];
 /// - [variants], an un-ordered collection of unique [TermDefinition] instances;
 /// - [term], the term or word for this [TermProperties];
-/// - [lemma], the lemma of [term];
 /// - [stem], the stemmed version of [term]; and
 /// - [phonetic], the phonetic representation of [term] when pronounced in
 ///   [languageCode].
@@ -366,7 +358,6 @@ abstract class TermPropertiesMixin implements TermProperties {
 /// - [languageCode], the ISO language code for the language of the [term];
 /// - [variants], an un-ordered collection of unique [TermDefinition] instances;
 /// - [term], the term or word for this [TermProperties];
-/// - [lemma], the lemma of [term];
 /// - [stem], the stemmed version of [term]; and
 /// - [phonetic], the phonetic representation of [term] when pronounced in
 ///   [languageCode].
@@ -396,11 +387,8 @@ class _TermPropertiesImpl extends TermPropertiesBase {
   @override
   final String term;
 
-  const _TermPropertiesImpl(this.languageCode, this.term, this.stem, this.lemma,
-      this.phonetic, this._variants);
-
-  @override
-  final String lemma;
+  const _TermPropertiesImpl(
+      this.languageCode, this.term, this.stem, this.phonetic, this._variants);
 
   @override
   final String stem;
