@@ -13,7 +13,7 @@ import 'package:dictosaurus/src/_index.dart';
 abstract class Dictionary {
 //
 
-  /// The ISO language code for the language of a term.
+  /// The IETF BCP 47 language tag for the language of a term.
   String get languageCode;
 
   /// Returns a [TermProperties] for [term].
@@ -28,6 +28,17 @@ abstract class Dictionary {
   ///
   /// Limit results by providing the [partOfSpeech].
   Future<Set<String>> phrasesWith(String term, [PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of inflections for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Future<Set<Pronunciation>> pronunciationsOf(String term,
+      [PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of inflections for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Future<Set<String>> etymologiesOf(String term, [PartOfSpeech? partOfSpeech]);
 
   /// Returns a set of inflections for [term] from a dictionary provider.
   ///
@@ -58,6 +69,20 @@ abstract class DictionaryMixin implements Dictionary {
   }
 
   @override
+  Future<Set<String>> etymologiesOf(String term,
+      [PartOfSpeech? partOfSpeech]) async {
+    final dictEntry = await getEntry(term, {TermProperty.definitions});
+    return dictEntry != null ? dictEntry.etymologiesOf(partOfSpeech) : {};
+  }
+
+  @override
+  Future<Set<Pronunciation>> pronunciationsOf(String term,
+      [PartOfSpeech? partOfSpeech]) async {
+    final dictEntry = await getEntry(term, {TermProperty.definitions});
+    return dictEntry != null ? dictEntry.pronunciationsOf(partOfSpeech) : {};
+  }
+
+  @override
   Future<Set<String>> definitionsFor(String term,
       [PartOfSpeech? partOfSpeech]) async {
     final dictEntry = await getEntry(term, {TermProperty.definitions});
@@ -76,7 +101,7 @@ abstract class DictionaryMixin implements Dictionary {
 /// interface.
 ///
 /// Sub-classes must override:
-/// - [languageCode], the ISO language code for the language of a term; and
+/// - [languageCode], the IETF BCP 47 language tag for the language of a term; and
 /// - [getEntry], a function that returns a [TermProperties] for a term.
 abstract class DictionaryBase with DictionaryMixin {
   //

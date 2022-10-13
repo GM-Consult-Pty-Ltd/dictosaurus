@@ -51,24 +51,43 @@
 
     
 <section class="desc markdown">
-  <p>A definition for a term, used in a <a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> object with immutable
-properties:</p>
+  <p>A definition for a defintion and/or part-of-speech variant of a term, used
+in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object.</p>
 <ul>
-<li><a href="../dictosaurus/TermVariant/term.html">term</a> is a term or word;</li>
-<li><a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a> is the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> category of the <a href="../dictosaurus/TermVariant/term.html">term</a>;</li>
-<li><a href="../dictosaurus/TermVariant/definition.html">definition</a> is the definition for <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>;</li>
+<li><a href="../dictosaurus/TermVariant/term.html">term</a> is a term or word.</li>
+<li><a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a> is the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> category of the <a href="../dictosaurus/TermVariant/term.html">term</a>.</li>
+<li><a href="../dictosaurus/TermVariant/definition.html">definition</a> is the definition for <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.</li>
+<li><a href="../dictosaurus/TermVariant/pronunciations.html">pronunciations</a> is the phonetic spelling and a link to an audiofile for
+the pronunciations of the <a href="../dictosaurus/TermVariant/term.html">term</a>.</li>
 <li><a href="../dictosaurus/TermVariant/synonyms.html">synonyms</a> is an unordered collection of unique terms that are synonyms
-of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>;</li>
+of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermVariant/antonyms.html">antonyms</a> is an unordered collection of unique terms that are antonyms
-of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>;</li>
+of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.</li>
+<li><a href="../dictosaurus/TermVariant/lemmas.html">lemmas</a>, the lemmas of <a href="../dictosaurus/TermVariant/term.html">term</a>.</li>
 <li><a href="../dictosaurus/TermVariant/inflections.html">inflections</a> is an unordered collection of unique terms that are
-inflections of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>; and</li>
+inflections of <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.</li>
 <li><a href="../dictosaurus/TermVariant/phrases.html">phrases</a> is an unordered collection of unique example phrases that
 include <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.</li>
 </ul>
 </section>
 
 
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+        
+
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../dictosaurus/TermVariantMixin-class.html">TermVariantMixin</a></li>
+        </ul></dd>
+
+
+        
+      </dl>
+    </section>
 
     
   <section class="summary offset-anchor" id="constructors">
@@ -76,11 +95,11 @@ include <a href="../dictosaurus/TermVariant/term.html">term</a> when used as <a 
 
     <dl class="constructor-summary-list">
         <dt id="TermVariant" class="callable">
-          <span class="name"><a href="../dictosaurus/TermVariant/TermVariant.html">TermVariant</a></span><span class="signature">(<span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="-param-partOfSpeech"><span>required</span> <span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span> <span class="parameter-name">partOfSpeech</span>, </span><span class="parameter" id="-param-definition"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">definition</span>, </span><span class="parameter" id="-param-synonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">synonyms</span>, </span><span class="parameter" id="-param-antonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">antonyms</span>, </span><span class="parameter" id="-param-phrases"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">phrases</span>, </span><span class="parameter" id="-param-inflections"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">inflections</span>}</span>)</span>
+          <span class="name"><a href="../dictosaurus/TermVariant/TermVariant.html">TermVariant</a></span><span class="signature">(<span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="-param-partOfSpeech"><span>required</span> <span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span> <span class="parameter-name">partOfSpeech</span>, </span><span class="parameter" id="-param-pronunciations"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a></span>&gt;</span></span> <span class="parameter-name">pronunciations</span>, </span><span class="parameter" id="-param-definition"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">definition</span>, </span><span class="parameter" id="-param-synonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">synonyms</span>, </span><span class="parameter" id="-param-antonyms"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">antonyms</span>, </span><span class="parameter" id="-param-phrases"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">phrases</span>, </span><span class="parameter" id="-param-inflections"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">inflections</span>, </span><span class="parameter" id="-param-lemmas"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">lemmas</span>}</span>)</span>
         </dt>
         <dd>
-          Factory constructor instantiates an immutable <a href="../dictosaurus/TermVariant-class.html">TermVariant</a> object
-with the following parameters:
+          A factory constructor that instantiates an immutable <a href="../dictosaurus/TermVariant-class.html">TermVariant</a>
+object.
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
@@ -136,6 +155,18 @@ when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech
 
 </dd>
 
+        <dt id="lemmas" class="property">
+  <span class="name"><a href="../dictosaurus/TermVariant/lemmas.html">lemmas</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unordered collection of unique terms that are inflections of <a href="../dictosaurus/TermVariant/term.html">term</a>
+when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
+  <div class="features">read-only</div>
+
+</dd>
+
         <dt id="partOfSpeech" class="property">
   <span class="name"><a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a></span>
   <span class="signature">&#8594; <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span> 
@@ -155,6 +186,18 @@ when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech
 <dd>
   An unordered collection of unique example phrases that include <a href="../dictosaurus/TermVariant/term.html">term</a>
 when used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="pronunciations" class="property">
+  <span class="name"><a href="../dictosaurus/TermVariant/pronunciations.html">pronunciations</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  The term variant's phonetic spelling and a link to an audiofile for its
+pronunciations.
   <div class="features">read-only</div>
 
 </dd>
@@ -198,10 +241,23 @@ used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
 
     
   <section
-      class="summary offset-anchor inherited"
+      class="summary offset-anchor"
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="copyWith" class="callable">
+  <span class="name"><a href="../dictosaurus/TermVariant/copyWith.html">copyWith</a></span><span class="signature">(<wbr><span class="parameter" id="copyWith-param-term">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">term</span>, </span><span class="parameter" id="copyWith-param-partOfSpeech"><span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>, </span><span class="parameter" id="copyWith-param-definition"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">definition</span>, </span><span class="parameter" id="copyWith-param-synonyms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">synonyms</span>, </span><span class="parameter" id="copyWith-param-antonyms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">antonyms</span>, </span><span class="parameter" id="copyWith-param-phrases"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">phrases</span>, </span><span class="parameter" id="copyWith-param-inflections"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">inflections</span>, </span><span class="parameter" id="copyWith-param-lemmas"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">lemmas</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../dictosaurus/TermVariant-class.html">TermVariant</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a copy of the <a href="../dictosaurus/TermVariant-class.html">TermVariant</a> instance updated properties.
+  
+
+</dd>
+
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -275,33 +331,27 @@ used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
     <h5>dictosaurus library</h5>
     <ol>
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#classes">Classes</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndex-class.html">AsyncCallbackIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/AsyncCallbackIndexMixin-class.html">AsyncCallbackIndexMixin</a></li>
   <li><a href="../dictosaurus/AutoCorrect-class.html">AutoCorrect</a></li>
+  <li><a href="../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></li>
+  <li><a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a></li>
   <li><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></li>
-  <li><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a></li>
+  <li><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></li>
+  <li><a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a></li>
   <li><a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a></li>
   <li><a href="../dictosaurus/DictoSaurusBase-class.html">DictoSaurusBase</a></li>
   <li><a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/English-class.html">English</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndex-class.html">InMemoryIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InMemoryIndexMixin-class.html">InMemoryIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndex-class.html">InvertedIndex</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/InvertedIndexMixin-class.html">InvertedIndexMixin</a></li>
-  <li><a href="https://pub.dev/documentation/porter_2_stemmer/1.1.0+1/porter_2_stemmer/Porter2Stemmer-class.html">Porter2Stemmer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TermSimilarity-class.html">TermSimilarity</a></li>
+  <li><a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a></li>
+  <li><a href="../dictosaurus/PronunciationBase-class.html">PronunciationBase</a></li>
+  <li><a href="../dictosaurus/PronunciationMixin-class.html">PronunciationMixin</a></li>
+  <li><a href="../dictosaurus/TermProperties-class.html">TermProperties</a></li>
+  <li><a href="../dictosaurus/TermPropertiesBase-class.html">TermPropertiesBase</a></li>
+  <li><a href="../dictosaurus/TermPropertiesMixin-class.html">TermPropertiesMixin</a></li>
   <li><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextAnalyzer-class.html">TextAnalyzer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocument-class.html">TextDocument</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentBase-class.html">TextDocumentBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextDocumentMixin-class.html">TextDocumentMixin</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexer-class.html">TextIndexer</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TextIndexerBase-class.html">TextIndexerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizer-class.html">TextTokenizer</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerBase-class.html">TextTokenizerBase</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/TextTokenizerMixin-class.html">TextTokenizerMixin</a></li>
+  <li><a href="../dictosaurus/TermVariantBase-class.html">TermVariantBase</a></li>
+  <li><a href="../dictosaurus/TermVariantMixin-class.html">TermVariantMixin</a></li>
   <li><a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a></li>
-  <li><a href="https://pub.dev/documentation/text_analysis/0.15.1/text_analysis/Token-class.html">Token</a></li>
+  <li><a href="../dictosaurus/ThesaurusBase-class.html">ThesaurusBase</a></li>
+  <li><a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a></li>
 
 
 
@@ -310,7 +360,7 @@ used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
 
   <li class="section-title"><a href="../dictosaurus/dictosaurus-library.html#enums">Enums</a></li>
   <li><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></li>
-  <li><a href="https://pub.dev/documentation/text_indexing/0.16.0/text_indexing/TermSortStrategy.html">TermSortStrategy</a></li>
+  <li><a href="../dictosaurus/TermProperty.html">TermProperty</a></li>
 
 
 </ol>
@@ -331,13 +381,16 @@ used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
     <li><a href="../dictosaurus/TermVariant/definition.html">definition</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../dictosaurus/TermVariant/inflections.html">inflections</a></li>
+    <li><a href="../dictosaurus/TermVariant/lemmas.html">lemmas</a></li>
     <li><a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a></li>
     <li><a href="../dictosaurus/TermVariant/phrases.html">phrases</a></li>
+    <li><a href="../dictosaurus/TermVariant/pronunciations.html">pronunciations</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
     <li><a href="../dictosaurus/TermVariant/synonyms.html">synonyms</a></li>
     <li><a href="../dictosaurus/TermVariant/term.html">term</a></li>
 
-    <li class="section-title inherited"><a href="../dictosaurus/TermVariant-class.html#instance-methods">Methods</a></li>
+    <li class="section-title"><a href="../dictosaurus/TermVariant-class.html#instance-methods">Methods</a></li>
+    <li><a href="../dictosaurus/TermVariant/copyWith.html">copyWith</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
@@ -356,7 +409,7 @@ used as <a href="../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a>.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.1-beta.5
+      0.0.8
   </span>
 
   

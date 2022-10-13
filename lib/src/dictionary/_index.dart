@@ -4,4 +4,5 @@
 
 export 'dictionary.dart';
 export 'term_properties.dart';
-export 'term_definition.dart';
+export 'term_variant.dart';
+export 'pronunciation.dart';

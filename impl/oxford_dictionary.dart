@@ -13,9 +13,8 @@ import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
 
 /// Implements [Dictionary] with the `Oxford Dictionaries` API as dictionary
 /// provider.  See: https://developer.oxforddictionaries.com/.
-class OxfordDictionaries
-    with OxfordDictionariesApiMixin, DictionaryMixin
-    implements Dictionary {
+class OxfordDictionaries extends DictionaryBase
+    with OxfordDictionariesApiMixin {
   //
 
   @override
@@ -24,7 +23,7 @@ class OxfordDictionaries
   /// Hydrates a [OxfordDictionaries] instance:
   /// - [appId] is the `OxfordDictionaries Application ID`;
   /// - [appKey] is the `OxfordDictionaries Application Key`;
-  /// - [languageCode] is the ISO language code of the [Dictionary].
+  /// - [languageCode] is the IETF BCP 47 language tag of the [Dictionary].
   const OxfordDictionaries();
 
   @override
@@ -123,20 +122,20 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
       (this['language'] is String ? this['language'] as String : null)
           ?.replaceAll('-', '_');
 
-  /// Returns the first phonetic spelling found in the `pronunciations` field
-  /// of an element of `"lexicalEntry" "entries"`.
-  String? get lexicalEntriesEntryPhonetic {
-    final collection = getJsonList('pronunciations');
-    String? retVal;
-    for (final json in collection) {
-      final value = json['phoneticSpelling'];
-      if (value is String) {
-        retVal = retVal ?? value;
-      }
-      return retVal;
-    }
-    return null;
-  }
+  /// Returns a [Pronunciation]s collection by parsing the 'pronunciations'
+  /// field of the JSON.
+  Set<Pronunciation> pronunciations(String term) =>
+      getJsonList('pronunciations')
+          .map((pronunciation) => Pronunciation(
+              term: term,
+              audioLink: pronunciation['audioFile']?.toString(),
+              phoneticSpelling: pronunciation['phoneticSpelling']?.toString(),
+              languageCodes: pronunciation.getStringList('dialects')))
+          .toSet();
+
+  /// Returns a collection of etymologies by parsing the 'etymologies'
+  /// field of the JSON.
+  Set<String> get etymologies => getStringList('etymologies').toSet();
 
   Iterable<Map<String, dynamic>> getJsonList(String fieldName) =>
       this[fieldName] is Iterable
@@ -155,9 +154,8 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
     if (results.isNotEmpty && term is String) {
       languageCode =
           languageCode.isEmpty ? results.first.language ?? '' : languageCode;
-      final variants = <TermDefinition>{};
+      final variants = <TermVariant>{};
       String? stem;
-      String? phonetic;
       for (final r in results) {
         final lexicalEntries = r.getJsonList('lexicalEntries');
         for (final le in lexicalEntries) {
@@ -167,15 +165,18 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
             final entries = le.getJsonList('entries');
             for (final e in entries) {
               final inflections = e.lexicalEntriesEntryInflections;
-              phonetic = phonetic ?? e.lexicalEntriesEntryPhonetic;
+              final etymologies = e.etymologies;
+              final pronunciations = e.pronunciations(term);
               final senses = e.getJsonList('senses');
               for (final s in senses) {
                 final synonyms = s.getTextValues('synonyms');
                 final definitions = s.getStringList('definitions');
                 for (final definition in definitions) {
                   phrases.addAll(s.getTextValues('examples'));
-                  final variant = TermDefinition(
+                  final variant = TermVariant(
                       term: term,
+                      pronunciations: pronunciations,
+                      etymologies: etymologies,
                       partOfSpeech: partOfSpeech,
                       definition: definition,
                       lemmas: {},
@@ -190,8 +191,10 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
                   final definitions = ss.getStringList('definitions');
                   for (final definition in definitions) {
                     phrases.addAll(s.getTextValues('examples'));
-                    final variant = TermDefinition(
+                    final variant = TermVariant(
                         term: term,
+                        pronunciations: pronunciations,
+                        etymologies: etymologies,
                         partOfSpeech: partOfSpeech,
                         definition: definition,
                         phrases: phrases,
@@ -210,7 +213,6 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
       return TermProperties(
           term: term,
           stem: stem ?? term,
-          phonetic: phonetic ?? term,
           languageCode: languageCode,
           variants: variants);
     }
@@ -222,6 +224,8 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
 ///
 /// See: https://developer.oxforddictionaries.com/.
 enum OxFordDictionariesEndpoints {
+  //
+
   /// Retrieve definitions, pronunciations, example sentences, grammatical
   /// information and word origins.
   entries,

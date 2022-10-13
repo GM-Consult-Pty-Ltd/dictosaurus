@@ -2,17 +2,16 @@
 // BSD 3-Clause License
 // All rights reserved
 
-import 'package:dictosaurus/src/_common/part_of_speech.dart';
-import 'term_definition.dart';
+import 'package:dictosaurus/src/_index.dart';
 
 /// An `object model` for a `term` or `word` with immutable properties.
 ///
 /// The folling fields enumerate the object properties:
 /// - [term] is the term or word for this entry;
 /// - [stem] is the stemmed version of [term];
-/// - [languageCode] is the ISO language code for the language of the
+/// - [languageCode] is the IETF BCP 47 language tag for the language of the
 ///   [term];
-/// - [variants] is an un-ordered collection of unique [TermDefinition]
+/// - [variants] is an un-ordered collection of unique [TermVariant]
 ///   instances.
 ///
 /// The following methods map [variants] of the [term] to useful return values:
@@ -23,7 +22,9 @@ import 'term_definition.dart';
 /// - [definitionsFor] returns a set of definitions for [term], optionally
 ///   limiting the results to the [PartOfSpeech];
 /// - [synonymsOf] returns a set of synonyms of [term], optionally limiting
-///   the results to the [PartOfSpeech];
+///   the results to the [PartOfSpeech];///
+/// - [pronunciationsOf] returns a set of [Pronunciation]s of [term], optionally
+///   limiting the results to the [PartOfSpeech];
 /// - [lemmasOf] returns a set of lemmas of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
 /// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
@@ -33,24 +34,24 @@ import 'term_definition.dart';
 /// - [allInflections] maps all the inflections to a set;
 /// - [allPhrases] maps all the phrases to a set;
 /// - [allSynonyms] maps all the synonyms to a set;
+/// - [allPronunciations] maps all the [Pronunciation]s to a set;
 /// - [allLemmas] maps all the lemmas to a set;
 /// - [antonymsMap] maps [PartOfSpeech] to antonyms;
 /// - [definitionsMap] maps [PartOfSpeech] to definitions;
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections;
 /// - [phrasesMap] maps [PartOfSpeech] to phrases;
-/// - [lemmasMap] maps [PartOfSpeech] to lemmas; and
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms.
+/// - [lemmasMap] maps [PartOfSpeech] to lemmas;
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms; and
+/// - [pronunciationsMap] maps [PartOfSpeech] to [Pronunciation]s.
 abstract class TermProperties {
   //
 
   /// A factory constructor that instantiates an immutable [TermProperties]
   /// instance.
-  /// - [languageCode] is the ISO language code for the language of the [term].
+  /// - [languageCode] is the IETF BCP 47 language tag for the language of the [term].
   /// - [term] is the term or word for this [TermProperties].
   /// - [stem] is the stemmed version of [term].
-  /// - [phonetic] is the phonetic representation of [term] when pronounced in
-  ///   [languageCode].
-  /// - [variants] is an un-ordered collection of unique [TermDefinition]
+  /// - [variants] is an un-ordered collection of unique [TermVariant]
   ///   instances.
   ///
   /// The [variants] field of the implementation class is immutable as it
@@ -58,12 +59,13 @@ abstract class TermProperties {
   factory TermProperties(
           {required String term,
           required String stem,
-          required String phonetic,
           required String languageCode,
-          required Iterable<TermDefinition> variants}) =>
-      _TermPropertiesImpl(languageCode, term, stem, phonetic, variants.toSet());
+          required Iterable<TermVariant> variants}) =>
+      _TermPropertiesImpl(languageCode, term, stem, variants.toSet());
 
-  /// The ISO language code for the language of the [term].
+  /// The IETF BCP 47 language tag for the language of the [term].
+  ///
+  /// See https://en.wikipedia.org/wiki/IETF_language_tag.
   String get languageCode;
 
   /// The term for this [TermProperties].
@@ -72,14 +74,17 @@ abstract class TermProperties {
   /// The stemmed version of [term].
   String get stem;
 
-  /// The phonetic representation of [term] when pronounced in [languageCode].
-  String get phonetic;
+  /// An un-ordered collection of unique [TermVariant] instances.
+  Set<TermVariant> get variants;
 
-  /// An un-ordered collection of unique [TermDefinition] instances.
-  Set<TermDefinition> get variants;
+  /// A hashmap of [PartOfSpeech] to etymologies of [term].
+  Map<PartOfSpeech, Set<String>> etymologiesMap();
 
   /// A hashmap of [PartOfSpeech] to terms that are synonyms of [term].
   Map<PartOfSpeech, Set<String>> synonymsMap();
+
+  /// A hashmap of [PartOfSpeech] to [Pronunciation]s of [term].
+  Map<PartOfSpeech, Set<Pronunciation>> pronunciationsMap();
 
   /// A hashmap of [PartOfSpeech] to terms that are lemmas of [term].
   Map<PartOfSpeech, Set<String>> lemmasMap();
@@ -99,9 +104,15 @@ abstract class TermProperties {
   /// Returns an unordered collection of unique definitions for [term].
   Set<String> allDefinitions();
 
+  /// Returns an unordered collection of etymologies of [term].
+  Set<String> allEtymologies();
+
   /// Returns an unordered collection of unique terms that are synonyms of
   /// [term].
   Set<String> allSynonyms();
+
+  /// Returns an unordered collection of [Pronunciation]s of [term].
+  Set<Pronunciation> allPronunciations();
 
   /// Returns an unordered collection of unique terms that are lemmas of
   /// [term].
@@ -133,10 +144,20 @@ abstract class TermProperties {
   /// Limit results by providing the [partOfSpeech].
   Set<String> definitionsFor([PartOfSpeech? partOfSpeech]);
 
+  /// Returns a set of etymologies for [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<String> etymologiesOf([PartOfSpeech? partOfSpeech]);
+
   /// Returns a set of synonyms for [term] from a dictionary provider.
   ///
   /// Limit results by providing the [partOfSpeech].
   Set<String> synonymsOf([PartOfSpeech? partOfSpeech]);
+
+  /// Returns a set of [Pronunciation]s of [term] from a dictionary provider.
+  ///
+  /// Limit results by providing the [partOfSpeech].
+  Set<Pronunciation> pronunciationsOf([PartOfSpeech? partOfSpeech]);
 
   /// Returns a set of lemmas for [term] from a dictionary provider.
   ///
@@ -161,8 +182,12 @@ abstract class TermProperties {
 ///   limiting the results to the [PartOfSpeech];
 /// - [definitionsFor] returns a set of definitions for [term], optionally
 ///   limiting the results to the [PartOfSpeech];
+/// - [etymologiesOf] returns a set of etymologies of [term], optionally
+///   limiting the results to the [PartOfSpeech];
 /// - [synonymsOf] returns a set of synonyms of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
+/// - [pronunciationsOf] returns a set of [Pronunciation]s of [term],
+///   optionally limiting the results to the [PartOfSpeech];
 /// - [lemmasOf] returns a set of lemmas of [term], optionally limiting
 ///   the results to the [PartOfSpeech];
 /// - [antonymsOf] returns a set of antonyms of [term], optionally limiting
@@ -171,22 +196,24 @@ abstract class TermProperties {
 /// - [allDefinitions] maps all the definitions to a set;
 /// - [allInflections] maps all the inflections to a set;
 /// - [allPhrases] maps all the phrases to a set;
+/// - [allEtymologies] maps all the etymologies to a set;
 /// - [allSynonyms] maps all the synonyms to a set;
+/// - [allPronunciations] maps all the [Pronunciation]s to a set;
 /// - [allLemmas] maps all the lemmas to a set;
 /// - [antonymsMap] maps [PartOfSpeech] to antonyms;
 /// - [definitionsMap] maps [PartOfSpeech] to definitions;
 /// - [inflectionsMap] maps [PartOfSpeech] to inflections;
 /// - [phrasesMap] maps [PartOfSpeech] to phrases;
-/// - [lemmasMap] maps [PartOfSpeech] to lemmas; and
-/// - [synonymsMap] maps [PartOfSpeech] to synonyms.
+/// - [lemmasMap] maps [PartOfSpeech] to lemmas;
+/// - [etymologiesMap] maps [PartOfSpeech] to etymologies;
+/// - [synonymsMap] maps [PartOfSpeech] to synonyms; and
+/// - [pronunciationsMap] maps [PartOfSpeech] to [Pronunciation]s.
 ///
 /// Sub-classes must override:
-/// - [languageCode], the ISO language code for the language of the [term];
-/// - [variants], an un-ordered collection of unique [TermDefinition] instances;
-/// - [term], the term or word for this [TermProperties];
-/// - [stem], the stemmed version of [term]; and
-/// - [phonetic], the phonetic representation of [term] when pronounced in
-///   [languageCode].
+/// - [languageCode], the IETF BCP 47 language tag for the language of the [term];
+/// - [variants], an un-ordered collection of unique [TermVariant] instances;
+/// - [term], the term or word for this [TermProperties]; and
+/// - [stem], the stemmed version of [term].
 abstract class TermPropertiesMixin implements TermProperties {
   //
 
@@ -221,10 +248,28 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
+  Set<String> allEtymologies() {
+    final Set<String> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.etymologies);
+    }
+    return retVal;
+  }
+
+  @override
   Set<String> allSynonyms() {
     final Set<String> retVal = {};
     for (final e in variants) {
       retVal.addAll(e.synonyms);
+    }
+    return retVal;
+  }
+
+  @override
+  Set<Pronunciation> allPronunciations() {
+    final Set<Pronunciation> retVal = {};
+    for (final e in variants) {
+      retVal.addAll(e.pronunciations);
     }
     return retVal;
   }
@@ -283,11 +328,33 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
+  Map<PartOfSpeech, Set<String>> etymologiesMap() {
+    final Map<PartOfSpeech, Set<String>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.etymologies);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
   Map<PartOfSpeech, Set<String>> synonymsMap() {
     final Map<PartOfSpeech, Set<String>> retVal = {};
     for (final e in variants) {
       final value = retVal[e.partOfSpeech] ?? {};
       value.addAll(e.synonyms);
+      retVal[e.partOfSpeech] = value;
+    }
+    return retVal;
+  }
+
+  @override
+  Map<PartOfSpeech, Set<Pronunciation>> pronunciationsMap() {
+    final Map<PartOfSpeech, Set<Pronunciation>> retVal = {};
+    for (final e in variants) {
+      final value = retVal[e.partOfSpeech] ?? {};
+      value.addAll(e.pronunciations);
       retVal[e.partOfSpeech] = value;
     }
     return retVal;
@@ -351,12 +418,42 @@ abstract class TermPropertiesMixin implements TermProperties {
   }
 
   @override
+  Set<String> etymologiesOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <String>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allEtymologies());
+    } else {
+      for (final e in etymologiesMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
   Set<String> synonymsOf([PartOfSpeech? partOfSpeech]) {
     final retVal = <String>{};
     if (partOfSpeech == null) {
       retVal.addAll(allSynonyms());
     } else {
       for (final e in synonymsMap().entries) {
+        if (e.key == partOfSpeech) {
+          retVal.addAll(e.value);
+        }
+      }
+    }
+    return retVal;
+  }
+
+  @override
+  Set<Pronunciation> pronunciationsOf([PartOfSpeech? partOfSpeech]) {
+    final retVal = <Pronunciation>{};
+    if (partOfSpeech == null) {
+      retVal.addAll(allPronunciations());
+    } else {
+      for (final e in pronunciationsMap().entries) {
         if (e.key == partOfSpeech) {
           retVal.addAll(e.value);
         }
@@ -410,11 +507,10 @@ abstract class TermPropertiesMixin implements TermProperties {
 /// [TermProperties] interface.
 ///
 /// Sub-classes of [TermPropertiesBase] must override:
-/// - [languageCode], the ISO language code for the language of the [term];
-/// - [variants], an un-ordered collection of unique [TermDefinition] instances;
+/// - [languageCode], the IETF BCP 47 language tag for the language of the [term];
+/// - [variants], an un-ordered collection of unique [TermVariant] instances;
 /// - [term], the term or word for this [TermProperties];
 /// - [stem], the stemmed version of [term]; and
-/// - [phonetic], the phonetic representation of [term] when pronounced in
 ///   [languageCode].
 abstract class TermPropertiesBase with TermPropertiesMixin {
   //
@@ -430,11 +526,11 @@ class _TermPropertiesImpl extends TermPropertiesBase {
   //
 
   /// Private final field for [variants].
-  final Set<TermDefinition> _variants;
+  final Set<TermVariant> _variants;
 
-  /// An un-ordered collection of unique [TermDefinition] instances.
+  /// An un-ordered collection of unique [TermVariant] instances.
   @override
-  Set<TermDefinition> get variants => Set<TermDefinition>.from(_variants);
+  Set<TermVariant> get variants => Set<TermVariant>.from(_variants);
 
   @override
   final String languageCode;
@@ -443,11 +539,8 @@ class _TermPropertiesImpl extends TermPropertiesBase {
   final String term;
 
   const _TermPropertiesImpl(
-      this.languageCode, this.term, this.stem, this.phonetic, this._variants);
+      this.languageCode, this.term, this.stem, this._variants);
 
   @override
   final String stem;
-
-  @override
-  final String phonetic;
 }

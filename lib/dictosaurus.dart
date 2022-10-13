@@ -52,12 +52,15 @@ export 'src/dictionary/_index.dart'
         Dictionary,
         DictionaryMixin,
         DictionaryBase,
+        Pronunciation,
+        PronunciationMixin,
+        PronunciationBase,
         TermProperties,
         TermPropertiesMixin,
         TermPropertiesBase,
-        TermDefinition,
-        TermDefinitionMixin,
-        TermDefinitionBase;
+        TermVariant,
+        TermVariantMixin,
+        TermVariantBase;
 export 'src/dictosaurus/_index.dart'
     show DictoSaurus, DictoSaurusMixin, DictoSaurusBase;
 export 'src/_common/_index.dart' show TermProperty, PartOfSpeech;

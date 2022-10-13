@@ -49,7 +49,7 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
 /// Implements [DictoSaurus] by mixing in [DictoSaurusMixin].
 ///
 /// Sub-classes must override:
-/// - [languageCode], the ISO language code for the language of a term;
+/// - [languageCode], the IETF BCP 47 language tag for the language of a term;
 /// - [getEntry], a function that returns a [TermProperties] for a term;
 /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
 /// - [kGramIndexLoader], an asynchronous callback function that returns a

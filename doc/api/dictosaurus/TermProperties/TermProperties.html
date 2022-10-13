@@ -52,9 +52,8 @@
     <section class="multi-line-signature">
       <span class="name ">TermProperties</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span></li>
 <li><span class="parameter" id="-param-stem"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">stem</span>, </span></li>
-<li><span class="parameter" id="-param-phonetic"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">phonetic</span>, </span></li>
 <li><span class="parameter" id="-param-languageCode"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">languageCode</span>, </span></li>
-<li><span class="parameter" id="-param-variants"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dictosaurus/TermDefinition-class.html">TermDefinition</a></span>&gt;</span></span> <span class="parameter-name">variants</span>}</span></li>
+<li><span class="parameter" id="-param-variants"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dictosaurus/TermVariant-class.html">TermVariant</a></span>&gt;</span></span> <span class="parameter-name">variants</span>}</span></li>
 </ol>)
     </section>
 
@@ -63,12 +62,10 @@
   <p>A factory constructor that instantiates an immutable <a href="../../dictosaurus/TermProperties-class.html">TermProperties</a>
 instance.</p>
 <ul>
-<li><code>languageCode</code> is the ISO language code for the language of the <code>term</code>.</li>
+<li><code>languageCode</code> is the IETF BCP 47 language tag for the language of the <code>term</code>.</li>
 <li><code>term</code> is the term or word for this <a href="../../dictosaurus/TermProperties-class.html">TermProperties</a>.</li>
 <li><code>stem</code> is the stemmed version of <code>term</code>.</li>
-<li><code>phonetic</code> is the phonetic representation of <code>term</code> when pronounced in
-<code>languageCode</code>.</li>
-<li><code>variants</code> is an un-ordered collection of unique <a href="../../dictosaurus/TermDefinition-class.html">TermDefinition</a>
+<li><code>variants</code> is an un-ordered collection of unique <a href="../../dictosaurus/TermVariant-class.html">TermVariant</a>
 instances.</li>
 </ul>
 <p>The <code>variants</code> field of the implementation class is immutable as it
@@ -82,10 +79,9 @@ returns a copy of a private variable.</p>
   <pre class="language-dart"><code class="language-dart">factory TermProperties(
         {required String term,
         required String stem,
-        required String phonetic,
         required String languageCode,
-        required Iterable&lt;TermDefinition&gt; variants}) =&gt;
-    _TermPropertiesImpl(languageCode, term, stem, phonetic, variants.toSet());</code></pre>
+        required Iterable&lt;TermVariant&gt; variants}) =&gt;
+    _TermPropertiesImpl(languageCode, term, stem, variants.toSet());</code></pre>
 </section>
 
 
@@ -118,7 +114,6 @@ returns a copy of a private variable.</p>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../dictosaurus/TermProperties/languageCode.html">languageCode</a></li>
-    <li><a href="../../dictosaurus/TermProperties/phonetic.html">phonetic</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
     <li><a href="../../dictosaurus/TermProperties/stem.html">stem</a></li>
     <li><a href="../../dictosaurus/TermProperties/term.html">term</a></li>
@@ -130,6 +125,7 @@ returns a copy of a private variable.</p>
     <li><a href="../../dictosaurus/TermProperties/allInflections.html">allInflections</a></li>
     <li><a href="../../dictosaurus/TermProperties/allLemmas.html">allLemmas</a></li>
     <li><a href="../../dictosaurus/TermProperties/allPhrases.html">allPhrases</a></li>
+    <li><a href="../../dictosaurus/TermProperties/allPronunciations.html">allPronunciations</a></li>
     <li><a href="../../dictosaurus/TermProperties/allSynonyms.html">allSynonyms</a></li>
     <li><a href="../../dictosaurus/TermProperties/antonymsMap.html">antonymsMap</a></li>
     <li><a href="../../dictosaurus/TermProperties/antonymsOf.html">antonymsOf</a></li>
@@ -142,6 +138,8 @@ returns a copy of a private variable.</p>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../dictosaurus/TermProperties/phrasesMap.html">phrasesMap</a></li>
     <li><a href="../../dictosaurus/TermProperties/phrasesWith.html">phrasesWith</a></li>
+    <li><a href="../../dictosaurus/TermProperties/pronunciationsMap.html">pronunciationsMap</a></li>
+    <li><a href="../../dictosaurus/TermProperties/pronunciationsOf.html">pronunciationsOf</a></li>
     <li><a href="../../dictosaurus/TermProperties/synonymsMap.html">synonymsMap</a></li>
     <li><a href="../../dictosaurus/TermProperties/synonymsOf.html">synonymsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -164,7 +162,7 @@ returns a copy of a private variable.</p>
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.7+1
+      0.0.8
   </span>
 
   

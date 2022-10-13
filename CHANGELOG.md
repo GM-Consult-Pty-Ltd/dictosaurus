@@ -6,6 +6,47 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.9
+**Beta**
+
+### *Breaking changes*
+* Added property `TermVariant.etymologies`.
+* Added method `TermProperties.etymologiesOf`.
+* Added method `TermProperties.allEtymologies`.
+* Added method `TermProperties.etymologiesMap`.
+* Added method `Dictionary.pronunciationsOf`.
+* Added method `Dictionary.etymologiesOf`.
+
+### *New*
+
+
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
+## 0.0.8
+**Beta**
+
+### *Breaking changes*
+* Removed property `TermProperties.phonetic`.
+* Renamed class `TermVariant` to `TermVariant`.
+* Added property `TermVariant.pronunciations`.
+* Added method `TermProperties.pronunciationsOf`.
+* Added method `TermProperties.allPronunciations`.
+* Added method `TermProperties.pronunciationsMap`.
+
+### *New*
+* Added class [Pronunciation].
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.7+1
 **Beta**
 
@@ -32,11 +73,11 @@ All rights reserved.
 
 ### *Breaking changes*
 * Removed field [TermProperties.lemma].
-* Changed Signature of [TermDefinition] unnamed factory.
+* Changed Signature of [TermVariant] unnamed factory.
 * Changed Signature of [TermProperties] unnamed factory.
 
 ### *New*
-* Added [TermDefinition.lemmas] field.
+* Added [TermVariant.lemmas] field.
 
 ### *Updated*
 * Documentation.
@@ -123,7 +164,7 @@ All rights reserved.
 * Added `DictionaryBase` abstract class.
 * Added `AutoCorrectBase` abstract class.
 * Added `TermPropertiesBase` abstract class.
-* Added `TermDefinitionMixin` mixin class.
+* Added `TermVariantMixin` mixin class.
 
 ### *Updated*
 * Documentation.
@@ -181,7 +222,7 @@ All rights reserved.
 
 ### *Breaking changes*
 * Renamed `DictionaryEntry` to `TermProperties`.
-* Renamed `TermVariant` to `TermDefinition`.
+* Renamed `TermVariant` to `TermVariant`.
 * Added `Dictionary.phrasesWith`, `Dictionary.definitionsFor` and `Dictionary.inflectionsOf` methods.
 * Interface `Dictosaurus` implements `Dictionary`, `Thesaurus` and `Autocorrect`.
 
@@ -217,7 +258,7 @@ All rights reserved.
 ### *New*
 * Functional early versions of `Dictionary`, `AutoCorrect`, `Thesaurus` and `DictoSaurus`.
 * Object model `TermProperties`.
-* Object model `TermDefinition`.
+* Object model `TermVariant`.
 * Enum `PartOfSpeech`.
 
 
