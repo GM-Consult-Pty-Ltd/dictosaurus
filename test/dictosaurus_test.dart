@@ -143,12 +143,17 @@ void main() {
       print('Expanded $misspeltterm to $suggestions in $dT seconds.');
       final term = 'intelligent';
       final props = await dictoSaurus.getEntry(term);
+      final etymologies = props?.etymologiesOf();
       final synonyms = props?.synonymsOf();
       final antonyms = props?.antonymsOf();
+      final pronunciations =
+          props?.pronunciationsOf().map((e) => e.phoneticSpelling);
       final definitions = props?.definitionsFor();
       final inflections = props?.inflectionsOf();
       final phrases = props?.phrasesWith();
       print('Dictosaurus methods on "$term":');
+      print('Etymologies:   $etymologies');
+      print('Pronunciations:   $pronunciations');
       print('Definitions:   $definitions');
       print('Inflections:   $inflections');
       print('Phrases:       $phrases');

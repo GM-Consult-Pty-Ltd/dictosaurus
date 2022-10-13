@@ -195,6 +195,19 @@
 
 </dd>
 
+        <dt id="etymologiesOf" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/DictionaryMixin/etymologiesOf.html">etymologiesOf</a></span><span class="signature">(<wbr><span class="parameter" id="etymologiesOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="etymologiesOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a set of inflections for <code>term</code> from a dictionary provider.
+  <div class="features">inherited</div>
+
+</dd>
+
         <dt id="expandTerm" class="callable inherited">
   <span class="name"><a href="../dictosaurus/DictoSaurusMixin/expandTerm.html">expandTerm</a></span><span class="signature">(<wbr><span class="parameter" id="expandTerm-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="expandTerm-param-limit">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">5</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
@@ -269,6 +282,19 @@
 </dt>
 <dd class="inherited">
   Returns a set of phrases for <code>term</code> from a dictionary provider.
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="pronunciationsOf" class="callable inherited">
+  <span class="name"><a href="../dictosaurus/DictionaryMixin/pronunciationsOf.html">pronunciationsOf</a></span><span class="signature">(<wbr><span class="parameter" id="pronunciationsOf-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="pronunciationsOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a set of inflections for <code>term</code> from a dictionary provider.
   <div class="features">inherited</div>
 
 </dd>
@@ -428,12 +454,14 @@ k-grams index.
     <li class="section-title inherited"><a href="../dictosaurus/DictoSaurusBase-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a></li>
     <li class="inherited"><a href="../dictosaurus/DictionaryMixin/definitionsFor.html">definitionsFor</a></li>
+    <li class="inherited"><a href="../dictosaurus/DictionaryMixin/etymologiesOf.html">etymologiesOf</a></li>
     <li class="inherited"><a href="../dictosaurus/DictoSaurusMixin/expandTerm.html">expandTerm</a></li>
     <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a></li>
     <li class="inherited"><a href="../dictosaurus/DictionaryMixin/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/lemmasOf.html">lemmasOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="../dictosaurus/DictionaryMixin/phrasesWith.html">phrasesWith</a></li>
+    <li class="inherited"><a href="../dictosaurus/DictionaryMixin/pronunciationsOf.html">pronunciationsOf</a></li>
     <li class="inherited"><a href="../dictosaurus/AutoCorrectMixin/startsWith.html">startsWith</a></li>
     <li class="inherited"><a href="../dictosaurus/AutoCorrectMixin/suggestionsFor.html">suggestionsFor</a></li>
     <li class="inherited"><a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a></li>
@@ -454,7 +482,7 @@ k-grams index.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.8
+      0.0.9
   </span>
 
   

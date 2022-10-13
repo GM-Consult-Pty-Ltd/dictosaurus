@@ -18,8 +18,12 @@ All rights reserved.
 * Added method `Dictionary.etymologiesOf`.
 
 ### *New*
-
-
+* Added property `TermVariant.etymologies`.
+* Added method `TermProperties.etymologiesOf`.
+* Added method `TermProperties.allEtymologies`.
+* Added method `TermProperties.etymologiesMap`.
+* Added method `Dictionary.pronunciationsOf`.
+* Added method `Dictionary.etymologiesOf`.
 
 ### *Updated*
 * Documentation.
@@ -40,6 +44,10 @@ All rights reserved.
 
 ### *New*
 * Added class [Pronunciation].
+* Added property `TermVariant.pronunciations`.
+* Added method `TermProperties.pronunciationsOf`.
+* Added method `TermProperties.allPronunciations`.
+* Added method `TermProperties.pronunciationsMap`.
 
 ### *Updated*
 * Documentation.

@@ -234,6 +234,19 @@ instance.
 
 </dd>
 
+        <dt id="allEtymologies" class="callable">
+  <span class="name"><a href="../dictosaurus/TermProperties/allEtymologies.html">allEtymologies</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns an unordered collection of etymologies of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  
+
+</dd>
+
         <dt id="allInflections" class="callable">
   <span class="name"><a href="../dictosaurus/TermProperties/allInflections.html">allInflections</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
@@ -350,6 +363,32 @@ instance.
 </dt>
 <dd>
   A hashmap of <code>PartOfSpeech</code> to definitions that are synonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  
+
+</dd>
+
+        <dt id="etymologiesMap" class="callable">
+  <span class="name"><a href="../dictosaurus/TermProperties/etymologiesMap.html">etymologiesMap</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A hashmap of <code>PartOfSpeech</code> to etymologies of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  
+
+</dd>
+
+        <dt id="etymologiesOf" class="callable">
+  <span class="name"><a href="../dictosaurus/TermProperties/etymologiesOf.html">etymologiesOf</a></span><span class="signature">(<wbr><span class="parameter" id="etymologiesOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of etymologies for <a href="../dictosaurus/TermProperties/term.html">term</a> from a dictionary provider.
   
 
 </dd>
@@ -613,6 +652,7 @@ instance.
     <li class="section-title"><a href="../dictosaurus/TermProperties-class.html#instance-methods">Methods</a></li>
     <li><a href="../dictosaurus/TermProperties/allAntonyms.html">allAntonyms</a></li>
     <li><a href="../dictosaurus/TermProperties/allDefinitions.html">allDefinitions</a></li>
+    <li><a href="../dictosaurus/TermProperties/allEtymologies.html">allEtymologies</a></li>
     <li><a href="../dictosaurus/TermProperties/allInflections.html">allInflections</a></li>
     <li><a href="../dictosaurus/TermProperties/allLemmas.html">allLemmas</a></li>
     <li><a href="../dictosaurus/TermProperties/allPhrases.html">allPhrases</a></li>
@@ -622,6 +662,8 @@ instance.
     <li><a href="../dictosaurus/TermProperties/antonymsOf.html">antonymsOf</a></li>
     <li><a href="../dictosaurus/TermProperties/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../dictosaurus/TermProperties/definitionsMap.html">definitionsMap</a></li>
+    <li><a href="../dictosaurus/TermProperties/etymologiesMap.html">etymologiesMap</a></li>
+    <li><a href="../dictosaurus/TermProperties/etymologiesOf.html">etymologiesOf</a></li>
     <li><a href="../dictosaurus/TermProperties/inflectionsMap.html">inflectionsMap</a></li>
     <li><a href="../dictosaurus/TermProperties/inflectionsOf.html">inflectionsOf</a></li>
     <li><a href="../dictosaurus/TermProperties/lemmasMap.html">lemmasMap</a></li>
@@ -650,7 +692,7 @@ instance.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.8
+      0.0.9
   </span>
 
   

@@ -64,10 +64,12 @@ limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpe
 limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/definitionsFor.html">definitionsFor</a> returns a set of definitions for <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
 limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/synonymsOf.html">synonymsOf</a> returns a set of synonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally limiting
-the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;///</li>
-<li><a href="../dictosaurus/TermPropertiesMixin/pronunciationsOf.html">pronunciationsOf</a> returns a set of <a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a>s of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
+<li><a href="../dictosaurus/TermPropertiesMixin/etymologiesOf.html">etymologiesOf</a> returns a set of etymologies of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally
 limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/synonymsOf.html">synonymsOf</a> returns a set of synonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally limiting
+the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/pronunciationsOf.html">pronunciationsOf</a> returns a set of <a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a>s of <a href="../dictosaurus/TermProperties/term.html">term</a>,
+optionally limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/lemmasOf.html">lemmasOf</a> returns a set of lemmas of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally limiting
 the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/antonymsOf.html">antonymsOf</a> returns a set of antonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>, optionally limiting
@@ -76,6 +78,7 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
 <li><a href="../dictosaurus/TermPropertiesMixin/allDefinitions.html">allDefinitions</a> maps all the definitions to a set;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a> maps all the inflections to a set;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a> maps all the phrases to a set;</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/allEtymologies.html">allEtymologies</a> maps all the etymologies to a set;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/allSynonyms.html">allSynonyms</a> maps all the synonyms to a set;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/allPronunciations.html">allPronunciations</a> maps all the <a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a>s to a set;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/allLemmas.html">allLemmas</a> maps all the lemmas to a set;</li>
@@ -84,6 +87,7 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
 <li><a href="../dictosaurus/TermPropertiesMixin/inflectionsMap.html">inflectionsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to inflections;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/phrasesMap.html">phrasesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to phrases;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/lemmasMap.html">lemmasMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to lemmas;</li>
+<li><a href="../dictosaurus/TermPropertiesMixin/etymologiesMap.html">etymologiesMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to etymologies;</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/synonymsMap.html">synonymsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to synonyms; and</li>
 <li><a href="../dictosaurus/TermPropertiesMixin/pronunciationsMap.html">pronunciationsMap</a> maps <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> to <a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a>s.</li>
 </ul>
@@ -240,6 +244,19 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
 
 </dd>
 
+        <dt id="allEtymologies" class="callable">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/allEtymologies.html">allEtymologies</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns an unordered collection of etymologies of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  <div class="features">override</div>
+
+</dd>
+
         <dt id="allInflections" class="callable">
   <span class="name"><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
@@ -356,6 +373,32 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
 </dt>
 <dd>
   A hashmap of <code>PartOfSpeech</code> to definitions that are synonyms of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  <div class="features">override</div>
+
+</dd>
+
+        <dt id="etymologiesMap" class="callable">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/etymologiesMap.html">etymologiesMap</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A hashmap of <code>PartOfSpeech</code> to etymologies of <a href="../dictosaurus/TermProperties/term.html">term</a>.
+  <div class="features">override</div>
+
+</dd>
+
+        <dt id="etymologiesOf" class="callable">
+  <span class="name"><a href="../dictosaurus/TermPropertiesMixin/etymologiesOf.html">etymologiesOf</a></span><span class="signature">(<wbr><span class="parameter" id="etymologiesOf-param-partOfSpeech">[<span class="type-annotation"><a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a set of etymologies for <a href="../dictosaurus/TermProperties/term.html">term</a> from a dictionary provider.
   <div class="features">override</div>
 
 </dd>
@@ -619,6 +662,7 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
     <li class="section-title"><a href="../dictosaurus/TermPropertiesMixin-class.html#instance-methods">Methods</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/allAntonyms.html">allAntonyms</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/allDefinitions.html">allDefinitions</a></li>
+    <li><a href="../dictosaurus/TermPropertiesMixin/allEtymologies.html">allEtymologies</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/allInflections.html">allInflections</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/allLemmas.html">allLemmas</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/allPhrases.html">allPhrases</a></li>
@@ -628,6 +672,8 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
     <li><a href="../dictosaurus/TermPropertiesMixin/antonymsOf.html">antonymsOf</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/definitionsMap.html">definitionsMap</a></li>
+    <li><a href="../dictosaurus/TermPropertiesMixin/etymologiesMap.html">etymologiesMap</a></li>
+    <li><a href="../dictosaurus/TermPropertiesMixin/etymologiesOf.html">etymologiesOf</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/inflectionsMap.html">inflectionsMap</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/inflectionsOf.html">inflectionsOf</a></li>
     <li><a href="../dictosaurus/TermPropertiesMixin/lemmasMap.html">lemmasMap</a></li>
@@ -656,7 +702,7 @@ the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;<
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.8
+      0.0.9
   </span>
 
   

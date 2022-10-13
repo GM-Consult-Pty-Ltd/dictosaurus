@@ -130,6 +130,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `document` - a record in the `corpus`, that has a unique identifier (`docId`) in the `corpus`'s primary key and that contains one or more text fields that are indexed.
 * `document frequency (dFt)` - the number of documents in the `corpus` that contain a term.
 * `edit distance` - a measure of how dissimilar two terms are by counting the minimum number of operations required to transform one string into the other (from [Wikipedia](https://en.wikipedia.org/wiki/Edit_distance)).
+* `etymology` - the study of the history of the form of words[2] and, by extension, the origin and evolution of their semantic meaning across time (from [Wikipedia](https://en.wikipedia.org/wiki/Etymology)).
 * `Flesch reading ease score` - a readibility measure calculated from  sentence length and word length on a 100-point scale. The higher the score, the easier it is to understand the document (from [Wikipedia](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests)).
 * `Flesch-Kincaid grade level` - a readibility measure relative to U.S. school grade level.  It is also calculated from sentence length and word length (from [Wikipedia](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests)).
 * `IETF language tag` - a standardized code or tag that is used to identify human languages in the Internet. (from [Wikepedia](https://en.wikipedia.org/wiki/IETF_language_tag)).
@@ -174,6 +175,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * [Wikipedia (9), "*Natural language processing*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Natural_language_processing)
 * [Wikipedia (10), "*IETF language tag*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/IETF_language_tag)
 * [Wikipedia (11), "*Phonetic transcription*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Phonetic_transcription)
+* [Wikipedia (12), "*Etymology*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Etymology)
 
 (*[back to top](#)*)
 
