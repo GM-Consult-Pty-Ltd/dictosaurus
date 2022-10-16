@@ -113,6 +113,8 @@ abstract class TermVariant {
   /// An unordered collection of unique example phrases that include [term]
   /// when used as [partOfSpeech].
   Set<String> get phrases;
+
+  // Map<String, String> get translations;
 }
 
 /// Abstract implementation class of [TermVariant] that implements the
