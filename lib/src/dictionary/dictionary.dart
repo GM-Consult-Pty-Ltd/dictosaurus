@@ -3,9 +3,15 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
+import 'package:gmconsult_dart_core/dart_core.dart';
 
-/// The [Dictionary] interface exposes the [getEntry] method that returns
-/// a [TermProperties] for a term.
+/// The [Dictionary] is an API for return the language properties of a term
+/// or a translation of a term.
+///
+/// The [Dictionary] interface has two methods that return [TermProperties]:
+/// - [getEntry], a function that returns a [TermProperties] for a term; and
+/// - [translate], a function that returns translations for a term as
+///   [TermProperties].
 ///
 /// The unnamed `Dictionary()` factory constructor initializes a [Dictionary]
 /// with an asynchronous [DictionaryCallback] to return the meaning of a term
@@ -13,8 +19,17 @@ import 'package:dictosaurus/src/_index.dart';
 abstract class Dictionary {
 //
 
-  /// The IETF BCP 47 language tag for the language of a term.
-  String get languageCode;
+  /// The [Language] of terms in the dictionary.
+  Language get language;
+
+  /// Returns translations for [term] from [sourceLanguage] to [language] as
+  /// [TermProperties].
+  ///
+  /// Optionally specify the [fields] to include in the returned
+  /// [TermProperties] instance, useful where different API endpoints are
+  /// queried for specific properties.
+  Future<TermProperties?> translate(String term, Language sourceLanguage,
+      [Iterable<TermProperty>? fields]);
 
   /// Returns a [TermProperties] for [term].
   ///
@@ -51,11 +66,11 @@ abstract class Dictionary {
   Future<Set<String>> definitionsFor(String term, [PartOfSpeech? partOfSpeech]);
 
   /// The unnamed [Dictionary] factory constructor initializes a [Dictionary]
-  /// with the [dictionaryCallback] to return the meaning of a term
-  /// from a dictionary provider.
+  /// with [dictionaryCallback], [translationCallback] and [language].
   factory Dictionary(DictionaryCallback dictionaryCallback,
-          [String languageCode = 'en_US']) =>
-      _DictionaryImpl(dictionaryCallback, languageCode);
+          TranslationCallback translationCallback,
+          [Language language = Language.en_US]) =>
+      _DictionaryImpl(dictionaryCallback, translationCallback, language);
 }
 
 /// An abstract/mixin class that implements the [definitionsFor],
@@ -101,8 +116,10 @@ abstract class DictionaryMixin implements Dictionary {
 /// interface.
 ///
 /// Sub-classes must override:
-/// - [languageCode], the IETF BCP 47 language tag for the language of a term; and
-/// - [getEntry], a function that returns a [TermProperties] for a term.
+/// - [language], the [Language] of terms in the dictionary;
+/// - [getEntry], a function that returns a [TermProperties] for a term; and
+/// - [translate], a function that returns translations for a term as
+///   [TermProperties].
 abstract class DictionaryBase with DictionaryMixin {
   //
 
@@ -122,7 +139,7 @@ class _DictionaryImpl extends DictionaryBase {
 //
 
   @override
-  final String languageCode;
+  final Language language;
 
   @override
   Future<TermProperties?> getEntry(String term,
@@ -133,7 +150,17 @@ class _DictionaryImpl extends DictionaryBase {
   /// dictionary provider.
   final DictionaryCallback dictionaryCallback;
 
+  /// An asynchronous callback that returns the meaning of a term from a
+  /// dictionary provider.
+  final TranslationCallback translationCallback;
+
+  @override
+  Future<TermProperties?> translate(String term, Language sourceLanguage,
+          [Iterable<TermProperty>? fields]) =>
+      translationCallback(term, sourceLanguage, fields);
+
   /// Initializes a const [_DictionaryImpl] with an asynchronous callback
   /// [dictionaryCallback] that returns a [TermProperties] for a term.
-  const _DictionaryImpl(this.dictionaryCallback, this.languageCode);
+  const _DictionaryImpl(
+      this.dictionaryCallback, this.translationCallback, this.language);
 }

@@ -3,7 +3,6 @@
 // All rights reserved
 
 import 'package:dictosaurus/dictosaurus.dart';
-import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
 
@@ -18,12 +17,12 @@ class OxfordDictionaries extends DictionaryBase
   //
 
   @override
-  String get languageCode => 'en_US';
+  Language get language => Language.en_US;
 
   /// Hydrates a [OxfordDictionaries] instance:
   /// - [appId] is the `OxfordDictionaries Application ID`;
   /// - [appKey] is the `OxfordDictionaries Application Key`;
-  /// - [languageCode] is the IETF BCP 47 language tag of the [Dictionary].
+  /// - [language] is the IETF BCP 47 language tag of the [Dictionary].
   const OxfordDictionaries();
 
   @override
@@ -37,14 +36,20 @@ class OxfordDictionaries extends DictionaryBase
   @override
   Future<TermProperties?> getEntry(String term,
       [Iterable<TermProperty>? fields, bool strictMatch = false]) async {
-    final sourceLanguage = languageCode.replaceAll('_', '-').toLowerCase();
+    final sourceLanguage = language.toLanguageTag().toLowerCase();
     final json = await entriesEndPoint(term,
         sourceLanguage: sourceLanguage, strictMatch: strictMatch);
     if (json != null) {
-      final retVal = json.toTermProperties();
+      final retVal = json.toTermProperties(language);
       return retVal;
     }
     return null;
+  }
+
+  @override
+  Future<TermProperties?> translate(String term, Language sourceLanguage,
+      [Iterable<TermProperty>? fields]) {
+    throw UnimplementedError();
   }
 }
 
@@ -118,7 +123,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
   String? get term => this['id'] is String ? this['id'] as String : null;
 
   /// Returns the `language` field of the Map<String, dynamic> response as `String?`.
-  String? get language =>
+  String? get languageCode =>
       (this['language'] is String ? this['language'] as String : null)
           ?.replaceAll('-', '_');
 
@@ -147,13 +152,14 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
           ? (this[fieldName] as Iterable).cast<String>()
           : [];
 
-  TermProperties? toTermProperties() {
+  TermProperties? toTermProperties(Language language) {
     final term = this.term;
     String languageCode = '';
     final Iterable<Map<String, dynamic>> results = getJsonList('results');
     if (results.isNotEmpty && term is String) {
-      languageCode =
-          languageCode.isEmpty ? results.first.language ?? '' : languageCode;
+      languageCode = languageCode.isEmpty
+          ? results.first.languageCode ?? ''
+          : languageCode;
       final variants = <TermVariant>{};
       String? stem;
       for (final r in results) {
@@ -213,7 +219,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
       return TermProperties(
           term: term,
           stem: stem ?? term,
-          languageCode: languageCode,
+          language: language,
           variants: variants);
     }
     return null;

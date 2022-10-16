@@ -103,7 +103,7 @@ Please refer to the [API documentation](https://pub.dev/documentation/dictosauru
 The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface is an object model for a term or word with immutable properties (`term`, `stem`, `lemma`, `language`). The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface also enumerates [variants](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html) of the term with different values for `part-of-speech`, `definition`, `synonyms`, `antonyms` and `inflections`, each with one or more example `phrases`.
 
 Three interfaces provide *dictionary*, *thesaurus* and *term expansion* functions:
-* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a `term`;
+* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a `term`, or a translation of a `term`;
 * the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) interface exposes methods that return the synonyms or antonyms of a `term` ; and
 * the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interface exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
 

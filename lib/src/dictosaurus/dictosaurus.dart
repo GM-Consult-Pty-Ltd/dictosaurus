@@ -3,6 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
+import 'package:gmconsult_dart_core/dart_core.dart';
 
 /// The [DictoSaurus] interface implements the [Dictionary], [Thesaurus] and
 /// [AutoCorrect] interfaces.
@@ -21,16 +22,18 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
           required AutoCorrectBase autoCorrect}) =>
       _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);
 
-  /// Initializes a [DictoSaurus] with [languageCode], [k]-gram length and
+  /// Initializes a [DictoSaurus] with [language], [k]-gram length and
   /// [kGramIndexLoader].
   factory DictoSaurus(
           {required DictionaryCallback dictionaryCallback,
+          required TranslationCallback translationCallback,
           required Future<Map<String, Set<String>>> Function(
                   Iterable<String> terms)
               kGramIndexLoader,
-          String languageCode = 'en_us',
+          Language language = Language.en_US,
           int k = 2}) =>
-      _DictoSaurusImpl(kGramIndexLoader, dictionaryCallback, k, languageCode);
+      _DictoSaurusImpl(kGramIndexLoader, dictionaryCallback,
+          translationCallback, k, language);
 
   /// Expands [term] to an ordered list of terms.
   ///
@@ -49,8 +52,10 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
 /// Implements [DictoSaurus] by mixing in [DictoSaurusMixin].
 ///
 /// Sub-classes must override:
-/// - [languageCode], the IETF BCP 47 language tag for the language of a term;
+/// - [language], the [Language] of terms in the dictionary;
 /// - [getEntry], a function that returns a [TermProperties] for a term;
+/// - [translate], a function that returns translations for a term as
+///   [TermProperties];
 /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
 /// - [kGramIndexLoader], an asynchronous callback function that returns a
 ///   [Map<String, Set<String>>] for a collection of k-grams.
@@ -89,12 +94,16 @@ class _DictoSaurusImpl extends DictoSaurusBase {
   //
 
   /// Initializes a const [_DictoSaurusImpl].
-  const _DictoSaurusImpl(this.kGramIndexLoader, this.dictionaryCallback, this.k,
-      this.languageCode);
+  const _DictoSaurusImpl(this.kGramIndexLoader, this.dictionaryCallback,
+      this.translationCallback, this.k, this.language);
 
   /// Asynchronous callback that returns the properties of a term from a
   /// dictionary provider.
   final DictionaryCallback dictionaryCallback;
+
+  /// An asynchronous callback that returns the meaning of a term from a
+  /// dictionary provider.
+  final TranslationCallback translationCallback;
 
   @override
   final int k;
@@ -104,12 +113,17 @@ class _DictoSaurusImpl extends DictoSaurusBase {
       kGramIndexLoader;
 
   @override
-  final String languageCode;
+  final Language language;
 
   @override
   Future<TermProperties?> getEntry(String term,
           [Iterable<TermProperty>? fields]) =>
       dictionaryCallback(term, fields);
+
+  @override
+  Future<TermProperties?> translate(String term, Language sourceLanguage,
+          [Iterable<TermProperty>? fields]) =>
+      translationCallback(term, sourceLanguage, fields);
 }
 
 /// A [DictoSaurus] with final [autoCorrect] and [dictionary] fields and
@@ -138,5 +152,10 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
       get kGramIndexLoader => autoCorrect.kGramIndexLoader;
 
   @override
-  String get languageCode => dictionary.languageCode;
+  Language get language => dictionary.language;
+
+  @override
+  Future<TermProperties?> translate(String term, Language sourceLanguage,
+          [Iterable<TermProperty>? fields]) =>
+      dictionary.translate(term, sourceLanguage, fields);
 }

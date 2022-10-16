@@ -10,10 +10,13 @@ All rights reserved.
 **Beta**
 
 ### *Breaking changes*
-
+* Changed `String TermProperties.languageCode` to `Language TermProperties.language`.
+* Changed `String Dictionary.languageCode` to `Language Dictionary.language`.
+* Changed `String Dictosaurus.languageCode` to `Language Dictosaurus.language`.
+* Added `Dictionary.translate` method to `Dictionary`.
 
 ### *New*
-
+* Added `Language` to package exports.
 
 ### *Updated*
 * Documentation.

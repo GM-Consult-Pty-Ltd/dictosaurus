@@ -3,14 +3,14 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
+import 'package:gmconsult_dart_core/dart_core.dart';
 
 /// An `object model` for a `term` or `word` with immutable properties.
 ///
 /// The folling fields enumerate the object properties:
 /// - [term] is the term or word for this entry;
 /// - [stem] is the stemmed version of [term];
-/// - [languageCode] is the IETF BCP 47 language tag for the language of the
-///   [term];
+/// - [language] is the [Language] of the [term];
 /// - [variants] is an un-ordered collection of unique [TermVariant]
 ///   instances.
 ///
@@ -48,7 +48,7 @@ abstract class TermProperties {
 
   /// A factory constructor that instantiates an immutable [TermProperties]
   /// instance.
-  /// - [languageCode] is the IETF BCP 47 language tag for the language of the [term].
+  /// - [language] is the [Language] of the [term].
   /// - [term] is the term or word for this [TermProperties].
   /// - [stem] is the stemmed version of [term].
   /// - [variants] is an un-ordered collection of unique [TermVariant]
@@ -59,14 +59,14 @@ abstract class TermProperties {
   factory TermProperties(
           {required String term,
           required String stem,
-          required String languageCode,
+          required Language language,
           required Iterable<TermVariant> variants}) =>
-      _TermPropertiesImpl(languageCode, term, stem, variants.toSet());
+      _TermPropertiesImpl(language, term, stem, variants.toSet());
 
-  /// The IETF BCP 47 language tag for the language of the [term].
+  /// The language of the [term].
   ///
   /// See https://en.wikipedia.org/wiki/IETF_language_tag.
-  String get languageCode;
+  Language get language;
 
   /// The term for this [TermProperties].
   String get term;
@@ -172,9 +172,9 @@ abstract class TermProperties {
 
 /// Abstract mixin class that implements the `==` operator and methods of the
 /// [TermProperties] interface.
-/// - the `==` operator by comparing type and the [term], [languageCode] and
+/// - the `==` operator by comparing type and the [term], [language] and
 ///   [variants] properties.
-/// - [hashCode] returns an Object.hash of the [term], [languageCode] and
+/// - [hashCode] returns an Object.hash of the [term], [language] and
 ///   [variants] properties.
 /// - [phrasesWith] returns a set of phrases containing [term], optionally
 ///   limiting the results to the [PartOfSpeech];
@@ -210,7 +210,7 @@ abstract class TermProperties {
 /// - [pronunciationsMap] maps [PartOfSpeech] to [Pronunciation]s.
 ///
 /// Sub-classes must override:
-/// - [languageCode], the IETF BCP 47 language tag for the language of the [term];
+/// - [language], the [Language] of the [term];
 /// - [variants], an un-ordered collection of unique [TermVariant] instances;
 /// - [term], the term or word for this [TermProperties]; and
 /// - [stem], the stemmed version of [term].
@@ -496,22 +496,21 @@ abstract class TermPropertiesMixin implements TermProperties {
   bool operator ==(Object other) =>
       other is TermProperties &&
       term == other.term &&
-      languageCode == other.languageCode &&
+      language == other.language &&
       variants.intersection(other.variants).length == variants.length;
 
   @override
-  int get hashCode => Object.hash(term, languageCode, variants);
+  int get hashCode => Object.hash(term, language, variants);
 }
 
 /// An abstract `base class` with [TermPropertiesMixin] that implements the
 /// [TermProperties] interface.
 ///
 /// Sub-classes of [TermPropertiesBase] must override:
-/// - [languageCode], the IETF BCP 47 language tag for the language of the [term];
+/// - [language], the [Language] of the [term];
 /// - [variants], an un-ordered collection of unique [TermVariant] instances;
-/// - [term], the term or word for this [TermProperties];
-/// - [stem], the stemmed version of [term]; and
-///   [languageCode].
+/// - [term], the term or word for this [TermProperties]; and
+/// - [stem], the stemmed version of [term].
 abstract class TermPropertiesBase with TermPropertiesMixin {
   //
 
@@ -533,13 +532,13 @@ class _TermPropertiesImpl extends TermPropertiesBase {
   Set<TermVariant> get variants => Set<TermVariant>.from(_variants);
 
   @override
-  final String languageCode;
+  final Language language;
 
   @override
   final String term;
 
   const _TermPropertiesImpl(
-      this.languageCode, this.term, this.stem, this._variants);
+      this.language, this.term, this.stem, this._variants);
 
   @override
   final String stem;
