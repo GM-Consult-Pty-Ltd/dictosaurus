@@ -6,6 +6,15 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.10+1
+**Beta**
+
+### *New*
+*Added `LanguageStringExtensions` to exports.
+
+### *Updated*
+* Documentation.
+
 ## 0.0.10
 **Beta**
 
