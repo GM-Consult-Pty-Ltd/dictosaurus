@@ -6,6 +6,15 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.12
+**Beta**
+
+### *New*
+*Added `DictionaryEndpoint.etymologies` enumeration.
+
+### *Updated*
+* Documentation.
+
 ## 0.0.11
 **Beta**
 

@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-/// The names of fields that enumerate the properties of a term.
+/// Dictionay endpoints that return different term properties.
 enum DictionaryEndpoint {
   //
 
@@ -14,6 +14,12 @@ enum DictionaryEndpoint {
 
   /// Definitions of the term.
   definitions,
+
+  /// Pronunciations of the term.
+  pronunciations,
+
+  /// Etymologies of the term.
+  etymologies,
 
   /// Inflections of the term.
   inflections,
