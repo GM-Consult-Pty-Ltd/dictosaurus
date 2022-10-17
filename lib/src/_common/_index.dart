@@ -3,5 +3,5 @@
 // All rights reserved
 
 export 'typedefs.dart';
-export 'term_property.dart';
+export 'dictionary_endpoint.dart';
 export 'part_of_speech.dart';
