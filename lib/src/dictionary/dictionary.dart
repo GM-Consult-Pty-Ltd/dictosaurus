@@ -19,7 +19,7 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 ///   limiting the results to the [PartOfSpeech];
 /// - [pronunciationsOf] returns a set of [Pronunciation]s of a term, optionally
 ///   limiting the results to the [PartOfSpeech]; and
-/// - [translate] returns  translations for a term from as [TermProperties].
+/// - [translate] returns translations for a term as [TermProperties].
 ///
 /// The unnamed `Dictionary()` factory constructor initializes a [Dictionary]
 /// with an asynchronous [DictionaryCallback] to return the meaning of a term
