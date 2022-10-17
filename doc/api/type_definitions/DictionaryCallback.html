@@ -51,7 +51,7 @@
 
     <section class="multi-line-signature">
         <span class="name ">DictionaryCallback</span> =
-     <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="param-fields">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperty.html">TermProperty</a></span>&gt;</span>?</span> <span class="parameter-name">fields</span>]</span>)</span></span>
+     <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="param-endpoint">[<span class="type-annotation"><a href="../dictosaurus/DictionaryEndpoint.html">DictionaryEndpoint</a>?</span> <span class="parameter-name">endpoint</span>]</span>)</span></span>
 
     </section>
 
@@ -59,7 +59,7 @@
 <section class="desc markdown">
   <p>Function definition of an asynchronous callback that returns the properties
 of a <code>term</code> from a dictionary provider or API.</p>
-<p>Optionally specify the <code>fields</code> to include in the returned
+<p>Optionally specify the <code>endpoint</code> to include in the returned
 <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> instance, useful where different API endpoints are
 queried for specific properties.</p>
 </section>
@@ -68,7 +68,7 @@ queried for specific properties.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">typedef DictionaryCallback = Future&lt;TermProperties?&gt; Function(String term,
-    [Iterable&lt;TermProperty&gt;? fields]);</code></pre>
+    [DictionaryEndpoint? endpoint]);</code></pre>
 </section>
 
 
@@ -114,7 +114,7 @@ queried for specific properties.</p>
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.10+1
+      0.0.11
   </span>
 
   

@@ -25,19 +25,17 @@ abstract class Dictionary {
   /// Returns translations for [term] from [sourceLanguage] to [language] as
   /// [TermProperties].
   ///
-  /// Optionally specify the [fields] to include in the returned
+  /// Optionally specify the [endpoint] to include in the returned
   /// [TermProperties] instance, useful where different API endpoints are
   /// queried for specific properties.
-  Future<TermProperties?> translate(String term, Language sourceLanguage,
-      [Iterable<TermProperty>? fields]);
+  Future<TermProperties?> translate(String term, Language sourceLanguage);
 
   /// Returns a [TermProperties] for [term].
   ///
-  /// Optionally specify the [fields] to include in the returned
+  /// Optionally specify the [endpoint] to include in the returned
   /// [TermProperties] instance, useful where different API endpoints are
   /// queried for specific properties.
-  Future<TermProperties?> getEntry(String term,
-      [Iterable<TermProperty>? fields]);
+  Future<TermProperties?> getEntry(String term, [DictionaryEndpoint? endpoint]);
 
   /// Returns a set of phrases for [term] from a dictionary provider.
   ///
@@ -79,35 +77,35 @@ abstract class DictionaryMixin implements Dictionary {
   @override
   Future<Set<String>> phrasesWith(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.phrases});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.phrases);
     return dictEntry != null ? dictEntry.phrasesWith(partOfSpeech) : <String>{};
   }
 
   @override
   Future<Set<String>> etymologiesOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.definitions});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.definitions);
     return dictEntry != null ? dictEntry.etymologiesOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<Pronunciation>> pronunciationsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.definitions});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.definitions);
     return dictEntry != null ? dictEntry.pronunciationsOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> definitionsFor(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.definitions});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.definitions);
     return dictEntry != null ? dictEntry.definitionsFor(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> inflectionsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.inflections});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.inflections);
     return (dictEntry != null) ? dictEntry.inflectionsOf(partOfSpeech) : {};
   }
 }
@@ -143,8 +141,8 @@ class _DictionaryImpl extends DictionaryBase {
 
   @override
   Future<TermProperties?> getEntry(String term,
-          [Iterable<TermProperty>? fields]) =>
-      dictionaryCallback(term, fields);
+          [DictionaryEndpoint? endpoint]) =>
+      dictionaryCallback(term, endpoint);
 
   /// An asynchronous callback that returns the meaning of a term from a
   /// dictionary provider.
@@ -155,9 +153,8 @@ class _DictionaryImpl extends DictionaryBase {
   final TranslationCallback translationCallback;
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage,
-          [Iterable<TermProperty>? fields]) =>
-      translationCallback(term, sourceLanguage, fields);
+  Future<TermProperties?> translate(String term, Language sourceLanguage) =>
+      translationCallback(term, sourceLanguage);
 
   /// Initializes a const [_DictionaryImpl] with an asynchronous callback
   /// [dictionaryCallback] that returns a [TermProperties] for a term.

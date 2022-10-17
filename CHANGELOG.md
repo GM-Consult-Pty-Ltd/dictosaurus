@@ -6,6 +6,18 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.11
+**Beta**
+
+### *Breaking changes*
+* Changed signature of `Dictionary.getEntry` method.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.10+1
 **Beta**
 
@@ -129,7 +141,7 @@ All rights reserved.
 * Changed signature of `DictionaryCallback` function definition.
 
 ### *New*
-* Added [TermProperty] enumeration.
+* Added [DictionaryEndpoint ] enumeration.
 
 ### *Updated*
 * Documentation.

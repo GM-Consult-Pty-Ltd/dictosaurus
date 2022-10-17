@@ -83,12 +83,10 @@ best match first).</p>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async {
   final retVal = &lt;String&gt;{term};
-  final entry = await getEntry(term, {TermProperty.synonyms});
-  if (entry != null) {
-    retVal.add(term);
-    retVal.addAll(
-        entry.allSynonyms().where((element) =&gt; !element.contains(&#39; &#39;)));
-  }
+  retVal.add(term);
+  retVal.addAll(
+      (await synonymsOf(term)).where((element) =&gt; !element.contains(&#39; &#39;)));
+
   if (retVal.length &lt; limit) {
     final suggestions = await suggestionsFor(term, limit);
     retVal.addAll(suggestions);
@@ -165,7 +163,7 @@ Future&lt;List&lt;String&gt;&gt; expandTerm(String term, [int limit = 5]) async 
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.10+1
+      0.0.11
   </span>
 
   

@@ -58,27 +58,26 @@ abstract class ThesaurusMixin implements Thesaurus {
   //
 
   /// Returns a [TermProperties] for [term].
-  Future<TermProperties?> getEntry(String term,
-      [Iterable<TermProperty>? fields]);
+  Future<TermProperties?> getEntry(String term, [DictionaryEndpoint? endpoint]);
 
   @override
   Future<Set<String>> synonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.synonyms});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.synonyms);
     return dictEntry != null ? dictEntry.synonymsOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> lemmasOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.lemmas});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.lemmas);
     return dictEntry != null ? dictEntry.lemmasOf(partOfSpeech) : {};
   }
 
   @override
   Future<Set<String>> antonymsOf(String term,
       [PartOfSpeech? partOfSpeech]) async {
-    final dictEntry = await getEntry(term, {TermProperty.antonyms});
+    final dictEntry = await getEntry(term, DictionaryEndpoint.antonyms);
     return dictEntry != null ? dictEntry.antonymsOf(partOfSpeech) : {};
   }
 }
@@ -104,7 +103,7 @@ class _ThesaurusWithDictionaryImpl extends ThesaurusBase {
 
   @override
   Future<TermProperties?> getEntry(String term,
-          [Iterable<TermProperty>? fields]) =>
+          [DictionaryEndpoint? endpoint]) =>
       dictionary.getEntry(term);
 
   final Dictionary dictionary;
@@ -122,8 +121,8 @@ class _ThesaurusImpl extends ThesaurusBase {
 
   @override
   Future<TermProperties?> getEntry(String term,
-          [Iterable<TermProperty>? fields]) =>
-      dictionaryCallback(term, fields);
+          [DictionaryEndpoint? endpoint]) =>
+      dictionaryCallback(term, endpoint);
 }
 
 /// Implementation of [Thesaurus] for the [Thesaurus.callBack] factory.

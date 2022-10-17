@@ -78,7 +78,7 @@
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;Set&lt;Pronunciation&gt;&gt; pronunciationsOf(String term,
     [PartOfSpeech? partOfSpeech]) async {
-  final dictEntry = await getEntry(term, {TermProperty.definitions});
+  final dictEntry = await getEntry(term, DictionaryEndpoint.definitions);
   return dictEntry != null ? dictEntry.pronunciationsOf(partOfSpeech) : {};
 }</code></pre>
 </section>
@@ -144,7 +144,7 @@ Future&lt;Set&lt;Pronunciation&gt;&gt; pronunciationsOf(String term,
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.10+1
+      0.0.11
   </span>
 
   

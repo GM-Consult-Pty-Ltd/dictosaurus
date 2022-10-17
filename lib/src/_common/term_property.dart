@@ -3,7 +3,7 @@
 // All rights reserved
 
 /// The names of fields that enumerate the properties of a term.
-enum TermProperty {
+enum DictionaryEndpoint {
   //
 
   /// The stemmed version of the term.
@@ -25,5 +25,11 @@ enum TermProperty {
   synonyms,
 
   /// Antonyms of the term.
-  antonyms
+  antonyms,
+
+  /// Search for a term.
+  search,
+
+  /// Translations of the term.
+  translations
 }

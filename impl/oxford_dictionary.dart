@@ -35,7 +35,7 @@ class OxfordDictionaries extends DictionaryBase
 
   @override
   Future<TermProperties?> getEntry(String term,
-      [Iterable<TermProperty>? fields, bool strictMatch = false]) async {
+      [DictionaryEndpoint? endpoint, bool strictMatch = false]) async {
     final sourceLanguage = language.toLanguageTag().toLowerCase();
     final json = await entriesEndPoint(term,
         sourceLanguage: sourceLanguage, strictMatch: strictMatch);
@@ -47,8 +47,7 @@ class OxfordDictionaries extends DictionaryBase
   }
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage,
-      [Iterable<TermProperty>? fields]) {
+  Future<TermProperties?> translate(String term, Language sourceLanguage) {
     throw UnimplementedError();
   }
 }

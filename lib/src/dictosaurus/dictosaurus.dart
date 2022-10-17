@@ -73,12 +73,10 @@ abstract class DictoSaurusMixin implements DictoSaurus {
   @override
   Future<List<String>> expandTerm(String term, [int limit = 5]) async {
     final retVal = <String>{term};
-    final entry = await getEntry(term, {TermProperty.synonyms});
-    if (entry != null) {
-      retVal.add(term);
-      retVal.addAll(
-          entry.allSynonyms().where((element) => !element.contains(' ')));
-    }
+    retVal.add(term);
+    retVal.addAll(
+        (await synonymsOf(term)).where((element) => !element.contains(' ')));
+
     if (retVal.length < limit) {
       final suggestions = await suggestionsFor(term, limit);
       retVal.addAll(suggestions);
@@ -117,16 +115,15 @@ class _DictoSaurusImpl extends DictoSaurusBase {
 
   @override
   Future<TermProperties?> getEntry(String term,
-          [Iterable<TermProperty>? fields]) =>
-      dictionaryCallback(term, fields);
+          [DictionaryEndpoint? endpoint]) =>
+      dictionaryCallback(term, endpoint);
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage,
-          [Iterable<TermProperty>? fields]) =>
-      translationCallback(term, sourceLanguage, fields);
+  Future<TermProperties?> translate(String term, Language sourceLanguage) =>
+      translationCallback(term, sourceLanguage);
 }
 
-/// A [DictoSaurus] with final [autoCorrect] and [dictionary] fields and
+/// A [DictoSaurus] with final [autoCorrect] and [dictionary] endpoint and
 /// a generative constructor.
 class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   //
@@ -141,7 +138,7 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
 
   @override
   Future<TermProperties?> getEntry(String term,
-          [Iterable<TermProperty>? fields]) =>
+          [DictionaryEndpoint? endpoint]) =>
       dictionary.getEntry(term);
 
   @override
@@ -155,7 +152,6 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   Language get language => dictionary.language;
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage,
-          [Iterable<TermProperty>? fields]) =>
-      dictionary.translate(term, sourceLanguage, fields);
+  Future<TermProperties?> translate(String term, Language sourceLanguage) =>
+      dictionary.translate(term, sourceLanguage);
 }

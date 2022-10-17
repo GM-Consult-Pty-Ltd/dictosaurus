@@ -9,11 +9,11 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 /// Function definition of an asynchronous callback that returns the properties
 /// of a [term] from a dictionary provider or API.
 ///
-/// Optionally specify the [fields] to include in the returned
+/// Optionally specify the [endpoint] to include in the returned
 /// [TermProperties] instance, useful where different API endpoints are
 /// queried for specific properties.
 typedef DictionaryCallback = Future<TermProperties?> Function(String term,
-    [Iterable<TermProperty>? fields]);
+    [DictionaryEndpoint? endpoint]);
 
 /// Function definition of an asynchronous callback that returns an expansion of
 /// a [term] from an asynchronous provider or API.
@@ -22,10 +22,5 @@ typedef TermExpander = Future<Set<String>> Function(String term,
 
 /// Returns translations for [term] from [sourceLanguage] to as
 /// [TermProperties].
-///
-/// Optionally specify the [fields] to include in the returned
-/// [TermProperties] instance, useful where different API endpoints are
-/// queried for specific properties.
 typedef TranslationCallback = Future<TermProperties?> Function(
-    String term, Language sourceLanguage,
-    [Iterable<TermProperty>? fields]);
+    String term, Language sourceLanguage);
