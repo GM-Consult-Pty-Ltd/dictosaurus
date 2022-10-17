@@ -11,6 +11,7 @@ All rights reserved.
 
 ### *Breaking changes*
 * Changed signature of `Dictionary.getEntry` method.
+* Renamed `TermProperty` enum to `DictionaryEndpoint`.
 
 ### *Updated*
 * Documentation.
