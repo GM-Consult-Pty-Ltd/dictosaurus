@@ -53,6 +53,14 @@
 <section class="desc markdown">
   <p>The <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return a term's
 <a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a>, <a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a> and/or <a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> from a dictionary provider.</p>
+<ul>
+<li><a href="../dictosaurus/Thesaurus/synonymsOf.html">synonymsOf</a> returns a set of synonyms of a term, optionally limiting
+the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
+<li><a href="../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a> returns a set of lemmas of a term, optionally limiting
+the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
+<li><a href="../dictosaurus/Thesaurus/antonymsOf.html">antonymsOf</a> returns a set of antonyms of a term, optionally limiting
+the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>.</li>
+</ul>
 </section>
 
 
@@ -98,7 +106,7 @@ that uses callbacks to retrieve term's <a href="../dictosaurus/Thesaurus/synonym
             <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Thesaurus.dictionary" class="callable">
-          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.dictionary.html">Thesaurus.dictionary</a></span><span class="signature">(<span class="parameter" id="dictionary-param-dictionary"><span class="type-annotation"><a href="../dictosaurus/Dictionary-class.html">Dictionary</a></span> <span class="parameter-name">dictionary</span></span>)</span>
+          <span class="name"><a href="../dictosaurus/Thesaurus/Thesaurus.dictionary.html">Thesaurus.dictionary</a></span><span class="signature">(<span class="parameter" id="dictionary-param-dictionary"><span class="type-annotation"><a href="../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></span> <span class="parameter-name">dictionary</span></span>)</span>
         </dt>
         <dd>
           The <a href="../dictosaurus/Thesaurus/Thesaurus.dictionary.html">Thesaurus.dictionary</a> factory constructor initializes a <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a>
@@ -332,7 +340,7 @@ a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> object r
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.13
+      0.0.14
   </span>
 
   

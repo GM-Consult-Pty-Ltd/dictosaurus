@@ -53,11 +53,19 @@
 <section class="desc markdown">
   <p>The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> is an API for return the language properties of a term
 or a translation of a term.</p>
-<p>The <a href="../dictosaurus/Dictionary-class.html">Dictionary</a> interface has two methods that return <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>:</p>
+<p>The following methods map variants of a term to useful return values:</p>
 <ul>
-<li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a>, a function that returns a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> for a term; and</li>
-<li><a href="../dictosaurus/Dictionary/translate.html">translate</a>, a function that returns translations for a term as
-<a href="../dictosaurus/TermProperties-class.html">TermProperties</a>.</li>
+<li><a href="../dictosaurus/Dictionary/etymologiesOf.html">etymologiesOf</a> returns  a set of etymologies for a term, optionally
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a> returns a set of phrases containing a term, optionally
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a> returns a set of inflections of a term, optionally
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a> returns a set of definitions for a term, optionally
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>;</li>
+<li><a href="../dictosaurus/Dictionary/pronunciationsOf.html">pronunciationsOf</a> returns a set of <a href="../dictosaurus/Pronunciation-class.html">Pronunciation</a>s of a term, optionally
+limiting the results to the <a href="../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>; and</li>
+<li><a href="../dictosaurus/Dictionary/translate.html">translate</a> returns  translations for a term from as <a href="../dictosaurus/TermProperties-class.html">TermProperties</a>.</li>
 </ul>
 <p>The unnamed <code>Dictionary()</code> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
 with an asynchronous <a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a> to return the meaning of a term
@@ -167,19 +175,6 @@ with <code>dictionaryCallback</code>, <code>translationCallback</code> and <code
 </dt>
 <dd>
   Returns a set of inflections for <code>term</code> from a dictionary provider.
-  
-
-</dd>
-
-        <dt id="getEntry" class="callable">
-  <span class="name"><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></span><span class="signature">(<wbr><span class="parameter" id="getEntry-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="getEntry-param-endpoint">[<span class="type-annotation"><a href="../dictosaurus/DictionaryEndpoint.html">DictionaryEndpoint</a>?</span> <span class="parameter-name">endpoint</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Returns a <code>TermProperties</code> for <code>term</code>.
   
 
 </dd>
@@ -366,7 +361,6 @@ with <code>dictionaryCallback</code>, <code>translationCallback</code> and <code
     <li class="section-title"><a href="../dictosaurus/Dictionary-class.html#instance-methods">Methods</a></li>
     <li><a href="../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></li>
     <li><a href="../dictosaurus/Dictionary/etymologiesOf.html">etymologiesOf</a></li>
-    <li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
     <li><a href="../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../dictosaurus/Dictionary/phrasesWith.html">phrasesWith</a></li>
@@ -389,7 +383,7 @@ with <code>dictionaryCallback</code>, <code>translationCallback</code> and <code
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.13
+      0.0.14
   </span>
 
   

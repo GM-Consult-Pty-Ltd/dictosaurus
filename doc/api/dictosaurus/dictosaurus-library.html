@@ -144,8 +144,7 @@ interface.
 
 </dt>
 <dd>
-  An abstract/mixin class that implements the <a href="../dictosaurus/DictionaryMixin/definitionsFor.html">definitionsFor</a>,
-<a href="../dictosaurus/DictionaryMixin/phrasesWith.html">phrasesWith</a> and <a href="../dictosaurus/DictionaryMixin/inflectionsOf.html">inflectionsOf</a> methods of <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>.
+  An abstract/mixin class that implements <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>.
 </dd>
 
         <dt id="DictoSaurus">
@@ -162,7 +161,8 @@ interface.
 
 </dt>
 <dd>
-  Implements <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> by mixing in <a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a>.
+  Implements <a href="../dictosaurus/DictoSaurus-class.html">DictoSaurus</a> by mixing in <a href="../dictosaurus/DictoSaurusMixin-class.html">DictoSaurusMixin</a>, <a href="../dictosaurus/DictionaryMixin-class.html">DictionaryMixin</a>,
+<a href="../dictosaurus/ThesaurusMixin-class.html">ThesaurusMixin</a> and <a href="../dictosaurus/AutoCorrectMixin-class.html">AutoCorrectMixin</a>.
 </dd>
 
         <dt id="DictoSaurusMixin">
@@ -282,9 +282,9 @@ in a <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> objec
 
 </dt>
 <dd>
-  A mixin class that implements <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and uses <a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a> to retrieve
-<a href="../dictosaurus/TermProperties-class.html">TermProperties</a> from which it extracts <a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a>, <a href="../dictosaurus/ThesaurusMixin/lemmasOf.html">lemmasOf</a> and/or
-<a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a> a term.
+  A mixin class that implements <a href="../dictosaurus/Thesaurus-class.html">Thesaurus</a> and uses the <a href="../dictosaurus/ThesaurusMixin/getEntry.html">getEntry</a> function
+to retrieve <a href="../dictosaurus/TermProperties-class.html">TermProperties</a> from which it extracts <a href="../dictosaurus/ThesaurusMixin/synonymsOf.html">synonymsOf</a>,
+<a href="../dictosaurus/ThesaurusMixin/lemmasOf.html">lemmasOf</a> and/or <a href="../dictosaurus/ThesaurusMixin/antonymsOf.html">antonymsOf</a> a term.
 </dd>
 
       </dl>
@@ -410,7 +410,7 @@ grammatical properties.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.13
+      0.0.14
   </span>
 
   

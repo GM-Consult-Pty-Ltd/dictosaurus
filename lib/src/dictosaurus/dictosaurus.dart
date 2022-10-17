@@ -18,7 +18,7 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
 
   /// Initializes a [DictoSaurus] with [autoCorrect] and [dictionary] instances.
   factory DictoSaurus.fromComponents(
-          {required Dictionary dictionary,
+          {required DictionaryBase dictionary,
           required AutoCorrectBase autoCorrect}) =>
       _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);
 
@@ -49,7 +49,8 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
   Future<List<String>> expandTerm(String term, [int limit]);
 }
 
-/// Implements [DictoSaurus] by mixing in [DictoSaurusMixin].
+/// Implements [DictoSaurus] by mixing in [DictoSaurusMixin], [DictionaryMixin],
+/// [ThesaurusMixin] and [AutoCorrectMixin].
 ///
 /// Sub-classes must override:
 /// - [language], the [Language] of terms in the dictionary;
@@ -130,7 +131,7 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
 
   final AutoCorrectBase autoCorrect;
 
-  final Dictionary dictionary;
+  final DictionaryBase dictionary;
 
   /// Initializes a [DictoSaurus] with [autoCorrect], [thesaurus] and
   /// [dictionary] instances.
@@ -139,7 +140,7 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   @override
   Future<TermProperties?> getEntry(String term,
           [DictionaryEndpoint? endpoint]) =>
-      dictionary.getEntry(term);
+      dictionary.getEntry(term, endpoint);
 
   @override
   int get k => autoCorrect.k;

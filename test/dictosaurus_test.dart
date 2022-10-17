@@ -83,7 +83,7 @@ void main() {
     setUp(() async {});
 
     test('DictoSaurus.suggestionsFor("aple")', () async {
-      final dictoSaurus = await getDictoSaurus();
+      final dictoSaurus = await getDictoSaurus(OxfordDictionaries());
       final term = 'appel';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -99,7 +99,7 @@ void main() {
     });
 
     test('DictoSaurus.startsWith("app")', () async {
-      final dictoSaurus = await getDictoSaurus();
+      final dictoSaurus = await getDictoSaurus(OxfordDictionaries());
       final chars = 'app';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -115,7 +115,7 @@ void main() {
     });
 
     test('DictoSaurus.expandTerm("apple")', () async {
-      final dictoSaurus = await getDictoSaurus();
+      final dictoSaurus = await getDictoSaurus(OxfordDictionaries());
       final term = 'apple';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -131,7 +131,8 @@ void main() {
     });
 
     test('DictoSaurus.methods', () async {
-      final dictoSaurus = await getDictoSaurus();
+      final dictionary = OxfordDictionaries();
+      final dictoSaurus = await getDictoSaurus(dictionary);
       final misspeltterm = 'inteligent';
       final startTime = DateTime.now();
       final start = startTime.millisecondsSinceEpoch;
@@ -142,7 +143,7 @@ void main() {
       final dT = ((end - start) / 1000).toStringAsFixed(3);
       print('Expanded $misspeltterm to $suggestions in $dT seconds.');
       final term = 'intelligent';
-      final props = await dictoSaurus.getEntry(term);
+      final props = await dictionary.getEntry(term);
       final etymologies = props?.etymologiesOf();
       final synonyms = props?.synonymsOf();
       final antonyms = props?.antonymsOf();

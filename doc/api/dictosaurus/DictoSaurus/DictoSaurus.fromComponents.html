@@ -50,7 +50,7 @@
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">DictoSaurus.fromComponents</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="fromComponents-param-dictionary">{<span>required</span> <span class="type-annotation"><a href="../../dictosaurus/Dictionary-class.html">Dictionary</a></span> <span class="parameter-name">dictionary</span>, </span></li>
+      <span class="name ">DictoSaurus.fromComponents</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="fromComponents-param-dictionary">{<span>required</span> <span class="type-annotation"><a href="../../dictosaurus/DictionaryBase-class.html">DictionaryBase</a></span> <span class="parameter-name">dictionary</span>, </span></li>
 <li><span class="parameter" id="fromComponents-param-autoCorrect"><span>required</span> <span class="type-annotation"><a href="../../dictosaurus/AutoCorrectBase-class.html">AutoCorrectBase</a></span> <span class="parameter-name">autoCorrect</span>}</span></li>
 </ol>)
     </section>
@@ -65,7 +65,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory DictoSaurus.fromComponents(
-        {required Dictionary dictionary,
+        {required DictionaryBase dictionary,
         required AutoCorrectBase autoCorrect}) =&gt;
     _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);</code></pre>
 </section>
@@ -108,7 +108,6 @@
     <li class="inherited"><a href="../../dictosaurus/Dictionary/definitionsFor.html">definitionsFor</a></li>
     <li class="inherited"><a href="../../dictosaurus/Dictionary/etymologiesOf.html">etymologiesOf</a></li>
     <li><a href="../../dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a></li>
-    <li class="inherited"><a href="../../dictosaurus/Dictionary/getEntry.html">getEntry</a></li>
     <li class="inherited"><a href="../../dictosaurus/Dictionary/inflectionsOf.html">inflectionsOf</a></li>
     <li class="inherited"><a href="../../dictosaurus/Thesaurus/lemmasOf.html">lemmasOf</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -138,7 +137,7 @@
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.13
+      0.0.14
   </span>
 
   

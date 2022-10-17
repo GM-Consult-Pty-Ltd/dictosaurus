@@ -8,10 +8,18 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 /// The [Dictionary] is an API for return the language properties of a term
 /// or a translation of a term.
 ///
-/// The [Dictionary] interface has two methods that return [TermProperties]:
-/// - [getEntry], a function that returns a [TermProperties] for a term; and
-/// - [translate], a function that returns translations for a term as
-///   [TermProperties].
+/// The following methods map variants of a term to useful return values:
+/// - [etymologiesOf] returns  a set of etymologies for a term, optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [phrasesWith] returns a set of phrases containing a term, optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [inflectionsOf] returns a set of inflections of a term, optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [definitionsFor] returns a set of definitions for a term, optionally
+///   limiting the results to the [PartOfSpeech];
+/// - [pronunciationsOf] returns a set of [Pronunciation]s of a term, optionally
+///   limiting the results to the [PartOfSpeech]; and
+/// - [translate] returns  translations for a term from as [TermProperties].
 ///
 /// The unnamed `Dictionary()` factory constructor initializes a [Dictionary]
 /// with an asynchronous [DictionaryCallback] to return the meaning of a term
@@ -24,18 +32,7 @@ abstract class Dictionary {
 
   /// Returns translations for [term] from [sourceLanguage] to [language] as
   /// [TermProperties].
-  ///
-  /// Optionally specify the [endpoint] to include in the returned
-  /// [TermProperties] instance, useful where different API endpoints are
-  /// queried for specific properties.
   Future<TermProperties?> translate(String term, Language sourceLanguage);
-
-  /// Returns a [TermProperties] for [term].
-  ///
-  /// Optionally specify the [endpoint] to include in the returned
-  /// [TermProperties] instance, useful where different API endpoints are
-  /// queried for specific properties.
-  Future<TermProperties?> getEntry(String term, [DictionaryEndpoint? endpoint]);
 
   /// Returns a set of phrases for [term] from a dictionary provider.
   ///
@@ -71,9 +68,17 @@ abstract class Dictionary {
       _DictionaryImpl(dictionaryCallback, translationCallback, language);
 }
 
-/// An abstract/mixin class that implements the [definitionsFor],
-/// [phrasesWith] and [inflectionsOf] methods of [Dictionary].
+/// An abstract/mixin class that implements [Dictionary].
 abstract class DictionaryMixin implements Dictionary {
+  //
+
+  /// Returns a [TermProperties] for [term].
+  ///
+  /// Optionally specify the [endpoint] to include in the returned
+  /// [TermProperties] instance, useful where different API endpoints are
+  /// queried for specific properties.
+  Future<TermProperties?> getEntry(String term, [DictionaryEndpoint? endpoint]);
+
   @override
   Future<Set<String>> phrasesWith(String term,
       [PartOfSpeech? partOfSpeech]) async {

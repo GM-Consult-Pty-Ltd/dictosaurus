@@ -5,6 +5,7 @@
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:gmconsult_dev/test_data.dart';
 import 'package:text_indexing/text_indexing.dart';
+
 import 'oxford_dictionary.dart';
 
 const k = 2;
@@ -19,10 +20,10 @@ Future<InvertedIndex> getIndex() async {
   return index;
 }
 
-Future<DictoSaurus> getDictoSaurus() async {
+Future<DictoSaurus> getDictoSaurus([DictionaryBase? dictionary]) async {
   final index = await getIndex();
   return DictoSaurus.fromComponents(
-      dictionary: OxfordDictionaries(),
+      dictionary: dictionary ?? OxfordDictionaries(),
       autoCorrect: AutoCorrect.kGram(index.getKGramIndex, k: k));
 }
 

@@ -6,6 +6,12 @@ import 'package:dictosaurus/src/_index.dart';
 
 /// The [Thesaurus] interface exposes methods that return a term's
 /// [synonymsOf], [lemmasOf] and/or [antonymsOf] from a dictionary provider.
+/// - [synonymsOf] returns a set of synonyms of a term, optionally limiting
+///   the results to the [PartOfSpeech].
+/// - [lemmasOf] returns a set of lemmas of a term, optionally limiting
+///   the results to the [PartOfSpeech].
+/// - [antonymsOf] returns a set of antonyms of a term, optionally limiting
+///   the results to the [PartOfSpeech].
 abstract class Thesaurus {
   //
 
@@ -28,7 +34,7 @@ abstract class Thesaurus {
   /// The [Thesaurus.dictionary] factory constructor initializes a [Thesaurus]
   /// with a [dictionary] to return the synonyms  or antonyms for a term from
   /// a [TermProperties] object returned by [dictionary].
-  factory Thesaurus.dictionary(Dictionary dictionary) =>
+  factory Thesaurus.dictionary(DictionaryBase dictionary) =>
       _ThesaurusWithDictionaryImpl(dictionary);
 
   /// Returns a set of synonyms for [term] from a dictionary provider.
@@ -49,9 +55,9 @@ abstract class Thesaurus {
 //
 }
 
-/// A mixin class that implements [Thesaurus] and uses [getEntry] to retrieve
-/// [TermProperties] from which it extracts [synonymsOf], [lemmasOf] and/or
-/// [antonymsOf] a term.
+/// A mixin class that implements [Thesaurus] and uses the [getEntry] function
+/// to retrieve [TermProperties] from which it extracts [synonymsOf],
+/// [lemmasOf] and/or [antonymsOf] a term.
 ///
 /// Mix this class into a [Dictionary] to add [Thesaurus] methods.
 abstract class ThesaurusMixin implements Thesaurus {
@@ -104,9 +110,9 @@ class _ThesaurusWithDictionaryImpl extends ThesaurusBase {
   @override
   Future<TermProperties?> getEntry(String term,
           [DictionaryEndpoint? endpoint]) =>
-      dictionary.getEntry(term);
+      dictionary.getEntry(term, endpoint);
 
-  final Dictionary dictionary;
+  final DictionaryBase dictionary;
 }
 
 /// Private implementation class used by [Thesaurus] unnamed factory.

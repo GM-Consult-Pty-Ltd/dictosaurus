@@ -6,6 +6,18 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.14
+**Beta**
+
+### *Breaking changes*
+Removed method `Dictionary.getEntry` from interface.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.13
 **Beta**
 
