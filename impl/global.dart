@@ -20,7 +20,7 @@ Future<InvertedIndex> getIndex() async {
   return index;
 }
 
-Future<DictoSaurus> getDictoSaurus([DictionaryBase? dictionary]) async {
+Future<DictoSaurus> getDictoSaurus([Dictionary? dictionary]) async {
   final index = await getIndex();
   return DictoSaurus.fromComponents(
       dictionary: dictionary ?? OxfordDictionaries(),

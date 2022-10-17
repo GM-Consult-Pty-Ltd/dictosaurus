@@ -5,20 +5,20 @@
 import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 
-/// The [DictoSaurus] interface implements the [Dictionary], [Thesaurus] and
-/// [AutoCorrect] interfaces.
+/// The [DictoSaurus] interface implements the [Dictionary] and [AutoCorrect]
+/// interfaces.
 ///
 /// The [DictoSaurus] interface also exposes the [DictoSaurus.expandTerm]
 /// method that performs `term-expansion`, returning a list of terms in
 /// descending order of relevance (best match first). The (expanded) list of
 /// terms includes the `term`, its `synonyms` (if any) and spelling correction
 /// suggestions.
-abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
+abstract class DictoSaurus implements Dictionary, AutoCorrect {
   //
 
   /// Initializes a [DictoSaurus] with [autoCorrect] and [dictionary] instances.
   factory DictoSaurus.fromComponents(
-          {required DictionaryBase dictionary,
+          {required Dictionary dictionary,
           required AutoCorrectBase autoCorrect}) =>
       _DictoSaurusFromComponentsImpl(dictionary, autoCorrect);
 
@@ -49,19 +49,18 @@ abstract class DictoSaurus implements Dictionary, Thesaurus, AutoCorrect {
   Future<List<String>> expandTerm(String term, [int limit]);
 }
 
-/// Implements [DictoSaurus] by mixing in [DictoSaurusMixin], [DictionaryMixin],
-/// [ThesaurusMixin] and [AutoCorrectMixin].
+/// Implements [DictoSaurus] by mixing in [DictoSaurusMixin] and
+/// [AutoCorrectMixin].
 ///
 /// Sub-classes must override:
 /// - [language], the [Language] of terms in the dictionary;
-/// - [getEntry], a function that returns a [TermProperties] for a term;
+/// - [getEntry], a function that returns a [DictionaryEntry] for a term;
 /// - [translate], a function that returns translations for a term as
-///   [TermProperties];
+///   [DictionaryEntry];
 /// - [k], the length of the k-grams in the [Map<String, Set<String>>]; and
 /// - [kGramIndexLoader], an asynchronous callback function that returns a
 ///   [Map<String, Set<String>>] for a collection of k-grams.
-abstract class DictoSaurusBase
-    with DictionaryMixin, ThesaurusMixin, AutoCorrectMixin, DictoSaurusMixin {
+abstract class DictoSaurusBase with AutoCorrectMixin, DictoSaurusMixin {
   //
   /// A const generative constructor for sub classes.
   const DictoSaurusBase();
@@ -75,8 +74,12 @@ abstract class DictoSaurusMixin implements DictoSaurus {
   Future<List<String>> expandTerm(String term, [int limit = 5]) async {
     final retVal = <String>{term};
     retVal.add(term);
-    retVal.addAll(
-        (await synonymsOf(term)).where((element) => !element.contains(' ')));
+    final synonyms = (await getEntry(term))
+        ?.allSynonyms()
+        .where((element) => !element.contains(' '));
+    if (synonyms != null) {
+      retVal.addAll(synonyms);
+    }
 
     if (retVal.length < limit) {
       final suggestions = await suggestionsFor(term, limit);
@@ -115,12 +118,10 @@ class _DictoSaurusImpl extends DictoSaurusBase {
   final Language language;
 
   @override
-  Future<TermProperties?> getEntry(String term,
-          [DictionaryEndpoint? endpoint]) =>
-      dictionaryCallback(term, endpoint);
+  Future<DictionaryEntry?> getEntry(String term) => dictionaryCallback(term);
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage) =>
+  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) =>
       translationCallback(term, sourceLanguage);
 }
 
@@ -131,16 +132,14 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
 
   final AutoCorrectBase autoCorrect;
 
-  final DictionaryBase dictionary;
+  final Dictionary dictionary;
 
   /// Initializes a [DictoSaurus] with [autoCorrect], [thesaurus] and
   /// [dictionary] instances.
   const _DictoSaurusFromComponentsImpl(this.dictionary, this.autoCorrect);
 
   @override
-  Future<TermProperties?> getEntry(String term,
-          [DictionaryEndpoint? endpoint]) =>
-      dictionary.getEntry(term, endpoint);
+  Future<DictionaryEntry?> getEntry(String term) => dictionary.getEntry(term);
 
   @override
   int get k => autoCorrect.k;
@@ -153,6 +152,6 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   Language get language => dictionary.language;
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage) =>
+  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) =>
       dictionary.translate(term, sourceLanguage);
 }

@@ -3,6 +3,6 @@
 // All rights reserved
 
 export 'dictionary.dart';
-export 'term_properties.dart';
+export 'dictionary_entry.dart';
 export 'term_variant.dart';
 export 'pronunciation.dart';

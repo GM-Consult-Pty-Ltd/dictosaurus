@@ -19,27 +19,16 @@ void main() {
     test('Dictionary', (() async {
       final term = 'smart';
       final dictionary = OxfordDictionaries();
-      final definitions = await dictionary.definitionsFor(term);
-      final inflections = await dictionary.inflectionsOf(term);
-      final phrases = await dictionary.phrasesWith(term);
-      print('Thesaurus methods on "$term":');
-      print('Definitions:   $definitions');
-      print('Inflections:   $inflections');
-      print('Phrases:       $phrases');
-    }));
-  }));
-  group('Thesaurus', (() {
-    //
-
-    test('Thesaurus()', (() async {
-      final term = 'swim';
-      final dictionary = OxfordDictionaries();
-      final thesaurus = Thesaurus.dictionary(dictionary);
-      final synonyms = await thesaurus.synonymsOf(term);
-      final antonyms = await thesaurus.antonymsOf(term);
-      print('Thesaurus methods on "$term":');
-      print('Synonyms:      $synonyms');
-      print('Antonyms:      $antonyms');
+      final entry = await dictionary.getEntry(term);
+      if (entry != null) {
+        final definitions = entry.definitionsFor();
+        final inflections = entry.inflectionsOf();
+        final phrases = entry.phrasesWith();
+        print('Thesaurus methods on "$term":');
+        print('Definitions:   $definitions');
+        print('Inflections:   $inflections');
+        print('Phrases:       $phrases');
+      }
     }));
   }));
   group('Autocorrect', () {

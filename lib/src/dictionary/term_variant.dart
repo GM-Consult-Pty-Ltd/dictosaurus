@@ -5,7 +5,7 @@
 import 'package:dictosaurus/src/_index.dart';
 
 /// A definition for a defintion and/or part-of-speech variant of a term, used
-/// in a [TermProperties] object.
+/// in a [DictionaryEntry] object.
 /// - [term] is a term or word.
 /// - [partOfSpeech] is the [PartOfSpeech] category of the [term].
 /// - [pronunciations] is the phonetic spelling of and a link to an

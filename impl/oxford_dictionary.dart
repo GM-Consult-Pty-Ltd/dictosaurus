@@ -12,8 +12,7 @@ import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
 
 /// Implements [Dictionary] with the `Oxford Dictionaries` API as dictionary
 /// provider.  See: https://developer.oxforddictionaries.com/.
-class OxfordDictionaries extends DictionaryBase
-    with OxfordDictionariesApiMixin {
+class OxfordDictionaries with OxfordDictionariesApiMixin implements Dictionary {
   //
 
   @override
@@ -34,20 +33,20 @@ class OxfordDictionaries extends DictionaryBase
       GMConsultKeys.oxfordDictionariesHeaders['app_key'] as String;
 
   @override
-  Future<TermProperties?> getEntry(String term,
-      [DictionaryEndpoint? endpoint, bool strictMatch = false]) async {
+  Future<DictionaryEntry?> getEntry(String term,
+      [bool strictMatch = false]) async {
     final sourceLanguage = language.toLanguageTag().toLowerCase();
     final json = await entriesEndPoint(term,
         sourceLanguage: sourceLanguage, strictMatch: strictMatch);
     if (json != null) {
-      final retVal = json.toTermProperties(language);
+      final retVal = json.toDictionaryEntry(language);
       return retVal;
     }
     return null;
   }
 
   @override
-  Future<TermProperties?> translate(String term, Language sourceLanguage) {
+  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) {
     throw UnimplementedError();
   }
 }
@@ -151,7 +150,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
           ? (this[fieldName] as Iterable).cast<String>()
           : [];
 
-  TermProperties? toTermProperties(Language language) {
+  DictionaryEntry? toDictionaryEntry(Language language) {
     final term = this.term;
     String languageCode = '';
     final Iterable<Map<String, dynamic>> results = getJsonList('results');
@@ -215,7 +214,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
           }
         }
       }
-      return TermProperties(
+      return DictionaryEntry(
           term: term,
           stem: stem ?? term,
           language: language,

@@ -43,27 +43,27 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 /// - [lemmasMap] maps [PartOfSpeech] to lemmas;
 /// - [synonymsMap] maps [PartOfSpeech] to synonyms; and
 /// - [pronunciationsMap] maps [PartOfSpeech] to [Pronunciation]s.
-abstract class TermProperties {
+abstract class DictionaryEntry {
   //
 
-  /// A factory constructor that instantiates an immutable [TermProperties]
+  /// A factory constructor that instantiates an immutable [DictionaryEntry]
   /// instance.
   /// - [language] is the [Language] of the [term].
-  /// - [term] is the term or word for this [TermProperties].
+  /// - [term] is the term or word for this [DictionaryEntry].
   /// - [stem] is the stemmed version of [term].
   /// - [variants] is an un-ordered collection of unique [TermVariant]
   ///   instances.
   ///
   /// The [variants] field of the implementation class is immutable as it
   /// returns a copy of a private variable.
-  factory TermProperties(
+  factory DictionaryEntry(
           {required String term,
           required String stem,
           required Language language,
           required Iterable<TermVariant> variants}) =>
-      _TermPropertiesImpl(language, term, stem, variants.toSet());
+      _DictionaryEntryImpl(language, term, stem, variants.toSet());
 
-  /// Add variants to the [TermProperties] instance and returns a new instance.
+  /// Add variants to the [DictionaryEntry] instance and returns a new instance.
   ///
   /// If a variant with the same definition and part of speech is already in
   /// the [variants], the synonyms, antonyms, pronunciations, inflections,
@@ -71,14 +71,14 @@ abstract class TermProperties {
   /// existing variant's collections.
   ///
   /// Useful when different API endpoints are combined.
-  TermProperties addVariants(Iterable<TermVariant> values);
+  DictionaryEntry addVariants(Iterable<TermVariant> values);
 
   /// The language of the [term].
   ///
   /// See https://en.wikipedia.org/wiki/IETF_language_tag.
   Language get language;
 
-  /// The term for this [TermProperties].
+  /// The term for this [DictionaryEntry].
   String get term;
 
   /// The stemmed version of [term].
@@ -181,7 +181,7 @@ abstract class TermProperties {
 }
 
 /// Abstract mixin class that implements the `==` operator and methods of the
-/// [TermProperties] interface.
+/// [DictionaryEntry] interface.
 /// - the `==` operator by comparing type and the [term], [language] and
 ///   [variants] properties.
 /// - [hashCode] returns an Object.hash of the [term], [language] and
@@ -222,9 +222,9 @@ abstract class TermProperties {
 /// Sub-classes must override:
 /// - [language], the [Language] of the [term];
 /// - [variants], an un-ordered collection of unique [TermVariant] instances;
-/// - [term], the term or word for this [TermProperties]; and
+/// - [term], the term or word for this [DictionaryEntry]; and
 /// - [stem], the stemmed version of [term].
-abstract class TermPropertiesMixin implements TermProperties {
+abstract class DictionaryEntryMixin implements DictionaryEntry {
   //
 
   @override
@@ -504,7 +504,7 @@ abstract class TermPropertiesMixin implements TermProperties {
 
   @override
   bool operator ==(Object other) =>
-      other is TermProperties &&
+      other is DictionaryEntry &&
       term == other.term &&
       language == other.language &&
       variants.intersection(other.variants).length == variants.length;
@@ -513,25 +513,25 @@ abstract class TermPropertiesMixin implements TermProperties {
   int get hashCode => Object.hash(term, language, variants);
 }
 
-/// An abstract `base class` with [TermPropertiesMixin] that implements the
-/// [TermProperties] interface.
+/// An abstract `base class` with [DictionaryEntryMixin] that implements the
+/// [DictionaryEntry] interface.
 ///
-/// Sub-classes of [TermPropertiesBase] must override:
+/// Sub-classes of [DictionaryEntryBase] must override:
 /// - [language], the [Language] of the [term];
 /// - [variants], an un-ordered collection of unique [TermVariant] instances;
-/// - [term], the term or word for this [TermProperties]; and
+/// - [term], the term or word for this [DictionaryEntry]; and
 /// - [stem], the stemmed version of [term].
-abstract class TermPropertiesBase with TermPropertiesMixin {
+abstract class DictionaryEntryBase with DictionaryEntryMixin {
   //
 
   /// A default const unnamed generative constructor for sub classes.
-  const TermPropertiesBase();
+  const DictionaryEntryBase();
 
   //
 }
 
-/// Implementation class for [TermProperties], extends [TermPropertiesBase].
-class _TermPropertiesImpl extends TermPropertiesBase {
+/// Implementation class for [DictionaryEntry], extends [DictionaryEntryBase].
+class _DictionaryEntryImpl extends DictionaryEntryBase {
   //
 
   /// Private final field for [variants].
@@ -547,14 +547,14 @@ class _TermPropertiesImpl extends TermPropertiesBase {
   @override
   final String term;
 
-  const _TermPropertiesImpl(
+  const _DictionaryEntryImpl(
       this.language, this.term, this.stem, this._variants);
 
   @override
   final String stem;
 
   @override
-  TermProperties addVariants(Iterable<TermVariant> values) {
+  DictionaryEntry addVariants(Iterable<TermVariant> values) {
     final newVariants = <TermVariant>{};
     for (final e in values) {
       final existingVariants = variants.where((v) => v == e);
@@ -587,6 +587,6 @@ class _TermPropertiesImpl extends TermPropertiesBase {
           lemmas: lemmas));
     }
     newVariants.addAll(variants);
-    return _TermPropertiesImpl(language, term, stem, _variants);
+    return _DictionaryEntryImpl(language, term, stem, _variants);
   }
 }

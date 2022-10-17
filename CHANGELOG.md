@@ -6,11 +6,29 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+
+## 0.0.15
+**Beta**
+
+### *Breaking changes*
+* Removed `Thesaurus` interface.
+* Renamed `TermProperties` interface to `DictionaryEntry`.
+* Removed parameter `endpoint` from `DictionaryCallback` function definition.
+* Removed `DictionaryEndpoint` enum.
+* Removed `Dictionary.phrasesWith`, `Dictionary.inflectionsOf`, `Dictionary.definitionsFor`, `Dictionary.synonymsOf`, `Dictionary.pronunciationsOf`, `Dictionary.lemmasOf` and `Dictionary.antonymsOf` methods.
+* Added method `Dictionary.getEntry` from interface.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.14
 **Beta**
 
 ### *Breaking changes*
-Removed method `Dictionary.getEntry` from interface.
+* Removed method `Dictionary.getEntry` from interface.
 
 ### *Updated*
 * Documentation.

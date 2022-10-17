@@ -75,7 +75,7 @@ a term from an asynchronous provider or API.</li>
           
   <dt id="DictionaryCallback" class="callable">
     <span class="name"><a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a></span><span class="signature">
-      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="param-endpoint">[<span class="type-annotation"><a href="../dictosaurus/DictionaryEndpoint.html">DictionaryEndpoint</a>?</span> <span class="parameter-name">endpoint</span>]</span>)</span></span>
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span></span>)</span></span>
     </span>
     
 
@@ -105,14 +105,14 @@ a <code>term</code> from an asynchronous provider or API.
           
   <dt id="TranslationCallback" class="callable">
     <span class="name"><a href="../type_definitions/TranslationCallback.html">TranslationCallback</a></span><span class="signature">
-      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermProperties-class.html">TermProperties</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="param-sourceLanguage"><span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a></span> <span class="parameter-name">sourceLanguage</span></span>)</span></span>
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="param-sourceLanguage"><span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a></span> <span class="parameter-name">sourceLanguage</span></span>)</span></span>
     </span>
     
 
   </dt>
   <dd>
     Returns translations for <code>term</code> from <code>sourceLanguage</code> to as
-<a href="../dictosaurus/TermProperties-class.html">TermProperties</a>.
+<a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>.
     
 
   </dd>
@@ -169,7 +169,7 @@ a <code>term</code> from an asynchronous provider or API.
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.14
+      0.0.15
   </span>
 
   

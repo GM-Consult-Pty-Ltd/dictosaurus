@@ -42,20 +42,23 @@ Future<void> _readMeExample() async {
   // expand the term
   final expansions = await dictoSaurus.expandTerm(term, 5);
 
+  // get a dictionary entry properties
+  final entry = await dictoSaurus.getEntry(term);
+
   // get the defintions
-  final definitions = await dictoSaurus.synonymsOf(term);
+  final definitions = entry?.synonymsOf();
 
   // get the synonyms
-  final synonyms = await dictoSaurus.synonymsOf(term);
+  final synonyms = entry?.synonymsOf(PartOfSpeech.verb);
 
   // get the antonyms
-  final antonyms = await dictoSaurus.antonymsOf(term);
+  final antonyms = entry?.antonymsOf();
 
   // get the inflections
-  final inflections = await dictoSaurus.inflectionsOf(term);
+  final inflections = entry?.inflectionsOf();
 
   // get the phrases
-  final phrases = await dictoSaurus.phrasesWith(term);
+  final phrases = entry?.phrasesWith();
 
   results.add(
       {'Method': 'suggestionsFor("$misspeltterm")', 'TestResult': corrections});

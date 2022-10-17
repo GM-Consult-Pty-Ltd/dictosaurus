@@ -80,7 +80,7 @@ import 'package:dictosaurus/type_definitions.dart';
 </code></pre>
 <p>Use of the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">Dictosaurus</a> is demonstrated below.</p>
 <pre class="language-dart"><code class="language-dart">  // define a term with incorrect spelling.
-  final misspeltterm = 'appel';
+  final misspeltTerm = 'appel';
 
   // define a correctly spelled term.
   final term = 'swim';
@@ -89,25 +89,28 @@ import 'package:dictosaurus/type_definitions.dart';
   final dictoSaurus = await getDictoSaurus();
 
   // get spelling correction suggestions
-  final corrections = await dictoSaurus.suggestionsFor(misspeltterm, 5);
+  final corrections = await dictoSaurus.suggestionsFor(misspeltTerm, 5);
 
   // expand the term
   final expansions = await dictoSaurus.expandTerm(term, 5);
 
-  // get the defintions
-  final definitions = await dictoSaurus.synonymsOf(term);
+  // get a dictionary entry properties
+  final entry = await dictoSaurus.getEntry(term);
 
-  // get the synonyms
-  final synonyms = await dictoSaurus.synonymsOf(term);
+  // get the defintions
+  final definitions = entry.synonymsOf();
+
+  // get the synonyms when used as a verb
+  final synonyms = entry.synonymsOf(PartOfSpeech.verb);
 
   // get the antonyms
-  final antonyms = await dictoSaurus.antonymsOf(term);
+  final antonyms = entry.antonymsOf();
 
   // get the inflections
-  final inflections = await dictoSaurus.inflectionsOf(term);
+  final inflections = entry.inflectionsOf();
 
   // get the phrases
-  final phrases = await dictoSaurus.phrasesWith(term);
+  final phrases = entry.phrasesWith();
 
   //prints:
   // [DictoSaurus] METHODS EXAMPLE                                             
@@ -130,11 +133,10 @@ import 'package:dictosaurus/type_definitions.dart';
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface is an object model for a term or word with immutable properties (<code>term</code>, <code>stem</code>, <code>lemma</code>, <code>language</code>). The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface also enumerates <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html">variants</a> of the term with different values for <code>part-of-speech</code>, <code>definition</code>, <code>synonyms</code>, <code>antonyms</code> and <code>inflections</code>, each with one or more example <code>phrases</code>.</p>
 <p>Three interfaces provide <em>dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> functions:</p>
 <ul>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a <code>term</code>, or a translation of a <code>term</code>;</li>
-<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> interface exposes methods that return the synonyms or antonyms of a <code>term</code> ; and</li>
+<li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (etymologies, pronunciations, definitions, inflections, phrases, synonyms or antonyms) of a <code>term</code>, or a translation of a <code>term</code>; and</li>
 <li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interface exposes methods that return alternative spellings for a <code>term</code> or terms that start with the same characters.</li>
 </ul>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a>, <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html">Thesaurus</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface implements the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> and <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html">AutoCorrect</a> interfaces.</p>
 <p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html">DictoSaurus</a> interface also exposes the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html">expandTerm</a> method that performs <code>term-expansion</code>, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the <code>term</code>, its <code>synonyms</code> (if any) and spelling correction suggestions.</p>
 <p>We use an <em>interface &gt; implementation mixin &gt; base-class &gt; implementation class pattern</em>:</p>
 <ul>
@@ -264,7 +266,7 @@ utilities used in <code>information retrieval systems</code>. It includes <em>di
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.14
+      0.0.15
   </span>
 
   

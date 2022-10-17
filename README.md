@@ -49,7 +49,7 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
 ```dart
   // define a term with incorrect spelling.
-  final misspeltterm = 'appel';
+  final misspeltTerm = 'appel';
 
   // define a correctly spelled term.
   final term = 'swim';
@@ -58,25 +58,28 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
   final dictoSaurus = await getDictoSaurus();
 
   // get spelling correction suggestions
-  final corrections = await dictoSaurus.suggestionsFor(misspeltterm, 5);
+  final corrections = await dictoSaurus.suggestionsFor(misspeltTerm, 5);
 
   // expand the term
   final expansions = await dictoSaurus.expandTerm(term, 5);
 
-  // get the defintions
-  final definitions = await dictoSaurus.synonymsOf(term);
+  // get a dictionary entry properties
+  final entry = await dictoSaurus.getEntry(term);
 
-  // get the synonyms
-  final synonyms = await dictoSaurus.synonymsOf(term);
+  // get the defintions
+  final definitions = entry.synonymsOf();
+
+  // get the synonyms when used as a verb
+  final synonyms = entry.synonymsOf(PartOfSpeech.verb);
 
   // get the antonyms
-  final antonyms = await dictoSaurus.antonymsOf(term);
+  final antonyms = entry.antonymsOf();
 
   // get the inflections
-  final inflections = await dictoSaurus.inflectionsOf(term);
+  final inflections = entry.inflectionsOf();
 
   // get the phrases
-  final phrases = await dictoSaurus.phrasesWith(term);
+  final phrases = entry.phrasesWith();
 
   //prints:
   // [DictoSaurus] METHODS EXAMPLE                                             
@@ -103,11 +106,10 @@ Please refer to the [API documentation](https://pub.dev/documentation/dictosauru
 The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface is an object model for a term or word with immutable properties (`term`, `stem`, `lemma`, `language`). The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface also enumerates [variants](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html) of the term with different values for `part-of-speech`, `definition`, `synonyms`, `antonyms` and `inflections`, each with one or more example `phrases`.
 
 Three interfaces provide *dictionary*, *thesaurus* and *term expansion* functions:
-* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (part-of-speech, definitions, inflections, part-of-speech, phrases) of a `term`, or a translation of a `term`;
-* the [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) interface exposes methods that return the synonyms or antonyms of a `term` ; and
+* the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (etymologies, pronunciations, definitions, inflections, phrases, synonyms or antonyms) of a `term`, or a translation of a `term`; and
 * the [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interface exposes methods that return alternative spellings for a `term` or terms that start with the same characters.
 
-The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html), [Thesaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Thesaurus-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
+The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface implements the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) and [AutoCorrect](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/AutoCorrect-class.html) interfaces. 
 
 The [DictoSaurus](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus-class.html) interface also exposes the [expandTerm](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictoSaurus/expandTerm.html) method that performs `term-expansion`, returning a list of terms in descending order of relevance (best match first). The (expanded) list of terms includes the `term`, its `synonyms` (if any) and spelling correction suggestions.
 
