@@ -63,6 +63,16 @@ abstract class TermProperties {
           required Iterable<TermVariant> variants}) =>
       _TermPropertiesImpl(language, term, stem, variants.toSet());
 
+  /// Add variants to the [TermProperties] instance and returns a new instance.
+  ///
+  /// If a variant with the same definition and part of speech is already in
+  /// the [variants], the synonyms, antonyms, pronunciations, inflections,
+  /// lemmas, etymologies and phrases of the new [values] are added to the
+  /// existing variant's collections.
+  ///
+  /// Useful when different API endpoints are combined.
+  TermProperties addVariants(Iterable<TermVariant> values);
+
   /// The language of the [term].
   ///
   /// See https://en.wikipedia.org/wiki/IETF_language_tag.
@@ -542,4 +552,41 @@ class _TermPropertiesImpl extends TermPropertiesBase {
 
   @override
   final String stem;
+
+  @override
+  TermProperties addVariants(Iterable<TermVariant> values) {
+    final newVariants = <TermVariant>{};
+    for (final e in values) {
+      final existingVariants = variants.where((v) => v == e);
+      final variant =
+          (existingVariants.isEmpty ? null : existingVariants.first);
+      final etymologies = (variant?.etymologies ?? {})..addAll(e.etymologies);
+      final synonyms = variant?.synonyms ?? {}
+        ..addAll(e.synonyms);
+      final pronunciations = variant?.pronunciations ?? {}
+        ..addAll(e.pronunciations);
+      final antonyms = variant?.antonyms ?? {}
+        ..addAll(e.antonyms);
+      final inflections = variant?.inflections ?? {}
+        ..addAll(e.inflections);
+      final phrases = variant?.phrases ?? {}
+        ..addAll(e.phrases);
+      final lemmas = variant?.lemmas ?? {}
+        ..addAll(e.lemmas);
+
+      newVariants.add(TermVariant(
+          term: term,
+          partOfSpeech: e.partOfSpeech,
+          etymologies: etymologies,
+          pronunciations: pronunciations,
+          definition: e.definition,
+          synonyms: synonyms,
+          antonyms: antonyms,
+          phrases: phrases,
+          inflections: inflections,
+          lemmas: lemmas));
+    }
+    newVariants.addAll(variants);
+    return _TermPropertiesImpl(language, term, stem, _variants);
+  }
 }

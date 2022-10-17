@@ -6,11 +6,22 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.13
+**Beta**
+
+### *New*
+* Added `DictionaryEndpoint.search` enumeration.
+* Added `TermProperties.addVariants` method.
+* Changed added defaults to `TermVariant` unnamed factory parameters.
+
+### *Updated*
+* Documentation.
+
 ## 0.0.12
 **Beta**
 
 ### *New*
-*Added `DictionaryEndpoint.etymologies` enumeration.
+* Added `DictionaryEndpoint.etymologies` enumeration.
 
 ### *Updated*
 * Documentation.

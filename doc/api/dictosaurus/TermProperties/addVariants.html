@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the allPronunciations method from the TermProperties class, for the Dart programming language.">
-  <title>allPronunciations method - TermProperties class - dictosaurus library - Dart API</title>
+  <meta name="description" content="API docs for the addVariants method from the TermProperties class, for the Dart programming language.">
+  <title>addVariants method - TermProperties class - dictosaurus library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
     <li><a href="../../dictosaurus/TermProperties-class.html">TermProperties</a></li>
-    <li class="self-crumb">allPronunciations abstract method</li>
+    <li class="self-crumb">addVariants abstract method</li>
   </ol>
-  <div class="self-name">allPronunciations</div>
+  <div class="self-name">addVariants</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,29 +45,35 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">allPronunciations</span> method 
+<h1><span class="kind-method">addVariants</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dictosaurus/Pronunciation-class.html">Pronunciation</a></span>&gt;</span></span>
-<span class="name ">allPronunciations</span>(<wbr>)
+<span class="returntype"><a href="../../dictosaurus/TermProperties-class.html">TermProperties</a></span>
+<span class="name ">addVariants</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addVariants-param-values"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dictosaurus/TermVariant-class.html">TermVariant</a></span>&gt;</span></span> <span class="parameter-name">values</span></span></li>
+</ol>)
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Returns an unordered collection of <code>Pronunciation</code>s of <a href="../../dictosaurus/TermProperties/term.html">term</a>.</p>
+  <p>Add variants to the <a href="../../dictosaurus/TermProperties-class.html">TermProperties</a> instance and returns a new instance.</p>
+<p>If a variant with the same definition and part of speech is already in
+the <a href="../../dictosaurus/TermProperties/variants.html">variants</a>, the synonyms, antonyms, pronunciations, inflections,
+lemmas, etymologies and phrases of the new <code>values</code> are added to the
+existing variant's collections.</p>
+<p>Useful when different API endpoints are combined.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Set&lt;Pronunciation&gt; allPronunciations();</code></pre>
+  <pre class="language-dart"><code class="language-dart">TermProperties addVariants(Iterable&lt;TermVariant&gt; values);</code></pre>
 </section>
 
 
@@ -84,7 +90,7 @@
   <li><a href="../../index.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/dictosaurus-library.html">dictosaurus</a></li>
   <li><a href="../../dictosaurus/TermProperties-class.html">TermProperties</a></li>
-  <li class="self-crumb">allPronunciations abstract method</li>
+  <li class="self-crumb">addVariants abstract method</li>
 </ol>
 
 

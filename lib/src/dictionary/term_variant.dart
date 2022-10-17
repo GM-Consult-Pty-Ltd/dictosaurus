@@ -29,7 +29,7 @@ abstract class TermVariant {
   ///   audiofile for the pronunciations of the [term].
   /// - [definition] is the definition for [term] when used as [partOfSpeech].
   /// - [synonyms] is an unordered collection synonyms for [term].
-  /// - [etymologies] is an unordered collectionof etymologoies of [term] .
+  /// - [etymologies] is an unordered collectionof etymologies of [term] .
   /// - [antonyms] is an unordered collection antonyms for [term].
   /// - [inflections] is an unordered collection of inflections of [term].
   /// - [lemmas], the lemmas of [term].
@@ -40,15 +40,15 @@ abstract class TermVariant {
   /// [definition] properties.*
   factory TermVariant(
           {required String term,
-          required PartOfSpeech partOfSpeech,
-          required Set<String> etymologies,
-          required Set<Pronunciation> pronunciations,
           required String definition,
-          required Set<String> synonyms,
-          required Set<String> antonyms,
-          required Set<String> phrases,
-          required Set<String> inflections,
-          required Set<String> lemmas}) =>
+          required PartOfSpeech partOfSpeech,
+          Set<String> etymologies = const <String>{},
+          Set<Pronunciation> pronunciations = const <Pronunciation>{},
+          Set<String> synonyms = const <String>{},
+          Set<String> antonyms = const <String>{},
+          Set<String> phrases = const <String>{},
+          Set<String> inflections = const <String>{},
+          Set<String> lemmas = const <String>{}}) =>
       _TermVariant(term, partOfSpeech, pronunciations, definition, etymologies,
           synonyms, antonyms, inflections, phrases, lemmas);
 
@@ -70,12 +70,13 @@ abstract class TermVariant {
       {String? term,
       PartOfSpeech? partOfSpeech,
       String? definition,
-      Set<String>? etymologies,
-      Set<String>? synonyms,
-      Set<String>? antonyms,
-      Set<String>? phrases,
-      Set<String>? inflections,
-      Set<String>? lemmas});
+      Iterable<Pronunciation>? pronunciations,
+      Iterable<String>? etymologies,
+      Iterable<String>? synonyms,
+      Iterable<String>? antonyms,
+      Iterable<String>? phrases,
+      Iterable<String>? inflections,
+      Iterable<String>? lemmas});
 
   /// The term for this entry.
   String get term;
@@ -167,25 +168,25 @@ class _TermVariant extends TermVariantBase {
   TermVariant copyWith(
           {String? term,
           PartOfSpeech? partOfSpeech,
-          Set<Pronunciation>? pronunciations,
           String? definition,
-          Set<String>? etymologies,
-          Set<String>? synonyms,
-          Set<String>? antonyms,
-          Set<String>? phrases,
-          Set<String>? inflections,
-          Set<String>? lemmas}) =>
+          Iterable<Pronunciation>? pronunciations,
+          Iterable<String>? etymologies,
+          Iterable<String>? synonyms,
+          Iterable<String>? antonyms,
+          Iterable<String>? phrases,
+          Iterable<String>? inflections,
+          Iterable<String>? lemmas}) =>
       _TermVariant(
           term ?? this.term,
           partOfSpeech ?? this.partOfSpeech,
-          pronunciations ?? this.pronunciations,
+          pronunciations?.toSet() ?? this.pronunciations,
           definition ?? this.definition,
-          etymologies ?? this.etymologies,
-          synonyms ?? this.synonyms,
-          antonyms ?? this.antonyms,
-          inflections ?? this.inflections,
-          phrases ?? this.phrases,
-          lemmas ?? this.lemmas);
+          etymologies?.toSet() ?? this.etymologies,
+          synonyms?.toSet() ?? this.synonyms,
+          antonyms?.toSet() ?? this.antonyms,
+          inflections?.toSet() ?? this.inflections,
+          phrases?.toSet() ?? this.phrases,
+          lemmas?.toSet() ?? this.lemmas);
 
   @override
   final String definition;
