@@ -188,6 +188,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
                   phrases.addAll(s.getTextValues('examples'));
                   final variant = TermVariant(
                       term: term,
+                      language: language,
                       pronunciations: pronunciations,
                       etymologies: etymologies,
                       partOfSpeech: partOfSpeech,
@@ -206,6 +207,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
                     phrases.addAll(s.getTextValues('examples'));
                     final variant = TermVariant(
                         term: term,
+                        language: language,
                         pronunciations: pronunciations,
                         etymologies: etymologies,
                         partOfSpeech: partOfSpeech,

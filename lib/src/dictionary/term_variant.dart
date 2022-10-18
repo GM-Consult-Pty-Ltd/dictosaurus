@@ -3,6 +3,7 @@
 // All rights reserved
 
 import 'package:dictosaurus/src/_index.dart';
+import 'package:gmconsult_dart_core/dart_core.dart';
 
 /// A definition for a defintion and/or part-of-speech variant of a term, used
 /// in a [DictionaryEntry] object.
@@ -40,6 +41,7 @@ abstract class TermVariant {
   /// [definition] properties.*
   factory TermVariant(
           {required String term,
+          required Language language,
           required String definition,
           required PartOfSpeech partOfSpeech,
           Set<String> etymologies = const <String>{},
@@ -49,12 +51,13 @@ abstract class TermVariant {
           Set<String> phrases = const <String>{},
           Set<String> inflections = const <String>{},
           Set<String> lemmas = const <String>{}}) =>
-      _TermVariant(term, partOfSpeech, pronunciations, definition, etymologies,
-          synonyms, antonyms, inflections, phrases, lemmas);
+      _TermVariant(term, language, partOfSpeech, pronunciations, definition,
+          etymologies, synonyms, antonyms, inflections, phrases, lemmas);
 
   /// Returns a copy of the [TermVariant] instance updated properties.
   /// - [term] is a term or word.
   /// - [term] is a term or word.
+  /// - [language] is the [Language] of the term  variant.
   /// - [partOfSpeech] is the [PartOfSpeech] category of the [term].
   /// - [pronunciations] is the phonetic spelling of and a link to an
   ///   audiofile for the pronunciations of the [term].
@@ -68,6 +71,7 @@ abstract class TermVariant {
   ///   include [term] when used as [partOfSpeech].
   TermVariant copyWith(
       {String? term,
+      Language? language,
       PartOfSpeech? partOfSpeech,
       String? definition,
       Iterable<Pronunciation>? pronunciations,
@@ -80,6 +84,9 @@ abstract class TermVariant {
 
   /// The term for this entry.
   String get term;
+
+  /// The [Language] of the term  variant.
+  Language get language;
 
   /// The [PartOfSpeech] category of the [term].
   PartOfSpeech get partOfSpeech;
@@ -154,6 +161,7 @@ class _TermVariant extends TermVariantBase {
 
   const _TermVariant(
       this.term,
+      this.language,
       this.partOfSpeech,
       this.pronunciations,
       this.definition,
@@ -167,6 +175,7 @@ class _TermVariant extends TermVariantBase {
   @override
   TermVariant copyWith(
           {String? term,
+          Language? language,
           PartOfSpeech? partOfSpeech,
           String? definition,
           Iterable<Pronunciation>? pronunciations,
@@ -178,6 +187,7 @@ class _TermVariant extends TermVariantBase {
           Iterable<String>? lemmas}) =>
       _TermVariant(
           term ?? this.term,
+          language ?? this.language,
           partOfSpeech ?? this.partOfSpeech,
           pronunciations?.toSet() ?? this.pronunciations,
           definition ?? this.definition,
@@ -199,6 +209,9 @@ class _TermVariant extends TermVariantBase {
 
   @override
   final String term;
+
+  @override
+  final Language language;
 
   @override
   final Set<String> phrases;

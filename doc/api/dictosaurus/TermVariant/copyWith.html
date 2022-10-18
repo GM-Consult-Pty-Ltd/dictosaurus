@@ -54,6 +54,7 @@
 
 <span class="returntype"><a href="../../dictosaurus/TermVariant-class.html">TermVariant</a></span>
 <span class="name ">copyWith</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="copyWith-param-term">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">term</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-language"><span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a>?</span> <span class="parameter-name">language</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-partOfSpeech"><span class="type-annotation"><a href="../../dictosaurus/PartOfSpeech.html">PartOfSpeech</a>?</span> <span class="parameter-name">partOfSpeech</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-definition"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">definition</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-pronunciations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dictosaurus/Pronunciation-class.html">Pronunciation</a></span>&gt;</span>?</span> <span class="parameter-name">pronunciations</span>, </span></li>
@@ -74,6 +75,7 @@
 <ul>
 <li><code>term</code> is a term or word.</li>
 <li><code>term</code> is a term or word.</li>
+<li><code>language</code> is the <a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a> of the term  variant.</li>
 <li><code>partOfSpeech</code> is the <a href="../../dictosaurus/PartOfSpeech.html">PartOfSpeech</a> category of the <code>term</code>.</li>
 <li><code>pronunciations</code> is the phonetic spelling of and a link to an
 audiofile for the pronunciations of the <code>term</code>.</li>
@@ -94,6 +96,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">TermVariant copyWith(
     {String? term,
+    Language? language,
     PartOfSpeech? partOfSpeech,
     String? definition,
     Iterable&lt;Pronunciation&gt;? pronunciations,
@@ -138,6 +141,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
     <li><a href="../../dictosaurus/TermVariant/etymologies.html">etymologies</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../dictosaurus/TermVariant/inflections.html">inflections</a></li>
+    <li><a href="../../dictosaurus/TermVariant/language.html">language</a></li>
     <li><a href="../../dictosaurus/TermVariant/lemmas.html">lemmas</a></li>
     <li><a href="../../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a></li>
     <li><a href="../../dictosaurus/TermVariant/phrases.html">phrases</a></li>
@@ -169,7 +173,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.16
+      0.0.17
   </span>
 
   

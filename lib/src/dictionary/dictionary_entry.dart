@@ -576,6 +576,7 @@ class _DictionaryEntryImpl extends DictionaryEntryBase {
 
       newVariants.add(TermVariant(
           term: term,
+          language: language,
           partOfSpeech: e.partOfSpeech,
           etymologies: etymologies,
           pronunciations: pronunciations,

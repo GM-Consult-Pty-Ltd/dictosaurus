@@ -51,6 +51,7 @@
 
     <section class="multi-line-signature">
       <span class="name ">TermVariant</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-term">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span></li>
+<li><span class="parameter" id="-param-language"><span>required</span> <span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a></span> <span class="parameter-name">language</span>, </span></li>
 <li><span class="parameter" id="-param-definition"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">definition</span>, </span></li>
 <li><span class="parameter" id="-param-partOfSpeech"><span>required</span> <span class="type-annotation"><a href="../../dictosaurus/PartOfSpeech.html">PartOfSpeech</a></span> <span class="parameter-name">partOfSpeech</span>, </span></li>
 <li><span class="parameter" id="-param-etymologies"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">etymologies</span> = <span class="default-value">const &lt;String&gt;{}</span>, </span></li>
@@ -91,6 +92,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory TermVariant(
         {required String term,
+        required Language language,
         required String definition,
         required PartOfSpeech partOfSpeech,
         Set&lt;String&gt; etymologies = const &lt;String&gt;{},
@@ -100,8 +102,8 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
         Set&lt;String&gt; phrases = const &lt;String&gt;{},
         Set&lt;String&gt; inflections = const &lt;String&gt;{},
         Set&lt;String&gt; lemmas = const &lt;String&gt;{}}) =&gt;
-    _TermVariant(term, partOfSpeech, pronunciations, definition, etymologies,
-        synonyms, antonyms, inflections, phrases, lemmas);</code></pre>
+    _TermVariant(term, language, partOfSpeech, pronunciations, definition,
+        etymologies, synonyms, antonyms, inflections, phrases, lemmas);</code></pre>
 </section>
 
 
@@ -137,6 +139,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
     <li><a href="../../dictosaurus/TermVariant/etymologies.html">etymologies</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../dictosaurus/TermVariant/inflections.html">inflections</a></li>
+    <li><a href="../../dictosaurus/TermVariant/language.html">language</a></li>
     <li><a href="../../dictosaurus/TermVariant/lemmas.html">lemmas</a></li>
     <li><a href="../../dictosaurus/TermVariant/partOfSpeech.html">partOfSpeech</a></li>
     <li><a href="../../dictosaurus/TermVariant/phrases.html">phrases</a></li>
@@ -168,7 +171,7 @@ include <code>term</code> when used as <code>partOfSpeech</code>.</li>
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.16
+      0.0.17
   </span>
 
   
