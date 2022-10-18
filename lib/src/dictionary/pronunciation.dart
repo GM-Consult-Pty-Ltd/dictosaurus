@@ -4,6 +4,7 @@
 
 /// Object model for a [term] variant's pronunciation.
 /// - [term] is a term or word.
+/// - [dialect] is the pronunciation version of the term.
 /// - [phoneticSpelling] is the phonetic spelling of a term variant using
 ///   the International Phonetic Alphabet (IPA).
 /// - [audioLink] is a link to an audio file for the pronunciation.
@@ -13,9 +14,7 @@ abstract class Pronunciation {
   /// The term for this entry.
   String get term;
 
-  /// The IETF BCP 47 language tags of the pronunciation.
-  ///
-  /// See https://en.wikipedia.org/wiki/IETF_language_tag.
+  /// The pronunciation version of the term (e.g. "Australian").
   String get dialect;
 
   /// The phonetic spelling of the term variant using the International
@@ -29,6 +28,7 @@ abstract class Pronunciation {
 
   /// Factory constructor returns a [Pronunciation] instance.
   /// - [term] is a term or word.
+  /// - [dialect] is the pronunciation version of the term.
   /// - [phoneticSpelling] is the phonetic spelling of a term variant using
   ///   the International Phonetic Alphabet (IPA).
   /// - [audioLink] is a link to an audio file for the pronunciation.
