@@ -55,7 +55,8 @@
 or a translation of a term.</p>
 <ul>
 <li><a href="../dictosaurus/Dictionary/getEntry.html">getEntry</a> returns a <a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> for a term; and</li>
-<li><a href="../dictosaurus/Dictionary/translate.html">translate</a> returns translations for a term as <a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>.</li>
+<li><a href="../dictosaurus/Dictionary/translate.html">translate</a> returns translations for a term as as a collection of
+<a href="../dictosaurus/TermVariant-class.html">TermVariant</a>s.</li>
 </ul>
 <p>The unnamed <code>Dictionary()</code> factory constructor initializes a <a href="../dictosaurus/Dictionary-class.html">Dictionary</a>
 with <a href="../type_definitions/DictionaryCallback.html">DictionaryCallback</a> and <a href="../type_definitions/TranslationCallback.html">TranslationCallback</a> functions.</p>
@@ -181,15 +182,15 @@ with <code>dictionaryCallback</code>, <code>translationCallback</code> and <code
 </dd>
 
         <dt id="translate" class="callable">
-  <span class="name"><a href="../dictosaurus/Dictionary/translate.html">translate</a></span><span class="signature">(<wbr><span class="parameter" id="translate-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="translate-param-sourceLanguage"><span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a></span> <span class="parameter-name">sourceLanguage</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../dictosaurus/Dictionary/translate.html">translate</a></span><span class="signature">(<wbr><span class="parameter" id="translate-param-term"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">term</span>, </span><span class="parameter" id="translate-param-targetLanguage"><span class="type-annotation"><a href="https://pub.dev/documentation/gmconsult_dart_core/0.0.5+1/dart_core/Language-class.html">Language</a></span> <span class="parameter-name">targetLanguage</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dictosaurus/TermVariant-class.html">TermVariant</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns translations for <code>term</code> from <code>sourceLanguage</code> to <a href="../dictosaurus/Dictionary/language.html">language</a> as
-<code>DictionaryEntry</code>.
+  Returns translations for <code>term</code> from <a href="../dictosaurus/Dictionary/language.html">language</a> to <code>targetLanguage</code> as
+a collection of <a href="../dictosaurus/TermVariant-class.html">TermVariant</a> objects.
   
 
 </dd>
@@ -309,7 +310,7 @@ with <code>dictionaryCallback</code>, <code>translationCallback</code> and <code
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.15
+      0.0.16
   </span>
 
   

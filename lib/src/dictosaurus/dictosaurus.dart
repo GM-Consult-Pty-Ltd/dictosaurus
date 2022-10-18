@@ -121,8 +121,8 @@ class _DictoSaurusImpl extends DictoSaurusBase {
   Future<DictionaryEntry?> getEntry(String term) => dictionaryCallback(term);
 
   @override
-  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) =>
-      translationCallback(term, sourceLanguage);
+  Future<Set<TermVariant>> translate(String term, Language targetLanguage) =>
+      translationCallback(term, language, targetLanguage);
 }
 
 /// A [DictoSaurus] with final [autoCorrect] and [dictionary] endpoint and
@@ -152,6 +152,6 @@ class _DictoSaurusFromComponentsImpl extends DictoSaurusBase {
   Language get language => dictionary.language;
 
   @override
-  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) =>
-      dictionary.translate(term, sourceLanguage);
+  Future<Set<TermVariant>> translate(String term, Language targetLanguage) =>
+      dictionary.translate(term, targetLanguage);
 }

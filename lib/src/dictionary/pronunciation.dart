@@ -16,7 +16,7 @@ abstract class Pronunciation {
   /// The IETF BCP 47 language tags of the pronunciation.
   ///
   /// See https://en.wikipedia.org/wiki/IETF_language_tag.
-  Set<String> get languageCodes;
+  String get dialect;
 
   /// The phonetic spelling of the term variant using the International
   /// Phonetic Alphabet (IPA).
@@ -33,12 +33,11 @@ abstract class Pronunciation {
   ///   the International Phonetic Alphabet (IPA).
   /// - [audioLink] is a link to an audio file for the pronunciation.
   factory Pronunciation(
-          {String? term,
-          Iterable<String>? languageCodes,
-          String? phoneticSpelling,
+          {required String term,
+          required String phoneticSpelling,
+          required String dialect,
           String? audioLink}) =>
-      _PronunciationImpl(term ?? '', languageCodes?.toSet() ?? {},
-          phoneticSpelling ?? '', audioLink ?? '');
+      _PronunciationImpl(term, dialect, phoneticSpelling, audioLink ?? '');
 
   /// Returns a copy of the [Pronunciation] instance with updated properties.
   /// - [term] is a term or word.
@@ -47,12 +46,12 @@ abstract class Pronunciation {
   /// - [audioLink] is a link to an audio file for the pronunciation.
   Pronunciation copyWith(
       {String? term,
-      Iterable<String>? languageCodes,
+      String? dialect,
       String? phoneticSpelling,
       String? audioLink});
 
   /// A const [Pronunciation] instance with empty properties.
-  static const empty = _PronunciationImpl('', {}, '', '');
+  static const empty = _PronunciationImpl('', '', '', '');
 }
 
 /// Abstract/mixin class implements [Pronunciation].
@@ -92,20 +91,20 @@ class _PronunciationImpl extends PronunciationBase {
   final String audioLink;
 
   @override
-  final Set<String> languageCodes;
+  final String dialect;
 
   const _PronunciationImpl(
-      this.term, this.languageCodes, this.phoneticSpelling, this.audioLink);
+      this.term, this.dialect, this.phoneticSpelling, this.audioLink);
 
   @override
   _PronunciationImpl copyWith(
           {String? term,
-          Iterable<String>? languageCodes,
+          String? dialect,
           String? phoneticSpelling,
           String? audioLink}) =>
       _PronunciationImpl(
           term ?? this.term,
-          languageCodes?.toSet() ?? this.languageCodes,
+          dialect ?? this.dialect,
           phoneticSpelling ?? this.phoneticSpelling,
           audioLink ?? this.audioLink);
 }

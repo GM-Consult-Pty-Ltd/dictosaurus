@@ -8,7 +8,8 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 /// The [Dictionary] is an API for return the language properties of a term
 /// or a translation of a term.
 /// - [getEntry] returns a [DictionaryEntry] for a term; and
-/// - [translate] returns translations for a term as [DictionaryEntry].
+/// - [translate] returns translations for a term as as a collection of
+///   [TermVariant]s.
 ///
 /// The unnamed `Dictionary()` factory constructor initializes a [Dictionary]
 /// with [DictionaryCallback] and [TranslationCallback] functions.
@@ -18,9 +19,9 @@ abstract class Dictionary {
   /// The [Language] of terms in the dictionary.
   Language get language;
 
-  /// Returns translations for [term] from [sourceLanguage] to [language] as
-  /// [DictionaryEntry].
-  Future<DictionaryEntry?> translate(String term, Language sourceLanguage);
+  /// Returns translations for [term] from [language] to [targetLanguage] as
+  /// a collection of [TermVariant] objects.
+  Future<Set<TermVariant>> translate(String term, Language targetLanguage);
 
   /// Returns a [DictionaryEntry] for [term].
   Future<DictionaryEntry?> getEntry(String term);
@@ -56,8 +57,8 @@ class _DictionaryImpl implements Dictionary {
   final TranslationCallback translationCallback;
 
   @override
-  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) =>
-      translationCallback(term, sourceLanguage);
+  Future<Set<TermVariant>> translate(String term, Language targetLanguage) =>
+      translationCallback(term, language, targetLanguage);
 
   /// Initializes a const [_DictionaryImpl] with an asynchronous callback
   /// [dictionaryCallback] that returns a [DictionaryEntry] for a term.

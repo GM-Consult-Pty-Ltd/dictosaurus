@@ -15,7 +15,7 @@ typedef DictionaryCallback = Future<DictionaryEntry?> Function(String term);
 typedef TermExpander = Future<Set<String>> Function(String term,
     [PartOfSpeech? partOfSpeech]);
 
-/// Returns translations for [term] from [sourceLanguage] to as
-/// [DictionaryEntry].
-typedef TranslationCallback = Future<DictionaryEntry?> Function(
-    String term, Language sourceLanguage);
+/// Returns translations for [term] from [sourceLanguage] to [targetLanguage]
+/// as a collection of [TermVariant]s.
+typedef TranslationCallback = Future<Set<TermVariant>> Function(
+    String term, Language sourceLanguage, Language targetLanguage);

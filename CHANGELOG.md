@@ -6,6 +6,19 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.16
+**Beta**
+
+### *Breaking changes*
+* Changed signature of function definition `TranslationCallback`.
+* Changed signature and return value type of `Dictionary.translate`.
+* Deleted field `Pronunciation.languageCodes`, replaced with `Pronunciation.dialect`.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
 
 ## 0.0.15
 **Beta**

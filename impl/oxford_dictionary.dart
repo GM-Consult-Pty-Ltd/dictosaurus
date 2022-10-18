@@ -46,7 +46,7 @@ class OxfordDictionaries with OxfordDictionariesApiMixin implements Dictionary {
   }
 
   @override
-  Future<DictionaryEntry?> translate(String term, Language sourceLanguage) {
+  Future<Set<TermVariant>> translate(String term, Language targetLanguage) {
     throw UnimplementedError();
   }
 }
@@ -127,14 +127,23 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
 
   /// Returns a [Pronunciation]s collection by parsing the 'pronunciations'
   /// field of the JSON.
-  Set<Pronunciation> pronunciations(String term) =>
-      getJsonList('pronunciations')
-          .map((pronunciation) => Pronunciation(
-              term: term,
-              audioLink: pronunciation['audioFile']?.toString(),
-              phoneticSpelling: pronunciation['phoneticSpelling']?.toString(),
-              languageCodes: pronunciation.getStringList('dialects')))
-          .toSet();
+  Set<Pronunciation> pronunciations(String term, Language language) {
+    final json = getJsonList('pronunciations');
+    final retVal = <Pronunciation>{};
+    for (final pronunciation in json) {
+      final audioLink = pronunciation['audioFile']?.toString();
+      final phoneticSpelling = pronunciation['phoneticSpelling'].toString();
+      final dialects = pronunciation.getStringList('dialects');
+      for (final dialect in dialects) {
+        retVal.add(Pronunciation(
+            term: term,
+            dialect: dialect,
+            phoneticSpelling: phoneticSpelling,
+            audioLink: audioLink));
+      }
+    }
+    return retVal;
+  }
 
   /// Returns a collection of etymologies by parsing the 'etymologies'
   /// field of the JSON.
@@ -170,7 +179,7 @@ extension _OxfordDictionariesHashmapExtension on Map<String, dynamic> {
             for (final e in entries) {
               final inflections = e.lexicalEntriesEntryInflections;
               final etymologies = e.etymologies;
-              final pronunciations = e.pronunciations(term);
+              final pronunciations = e.pronunciations(term, language);
               final senses = e.getJsonList('senses');
               for (final s in senses) {
                 final synonyms = s.getTextValues('synonyms');
