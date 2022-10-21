@@ -4,6 +4,7 @@
 
 import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
+import 'package:text_analysis/text_analysis.dart';
 
 /// A definition for a defintion and/or part-of-speech variant of a term, used
 /// in a [DictionaryEntry] object.

@@ -10,6 +10,7 @@ import 'package:dictosaurus/dictosaurus.dart';
 // import the typedefs if needed
 import 'package:dictosaurus/type_definitions.dart';
 import 'package:gmconsult_dev/gmconsult_dev.dart';
+import 'package:text_analysis/text_analysis.dart';
 
 //
 import '../impl/global.dart';

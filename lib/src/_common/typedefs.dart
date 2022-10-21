@@ -2,7 +2,7 @@
 // BSD 3-Clause License
 // All rights reserved
 
-// import 'package:dictosaurus/dictosaurus.dart';
+import 'package:text_analysis/text_analysis.dart';
 import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 

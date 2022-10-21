@@ -7,6 +7,18 @@ All rights reserved.
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
 
+## 0.0.18
+**Beta**
+
+### *Bug fixes*
+* Fixed error where `limit` and `k` parameters were not applied by `AutoCorrectMixin.suggestionsFor`.
+
+### *Updated*
+* Documentation.
+* Tests.
+* Examples.
+* Dependencies.
+
 ## 0.0.17
 **Beta**
 

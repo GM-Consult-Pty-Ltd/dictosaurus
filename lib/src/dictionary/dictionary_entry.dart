@@ -4,6 +4,7 @@
 
 import 'package:dictosaurus/src/_index.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
+import 'package:text_analysis/text_analysis.dart';
 
 /// An `object model` for a `term` or `word` with immutable properties.
 ///

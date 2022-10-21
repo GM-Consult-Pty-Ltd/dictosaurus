@@ -85,7 +85,7 @@ Future&lt;List&lt;String&gt;&gt; suggestionsFor(String term, [int limit = 10]) a
   }
   final termGrams = term.kGrams(k);
   final kGramTerms = (await kGramIndexLoader(termGrams)).terms;
-  return term.matches(kGramTerms);
+  return term.matches(kGramTerms, k: k, limit: limit);
 }</code></pre>
 </section>
 
@@ -146,7 +146,7 @@ Future&lt;List&lt;String&gt;&gt; suggestionsFor(String term, [int limit = 10]) a
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.17
+      0.0.18
   </span>
 
   

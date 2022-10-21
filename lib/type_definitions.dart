@@ -8,8 +8,11 @@
 ///   of a term from a dictionary provider or API.
 /// * [TermExpander] - an asynchronous callback that returns an expansion of
 ///   a term from an asynchronous provider or API.
+/// Also includes all the type definitions from the `text_analysis/
+/// type_definitions` library.
 library type_definitions;
 
 import 'src/_common/typedefs.dart';
 
 export 'src/_common/typedefs.dart';
+export 'package:text_analysis/type_definitions.dart';

@@ -3,4 +3,3 @@
 // All rights reserved
 
 export 'typedefs.dart';
-export 'part_of_speech.dart';

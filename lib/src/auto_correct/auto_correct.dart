@@ -78,7 +78,7 @@ abstract class AutoCorrectMixin implements AutoCorrect {
     }
     final termGrams = term.kGrams(k);
     final kGramTerms = (await kGramIndexLoader(termGrams)).terms;
-    return term.matches(kGramTerms);
+    return term.matches(kGramTerms, k: k, limit: limit);
   }
 
   @override

@@ -57,7 +57,8 @@ export 'src/dictionary/_index.dart'
         TermVariantBase;
 export 'src/dictosaurus/_index.dart'
     show DictoSaurus, DictoSaurusMixin, DictoSaurusBase;
-export 'src/_common/_index.dart' show PartOfSpeech;
+// export 'src/_common/_index.dart' show PartOfSpeech;
 export 'package:gmconsult_dart_core/dart_core.dart' show Language;
 export 'package:gmconsult_dart_core/extensions.dart'
     show LanguageStringExtensions;
+export 'package:text_analysis/text_analysis.dart';
