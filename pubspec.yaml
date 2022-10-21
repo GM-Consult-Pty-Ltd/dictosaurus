@@ -16,7 +16,7 @@ dependencies:
   collection: ^1.16.0
   gmconsult_dart_core: ^0.0.5
   meta: ^1.8.0
-  text_analysis: ^0.17.0
+  text_analysis: ^0.17.1
 
 dev_dependencies:
   gmconsult_dev: ^0.0.7+4
@@ -26,4 +26,4 @@ dev_dependencies:
   hive: ^2.2.3
   lints: ^2.0.0
   test: ^1.21.1
-  text_indexing: ^0.17.0
+  text_indexing: ^0.17.1
