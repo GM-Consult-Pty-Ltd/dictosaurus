@@ -130,7 +130,7 @@ import 'package:dictosaurus/type_definitions.dart';
 <p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="api">API</h2>
 <p>Please refer to the <a href="https://pub.dev/documentation/dictosaurus/latest/">API documentation</a>.</p>
-<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface is an object model for a term or word with immutable properties (<code>term</code>, <code>stem</code>, <code>lemma</code>, <code>language</code>). The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html">TermProperties</a> interface also enumerates <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html">variants</a> of the term with different values for <code>part-of-speech</code>, <code>definition</code>, <code>synonyms</code>, <code>antonyms</code> and <code>inflections</code>, each with one or more example <code>phrases</code>.</p>
+<p>The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> interface is an object model for a term or word with immutable properties (<em>term</em>, <em>stem</em>, <em>lemma</em>, <em>language</em>). The <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictionaryEntry-class.html">DictionaryEntry</a> interface also enumerates <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html">variants</a> of the term with different values for <em>part-of-speech</em>, <em>definition</em>, <em>etymology</em>, <em>pronunciation</em>, <em>synonyms</em>, <em>antonyms</em> and <em>inflections</em>, each with one or more example <em>phrases</em>.</p>
 <p>Three interfaces provide <em>dictionary</em>, <em>thesaurus</em> and <em>term expansion</em> functions:</p>
 <ul>
 <li>the <a href="https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html">Dictionary</a> interface exposes methods that return the properties (etymologies, pronunciations, definitions, inflections, phrases, synonyms or antonyms) of a <code>term</code>, or a translation of a <code>term</code>; and</li>
@@ -147,11 +147,11 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 </ul>
 <p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="definitions">Definitions</h2>
-<p>The following definitions are used throughout the <a href="https://pub.dev/documentation/text_analysis/latest/">documentation</a>:</p>
+<p>The following definitions are used throughout the <a href="https://pub.dev/documentation/oxford_dictionaries/latest/">documentation</a>:</p>
 <ul>
 <li><code>corpus</code>- the collection of <code>documents</code> for which an <code>index</code> is maintained.</li>
 <li><code>character filter</code> - filters characters from text in preparation of tokenization.</li>
-<li><code>Damerau–Levenshtein distance</code> - a metric for measuring the <code>edit distance</code> between two <code>terms</code> by counting the minimum number of operations (insertions, deletions or substitutions of a single character, or transposition of two adjacent characters) required to change one <code>term</code> into the other.</li>
+<li><code>Damerau–Levenshtein distance</code> - a metric for measuring the <code>edit distance</code> between two <code>terms</code> by counting the minimum number of operations (insertions, deletions or substitutions of a single character, or transposition of two adjacent characters) required to change one <code>term</code> into the other (from <a href="https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Wikipedia</a>).</li>
 <li><code>dictionary (in an index)</code> - a hash of <code>terms</code> (<code>vocabulary</code>) to the frequency of occurence in the <code>corpus</code> documents.</li>
 <li><code>document</code> - a record in the <code>corpus</code>, that has a unique identifier (<code>docId</code>) in the <code>corpus</code>'s primary key and that contains one or more text fields that are indexed.</li>
 <li><code>document frequency (dFt)</code> - the number of documents in the <code>corpus</code> that contain a term.</li>
@@ -204,6 +204,7 @@ The class naming convention for this pattern is <em>"Interface" &gt; "InterfaceM
 <li><a href="https://en.wikipedia.org/wiki/Phonetic_transcription">Wikipedia (11), "<em>Phonetic transcription</em>", from Wikipedia, the free encyclopedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Etymology">Wikipedia (12), "<em>Etymology</em>", from Wikipedia, the free encyclopedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Part-of-speech_tagging">Wikipedia (13), "<em>Part-of-speech tagging</em>", from Wikipedia, the free encyclopedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Wikipedia (14), "<em>Damerau–Levenshtein distance</em>", from Wikipedia, the free encyclopedia</a></li>
 </ul>
 <p>(<em><a href="#">back to top</a></em>)</p>
 <h2 id="issues">Issues</h2>
@@ -277,7 +278,7 @@ the extensions from the <code>text_analyzer</code> and <code>gmconsult_dart_core
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.20
+      0.0.20+1
   </span>
 
   

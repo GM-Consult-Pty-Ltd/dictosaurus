@@ -103,7 +103,7 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
 Please refer to the [API documentation](https://pub.dev/documentation/dictosaurus/latest/).
 
-The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface is an object model for a term or word with immutable properties (`term`, `stem`, `lemma`, `language`). The [TermProperties](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermProperties-class.html) interface also enumerates [variants](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html) of the term with different values for `part-of-speech`, `definition`, `synonyms`, `antonyms` and `inflections`, each with one or more example `phrases`.
+The [DictionaryEntry](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictionaryEntry-class.html) interface is an object model for a term or word with immutable properties (*term*, *stem*, *lemma*, *language*). The [DictionaryEntry](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/DictionaryEntry-class.html) interface also enumerates [variants](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/TermVariant-class.html) of the term with different values for *part-of-speech*, *definition*, *etymology*, *pronunciation*, *synonyms*, *antonyms* and *inflections*, each with one or more example *phrases*.
 
 Three interfaces provide *dictionary*, *thesaurus* and *term expansion* functions:
 * the [Dictionary](https://pub.dev/documentation/dictosaurus/latest/dictosaurus/Dictionary-class.html) interface exposes methods that return the properties (etymologies, pronunciations, definitions, inflections, phrases, synonyms or antonyms) of a `term`, or a translation of a `term`; and
@@ -123,11 +123,11 @@ The class naming convention for this pattern is *"Interface" > "InterfaceMixin" 
 
 ## Definitions
 
-The following definitions are used throughout the [documentation](https://pub.dev/documentation/text_analysis/latest/):
+The following definitions are used throughout the [documentation](https://pub.dev/documentation/oxford_dictionaries/latest/):
 
 * `corpus`- the collection of `documents` for which an `index` is maintained.
 * `character filter` - filters characters from text in preparation of tokenization.  
-* `Damerau–Levenshtein distance` - a metric for measuring the `edit distance` between two `terms` by counting the minimum number of operations (insertions, deletions or substitutions of a single character, or transposition of two adjacent characters) required to change one `term` into the other.
+* `Damerau–Levenshtein distance` - a metric for measuring the `edit distance` between two `terms` by counting the minimum number of operations (insertions, deletions or substitutions of a single character, or transposition of two adjacent characters) required to change one `term` into the other (from [Wikipedia](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)).
 * `dictionary (in an index)` - a hash of `terms` (`vocabulary`) to the frequency of occurence in the `corpus` documents.
 * `document` - a record in the `corpus`, that has a unique identifier (`docId`) in the `corpus`'s primary key and that contains one or more text fields that are indexed.
 * `document frequency (dFt)` - the number of documents in the `corpus` that contain a term.
@@ -163,6 +163,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * `zone` - the field or zone of a document that a term occurs in, used for parametric indexes or where scoring and ranking of search results attribute a higher score to documents that contain a term in a specific zone (e.g. the title rather that the body of a document).
 
 (*[back to top](#)*)
+
 ## References
 
 * [Manning, Raghavan and Schütze, "*Introduction to Information Retrieval*", Cambridge University Press, 2008](https://nlp.stanford.edu/IR-book/pdf/irbookprint.pdf)
@@ -180,6 +181,7 @@ The following definitions are used throughout the [documentation](https://pub.de
 * [Wikipedia (11), "*Phonetic transcription*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Phonetic_transcription)
 * [Wikipedia (12), "*Etymology*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Etymology)
 * [Wikipedia (13), "*Part-of-speech tagging*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Part-of-speech_tagging)
+* [Wikipedia (14), "*Damerau–Levenshtein distance*", from Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
 
 (*[back to top](#)*)
 
