@@ -5,8 +5,6 @@
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
-import 'package:text_analysis/text_analysis.dart';
-
 import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
 
 // part 'http_mixin.dart';

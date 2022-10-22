@@ -6,12 +6,17 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.20
+**Beta**
+
+### *Updated*
+* Bumped `text_analysis` to version `0.18.0`.
+
 ## 0.0.19
 **Beta**
 
 ### *Updated*
 * Bumped `text_analysis` to version `0.17.1`.
-
 
 ### 0.0.18+1
 **Beta**
