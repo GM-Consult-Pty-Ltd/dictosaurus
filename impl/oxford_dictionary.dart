@@ -7,8 +7,6 @@ import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
 import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
 
-// part 'http_mixin.dart';
-
 /// Implements [Dictionary] with the `Oxford Dictionaries` API as dictionary
 /// provider.  See: https://developer.oxforddictionaries.com/.
 class OxfordDictionaries with OxfordDictionariesApiMixin implements Dictionary {

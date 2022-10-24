@@ -15,7 +15,7 @@ Future<InvertedIndex> getIndex() async {
       tokenizer: TextTokenizer.english,
       zones: {'name': 1, 'descriptions': 0.5},
       k: k);
-  final indexer = TextIndexer(index: index);
+  final indexer = TextIndexer(index);
   await indexer.indexCollection(TestData.stockNews);
   return index;
 }
@@ -28,4 +28,4 @@ Future<DictoSaurus> getDictoSaurus([Dictionary? dictionary]) async {
 }
 
 Future<Iterable<Token>> tokenizer(String term, [String? zone]) async =>
-    [Token(term, 0)];
+    [Token(term, 1, 0)];
