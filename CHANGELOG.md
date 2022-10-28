@@ -6,6 +6,13 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
+## 0.0.21+1
+**Beta**
+
+### *Updated*
+* Bumped `text_analysis` to version `0.23.1`.
+* Bumped `text_indexing` to version `0.21.0`.
+
 ## 0.0.21
 **Beta**
 

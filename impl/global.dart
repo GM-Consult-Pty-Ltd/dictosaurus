@@ -13,6 +13,7 @@ const k = 2;
 Future<InvertedIndex> getIndex() async {
   final index = InMemoryIndex(
       tokenizer: TextTokenizer.english,
+      keywordExtractor: English.analyzer.keywordExtractor,
       zones: {'name': 1, 'descriptions': 0.5},
       k: k);
   final indexer = TextIndexer(index);
