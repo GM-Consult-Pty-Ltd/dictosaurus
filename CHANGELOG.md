@@ -6,7 +6,7 @@ All rights reserved.
 
 *THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
 
-## 0.0.21+1
+## 0.0.22
 **Beta**
 
 ### *Updated*
