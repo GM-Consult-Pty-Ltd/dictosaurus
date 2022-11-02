@@ -4,7 +4,7 @@
 
 name: dictosaurus
 description: Dictionary, thesaurus and term expansion utilities used in natural language processing.
-version: 0.0.22
+version: 0.0.23
 repository: https://github.com/GM-Consult-Pty-Ltd/dictosaurus
 homepage: https://github.com/GM-Consult-Pty-Ltd
 issue_tracker: https://github.com/GM-Consult-Pty-Ltd/dictosaurus/issues
@@ -13,17 +13,17 @@ environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies:
-  collection: ^1.16.0
-  gmconsult_dart_core: ^0.0.5
+  collection: ^1.17.0
+  gmconsult_dart_core: ^0.0.7
   meta: ^1.8.0
-  text_analysis: ^0.23.1
+  text_analysis: ^0.23.5
 
 dev_dependencies:
-  gmconsult_dev: ^0.0.7+4
+  gmconsult_dev: ^0.0.7
   gmconsult_proprietary: 
-    version: ^0.0.1-5
+    version: ^0.0.1-6
     hosted: https://onepub.dev/api/jxxxpsdavu
   hive: ^2.2.3
-  lints: ^2.0.0
-  test: ^1.21.1
-  text_indexing: ^0.21.0
+  lints: ^2.0.1
+  test: ^1.22.0
+  text_indexing: ^0.22.2

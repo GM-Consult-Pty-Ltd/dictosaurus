@@ -83,14 +83,18 @@ abstract class AutoCorrectMixin implements AutoCorrect {
 
   @override
   Future<List<String>> startsWith(String chars, [int limit = 10]) async {
+    chars = chars.trim().toLowerCase();
     if (chars.isEmpty) {
       return [];
     }
-    final termGrams = chars.kGrams(k);
-    final kGramIndex = (await kGramIndexLoader([termGrams.first]));
+    final startGram =
+        chars.kGrams(k).firstWhere((element) => element.startsWith(r'$'));
+
+    final kGramIndex = (await kGramIndexLoader([startGram]));
     if (kGramIndex.isNotEmpty) {
-      final startsWithTerms = (kGramIndex[termGrams.first] ?? {})
-          .where((element) => element.startsWith(chars))
+      final startsWithTerms = (kGramIndex[startGram] ?? {})
+          .map((e) => e.trim().toLowerCase())
+          .where((element) => element.startsWith(chars.toLowerCase()))
           .toList();
       startsWithTerms.sort(((a, b) => a.compareTo(b)));
       startsWithTerms.sort(((a, b) => a.length.compareTo(b.length)));

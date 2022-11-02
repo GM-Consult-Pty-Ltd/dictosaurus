@@ -11,13 +11,15 @@ import 'oxford_dictionary.dart';
 const k = 2;
 
 Future<InvertedIndex> getIndex() async {
+  final data = TestData.stockNews;
   final index = InMemoryIndex(
       tokenizer: TextTokenizer.english,
+      collectionSize: data.length,
       keywordExtractor: English.analyzer.keywordExtractor,
       zones: {'name': 1, 'descriptions': 0.5},
       k: k);
   final indexer = TextIndexer(index);
-  await indexer.indexCollection(TestData.stockNews);
+  await indexer.indexCollection(data);
   return index;
 }
 

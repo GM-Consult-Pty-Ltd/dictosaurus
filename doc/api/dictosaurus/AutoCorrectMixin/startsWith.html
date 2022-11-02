@@ -21,8 +21,7 @@
 </head>
 
 
-<body data-base-href="../../"
-      data-using-base-href="false">
+<body data-base-href="../../" data-using-base-href="false">
 
 <div id="overlay-under-drawer"></div>
 
@@ -78,14 +77,18 @@ k-grams index.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;List&lt;String&gt;&gt; startsWith(String chars, [int limit = 10]) async {
+  chars = chars.trim().toLowerCase();
   if (chars.isEmpty) {
     return [];
   }
-  final termGrams = chars.kGrams(k);
-  final kGramIndex = (await kGramIndexLoader([termGrams.first]));
+  final startGram =
+      chars.kGrams(k).firstWhere((element) =&gt; element.startsWith(r&#39;$&#39;));
+
+  final kGramIndex = (await kGramIndexLoader([startGram]));
   if (kGramIndex.isNotEmpty) {
-    final startsWithTerms = (kGramIndex[termGrams.first] ?? {})
-        .where((element) =&gt; element.startsWith(chars))
+    final startsWithTerms = (kGramIndex[startGram] ?? {})
+        .map((e) =&gt; e.trim().toLowerCase())
+        .where((element) =&gt; element.startsWith(chars.toLowerCase()))
         .toList();
     startsWithTerms.sort(((a, b) =&gt; a.compareTo(b)));
     startsWithTerms.sort(((a, b) =&gt; a.length.compareTo(b.length)));
@@ -154,7 +157,7 @@ Future&lt;List&lt;String&gt;&gt; startsWith(String chars, [int limit = 10]) asyn
 <footer>
   <span class="no-break">
     dictosaurus
-      0.0.22
+      0.0.23
   </span>
 
   
@@ -163,7 +166,7 @@ Future&lt;List&lt;String&gt;&gt; startsWith(String chars, [int limit = 10]) asyn
 
 
 <script src="../../static-assets/highlight.pack.js?v1"></script>
-<script src="../../static-assets/script.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
 
 
 

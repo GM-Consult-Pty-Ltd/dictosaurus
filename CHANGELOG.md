@@ -4,7 +4,20 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
-*THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
+## 0.0.23
+**Beta**
+
+### *Updated*
+* Dependencies.
+* Bumped `text_analysis` to version `0.23.5`.
+* Bumped `text_indexing` to version `0.22.2`.
+
+## 0.0.22+1
+**Beta**
+
+### *Updated*
+* Bumped `text_analysis` to version `0.23.4`.
+* Bumped `text_indexing` to version `0.22.1`.
 
 ## 0.0.22
 **Beta**
