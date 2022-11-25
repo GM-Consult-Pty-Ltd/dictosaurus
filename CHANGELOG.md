@@ -4,7 +4,7 @@ Copyright (c) 2022, GM Consult Pty Ltd
 All rights reserved. 
 -->
 
-## 0.0.23
+## 1.0.0
 **STABLE**
 
 ## 0.0.23
