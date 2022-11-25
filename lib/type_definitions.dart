@@ -15,4 +15,3 @@ library type_definitions;
 import 'src/_common/typedefs.dart';
 
 export 'src/_common/typedefs.dart';
-export 'package:text_analysis/type_definitions.dart';

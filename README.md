@@ -7,8 +7,6 @@ All rights reserved.
 [![GM Consult Pty Ltd](https://raw.githubusercontent.com/GM-Consult-Pty-Ltd/dictosaurus/main/doc/images/dictosaurus.png?raw=true "GM Consult Pty Ltd")](https://github.com/GM-Consult-Pty-Ltd)
 ## ***Dictionary*, *thesaurus* and *term expansion* utilities used in *natural language processing (NLP)*.**
 
-*THIS PACKAGE IS **PRE-RELEASE**, IN ACTIVE DEVELOPMENT AND SUBJECT TO DAILY BREAKING CHANGES.*
-
 ## Contents
 - [Overview](#overview)
 - [Usage](#usage)
@@ -80,20 +78,6 @@ Use of the [Dictosaurus](https://pub.dev/documentation/dictosaurus/latest/dictos
 
   // get the phrases
   final phrases = entry.phrasesWith();
-
-  //prints:
-  // [DictoSaurus] METHODS EXAMPLE                                             
-  // ════════════════════════════════════════════════════════════════════════════
-  //   Method                   │                 TestResult                 
-  // ════════════════════════════════════════════════════════════════════════════
-  //   suggestionsFor("appel")  │  [apple, appear, april, aapl, sp...        
-  //   expandTerm("swim")       │  [swim, bathe, dip, whirl, spin]           
-  //   definitionsFor("swim")   │  {bathe, go swimming, take a dip, dip,...  
-  //   synonymsOf("swim")       │  {bathe, go swimming, take a dip, dip,...  
-  //   antonymsOf("swim")       │  {drown, sink}                             
-  //   inflectionsOf("swim")    │  {swims, swimming, swam, swum}             
-  //   phrasesWith("swim")      │  {they swam ashore, Adrian taught her ...  
-  // ════════════════════════════════════════════════════════════════════════════
 
 ```
 

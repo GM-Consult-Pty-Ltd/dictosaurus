@@ -5,10 +5,12 @@ All rights reserved.
 -->
 
 ## 0.0.23
+**STABLE**
+
+## 0.0.23
 **Beta**
 
 ### *Updated*
-* Dependencies.
 * Bumped `text_analysis` to version `0.23.5`.
 * Bumped `text_indexing` to version `0.22.2`.
 

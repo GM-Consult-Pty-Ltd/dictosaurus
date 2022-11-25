@@ -13,13 +13,13 @@ const k = 2;
 Future<InvertedIndex> getIndex() async {
   final data = TestData.stockNews;
   final index = InMemoryIndex(
-      tokenizer: TextTokenizer.english,
+      analyzer: English(),
       collectionSize: data.length,
-      keywordExtractor: English.analyzer.keywordExtractor,
+      // keywordExtractor: English.analyzer.keywordExtractor,
       zones: {'name': 1, 'descriptions': 0.5},
       k: k);
-  final indexer = TextIndexer(index);
-  await indexer.indexCollection(data);
+  // final indexer = TextIndexer(index);
+  await index.indexCollection(data);
   return index;
 }
 

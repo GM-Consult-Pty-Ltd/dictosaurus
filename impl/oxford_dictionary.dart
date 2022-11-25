@@ -5,7 +5,9 @@
 import 'package:dictosaurus/dictosaurus.dart';
 import 'package:gmconsult_dart_core/dart_core.dart';
 import 'dart:async';
-import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
+// import 'package:gmconsult_proprietary/gmconsult_proprietary.dart';
+
+part 'keys/keys.dart';
 
 /// Implements [Dictionary] with the `Oxford Dictionaries` API as dictionary
 /// provider.  See: https://developer.oxforddictionaries.com/.
@@ -21,13 +23,12 @@ class OxfordDictionaries with OxfordDictionariesApiMixin implements Dictionary {
   /// - [language] is the IETF BCP 47 language tag of the [Dictionary].
   const OxfordDictionaries();
 
-  @override
-  String get appId =>
-      GMConsultKeys.oxfordDictionariesHeaders['app_id'] as String;
 
   @override
-  String get appKey =>
-      GMConsultKeys.oxfordDictionariesHeaders['app_key'] as String;
+  String get appId => _oxfordDictionariesHeaders['app_id'] as String;
+
+  @override
+  String get appKey => _oxfordDictionariesHeaders['app_key'] as String;
 
   @override
   Future<DictionaryEntry?> getEntry(String term,
